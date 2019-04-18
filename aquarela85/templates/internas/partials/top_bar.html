@@ -1,0 +1,44 @@
+{% load staticfiles %}
+<div class="topbar">
+    <div class="topbar-left">
+        <div class="text-center">
+            <a href="{% url url_name_home %}" class="logo"><i class="mdi mdi-radar"></i> <span>Aquarela85</span></a>
+        </div>
+    </div>
+    <nav class="navbar-custom">
+        <ul class="list-inline float-right mb-0">
+            <li class="list-inline-item notification-list hide-phone">
+                <a class="nav-link waves-light waves-effect" href="#" id="btn-fullscreen">
+                    <i class="mdi mdi-crop-free noti-icon"></i>
+                </a>
+            </li>
+            <li class="list-inline-item dropdown notification-list">
+                <a class="nav-link dropdown-toggle waves-effect waves-light nav-user" data-toggle="dropdown" href="#" role="button"
+                   aria-haspopup="false" aria-expanded="false">
+                    <img src="{% static 'v1/global/assets/images/users/avatar-1.jpg' %}" alt="user" class="rounded-circle">
+                </a>
+                <div class="dropdown-menu dropdown-menu-right profile-dropdown " aria-labelledby="Preview">
+                    <div class="dropdown-item noti-title">
+                        <h5 class="text-overflow"><small>Olá! {{ nome_usuario }}</small> </h5>
+                    </div>
+                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                        <i class="mdi mdi-account"></i> <span>Perfil</span>
+                    </a>
+                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                        <i class="mdi mdi-settings"></i> <span>Configurações</span>
+                    </a>
+                    <a href="{% url url_name_logout %}" class="dropdown-item notify-item">
+                        <i class="mdi mdi-logout"></i> <span>Sair</span>
+                    </a>
+                </div>
+            </li>
+        </ul>
+        <ul class="list-inline menu-left mb-0">
+            <li class="float-left">
+                <button class="button-menu-mobile open-left waves-light waves-effect">
+                    <i class="mdi mdi-menu"></i>
+                </button>
+            </li>
+        </ul>
+    </nav>
+</div>

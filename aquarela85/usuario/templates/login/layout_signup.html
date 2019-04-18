@@ -1,0 +1,9 @@
+{% extends 'internas/login_layout.html' %}
+{% load core_tags %}
+{% load staticfiles %}
+
+{% block js_specific %}
+<script src="{% static 'v1/especifico/auth/main.js' %}"></script>
+{% endblock js_specific %}
+
+{% block css_specific %}{% endblock css_specific %}

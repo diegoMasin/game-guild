@@ -1,0 +1,13 @@
+/*CSS COSTUMIZADO DO SISTEMA*/
+
+.texto-preto {
+    color: #000;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.wrapper-page-important {
+    max-width: 500px !important;
+}

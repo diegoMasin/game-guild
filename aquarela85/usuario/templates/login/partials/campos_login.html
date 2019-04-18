@@ -1,0 +1,58 @@
+<div class="wrapper-page">
+    <div class="text-center">
+        <a href="{% url url_name_login %}" class="logo-lg"><i class="mdi mdi-radar"></i> <span>Aquarela85</span> </a>
+    </div>
+    <form id="form-login" class="form-horizontal m-t-20" method="post" action="{% url url_name_login %}">
+        {% csrf_token %}
+        <div class="form-group row">
+            <div class="col-12">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text input-group-text-custom"><i class="mdi mdi-account"></i></span>
+                    </div>
+                    {{ form.username }}
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-12">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text input-group-text-custom"><i class="mdi mdi-key"></i></span>
+                    </div>
+                    {{ form.password }}
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-12 m-t-10">
+                <div class="m-l-15">
+                    <div class="checkbox checkbox-primary">
+                        <input id="checkbox-signup" type="checkbox" name="check_remember" {% if userremember is not False %} checked{% endif %}>
+                        <label for="checkbox-signup">
+                            Remember me
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group text-right m-t-20">
+            <div class="col-xs-12">
+                <button class="btn btn-primary btn-custom w-md waves-effect waves-light" type="submit">Entrar
+                </button>
+            </div>
+        </div>
+
+        <div class="form-group row m-t-30">
+            <div class="col-sm-7">
+                <a href="#" class="text-muted"><i class="fa fa-lock m-r-5"></i> Esqueceu sua Senha?</a>
+            </div>
+            <div class="col-sm-5 text-right">
+                <a href="{% url url_name_signup %}" class="text-muted">Criar Conta</a>
+            </div>
+        </div>
+    </form>
+</div>

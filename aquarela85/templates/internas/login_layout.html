@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+{% load core_tags %}
+{% load staticfiles %}
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content="Sistema Aquarela85 - Micro Gestão Empresarial de Compra e Vendas de Roupas.">
+    <meta name="author" content="Maximum Tech">
+
+    <title>Aquarela85</title>
+    <link rel="shortcut icon" href="{% static 'v1/global/assets/images/favicon.ico' %}">
+
+    <link href="{% static 'v1/global/assets/js/lib/plugins/switchery/switchery.min.css' %}" rel="stylesheet" />
+    <link href="{% static 'v1/global/assets/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'v1/global/assets/css/icons.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'v1/global/assets/css/style_dark.css' %}" rel="stylesheet" type="text/css">
+    <!-- css global customizado -->
+    <link rel="stylesheet" href="{% static 'v1/global/assets/css/custom.css' %}">
+    {% block css_specific %}{% endblock css_specific %}
+
+    <script src="{% static 'v1/global/assets/js/modernizr.min.js' %}"></script>
+</head>
+
+<body>
+    {% include 'internas/partials/messages.html' %}
+    {% block content_login %}{% endblock content_login %}
+
+<script>
+    var resizefunc = [];
+</script>
+
+<!-- Plugins  -->
+<script src="{% static 'v1/global/assets/js/jquery.min.js' %}"></script>
+<script src="{% static 'v1/global/assets/js/popper.min.js' %}"></script><!-- Popper for Bootstrap -->
+<script src="{% static 'v1/global/assets/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'v1/global/assets/js/detect.js' %}"></script>
+<script src="{% static 'v1/global/assets/js/fastclick.js' %}"></script>
+<script src="{% static 'v1/global/assets/js/jquery.slimscroll.js' %}"></script>
+<script src="{% static 'v1/global/assets/js/jquery.blockUI.js' %}"></script>
+<script src="{% static 'v1/global/assets/js/waves.js' %}"></script>
+<script src="{% static 'v1/global/assets/js/wow.min.js' %}"></script>
+<script src="{% static 'v1/global/assets/js/jquery.nicescroll.js' %}"></script>
+<script src="{% static 'v1/global/assets/js/jquery.scrollTo.min.js' %}"></script>
+<script src="{% static 'v1/global/assets/js/lib/plugins/switchery/switchery.min.js' %}"></script>
+
+<!-- Notification js -->
+<script src="{% static 'v1/global/assets/js/lib/plugins/notifyjs/dist/notify.min.js' %}"></script>
+<script src="{% static 'v1/global/assets/js/lib/plugins/notifications/notify-metro.js' %}"></script>
+
+<!-- Custom main Js -->
+<script src="{% static 'v1/global/assets/js/jquery.core.js' %}"></script>
+<script src="{% static 'v1/global/assets/js/jquery.app.js' %}"></script>
+<script src="{% static 'v1/global/assets/js/jquery.custom.js' %}"></script>
+
+{% block js_specific %}{% endblock js_specific %}
+
+</body>
+</html>

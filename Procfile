@@ -1,0 +1,1 @@
+web: gunicorn aquarela85.wsgi --log-file -

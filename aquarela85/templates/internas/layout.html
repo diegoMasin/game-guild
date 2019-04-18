@@ -1,0 +1,105 @@
+{% load core_tags %}{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content="Sistema Aquarela85 - Micro Gestão Empresarial de Compra e Vendas de Roupas.">
+    <meta name="author" content="Maximum Tech">
+
+    <title>Aquarela85</title>
+    <link rel="shortcut icon" href="{% static 'v1/global/assets/images/favicon.ico' %}">
+
+    <link href="{% static 'v1/global/assets/js/lib/plugins/switchery/switchery.min.css' %}" rel="stylesheet" />
+    <link rel="stylesheet" href="{% static 'v1/global/assets/js/lib/plugins/morris/morris.css' %}">
+    <link href="{% static 'v1/global/assets/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'v1/global/assets/css/icons.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'v1/global/assets/css/style_dark.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'v1/global/assets/js/lib/plugins/bootstrap-sweetalert/sweet-alert.css' %}" rel="stylesheet" type="text/css" />
+    <!-- css global customizado -->
+    <link rel="stylesheet" href="{% static 'v1/global/assets/css/custom.css' %}">
+    {% block css_specific %}{% endblock css_specific %}
+
+    <script src="{% static 'v1/global/assets/js/modernizr.min.js' %}"></script>
+</head>
+
+<body class="fixed-left">
+<div id="wrapper">
+    {% include 'internas/partials/top_bar.html' %}
+    {% include 'internas/partials/side_menu.html' %}
+    <div class="content-page">
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="page-title-box">
+                            <h4 class="page-title">
+                                {% block titulo_pagina %}{% endblock titulo_pagina %}
+                            </h4>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+                {% include 'internas/partials/messages.html' %}
+                {% block content %}{% endblock content %}
+            </div>
+        </div>
+        <footer class="footer">
+            2017 - 2018 © Maximum Tech - Maximumtech.com.br
+        </footer>
+    </div>
+</div>
+<script>
+    var resizefunc = [];
+</script>
+<!-- MODALS -->
+
+<!-- Plugins  -->
+<script src="{% static 'v1/global/assets/js/jquery.min.js' %}"></script>
+<script src="{% static 'v1/global/assets/js/popper.min.js' %}"></script><!-- Popper for Bootstrap -->
+<script src="{% static 'v1/global/assets/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'v1/global/assets/js/detect.js' %}"></script>
+<script src="{% static 'v1/global/assets/js/fastclick.js' %}"></script>
+<script src="{% static 'v1/global/assets/js/jquery.slimscroll.js' %}"></script>
+<script src="{% static 'v1/global/assets/js/jquery.blockUI.js' %}"></script>
+<script src="{% static 'v1/global/assets/js/waves.js' %}"></script>
+<script src="{% static 'v1/global/assets/js/wow.min.js' %}"></script>
+<script src="{% static 'v1/global/assets/js/jquery.nicescroll.js' %}"></script>
+<script src="{% static 'v1/global/assets/js/jquery.scrollTo.min.js' %}"></script>
+<script src="{% static 'v1/global/assets/js/lib/plugins/switchery/switchery.min.js' %}"></script>
+
+<!-- Sweet Alert js -->
+<script src="{% static 'v1/global/assets/js/lib/plugins/bootstrap-sweetalert/sweet-alert.min.js' %}"></script>
+
+<!-- Notification js -->
+<script src="{% static 'v1/global/assets/js/lib/plugins/notifyjs/dist/notify.min.js' %}"></script>
+<script src="{% static 'v1/global/assets/js/lib/plugins/notifications/notify-metro.js' %}"></script>
+
+<!-- Counter Up  -->
+<script src="{% static 'v1/global/assets/js/lib/plugins/waypoints/lib/jquery.waypoints.min.js' %}"></script>
+<script src="{% static 'v1/global/assets/js/lib/plugins/counterup/jquery.counterup.min.js' %}"></script>
+
+<!--Morris Chart-->
+<script src="{% static 'v1/global/assets/js/lib/plugins/morris/morris.min.js' %}"></script>
+<script src="{% static 'v1/global/assets/js/lib/plugins/raphael/raphael-min.js' %}"></script>
+
+<!-- Custom main Js -->
+<script src="{% static 'v1/global/assets/js/jquery.core.js' %}"></script>
+<script src="{% static 'v1/global/assets/js/jquery.app.js' %}"></script>
+<script src="{% static 'v1/global/assets/js/lib/plugins/mask-custom/jquery.maskMoney.js' %}"></script>
+<script src="{% static 'v1/global/assets/js/jquery.custom.js' %}"></script>
+<script src="{% static 'v1/global/assets/js/botoes-acoes.js' %}"></script>
+
+{% block js_specific %}{% endblock js_specific %}
+
+<script type="text/javascript">
+    jQuery(document).ready(function($) {
+        $('.counter').counterUp({
+            delay: 100,
+            time: 1200
+        });
+    });
+</script>
+
+</body>
+</html>

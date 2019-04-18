@@ -1,0 +1,8 @@
+{% load core_tags %}
+{% for message in messages %}
+    <a class="autohidebut text-hide gerado-mensagem"
+       href="javascript:;"
+       onclick='$.Notification.autoHideNotify("{{ message.tags }}", "top right", "Mensagem:", "{{ message|message_erro_custom }}")'>
+        &nbsp;
+    </a>
+{% endfor %}
