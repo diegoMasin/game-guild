@@ -2,10 +2,10 @@
 
 Empresa de Desenvolvimento de Software.
 
-# Padrão de projeto Django Aquarela85
-Aquarela85 começou como um projeto de gestão comercial. Contudo o nome foi trocado pois este nome já pertencia a outra empresa.
+# Padrão de projeto Django GestorGuildBDO
+GestorGuildBDO começou como um projeto de gestão comercial. Contudo o nome foi trocado pois este nome já pertencia a outra empresa.
 No início do processo de desenvolvimento, esse projeto já estava no ponto chave de começar os cruds do projeto. 
-Mesmo assim, já estava implementado layout, login e logout com cadastro de usuário, logo a partir daí foi denominado que Aquarela85 seria o marco para se construir projetos futuros em Django servindo como padrão e base para o início de qualquer novo projeto.
+Mesmo assim, já estava implementado layout, login e logout com cadastro de usuário, logo a partir daí foi denominado que GestorGuildBDO seria o marco para se construir projetos futuros em Django servindo como padrão e base para o início de qualquer novo projeto.
 
 ## Seguirá aqui abaixo os passos que serão necessários toda vez que for criado um novo projeto do zero usando este padrão.
 
@@ -23,6 +23,6 @@ Mesmo assim, já estava implementado layout, login e logout com cadastro de usu�
 12 - Rode o migrate<br>
 13 - No terminar crie um primeiro usuário admin padrão root com: python manage.py createsuperuser<br>
 14 - Teste a aplicação funcionando local<br>
-15 - Até aqui projeto funcionando com Sucesso. Só alterar depois detalhes de layout que ainda tenha o nome Aquarela85<br>
+15 - Até aqui projeto funcionando com Sucesso. Só alterar depois detalhes de layout que ainda tenha o nome GestorGuildBDO<br>
 16 - Commit e Pushed seu segundo commit e ultimo, agora só começar a desenvolver.<br>
 SUCESS!

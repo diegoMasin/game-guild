@@ -11,3 +11,23 @@
 .wrapper-page-important {
     max-width: 500px !important;
 }
+
+.topbar .topbar-left {
+    background-color: #000000 !important;
+}
+
+.navbar-custom {
+    background-color: #000000 !important;
+}
+
+.button-menu-mobile {
+    background-color: #000000 !important;
+}
+
+.side-menu.left {
+    background-color: #660000 !important;
+}
+
+.wrapper-page .input-group-text-custom {
+    color: #000 !important;
+}

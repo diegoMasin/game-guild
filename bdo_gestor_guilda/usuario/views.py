@@ -61,7 +61,7 @@ def do_login(request):
 
         if user is not None:
             login(request, user)
-            messages.success(request, 'Bem Vindo ao Sic Financeiro!')
+            messages.success(request, 'Bem Vindo à OXION GUILD!')
             return redirect(utils.url_name_home)
         else:
             messages.warning(request, 'Usuário ou senha não existente!')

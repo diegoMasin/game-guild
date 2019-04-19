@@ -86,7 +86,7 @@ DATABASES = {
         conn_max_age=600
     )
 }
-# DATABASE_SCHEMA = '-c search_path=bdo_gestor_guilda'
+DATABASE_SCHEMA = '-c search_path=public'
 DATABASES['default']['OPTIONS'] = {'options': config('DATABASE_SCHEMA', default=DATABASE_SCHEMA)}
 
 
