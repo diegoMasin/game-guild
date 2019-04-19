@@ -1,4 +1,4 @@
-"""aquarela85 URL Configuration
+"""bdo_gestor_guilda URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/2.0/topics/http/urls/
@@ -20,7 +20,7 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^', include('aquarela85.core.urls')),
-    url(r'^', include('aquarela85.usuario.urls')),
+    url(r'^', include('bdo_gestor_guilda.core.urls')),
+    url(r'^', include('bdo_gestor_guilda.usuario.urls')),
     ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL,
                                                                                  document_root=settings.MEDIA_ROOT)

@@ -2,7 +2,7 @@
 from django import template
 from django.utils.html import strip_tags
 
-from aquarela85.core.helpers.masks import Money
+from bdo_gestor_guilda.core.helpers.masks import Money
 
 register = template.Library()
 

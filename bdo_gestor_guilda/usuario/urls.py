@@ -1,6 +1,6 @@
 from django.conf.urls import url
 
-from aquarela85.usuario import views as usuario_view
+from bdo_gestor_guilda.usuario import views as usuario_view
 
 urlpatterns = [
     url(r'^login/$', usuario_view.do_login, name='usuario_login'),

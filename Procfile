@@ -1,1 +1,1 @@
-web: gunicorn aquarela85.wsgi --log-file -
+web: gunicorn bdo_gestor_guilda.wsgi --log-file -

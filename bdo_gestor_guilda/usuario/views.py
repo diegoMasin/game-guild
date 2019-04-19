@@ -4,8 +4,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 
-from aquarela85.core.helpers import utils
-from aquarela85.usuario.forms import UserModelForm
+from bdo_gestor_guilda.core.helpers import utils
+from bdo_gestor_guilda.usuario.forms import UserModelForm
 
 
 def signup(request):

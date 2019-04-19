@@ -9,11 +9,11 @@ Mesmo assim, já estava implementado layout, login e logout com cadastro de usu�
 
 ## Seguirá aqui abaixo os passos que serão necessários toda vez que for criado um novo projeto do zero usando este padrão.
 
-1 - Criar o repositório do seu novo projeto. Copiar para dentro dele a branch master da aquarela85 sem a pasta idea, se houver.<br>
+1 - Criar o repositório do seu novo projeto. Copiar para dentro dele a branch master da bdo_gestor_guilda sem a pasta idea, se houver.<br>
 2 - Commitar e já realizar o primeiro push do seu novo projeto para não sobrecarregar ou misturar as alterações a seguir.<br>
-3 - Alterar a pasta interna com nome de aquarela85 para o nome do seu projeto.<br>
-4 - *Abri o arquivo settings e alterar em todo lugar que houver aquarela85 para o nome do seu projeto(atenção especial ao schema configurado que nao tem o 85).<br>
-5 - Fazer um find path em todo o sistema em busca do nome aquarela85 e substituir pelo nome do seu projeto.<br>
+3 - Alterar a pasta interna com nome de bdo_gestor_guilda para o nome do seu projeto.<br>
+4 - *Abri o arquivo settings e alterar em todo lugar que houver bdo_gestor_guilda para o nome do seu projeto(atenção especial ao schema configurado que nao tem o 85).<br>
+5 - Fazer um find path em todo o sistema em busca do nome bdo_gestor_guilda e substituir pelo nome do seu projeto.<br>
 6 - É interessante sempre gerar uma secret key nova para cada projeto. Até onde não se sabe não interfere no projeto. Vide: https://www.miniwebtool.com/django-secret-key-generator/<br>
 7 - Criar a virtualenv pelo pycharm: Acesse o interpreter; add local; new environment; coloque o nome da virtual, escolhendo o local onde será crida(geralmente como irmão da pasta do projeto) e não mexer no campo base; click OK.<br>
 8 - Após clicar em ok em tudo, surgirá ao topo da IDE uma opção para instalar os requirements detectados no arquivo txt dentro do projeto. Se não aparecer, entre no arquivo settings que aparecerá.<br>

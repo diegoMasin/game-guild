@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 
-from aquarela85.core.helpers import utils
+from bdo_gestor_guilda.core.helpers import utils
 
 
 @login_required

@@ -1,5 +1,5 @@
 from django.conf.urls import url
-from aquarela85.core.views import home
+from bdo_gestor_guilda.core.views import home
 
 urlpatterns = [
     url(r'^$', home.pagina_inicial, name='pagina_inicial'),

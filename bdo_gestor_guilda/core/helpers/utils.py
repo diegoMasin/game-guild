@@ -3,7 +3,7 @@ from decimal import Decimal
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
-from aquarela85.core.helpers.default_texts import TextosPadroes
+from bdo_gestor_guilda.core.helpers.default_texts import TextosPadroes
 
 # URLS
 url_name_login = 'usuario_login'
