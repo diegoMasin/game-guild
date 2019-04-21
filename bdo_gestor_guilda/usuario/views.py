@@ -6,6 +6,8 @@ from django.shortcuts import render, redirect
 
 from bdo_gestor_guilda.core.helpers import utils
 from bdo_gestor_guilda.usuario.forms.user import UserModelForm
+from bdo_gestor_guilda.usuario.models.user_avancado import UserAvancado
+from bdo_gestor_guilda.usuario.forms.user_avancado import UserAvancadoForm
 
 
 def signup(request):
@@ -61,6 +63,14 @@ def do_login(request):
 
         if user is not None:
             login(request, user)
+            dados_user_avancado = UserAvancado.objects.filter(usuario=user)
+
+            if dados_user_avancado.first() and not dados_user_avancado.first().ativo:
+                return redirect(utils.url_name_aguarde_aprovacao)
+
+            if not dados_user_avancado:
+                return redirect(utils.url_name_cadastrar_user_avancado)
+
             messages.success(request, 'Bem Vindo à OXION GUILD!')
             return redirect(utils.url_name_home)
         else:
@@ -86,3 +96,38 @@ def do_logout(request):
 
 def termo(request):
     return render(request, '{0}/termo_de_uso.html'.format(utils.path_template_login), utils.context)
+
+
+@login_required
+def cadastrar_user_avancado(request):
+    form = UserAvancadoForm()
+    context = utils.get_context(request)
+    context.update({'form': form})
+    return render(request, '{0}/cadastrar.html'.format(utils.path_user_avancado), utils.context)
+
+
+@login_required
+def inserir_user_avancado(request):
+    try:
+        if request.method == 'POST':
+            form = UserAvancadoForm(request.POST)
+            if form.is_valid():
+                dados = form.cleaned_data
+                if UserAvancado.objects.all().count() == 0:
+                    dados['ativo'] = True
+                data = utils.set_usuario_owner(request, dados)
+                UserAvancado(**data).save()
+                messages.success(request, 'Cadastro das Informações feito com Sucesso!')
+                return redirect(utils.url_name_aguarde_aprovacao)
+            else:
+                messages.warning(request, 'Ocorreu algum erro nos campos do Cadastro! Tente Novamente mais tarde.')
+                return redirect(utils.url_name_cadastrar_user_avancado)
+    except Exception as e:
+        messages.warning(request, 'Ocorreu algum erro inesperado! Tente Novamente mais tarde.')
+        return redirect(utils.url_name_cadastrar_user_avancado)
+    return redirect(utils.url_name_logout)
+
+
+@login_required
+def aguarde_aprovacao(request):
+    return render(request, '{0}/aguarde_aprovacao.html'.format(utils.path_user_avancado), utils.context)

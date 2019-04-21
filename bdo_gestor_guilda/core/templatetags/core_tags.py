@@ -29,3 +29,8 @@ def format_status_conta(value):
 @register.filter(is_safe=True)
 def message_erro_custom(value):
     return strip_tags(value).replace('dict_values', '').replace('([[', '').replace(']])', '').replace('\'', '').replace('.', '. ')
+
+
+@register.filter()
+def format_label_error(value):
+    return 'text-danger' if value else ''
