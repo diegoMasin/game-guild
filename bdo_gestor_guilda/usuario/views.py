@@ -115,6 +115,7 @@ def inserir_user_avancado(request):
                 dados = form.cleaned_data
                 if UserAvancado.objects.all().count() == 0:
                     dados['ativo'] = True
+                    dados['cargo'] = UserAvancado.CARGO_LIDER_ID
                 data = utils.set_usuario_owner(request, dados)
                 UserAvancado(**data).save()
                 messages.success(request, 'Cadastro das Informações feito com Sucesso!')
