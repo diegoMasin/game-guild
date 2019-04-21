@@ -4,6 +4,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
 from bdo_gestor_guilda.core.helpers.default_texts import TextosPadroes
+from bdo_gestor_guilda.usuario.models.user_avancado import UserAvancado
 
 # URLS
 url_name_login = 'usuario_login'
@@ -37,7 +38,18 @@ context = {
 
 def get_context(requisicao=None):
     if requisicao:
+        dados_avancados = UserAvancado.objects.filter(usuario=requisicao.user).first()
+        nome_classe = dados_avancados.char_classe.nome_classe
+
         context.update({'nome_usuario': requisicao.user.first_name})
+        context.update({'logo_pequena': 'v1/global/assets/images/logo_classes/{0}.png'.format(nome_classe)})
+        context.update({'foto_classe': 'v1/global/assets/images/foto_classes/{0}.png'.format(nome_classe)})
+        context.update({'familia': dados_avancados.nome_familia})
+        context.update({'char': dados_avancados.nome_char_principal})
+        context.update({'discord': dados_avancados.user_discord})
+        context.update({'level': dados_avancados.char_lvl})
+        context.update({'gs': dados_avancados.gs})
+        context.update({'classe': nome_classe})
     return context
 
 
