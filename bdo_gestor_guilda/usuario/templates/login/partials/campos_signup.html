@@ -1,6 +1,7 @@
+{% load staticfiles %}
 <div class="wrapper-page wrapper-page-important">
     <div class="text-center">
-        <a href="{% url url_name_login %}" class="logo-lg"><i class="mdi mdi-radar"></i> <span>GestorGuildBDO</span> </a>
+        <a href="{% url url_name_login %}" class="logo-lg"><img src="{% static 'v1/global/assets/images/OXION_black.png' %}" alt="OX"> <span></span> </a>
     </div>
     <form id="form-signup" class="form-horizontal m-t-20" method="post" action="{% url url_name_signup %}">
         {% csrf_token %}
@@ -71,6 +72,13 @@
                         <input id="checkbox-signup" type="checkbox" name="check_termo">
                         <label for="checkbox-signup">
                             Eu aceito <a href="{% url url_name_termo %}" target="_blank">os Termos e Condições</a>
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            Obs: Após criado seu acesso, faça o login para preencher um cadastro de recrutamento.
+                            Se recrutado, lhe será dado acesso total ao restante do site e um oficial o colocará na
+                            guilda e no discord se já não tiver feito.
                         </label>
                     </div>
                 </div>

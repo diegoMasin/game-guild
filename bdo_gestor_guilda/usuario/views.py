@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 
 from bdo_gestor_guilda.core.helpers import utils
-from bdo_gestor_guilda.usuario.forms import UserModelForm
+from bdo_gestor_guilda.usuario.forms.user import UserModelForm
 
 
 def signup(request):
