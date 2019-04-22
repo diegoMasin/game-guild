@@ -10,8 +10,11 @@
             <div class="text-center card-box">
                 <div class="member-card">
                     <div class="thumb-xl member-thumb m-b-10 center-block">
-                        {#                        <img id="logo_pequena" height="250" src="{% static logo_pequena %}" class="rounded-circle" alt="profile-image">#}
-                        <img id="foto_classe" height="250" src="{% static foto_classe %}" alt="profile-image">
+                        {% if escolha_random %}
+                            <img id="logo_pequena" height="250" src="{% static logo_pequena %}" alt="profile-image">
+                        {% else %}
+                            <img id="foto_classe" height="250" src="{% static foto_classe %}" alt="profile-image">
+                        {% endif %}
                     </div>
                     <div class="m-t-20 texto-preto">
                         <h5 class="m-b-5">{{ familia }}</h5>

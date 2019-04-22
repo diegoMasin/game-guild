@@ -10,9 +10,12 @@
                 </li>
                 {% if is_lider_or_oficial %}
                     <li>
-                        <a href="{% url url_recrutas_listar %}" class="waves-effect waves-primary"><i class="ti-user"></i><span> Listar Recrutas </span></a>
+                        <a href="{% url url_recrutas_listar %}" class="waves-effect waves-primary"><i class="ti-plus"></i><span> Recrutamento </span></a>
                     </li>
                 {% endif %}
+                <li>
+                    <a href="{% url url_membros_listar %}" class="waves-effect waves-primary"><i class="ti-user"></i><span> Membros </span></a>
+                </li>
             </ul>
             <div class="clearfix"></div>
         </div>

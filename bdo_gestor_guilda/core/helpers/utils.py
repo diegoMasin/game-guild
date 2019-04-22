@@ -1,3 +1,4 @@
+import random
 from decimal import Decimal
 
 from django.contrib import messages
@@ -17,11 +18,13 @@ url_name_aguarde_aprovacao = 'usuario_aguarde_aprovacao'
 url_name_home = 'pagina_inicial'
 url_recrutas_listar = 'recrutas_listar'
 url_recrutas_recrutar_ativar = 'recrutas_recrutar_ativar'
+url_membros_listar = 'membros_listar'
 # PATHS
 path_template_login = 'login'
 path_template_home = 'pagina_inicial'
 path_user_avancado = 'user_avancado'
 path_recrutas = 'recrutas'
+path_membros = 'membros'
 # CONTEXT
 context = {
     'url_name_login': url_name_login,
@@ -34,6 +37,7 @@ context = {
     'url_name_home': url_name_home,
     'url_recrutas_listar': url_recrutas_listar,
     'url_recrutas_recrutar_ativar': url_recrutas_recrutar_ativar,
+    'url_membros_listar': url_membros_listar,
 
     'path_template_login': path_template_login,
     'path_template_home': path_template_home,
@@ -45,9 +49,12 @@ def get_context(requisicao=None):
     if requisicao:
         dados_avancados = UserAvancado.objects.filter(usuario=requisicao.user).first()
         if dados_avancados:
+
             nome_classe = dados_avancados.char_classe.nome_classe
             context.update({'logo_pequena': 'v1/global/assets/images/logo_classes/{0}.png'.format(nome_classe)})
             context.update({'foto_classe': 'v1/global/assets/images/foto_classes/{0}.png'.format(nome_classe)})
+            context.update({'escolha_random': bool(random.getrandbits(1))})
+
             context.update({'familia': dados_avancados.nome_familia})
             context.update({'char': dados_avancados.nome_char_principal})
             context.update({'discord': dados_avancados.user_discord})
