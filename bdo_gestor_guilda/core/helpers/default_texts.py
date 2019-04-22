@@ -70,6 +70,10 @@ class TextosPadroes(object):
         return _('Não foi possível remover o registro.')
 
     @staticmethod
+    def erro_padrao():
+        return _('Não foi possível executar a operação. Tente novamente mais tarde.')
+
+    @staticmethod
     def error(erro):
         return _('Erro encontrado, contate o administrador do sistema.\n\n {0}'.format(erro))
 

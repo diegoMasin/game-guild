@@ -6,6 +6,8 @@ urlpatterns = [
     url(r'^$', home.pagina_inicial, name='pagina_inicial'),
 
     url(r'^recrutas/listar/$', recrutas.listar, name='recrutas_listar'),
+    url(r'^recrutas/recrutar_ativar/(?P<user_avancado_id>(\d+))/$', recrutas.recrutar_ativar,
+        name='recrutas_recrutar_ativar'),
 
     # PADRÃO DE URLS DO SISTEMA SIC
     # url(r'^contas/$', contas.listar, name='contas_listar'),

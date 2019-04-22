@@ -37,12 +37,11 @@
                 <i title="{{ user.get_dias_nodewar }}" class="fa fa-question cursor-pointer"></i></td>
             <td>{{ user.data_cadastro|date:'d/m/Y' }}</td>
             <td class="text-center" width="150">
-                <a target="_blank" href="{{ user.get_url_print }}" class="btn btn-outline-success btn-rounded" title="PRINT">
-                    <i class="fa fa-photo"></i></a>
-                <a href="" class="btn btn-outline-success btn-rounded" title="RECRUTAR">
-                    <i class="fa fa-check-square-o"></i></a>
-                {#                <a href="#" data-url="{% url url_name_excluir_fornecedores fornecedor.pk %}" data-model-title="{{ fornecedor.nome }}"#}
-                {#                   class="btn btn-outline-danger btn-rounded acao-excluir" title="Excluir"><i class="fa fa-times"></i></a>#}
+                <a target="_blank" href="{{ user.get_url_print }}" title="Print Status">
+                    <i class="fa fa-2x fa-photo texto-preto"></i></a>
+                &nbsp;&nbsp;
+                <a href="#" data-url="{% url url_recrutas_recrutar_ativar user.pk %}" data-model-title="{{ user.nome_familia }}"
+                   class="acao-ativar" title="Recrutar/Ativar"><i class="fa fa-2x fa-check-square-o texto-preto"></i></a>
             </td>
         </tr>
     {% endfor %}

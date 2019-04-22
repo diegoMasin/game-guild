@@ -16,6 +16,7 @@ url_name_inserir_user_avancado = 'inserir_user_avancado'
 url_name_aguarde_aprovacao = 'usuario_aguarde_aprovacao'
 url_name_home = 'pagina_inicial'
 url_recrutas_listar = 'recrutas_listar'
+url_recrutas_recrutar_ativar = 'recrutas_recrutar_ativar'
 # PATHS
 path_template_login = 'login'
 path_template_home = 'pagina_inicial'
@@ -32,6 +33,7 @@ context = {
     'url_name_aguarde_aprovacao': url_name_aguarde_aprovacao,
     'url_name_home': url_name_home,
     'url_recrutas_listar': url_recrutas_listar,
+    'url_recrutas_recrutar_ativar': url_recrutas_recrutar_ativar,
 
     'path_template_login': path_template_login,
     'path_template_home': path_template_home,

@@ -70,6 +70,37 @@
             });
         });
 
+        //Botão de Ação Ativar
+        $('.acao-ativar').click(function(event) {
+            event.preventDefault();
+            var url = $(this).data('url');
+            var titulo_model = $(this).data('model-title');
+
+            swal({
+                title: 'Você deseja Recrutar/Ativar?',
+                text: 'Após ativado, ' + titulo_model + ' pertencerá a Guilda OXION.',
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#DD6B55',
+                confirmButtonText: 'Sim, Recrutar/Ativar!',
+                cancelButtonText: 'Não, Cancele!',
+                closeOnConfirm: false,
+                closeOnCancel: false
+            }, function (isConfirm) {
+                if (isConfirm) {
+                    swal({
+                        title: 'Ativado!',
+                        text: 'Você Ativou ' + titulo_model + '.',
+                        type: 'success'
+                    }, function(){
+                        window.location = url;
+                    });
+                } else {
+                    swal('Cancelada', 'Você não ativou ' + titulo_model + '.', 'error');
+                }
+            });
+        });
+
     },
         //init
         $.SweetAlert = new SweetAlert, $.SweetAlert.Constructor = SweetAlert
