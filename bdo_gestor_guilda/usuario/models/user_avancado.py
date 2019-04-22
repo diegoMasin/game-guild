@@ -1,3 +1,5 @@
+import re
+
 from django.contrib.auth.models import User
 from django.db import models
 
@@ -53,3 +55,41 @@ class UserAvancado(models.Model):
 
     def __str__(self):
         return '[{0}] {1}'.format(self.nome_familia, self.nome_char_principal)
+
+    def is_lider(self):
+        return True if self.cargo == self.CARGO_LIDER_ID else False
+
+    def is_oficial(self):
+        return True if self.cargo == self.CARGO_OFICIAL_ID else False
+
+    def is_lider_or_oficial(self):
+        return True if self.cargo == self.CARGO_OFICIAL_ID or self.cargo == self.CARGO_LIDER_ID else False
+
+    def get_dias_nodewar(self):
+        dias = []
+        if self.node_seg:
+            dias.append('Segunda')
+        if self.node_ter:
+            dias.append('Terça')
+        if self.node_qua:
+            dias.append('Quarta')
+        if self.node_qui:
+            dias.append('Quinta')
+        if self.node_sex:
+            dias.append('Sexta')
+        if self.node_dom:
+            dias.append('Domingo')
+
+        return dias
+
+    def joga_nodewar(self):
+        joga = False
+        if self.node_seg or self.node_ter or self.node_qua or self.node_qui or self.node_sex or self.node_dom:
+            joga = True
+        return joga
+
+    def get_url_print(self):
+        url = self.url_print_status
+        if not ('http://' in url or 'https://' in url):
+            url = 'http://{0}'.format(url)
+        return url

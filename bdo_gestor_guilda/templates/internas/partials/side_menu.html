@@ -8,6 +8,11 @@
                     <a href="{% url url_name_home %}" class="waves-effect waves-primary"><i
                             class="ti-home"></i><span> Página Inicial </span></a>
                 </li>
+                {% if is_lider_or_oficial %}
+                    <li>
+                        <a href="{% url url_recrutas_listar %}" class="waves-effect waves-primary"><i class="ti-user"></i><span> Listar Recrutas </span></a>
+                    </li>
+                {% endif %}
             </ul>
             <div class="clearfix"></div>
         </div>

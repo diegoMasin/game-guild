@@ -34,3 +34,8 @@ def message_erro_custom(value):
 @register.filter()
 def format_label_error(value):
     return 'text-danger' if value else ''
+
+
+@register.filter
+def bollean_sim_ou_nao(value):
+    return 'Sim' if value or value == 1 else 'Não'

@@ -10,6 +10,7 @@
     <title>OXION GUILD - BDO SA</title>
     <link rel="shortcut icon" href="{% static 'v1/global/assets/images/favicon.ico' %}">
 
+    <link href="{% static 'v1/global/assets/js/lib/plugins/footable/css/footable.core.css' %}" rel="stylesheet">
     <link href="{% static 'v1/global/assets/js/lib/plugins/switchery/switchery.min.css' %}" rel="stylesheet" />
     <link rel="stylesheet" href="{% static 'v1/global/assets/js/lib/plugins/morris/morris.css' %}">
     <link href="{% static 'v1/global/assets/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
@@ -67,27 +68,20 @@
 <script src="{% static 'v1/global/assets/js/jquery.nicescroll.js' %}"></script>
 <script src="{% static 'v1/global/assets/js/jquery.scrollTo.min.js' %}"></script>
 <script src="{% static 'v1/global/assets/js/lib/plugins/switchery/switchery.min.js' %}"></script>
-
-<!-- Sweet Alert js -->
+<script src="{% static 'v1/global/assets/js/lib/plugins/footable/js/footable.all.min.js' %}"></script>
 <script src="{% static 'v1/global/assets/js/lib/plugins/bootstrap-sweetalert/sweet-alert.min.js' %}"></script>
-
-<!-- Notification js -->
 <script src="{% static 'v1/global/assets/js/lib/plugins/notifyjs/dist/notify.min.js' %}"></script>
 <script src="{% static 'v1/global/assets/js/lib/plugins/notifications/notify-metro.js' %}"></script>
-
-<!-- Counter Up  -->
 <script src="{% static 'v1/global/assets/js/lib/plugins/waypoints/lib/jquery.waypoints.min.js' %}"></script>
 <script src="{% static 'v1/global/assets/js/lib/plugins/counterup/jquery.counterup.min.js' %}"></script>
-
-<!--Morris Chart-->
 <script src="{% static 'v1/global/assets/js/lib/plugins/morris/morris.min.js' %}"></script>
 <script src="{% static 'v1/global/assets/js/lib/plugins/raphael/raphael-min.js' %}"></script>
-
 <!-- Custom main Js -->
 <script src="{% static 'v1/global/assets/js/jquery.core.js' %}"></script>
 <script src="{% static 'v1/global/assets/js/jquery.app.js' %}"></script>
 <script src="{% static 'v1/global/assets/js/lib/plugins/mask-custom/jquery.maskMoney.js' %}"></script>
 <script src="{% static 'v1/global/assets/js/jquery.custom.js' %}"></script>
+<script src="{% static 'v1/global/assets/js/jquery.footable.js' %}"></script>
 <script src="{% static 'v1/global/assets/js/botoes-acoes.js' %}"></script>
 
 {% block js_specific %}{% endblock js_specific %}

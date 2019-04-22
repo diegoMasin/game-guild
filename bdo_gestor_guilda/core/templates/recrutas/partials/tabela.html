@@ -1,0 +1,59 @@
+{% load core_tags %}
+<table class="table table-striped foo-table-default" data-page-size="12">
+    <thead class="table-dark">
+    <tr class="text-center">
+        <th data-toggle="true">#</th>
+        <th>ID Discord</th>
+        <th>Família</th>
+        <th>Char Principal</th>
+        <th data-hide="phone">PA</th>
+        <th data-hide="phone">PA AWK</th>
+        <th data-hide="phone">PD</th>
+        <th>GS</th>
+        <th>Classe</th>
+        <th>Level</th>
+        <th>Joga Siege</th>
+        <th>Joga Nodewar</th>
+        <th>Data de Cadastro</th>
+        <th class="footable-sortable">Ações</th>
+    </tr>
+    </thead>
+    {% include 'recrutas/partials/filtros.html' %}
+    <tbody>
+    {% for user in todos_usuarios %}
+        <tr class="text-center">
+            <th scope="row">{{ forloop.counter }}</th>
+            <td>{{ user.user_discord }}</td>
+            <td>{{ user.nome_familia }}</td>
+            <td>{{ user.nome_char_principal }}</td>
+            <td>{{ user.char_ap }}</td>
+            <td>{{ user.char_ap_despertada }}</td>
+            <td>{{ user.char_dp }}</td>
+            <td>{{ user.gs }}</td>
+            <td>{{ user.char_classe|title }}</td>
+            <td>{{ user.char_lvl }}</td>
+            <td>{{ user.siege|bollean_sim_ou_nao }}</td>
+            <td>{{ user.joga_nodewar|bollean_sim_ou_nao }}
+                <i title="{{ user.get_dias_nodewar }}" class="fa fa-question cursor-pointer"></i></td>
+            <td>{{ user.data_cadastro|date:'d/m/Y' }}</td>
+            <td class="text-center" width="150">
+                <a target="_blank" href="{{ user.get_url_print }}" class="btn btn-outline-success btn-rounded" title="PRINT">
+                    <i class="fa fa-photo"></i></a>
+                <a href="" class="btn btn-outline-success btn-rounded" title="RECRUTAR">
+                    <i class="fa fa-check-square-o"></i></a>
+                {#                <a href="#" data-url="{% url url_name_excluir_fornecedores fornecedor.pk %}" data-model-title="{{ fornecedor.nome }}"#}
+                {#                   class="btn btn-outline-danger btn-rounded acao-excluir" title="Excluir"><i class="fa fa-times"></i></a>#}
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+    <tfoot>
+    <tr class="active">
+        <td colspan="14">
+            <div class="text-right">
+                <ul class="pagination hide-if-no-paging pagination-split justify-content-center footable-pagination m-t-40 m-b-0"></ul>
+            </div>
+        </td>
+    </tr>
+    </tfoot>
+</table>
