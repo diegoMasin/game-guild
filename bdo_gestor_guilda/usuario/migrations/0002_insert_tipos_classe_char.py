@@ -10,21 +10,21 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RunSQL("INSERT INTO tb_tipo_classe_char (nome_classe) VALUES ('CAVALEIRO');"),
-        migrations.RunSQL("INSERT INTO tb_tipo_classe_char (nome_classe) VALUES ('VALKYRIA');"),
-        migrations.RunSQL("INSERT INTO tb_tipo_classe_char (nome_classe) VALUES ('BERSERKER');"),
-        migrations.RunSQL("INSERT INTO tb_tipo_classe_char (nome_classe) VALUES ('CACADORA');"),
-        migrations.RunSQL("INSERT INTO tb_tipo_classe_char (nome_classe) VALUES ('ARQUEIRO');"),
-        migrations.RunSQL("INSERT INTO tb_tipo_classe_char (nome_classe) VALUES ('MAGO');"),
-        migrations.RunSQL("INSERT INTO tb_tipo_classe_char (nome_classe) VALUES ('BRUXA');"),
-        migrations.RunSQL("INSERT INTO tb_tipo_classe_char (nome_classe) VALUES ('FEITICEIRA');"),
-        migrations.RunSQL("INSERT INTO tb_tipo_classe_char (nome_classe) VALUES ('NINJA');"),
-        migrations.RunSQL("INSERT INTO tb_tipo_classe_char (nome_classe) VALUES ('KUNOICHI');"),
-        migrations.RunSQL("INSERT INTO tb_tipo_classe_char (nome_classe) VALUES ('MUSA');"),
-        migrations.RunSQL("INSERT INTO tb_tipo_classe_char (nome_classe) VALUES ('MAEHWA');"),
-        migrations.RunSQL("INSERT INTO tb_tipo_classe_char (nome_classe) VALUES ('TAMER');"),
-        migrations.RunSQL("INSERT INTO tb_tipo_classe_char (nome_classe) VALUES ('MISTICA');"),
-        migrations.RunSQL("INSERT INTO tb_tipo_classe_char (nome_classe) VALUES ('STRIKER');"),
-        migrations.RunSQL("INSERT INTO tb_tipo_classe_char (nome_classe) VALUES ('LAHN');"),
-        migrations.RunSQL("INSERT INTO tb_tipo_classe_char (nome_classe) VALUES ('DARK_KNIGHT');")
+        migrations.RunSQL("INSERT INTO tb_tipo_classe_char (nome_classe) VALUES ('cavaleiro');"),
+        migrations.RunSQL("INSERT INTO tb_tipo_classe_char (nome_classe) VALUES ('valkyria');"),
+        migrations.RunSQL("INSERT INTO tb_tipo_classe_char (nome_classe) VALUES ('berserker');"),
+        migrations.RunSQL("INSERT INTO tb_tipo_classe_char (nome_classe) VALUES ('cacadora');"),
+        migrations.RunSQL("INSERT INTO tb_tipo_classe_char (nome_classe) VALUES ('arqueiro');"),
+        migrations.RunSQL("INSERT INTO tb_tipo_classe_char (nome_classe) VALUES ('mago');"),
+        migrations.RunSQL("INSERT INTO tb_tipo_classe_char (nome_classe) VALUES ('bruxa');"),
+        migrations.RunSQL("INSERT INTO tb_tipo_classe_char (nome_classe) VALUES ('feiticeira');"),
+        migrations.RunSQL("INSERT INTO tb_tipo_classe_char (nome_classe) VALUES ('ninja');"),
+        migrations.RunSQL("INSERT INTO tb_tipo_classe_char (nome_classe) VALUES ('kunoichi');"),
+        migrations.RunSQL("INSERT INTO tb_tipo_classe_char (nome_classe) VALUES ('musa');"),
+        migrations.RunSQL("INSERT INTO tb_tipo_classe_char (nome_classe) VALUES ('maehwa');"),
+        migrations.RunSQL("INSERT INTO tb_tipo_classe_char (nome_classe) VALUES ('tamer');"),
+        migrations.RunSQL("INSERT INTO tb_tipo_classe_char (nome_classe) VALUES ('mistica');"),
+        migrations.RunSQL("INSERT INTO tb_tipo_classe_char (nome_classe) VALUES ('striker');"),
+        migrations.RunSQL("INSERT INTO tb_tipo_classe_char (nome_classe) VALUES ('lahn');"),
+        migrations.RunSQL("INSERT INTO tb_tipo_classe_char (nome_classe) VALUES ('dark_knight');")
     ]
