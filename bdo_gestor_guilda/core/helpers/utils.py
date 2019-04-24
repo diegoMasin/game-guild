@@ -64,6 +64,7 @@ def get_context(requisicao=None):
             context.update({'is_lider_or_oficial': dados_avancados.is_lider_or_oficial()})
 
         context.update({'nome_usuario': requisicao.user.first_name})
+        context.update({'id_usuario': requisicao.user.pk})
     return context
 
 

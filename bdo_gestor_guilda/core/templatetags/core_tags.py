@@ -39,3 +39,10 @@ def format_label_error(value):
 @register.filter
 def bollean_sim_ou_nao(value):
     return 'Sim' if value or value == 1 else 'Não'
+
+
+@register.simple_tag
+def pode_promover(user_avancado, id_usuario):
+    pode = False
+
+    return pode

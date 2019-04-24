@@ -15,18 +15,18 @@ def listar(request):
     return render(request, '{0}/index.html'.format(utils.path_membros), context)
 
 
-# @login_required
-# def recrutar_ativar(request, user_avancado_id):
-#     try:
-#         context = utils.get_context(request)
-#         if context.get('is_lider_or_oficial'):
-#             user = UserAvancado.objects.filter(pk=user_avancado_id).first()
-#             if user:
-#                 user.ativo = True
-#                 user.save()
-#                 messages.success(request, '{0} Ativado com Sucesso!'.format(user))
-#
-#     except Exception as e:
-#         messages.error(request, utils.TextosPadroes.erro_padrao())
-#
-#     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+@login_required
+def promover(request, user_avancado_id):
+    try:
+        context = utils.get_context(request)
+        if context.get('is_lider_or_oficial'):
+            user = UserAvancado.objects.filter(pk=user_avancado_id).first()
+            if user:
+                user.ativo = True
+                user.save()
+                messages.success(request, '{0} Ativado com Sucesso!'.format(user))
+
+    except Exception as e:
+        messages.error(request, utils.TextosPadroes.erro_padrao())
+
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))

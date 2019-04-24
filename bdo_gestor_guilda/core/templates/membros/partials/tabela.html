@@ -39,9 +39,10 @@
             <td class="text-center" width="150">
                 <a target="_blank" href="{{ user.get_url_print }}" title="Print Status">
                     <i class="fa fa-2x fa-photo texto-preto"></i></a>
-                &nbsp;&nbsp;
+{#                {% if pode_promover %}#}
 {#                <a href="#" data-url="{% url url_recrutas_recrutar_ativar user.pk %}" data-model-title="{{ user.nome_familia }}"#}
-{#                   class="acao-ativar" title="Recrutar/Ativar"><i class="fa fa-2x fa-check-square-o texto-preto"></i></a>#}
+{#                   class="acao-promover" title="Promover"><i class="fa fa-2x  fa-arrow-up texto-preto"></i></a>#}
+{#                {%  endif %}#}
             </td>
         </tr>
     {% endfor %}
