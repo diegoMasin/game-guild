@@ -93,3 +93,11 @@ def set_usuario_owner(request, data):
         messages.warning(request, TextosPadroes.usuario_nao_logado())
 
     return data
+
+
+def pode_promover(request):
+    from bdo_gestor_guilda.usuario.models.user_avancado import UserAvancado
+    user_logado = request.user
+    podem_promover = [UserAvancado.CARGO_LIDER_ID, UserAvancado.CARGO_OFICIAL_ID]
+    dados_avancados = UserAvancado.objects.filter(usuario=user_logado, cargo__in=podem_promover)
+    return True if dados_avancados else False

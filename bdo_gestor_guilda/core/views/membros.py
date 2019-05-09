@@ -12,6 +12,7 @@ def listar(request):
     context = utils.get_context(request)
     todos_usuarios = UserAvancado.objects.filter(ativo=True).order_by('cargo')
     context.update({'todos_usuarios': todos_usuarios})
+    context.update({'pode_promover': utils.pode_promover(request)})
     return render(request, '{0}/index.html'.format(utils.path_membros), context)
 
 

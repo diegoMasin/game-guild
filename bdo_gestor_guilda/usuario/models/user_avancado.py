@@ -97,6 +97,10 @@ class UserAvancado(models.Model):
             url = 'http://{0}'.format(url)
         return url
 
+    def pode_ser_promovido(self):
+        pode = True
+        return pode
+
     # def pode_promover(self):
     #     result = False
     #     if self.cargo == self.CARGO_MEMBRO_ID or self.CARGO_QUARTEL_MESTRE_ID:
