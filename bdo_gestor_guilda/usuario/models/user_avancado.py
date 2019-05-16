@@ -82,8 +82,14 @@ class UserAvancado(models.Model):
             dias.append('Sexta')
         if self.node_dom:
             dias.append('Domingo')
-
         return dias
+
+    def get_dias_nodewar_format(self):
+        dias = self.get_dias_nodewar()
+        format = ''
+        for dia in dias:
+            format = '{}{}, '.format(format, dia)
+        return format[0:-2]
 
     def joga_nodewar(self):
         joga = False
