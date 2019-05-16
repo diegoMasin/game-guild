@@ -36,7 +36,7 @@
             <td>{{ user.get_dias_nodewar_format }}</td>
             <td>{{ user.data_cadastro|date:'d/m/Y' }}</td>
             <td class="text-center" width="150">
-                <a target="_blank" href="{{ user.get_url_print }}" title="Print Status">
+                <a target="_blank" href="{{ user.get_url_print }}" title="Print do GS">
                     <i class="fa fa-2x fa-photo texto-preto"></i></a>
                 &nbsp;&nbsp;
                 <a href="#" data-url="{% url url_recrutas_recrutar_ativar user.pk %}" data-model-title="{{ user.nome_familia }}"

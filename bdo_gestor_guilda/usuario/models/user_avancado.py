@@ -107,6 +107,16 @@ class UserAvancado(models.Model):
         pode = True
         return pode
 
+    def get_slug_cargo(self):
+        cargo = ''
+        if self.cargo == self.CARGO_LIDER_ID:
+            cargo = self.CARGO_LIDER_SLUG
+        if self.cargo == self.CARGO_MEMBRO_ID:
+            cargo = self.CARGO_MEMBRO_SLUG
+        if self.cargo == self.CARGO_OFICIAL_ID:
+            cargo = self.CARGO_OFICIAL_SLUG
+        return cargo
+
     # def pode_promover(self):
     #     result = False
     #     if self.cargo == self.CARGO_MEMBRO_ID or self.CARGO_QUARTEL_MESTRE_ID:

@@ -25,6 +25,7 @@ def recrutar_ativar(request, user_avancado_id):
             user = UserAvancado.objects.filter(pk=user_avancado_id).first()
             if user:
                 user.ativo = True
+                user.cargo = UserAvancado.CARGO_MEMBRO_ID
                 user.save()
                 messages.success(request, '{0} Ativado com Sucesso!'.format(user))
 

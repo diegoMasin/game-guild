@@ -14,6 +14,7 @@
         <th>Joga Siege</th>
         <th>Joga Nodewar</th>
         <th data-hide="all">Dias de Nodewar</th>
+        <th>Cargo</th>
         <th data-hide="all">Data de Cadastro</th>
         <th class="footable-sortable">Ações</th>
     </tr>
@@ -34,13 +35,18 @@
             <td>{{ user.siege|bollean_sim_ou_nao }}</td>
             <td>{{ user.joga_nodewar|bollean_sim_ou_nao }}</td>
             <td>{{ user.get_dias_nodewar_format }}</td>
+            <td>
+                <span class="badge badge-{{ user.get_slug_cargo|cor_cargo }}">{{ user.get_slug_cargo }}</span>
+            </td>
             <td>{{ user.data_cadastro|date:'d/m/Y' }}</td>
             <td class="text-center" width="150">
-                <a target="_blank" href="{{ user.get_url_print }}" title="Print Status">
+                <a target="_blank" href="{{ user.get_url_print }}" title="Print do GS">
                     <i class="fa fa-2x fa-photo texto-preto"></i></a>
                 {% if pode_promover and user.pode_ser_promovido and not user.usuario.pk == id_usuario %}
-                <a href="#" data-url="{% url url_recrutas_recrutar_ativar user.pk %}" data-model-title="{{ user.nome_familia }}"
+                <a href="#" data-url="{% url url_membros_promover user.pk %}" data-model-title="{{ user.nome_familia }}"
                    class="acao-promover" title="Promover"><i class="fa fa-2x  fa-arrow-up texto-preto"></i></a>
+                {% else %}
+                    <a href="#" class="sem-pointer" title="Promover"><i class="fa fa-2x fa-arrow-up text-muted"></i></a>
                 {%  endif %}
             </td>
         </tr>

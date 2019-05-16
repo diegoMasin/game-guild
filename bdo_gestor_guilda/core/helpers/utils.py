@@ -19,6 +19,7 @@ url_name_home = 'pagina_inicial'
 url_recrutas_listar = 'recrutas_listar'
 url_recrutas_recrutar_ativar = 'recrutas_recrutar_ativar'
 url_membros_listar = 'membros_listar'
+url_membros_promover = 'membros_promover'
 # PATHS
 path_template_login = 'login'
 path_template_home = 'pagina_inicial'
@@ -38,6 +39,7 @@ context = {
     'url_recrutas_listar': url_recrutas_listar,
     'url_recrutas_recrutar_ativar': url_recrutas_recrutar_ativar,
     'url_membros_listar': url_membros_listar,
+    'url_membros_promover': url_membros_promover,
 
     'path_template_login': path_template_login,
     'path_template_home': path_template_home,
