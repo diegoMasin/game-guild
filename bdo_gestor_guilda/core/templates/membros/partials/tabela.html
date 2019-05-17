@@ -42,12 +42,21 @@
             <td class="text-center" width="150">
                 <a target="_blank" href="{{ user.get_url_print }}" title="Print do GS">
                     <i class="fa fa-2x fa-photo texto-preto"></i></a>
-                {% if pode_promover and user.pode_ser_promovido and not user.usuario.pk == id_usuario %}
-                <a href="#" data-url="{% url url_membros_promover user.pk %}" data-model-title="{{ user.nome_familia }}"
-                   class="acao-promover" title="Promover"><i class="fa fa-2x  fa-arrow-up texto-preto"></i></a>
-                {% else %}
-                    <a href="#" class="sem-pointer" title="Promover"><i class="fa fa-2x fa-arrow-up text-muted"></i></a>
-                {%  endif %}
+                {% if is_lider %}
+                    {% if pode_promover_ou_rebaixar and user.pode_ser_promovido and not user.usuario.pk == id_usuario %}
+                    <a href="#" data-url="{% url url_membros_promover user.pk %}" data-model-title="{{ user.nome_familia }}"
+                       class="acao-promover" title="Promover"><i class="fa fa-2x  fa-arrow-up texto-preto"></i></a>
+                    {% else %}
+                        <a href="#" class="sem-pointer" title="Promover"><i class="fa fa-2x fa-arrow-up text-muted"></i></a>
+                    {%  endif %}
+
+                    {% if pode_promover_ou_rebaixar and user.pode_ser_rebaixado and not user.usuario.pk == id_usuario %}
+                    <a href="#" data-url="{% url url_membros_rebaixar user.pk %}" data-model-title="{{ user.nome_familia }}"
+                       class="acao-rebaixar" title="Rebaixar"><i class="fa fa-2x  fa-arrow-down texto-preto"></i></a>
+                    {% else %}
+                        <a href="#" class="sem-pointer" title="Rebaixar"><i class="fa fa-2x fa-arrow-down text-muted"></i></a>
+                    {%  endif %}
+                {% endif %}
             </td>
         </tr>
     {% endfor %}

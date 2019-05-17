@@ -12,7 +12,7 @@ def listar(request):
     context = utils.get_context(request)
     todos_usuarios = UserAvancado.objects.filter(ativo=True).order_by('cargo')
     context.update({'todos_usuarios': todos_usuarios})
-    context.update({'pode_promover': utils.pode_promover(request)})
+    context.update({'pode_promover_ou_rebaixar': utils.pode_promover_ou_rebaixar(request)})
     return render(request, '{0}/index.html'.format(utils.path_membros), context)
 
 
@@ -20,13 +20,32 @@ def listar(request):
 def promover(request, user_avancado_id):
     try:
         context = utils.get_context(request)
-        if context.get('is_lider_or_oficial'):
-            user = UserAvancado.objects.filter(pk=user_avancado_id).first()
-            if user:
-                user.ativo = True
-                user.save()
-                messages.success(request, '{0} Ativado com Sucesso!'.format(user))
+        user = UserAvancado.objects.filter(pk=user_avancado_id).first()
+        if user:
+            if user.cargo == UserAvancado.CARGO_MEMBRO_ID:
+                user.cargo = UserAvancado.CARGO_OFICIAL_ID
+            elif user.cargo == UserAvancado.CARGO_OFICIAL_ID:
+                user.cargo = UserAvancado.CARGO_LIDER_ID
+            user.save()
+            messages.success(request, '{0} Promovido com Sucesso!'.format(user))
+    except Exception as e:
+        messages.error(request, utils.TextosPadroes.erro_padrao())
 
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+
+@login_required
+def rebaixar(request, user_avancado_id):
+    try:
+        context = utils.get_context(request)
+        user = UserAvancado.objects.filter(pk=user_avancado_id).first()
+        if user:
+            if user.cargo == UserAvancado.CARGO_LIDER_ID:
+                user.cargo = UserAvancado.CARGO_OFICIAL_ID
+            elif user.cargo == UserAvancado.CARGO_OFICIAL_ID:
+                user.cargo = UserAvancado.CARGO_MEMBRO_ID
+            user.save()
+            messages.success(request, '{0} Rebaixado com Sucesso!'.format(user))
     except Exception as e:
         messages.error(request, utils.TextosPadroes.erro_padrao())
 
