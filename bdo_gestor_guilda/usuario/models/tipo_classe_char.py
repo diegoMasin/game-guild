@@ -9,4 +9,4 @@ class TipoClasseChar(models.Model):
         db_table = 'tb_tipo_classe_char'
 
     def __str__(self):
-        return self.nome_classe
+        return self.nome_classe.title()

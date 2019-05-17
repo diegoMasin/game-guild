@@ -41,8 +41,12 @@ def bollean_sim_ou_nao(value):
     return 'Sim' if value or value == 1 else 'Não'
 
 
-@register.simple_tag
-def pode_promover(user_avancado, id_usuario):
-    pode = False
-
-    return pode
+@register.filter
+def cor_cargo(value):
+    from bdo_gestor_guilda.usuario.models import UserAvancado
+    cor = 'success'
+    if value == UserAvancado.CARGO_LIDER_SLUG:
+        cor = 'danger'
+    if value == UserAvancado.CARGO_OFICIAL_SLUG:
+        cor = 'warning'
+    return cor

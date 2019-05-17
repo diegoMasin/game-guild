@@ -82,8 +82,14 @@ class UserAvancado(models.Model):
             dias.append('Sexta')
         if self.node_dom:
             dias.append('Domingo')
-
         return dias
+
+    def get_dias_nodewar_format(self):
+        dias = self.get_dias_nodewar()
+        format = ''
+        for dia in dias:
+            format = '{}{}, '.format(format, dia)
+        return format[0:-2]
 
     def joga_nodewar(self):
         joga = False
@@ -97,18 +103,23 @@ class UserAvancado(models.Model):
             url = 'http://{0}'.format(url)
         return url
 
-    # def pode_promover(self):
-    #     result = False
-    #     if self.cargo == self.CARGO_MEMBRO_ID or self.CARGO_QUARTEL_MESTRE_ID:
-    #         result = True
-    #
-    #     return result
-    #
-    # @staticmethod
-    # def pode_promover(id_user, cargo_alvo):
-    #     result = False
-    #     meu_cargo = UserAvancado.objects.filter(usuario__id=int(id_user)).first().cargo
-    #     if cargo_alvo == UserAvancado.CARGO_MEMBRO_ID or cargo_alvo == UserAvancado.CARGO_QUARTEL_MESTRE_ID:
-    #         result = True
-    #
-    #     return result
+    def pode_ser_promovido(self):
+        pode = False
+        if self.cargo == self.CARGO_MEMBRO_ID:
+            pode = True
+        elif self.cargo == self.CARGO_OFICIAL_ID:
+            pode = True if UserAvancado.objects.filter(cargo=self.CARGO_LIDER_ID).count() < 2 else False
+        return pode
+
+    def pode_ser_rebaixado(self):
+        return True if self.cargo == self.CARGO_OFICIAL_ID or self.cargo == self.CARGO_LIDER_ID else False
+
+    def get_slug_cargo(self):
+        cargo = ''
+        if self.cargo == self.CARGO_LIDER_ID:
+            cargo = self.CARGO_LIDER_SLUG
+        if self.cargo == self.CARGO_MEMBRO_ID:
+            cargo = self.CARGO_MEMBRO_SLUG
+        if self.cargo == self.CARGO_OFICIAL_ID:
+            cargo = self.CARGO_OFICIAL_SLUG
+        return cargo

@@ -1,20 +1,20 @@
 {% load core_tags %}
-<table class="table table-striped foo-table-default" data-page-size="12">
+<table class="table foo-table-default toggle-circle" data-page-size="10">
     <thead class="table-dark">
     <tr class="text-center">
-        <th>#</th>
-        <th>ID Discord</th>
-        <th>Família</th>
+        <th data-hide="all">ID Discord</th>
+        <th data-toggle="true">Família</th>
         <th>Char Principal</th>
         <th>PA</th>
         <th>PA AWK</th>
         <th>PD</th>
         <th>Classe</th>
-        <th>GS</th>
-        <th>Level</th>
+        <th data-hide="all">GS</th>
+        <th data-hide="all">Level</th>
         <th>Joga Siege</th>
         <th>Joga Nodewar</th>
-        <th>Data de Cadastro</th>
+        <th data-hide="all">Dias de Nodewar</th>
+        <th data-hide="all">Data de Cadastro</th>
         <th class="footable-sortable">Ações</th>
     </tr>
     </thead>
@@ -22,9 +22,8 @@
     <tbody>
     {% for user in todos_usuarios %}
         <tr class="text-center">
-            <th scope="row">{{ forloop.counter }}</th>
             <td>{{ user.user_discord }}</td>
-            <td>{{ user.nome_familia }}</td>
+            <td class="text-left">{{ user.nome_familia }}</td>
             <td>{{ user.nome_char_principal }}</td>
             <td>{{ user.char_ap }}</td>
             <td>{{ user.char_ap_despertada }}</td>
@@ -33,11 +32,11 @@
             <td>{{ user.gs }}</td>
             <td>{{ user.char_lvl }}</td>
             <td>{{ user.siege|bollean_sim_ou_nao }}</td>
-            <td>{{ user.joga_nodewar|bollean_sim_ou_nao }}
-                <i title="{{ user.get_dias_nodewar }}" class="fa fa-question cursor-pointer"></i></td>
+            <td>{{ user.joga_nodewar|bollean_sim_ou_nao }}</td>
+            <td>{{ user.get_dias_nodewar_format }}</td>
             <td>{{ user.data_cadastro|date:'d/m/Y' }}</td>
             <td class="text-center" width="150">
-                <a target="_blank" href="{{ user.get_url_print }}" title="Print Status">
+                <a target="_blank" href="{{ user.get_url_print }}" title="Print do GS">
                     <i class="fa fa-2x fa-photo texto-preto"></i></a>
                 &nbsp;&nbsp;
                 <a href="#" data-url="{% url url_recrutas_recrutar_ativar user.pk %}" data-model-title="{{ user.nome_familia }}"

@@ -19,6 +19,8 @@ url_name_home = 'pagina_inicial'
 url_recrutas_listar = 'recrutas_listar'
 url_recrutas_recrutar_ativar = 'recrutas_recrutar_ativar'
 url_membros_listar = 'membros_listar'
+url_membros_promover = 'membros_promover'
+url_membros_rebaixar = 'membros_rebaixar'
 # PATHS
 path_template_login = 'login'
 path_template_home = 'pagina_inicial'
@@ -38,6 +40,8 @@ context = {
     'url_recrutas_listar': url_recrutas_listar,
     'url_recrutas_recrutar_ativar': url_recrutas_recrutar_ativar,
     'url_membros_listar': url_membros_listar,
+    'url_membros_promover': url_membros_promover,
+    'url_membros_rebaixar': url_membros_rebaixar,
 
     'path_template_login': path_template_login,
     'path_template_home': path_template_home,
@@ -60,8 +64,10 @@ def get_context(requisicao=None):
             context.update({'discord': dados_avancados.user_discord})
             context.update({'level': dados_avancados.char_lvl})
             context.update({'gs': dados_avancados.gs})
+            context.update({'cargo': dados_avancados.cargo})
             context.update({'classe': nome_classe})
             context.update({'is_lider_or_oficial': dados_avancados.is_lider_or_oficial()})
+            context.update({'is_lider': dados_avancados.is_lider()})
 
         context.update({'nome_usuario': requisicao.user.first_name})
         context.update({'id_usuario': requisicao.user.pk})
@@ -93,3 +99,9 @@ def set_usuario_owner(request, data):
         messages.warning(request, TextosPadroes.usuario_nao_logado())
 
     return data
+
+
+def pode_promover_ou_rebaixar(request):
+    from bdo_gestor_guilda.usuario.models.user_avancado import UserAvancado
+    dados_avancados = UserAvancado.objects.filter(usuario=request.user, cargo=UserAvancado.CARGO_LIDER_ID)
+    return True if dados_avancados else False

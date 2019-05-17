@@ -101,6 +101,68 @@
             });
         });
 
+        //Botão de Ação Promover
+        $('.acao-promover').click(function(event) {
+            event.preventDefault();
+            var url = $(this).data('url');
+            var titulo_model = $(this).data('model-title');
+
+            swal({
+                title: 'Você deseja Promover?',
+                text: 'Após promovido, ' + titulo_model + ' subirá à próxima patente.',
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#DD6B55',
+                confirmButtonText: 'Sim, Promover!',
+                cancelButtonText: 'Não, Cancele!',
+                closeOnConfirm: false,
+                closeOnCancel: false
+            }, function (isConfirm) {
+                if (isConfirm) {
+                    swal({
+                        title: 'Promovido!',
+                        text: 'Você Promoveu ' + titulo_model + '.',
+                        type: 'success'
+                    }, function(){
+                        window.location = url;
+                    });
+                } else {
+                    swal('Cancelada', 'Você não promoveu ' + titulo_model + '.', 'error');
+                }
+            });
+        });
+
+        //Botão de Ação Rebaixar
+        $('.acao-rebaixar').click(function(event) {
+            event.preventDefault();
+            var url = $(this).data('url');
+            var titulo_model = $(this).data('model-title');
+
+            swal({
+                title: 'Você deseja Rebaixar?',
+                text: 'Após rebaixar, ' + titulo_model + ' descerá à próxima patente.',
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#DD6B55',
+                confirmButtonText: 'Sim, Rebaixar!',
+                cancelButtonText: 'Não, Cancele!',
+                closeOnConfirm: false,
+                closeOnCancel: false
+            }, function (isConfirm) {
+                if (isConfirm) {
+                    swal({
+                        title: 'Rebaixado!',
+                        text: 'Você Rebaixou ' + titulo_model + '.',
+                        type: 'success'
+                    }, function(){
+                        window.location = url;
+                    });
+                } else {
+                    swal('Cancelada', 'Você não rebaixou ' + titulo_model + '.', 'error');
+                }
+            });
+        });
+
     },
         //init
         $.SweetAlert = new SweetAlert, $.SweetAlert.Constructor = SweetAlert

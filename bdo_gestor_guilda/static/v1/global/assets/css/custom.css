@@ -8,6 +8,10 @@
     cursor: pointer;
 }
 
+.sem-pointer {
+    cursor: not-allowed;
+}
+
 .wrapper-page-important {
     max-width: 500px !important;
 }

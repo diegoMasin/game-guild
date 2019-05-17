@@ -11,7 +11,8 @@ urlpatterns = [
         name='recrutas_recrutar_ativar'),
 
     url(r'^membros/listar/$', membros.listar, name='membros_listar'),
-    url(r'^membros/promover/$', membros.listar, name='membros_listar'),
+    url(r'^membros/promover/(?P<user_avancado_id>(\d+))/$', membros.promover, name='membros_promover'),
+    url(r'^membros/rebaixar/(?P<user_avancado_id>(\d+))/$', membros.rebaixar, name='membros_rebaixar'),
 
     # PADRÃO DE URLS DO SISTEMA SIC
     # url(r'^contas/$', contas.listar, name='contas_listar'),
