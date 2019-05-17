@@ -1,2 +1,3 @@
 from bdo_gestor_guilda.usuario.models.user_avancado import UserAvancado
 from bdo_gestor_guilda.usuario.models.tipo_classe_char import TipoClasseChar
+from bdo_gestor_guilda.usuario.models.recruta_reprovado import RecrutaReprovado
