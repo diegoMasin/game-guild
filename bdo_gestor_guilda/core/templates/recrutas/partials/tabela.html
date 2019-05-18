@@ -42,7 +42,8 @@
                 <a href="#" data-url="{% url url_recrutas_recrutar_ativar user.pk %}" data-model-title="{{ user.nome_familia }}"
                    class="acao-ativar" title="Recrutar/Ativar"><i class="fa fa-2x fa-user-plus texto-preto"></i></a>
                 &nbsp;&nbsp;
-                <a class="reprovar-recruta" href="#" title="Reprovar" data-toggle="modal" data-model-title="{{ user.nome_familia }}"
+                <a class="reprovar-recruta" href="#" title="Reprovar" data-toggle="modal"
+                   data-model-title="{{ user.nome_familia }}" data-id-user-avancado="{{ user.pk }}"
                    data-target="#reprovar-recruta-modal"><i class="fa fa-2x fa-user-times texto-preto"></i></a>
             </td>
         </tr>

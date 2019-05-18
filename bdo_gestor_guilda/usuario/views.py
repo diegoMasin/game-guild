@@ -8,6 +8,7 @@ from bdo_gestor_guilda.core.helpers import utils
 from bdo_gestor_guilda.usuario.forms.user import UserModelForm
 from bdo_gestor_guilda.usuario.models.user_avancado import UserAvancado
 from bdo_gestor_guilda.usuario.forms.user_avancado import UserAvancadoForm
+from bdo_gestor_guilda.usuario.models.recruta_reprovado import RecrutaReprovado
 
 
 def signup(request):
@@ -103,6 +104,8 @@ def cadastrar_user_avancado(request):
     form = UserAvancadoForm()
     context = utils.get_context(request)
     context.update({'form': form})
+    justificativa_de_reprovacao = RecrutaReprovado.objects.filter(usuario=request.user).last()
+    context.update({'justificativa': justificativa_de_reprovacao})
     return render(request, '{0}/cadastrar.html'.format(utils.path_user_avancado), utils.context)
 
 

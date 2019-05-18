@@ -5,7 +5,7 @@ from django.db import models
 class RecrutaReprovado(models.Model):
     id = models.AutoField(primary_key=True)
     usuario = models.ForeignKey(User, db_column='fk_user', on_delete=models.PROTECT)
-    user_discord = models.CharField(max_length=500)
+    justificativa = models.CharField(max_length=500)
     data_cadastro = models.DateTimeField(null=True, blank=True, auto_now=True)
 
     class Meta:
