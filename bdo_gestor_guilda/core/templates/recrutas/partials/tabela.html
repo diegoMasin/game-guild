@@ -24,7 +24,7 @@
         <tr class="text-center">
             <td>{{ user.user_discord }}</td>
             <td class="text-left">{{ user.nome_familia }}</td>
-            <td>{{ user.nome_char_principal }}</td>
+            <td class="text-left">{{ user.nome_char_principal }}</td>
             <td>{{ user.char_ap }}</td>
             <td>{{ user.char_ap_despertada }}</td>
             <td>{{ user.char_dp }}</td>
@@ -35,12 +35,16 @@
             <td>{{ user.joga_nodewar|bollean_sim_ou_nao }}</td>
             <td>{{ user.get_dias_nodewar_format }}</td>
             <td>{{ user.data_cadastro|date:'d/m/Y' }}</td>
-            <td class="text-center" width="150">
+            <td class="text-center" width="250">
                 <a target="_blank" href="{{ user.get_url_print }}" title="Print do GS">
                     <i class="fa fa-2x fa-photo texto-preto"></i></a>
                 &nbsp;&nbsp;
                 <a href="#" data-url="{% url url_recrutas_recrutar_ativar user.pk %}" data-model-title="{{ user.nome_familia }}"
-                   class="acao-ativar" title="Recrutar/Ativar"><i class="fa fa-2x fa-check-square-o texto-preto"></i></a>
+                   class="acao-ativar" title="Recrutar/Ativar"><i class="fa fa-2x fa-user-plus texto-preto"></i></a>
+                &nbsp;&nbsp;
+                <a class="reprovar-recruta" href="#" title="Reprovar" data-toggle="modal"
+                   data-model-title="{{ user.nome_familia }}" data-id-user-avancado="{{ user.pk }}"
+                   data-target="#reprovar-recruta-modal"><i class="fa fa-2x fa-user-times texto-preto"></i></a>
             </td>
         </tr>
     {% endfor %}

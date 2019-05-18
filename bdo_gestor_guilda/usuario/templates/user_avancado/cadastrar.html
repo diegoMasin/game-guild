@@ -32,10 +32,10 @@
                                 <form class="form-horizontal" action="{% url url_name_inserir_user_avancado %}" method="post">
                                     {% csrf_token %}
                                     {% include 'user_avancado/partials/campos.html' %}
-                                    <button type="submit" class="btn btn-primary btn-custom waves-effect w-md waves-light m-b-5">
+                                    <button type="submit" class="btn btn-dark btn-custom waves-effect w-md waves-light m-b-5">
                                         <i class="fa fa-save m-r-5"></i> <span>Salvar</span>
                                     </button>
-                                    <button type="reset" class="btn btn-secondary btn-custom waves-effect w-md waves-light m-b-5">
+                                    <button type="reset" class="btn btn-danger btn-custom waves-effect w-md waves-light m-b-5">
                                         <span>Limpar</span>
                                     </button>
                                 </form>
@@ -46,4 +46,9 @@
             </div>
         </div>
     </div>
+    {% if justificativa %}
+         <a class="disparar-modal-justificativa" href="#" data-toggle="modal"
+            data-target="#modal-exibe-justificativa" style="display: none">disparar-modal-justificativa</a>
+    {% endif %}
+    {% include 'user_avancado/partials/modal_reprovado.html' %}
 {% endblock content_login %}

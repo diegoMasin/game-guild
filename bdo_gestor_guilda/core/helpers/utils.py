@@ -18,6 +18,7 @@ url_name_aguarde_aprovacao = 'usuario_aguarde_aprovacao'
 url_name_home = 'pagina_inicial'
 url_recrutas_listar = 'recrutas_listar'
 url_recrutas_recrutar_ativar = 'recrutas_recrutar_ativar'
+url_recrutar_reprovar = 'recrutar_reprovar'
 url_membros_listar = 'membros_listar'
 url_membros_promover = 'membros_promover'
 url_membros_rebaixar = 'membros_rebaixar'
@@ -39,6 +40,7 @@ context = {
     'url_name_home': url_name_home,
     'url_recrutas_listar': url_recrutas_listar,
     'url_recrutas_recrutar_ativar': url_recrutas_recrutar_ativar,
+    'url_recrutar_reprovar': url_recrutar_reprovar,
     'url_membros_listar': url_membros_listar,
     'url_membros_promover': url_membros_promover,
     'url_membros_rebaixar': url_membros_rebaixar,

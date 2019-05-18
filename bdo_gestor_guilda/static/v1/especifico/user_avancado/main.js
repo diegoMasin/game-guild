@@ -22,4 +22,6 @@ $(document).ready(function(){
         }
     }
 
+    $('.disparar-modal-justificativa').trigger('click');
+
 });

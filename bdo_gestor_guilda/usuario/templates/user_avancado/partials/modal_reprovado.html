@@ -1,0 +1,29 @@
+{% load staticfiles %}
+<div id="modal-exibe-justificativa" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 id="titulo-modal-reprovar" class="modal-title">Você foi reprovado!</h4>
+            </div>
+            {% csrf_token %}
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group no-margin">
+                            <label for="field-7" class="control-label text-danger">
+                                Após ter feito a melhoria indicada na justificativa, refaça o cadastro a seguir.</label><br>
+                            <label for="field-7" class="control-label">Leia a Justificativa da Reprovação:</label>
+                            {% if justificativa %}
+                                <p>{{ justificativa.justificativa }}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-dark waves-effect" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+    </div>
+</div>
