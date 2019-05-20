@@ -22,12 +22,14 @@ url_recrutar_reprovar = 'recrutar_reprovar'
 url_membros_listar = 'membros_listar'
 url_membros_promover = 'membros_promover'
 url_membros_rebaixar = 'membros_rebaixar'
+url_grupos_listar = 'grupos_listar'
 # PATHS
 path_template_login = 'login'
 path_template_home = 'pagina_inicial'
 path_user_avancado = 'user_avancado'
 path_recrutas = 'recrutas'
 path_membros = 'membros'
+path_grupos = 'grupos'
 # CONTEXT
 context = {
     'url_name_login': url_name_login,
@@ -44,6 +46,7 @@ context = {
     'url_membros_listar': url_membros_listar,
     'url_membros_promover': url_membros_promover,
     'url_membros_rebaixar': url_membros_rebaixar,
+    'url_grupos_listar': url_grupos_listar,
 
     'path_template_login': path_template_login,
     'path_template_home': path_template_home,

@@ -2,6 +2,7 @@ from django.conf.urls import url
 from bdo_gestor_guilda.core.views import home
 from bdo_gestor_guilda.core.views import recrutas
 from bdo_gestor_guilda.core.views import membros
+from bdo_gestor_guilda.core.views import grupos
 
 urlpatterns = [
     url(r'^$', home.pagina_inicial, name='pagina_inicial'),
@@ -14,6 +15,8 @@ urlpatterns = [
     url(r'^membros/listar/$', membros.listar, name='membros_listar'),
     url(r'^membros/promover/(?P<user_avancado_id>(\d+))/$', membros.promover, name='membros_promover'),
     url(r'^membros/rebaixar/(?P<user_avancado_id>(\d+))/$', membros.rebaixar, name='membros_rebaixar'),
+
+    url(r'^grupos/listar/$', grupos.listar, name='grupos_listar'),
 
     # PADRÃO DE URLS DO SISTEMA SIC
     # url(r'^contas/$', contas.listar, name='contas_listar'),
