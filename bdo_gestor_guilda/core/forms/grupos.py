@@ -13,7 +13,7 @@ class GruposForm(forms.ModelForm):
             'tipo_guerra': 'Tipo de Guerra',
         }
         widgets = {
-            'lider': forms.Select(attrs={'class': 'form-control', 'required': True}),
+            'lider': forms.Select(attrs={'class': 'form-control select2', 'required': True}),
             'titulo': forms.TextInput(attrs={'class': 'form-control', 'required': True}),
             'tipo_guerra': forms.Select(attrs={'class': 'form-control'}),
         }

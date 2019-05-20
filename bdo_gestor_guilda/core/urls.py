@@ -17,6 +17,7 @@ urlpatterns = [
     url(r'^membros/rebaixar/(?P<user_avancado_id>(\d+))/$', membros.rebaixar, name='membros_rebaixar'),
 
     url(r'^grupos/listar/$', grupos.listar, name='grupos_listar'),
+    url(r'^grupos/cadastrar/$', grupos.cadastrar, name='grupos_cadastrar'),
 
     # PADRÃO DE URLS DO SISTEMA SIC
     # url(r'^contas/$', contas.listar, name='contas_listar'),

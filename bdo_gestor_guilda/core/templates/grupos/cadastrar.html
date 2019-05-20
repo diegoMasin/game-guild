@@ -1,0 +1,16 @@
+{% extends 'grupos/layout.html' %}
+{% load core_tags %}
+{% load staticfiles %}
+
+{% block titulo_pagina %} OXION GUILD - Black Desert SA{% endblock titulo_pagina %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card-box">
+                <h5 class="card-title">Cadastrar Grupo Fixo</h5>
+                {% include 'grupos/partials/campos.html' %}
+            </div>
+        </div>
+    </div>
+{% endblock content %}

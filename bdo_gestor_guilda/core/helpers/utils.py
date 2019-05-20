@@ -23,6 +23,7 @@ url_membros_listar = 'membros_listar'
 url_membros_promover = 'membros_promover'
 url_membros_rebaixar = 'membros_rebaixar'
 url_grupos_listar = 'grupos_listar'
+url_grupos_cadastrar = 'grupos_cadastrar'
 # PATHS
 path_template_login = 'login'
 path_template_home = 'pagina_inicial'
@@ -47,6 +48,7 @@ context = {
     'url_membros_promover': url_membros_promover,
     'url_membros_rebaixar': url_membros_rebaixar,
     'url_grupos_listar': url_grupos_listar,
+    'url_grupos_cadastrar': url_grupos_cadastrar,
 
     'path_template_login': path_template_login,
     'path_template_home': path_template_home,

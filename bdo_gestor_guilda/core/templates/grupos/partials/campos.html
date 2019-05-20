@@ -1,0 +1,23 @@
+{% load staticfiles %}
+{% load core_tags %}
+<div class="form-row">
+    <div class="col-md-4">
+        <label class="col-form-label {{ form.titulo.errors|format_label_error }}">
+            {{ form.titulo.label }}<span class="text-danger"> *</span>
+        </label>
+        {{ form.titulo }}
+        <span class="font-13 text-muted">exemplo: Ataque Flanco 1</span>
+    </div>
+    <div class="col-md-4">
+        <label class="col-form-label {{ form.lider.errors|format_label_error }}">
+            {{ form.lider.label }}<span class="text-danger"> *</span>
+        </label>
+        {{ form.lider }}
+    </div>
+    <div class="col-md-4">
+        <label class="col-form-label {{ form.tipo_guerra.errors|format_label_error }}">
+            {{ form.tipo_guerra.label }}
+        </label>
+        {{ form.tipo_guerra }}
+    </div>
+</div>

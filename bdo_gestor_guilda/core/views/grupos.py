@@ -16,9 +16,9 @@ def listar(request):
     context.update({'grupos': grupos})
     return render(request, '{0}/index.html'.format(utils.path_grupos), context)
 
+
 @login_required
-def cadastrar_grupos(request):
+def cadastrar(request):
     context = utils.get_context(request)
-    todos_usuarios = UserAvancado.objects.filter(ativo=True).order_by('cargo')
-    context.update({'todos_usuarios': todos_usuarios})
-    return render(request, '{0}/index.html'.format(utils.path_grupos), context)
+    context.update({'form': GruposForm()})
+    return render(request, '{0}/cadastrar.html'.format(utils.path_grupos), context)
