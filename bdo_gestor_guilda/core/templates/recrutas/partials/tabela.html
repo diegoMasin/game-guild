@@ -1,14 +1,14 @@
 {% load core_tags %}
-<table class="table foo-table-default toggle-circle" data-page-size="10">
+<table class="table foo-table-default toggle-circle" data-page-size="2">
     <thead class="table-dark">
     <tr class="text-center">
-        <th data-hide="all">ID Discord</th>
         <th data-toggle="true">Família</th>
         <th>Char Principal</th>
         <th>PA</th>
         <th>PA AWK</th>
         <th>PD</th>
         <th>Classe</th>
+        <th data-hide="all">ID Discord</th>
         <th data-hide="all">GS</th>
         <th data-hide="all">Level</th>
         <th>Joga Siege</th>
@@ -22,13 +22,13 @@
     <tbody>
     {% for user in todos_usuarios %}
         <tr class="text-center">
-            <td>{{ user.user_discord }}</td>
             <td class="text-left">{{ user.nome_familia }}</td>
             <td class="text-left">{{ user.nome_char_principal }}</td>
             <td>{{ user.char_ap }}</td>
             <td>{{ user.char_ap_despertada }}</td>
             <td>{{ user.char_dp }}</td>
             <td>{{ user.char_classe|title }}</td>
+            <td>{{ user.user_discord }}</td>
             <td>{{ user.gs }}</td>
             <td>{{ user.char_lvl }}</td>
             <td>{{ user.siege|bollean_sim_ou_nao }}</td>
