@@ -18,6 +18,7 @@ urlpatterns = [
 
     url(r'^grupos/listar/$', grupos.listar, name='grupos_listar'),
     url(r'^grupos/cadastrar/$', grupos.cadastrar, name='grupos_cadastrar'),
+    url(r'^grupos/inserir/$', grupos.inserir, name='grupos_inserir'),
 
     # PADRÃO DE URLS DO SISTEMA SIC
     # url(r'^contas/$', contas.listar, name='contas_listar'),

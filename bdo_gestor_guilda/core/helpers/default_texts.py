@@ -144,3 +144,13 @@ class TextosPadroes(object):
     @staticmethod
     def salvar_sucesso_a(modelo):
         return _('Nova {0} criada com sucesso.'.format(modelo))
+
+    @staticmethod
+    def errors_form(form):
+        _message = []
+        for error in form.errors:
+            text_error = '{}'.format(form.errors.get(error)).lstrip(
+                '<ul class="errorlist"><li>').replace('</li>', '').replace('</ul>', '')
+            msg = '{}: {}'.format(error.capitalize().replace('_', ' '), text_error)
+            _message.append(msg)
+        return _message

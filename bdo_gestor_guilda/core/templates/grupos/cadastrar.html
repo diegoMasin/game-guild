@@ -5,7 +5,8 @@
 {% block titulo_pagina %} OXION GUILD - Black Desert SA{% endblock titulo_pagina %}
 
 {% block content %}
-    <form action="">
+    <form action="{% url url_grupos_inserir %}" method="post">
+        {% csrf_token %}
         <div class="row">
             <div class="col-lg-12">
                 <div class="card-box">
