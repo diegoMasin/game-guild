@@ -3,6 +3,7 @@ from bdo_gestor_guilda.core.views import home
 from bdo_gestor_guilda.core.views import recrutas
 from bdo_gestor_guilda.core.views import membros
 from bdo_gestor_guilda.core.views import grupos
+from bdo_gestor_guilda.core.views import vinculo_grupos
 
 urlpatterns = [
     url(r'^$', home.pagina_inicial, name='pagina_inicial'),
@@ -19,6 +20,9 @@ urlpatterns = [
     url(r'^grupos/listar/$', grupos.listar, name='grupos_listar'),
     url(r'^grupos/cadastrar/$', grupos.cadastrar, name='grupos_cadastrar'),
     url(r'^grupos/inserir/$', grupos.inserir, name='grupos_inserir'),
+
+    url(r'^vinculo-grupos/cadastrar/$', vinculo_grupos.cadastrar, name='vinculo_grupos_cadastrar'),
+    url(r'^vinculo-grupos/inserir/$', vinculo_grupos.inserir, name='vinculo_grupos_inserir'),
 
     # PADRÃO DE URLS DO SISTEMA SIC
     # url(r'^contas/$', contas.listar, name='contas_listar'),

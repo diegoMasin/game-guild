@@ -1,13 +1,11 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 
-from bdo_gestor_guilda.core.helpers import utils
-from bdo_gestor_guilda.usuario.models.user_avancado import UserAvancado
-from bdo_gestor_guilda.core.models.grupos import Grupos
 from bdo_gestor_guilda.core.forms.grupos import GruposForm
+from bdo_gestor_guilda.core.helpers import utils
 from bdo_gestor_guilda.core.helpers.default_texts import TextosPadroes
+from bdo_gestor_guilda.core.models.grupos import Grupos
 
 
 @login_required

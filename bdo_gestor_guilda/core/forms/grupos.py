@@ -8,7 +8,7 @@ class GruposForm(forms.ModelForm):
         model = Grupos
         fields = ['lider', 'titulo']
         labels = {
-            'lider': 'Líder da Party',
+            'lider': 'Escolha o Líder da Party',
             'titulo': 'Título da Party',
         }
         widgets = {

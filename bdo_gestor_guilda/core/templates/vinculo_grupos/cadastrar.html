@@ -1,0 +1,22 @@
+{% extends 'vinculo_grupos/layout.html' %}
+{% load core_tags %}
+{% load staticfiles %}
+
+{% block titulo_pagina %} OXION GUILD - Black Desert SA{% endblock titulo_pagina %}
+
+{% block content %}
+    <form action="{% url url_vinculo_grupos_inserir %}" method="post">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card-box">
+                    <h5 class="card-title">Vincular Membros a um Grupo Fixo</h5>
+                    {% include 'grupos/partials/campos.html' %}
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-dark btn-custom waves-effect w-md waves-light">
+            <i class="fa fa-save m-r-5"></i> <span>Salvar</span>
+        </button>
+    </form>
+{% endblock content %}

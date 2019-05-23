@@ -25,6 +25,8 @@ url_membros_rebaixar = 'membros_rebaixar'
 url_grupos_listar = 'grupos_listar'
 url_grupos_cadastrar = 'grupos_cadastrar'
 url_grupos_inserir = 'grupos_inserir'
+url_vinculo_grupos_cadastrar = 'vinculo_grupos_cadastrar'
+url_vinculo_grupos_inserir = 'vinculo_grupos_inserir'
 # PATHS
 path_template_login = 'login'
 path_template_home = 'pagina_inicial'
@@ -32,6 +34,7 @@ path_user_avancado = 'user_avancado'
 path_recrutas = 'recrutas'
 path_membros = 'membros'
 path_grupos = 'grupos'
+path_vinculo_grupos = 'vinculo_grupos'
 # CONTEXT
 context = {
     'url_name_login': url_name_login,
@@ -51,6 +54,8 @@ context = {
     'url_grupos_listar': url_grupos_listar,
     'url_grupos_cadastrar': url_grupos_cadastrar,
     'url_grupos_inserir': url_grupos_inserir,
+    'url_vinculo_grupos_cadastrar': url_vinculo_grupos_cadastrar,
+    'url_vinculo_grupos_inserir': url_vinculo_grupos_inserir,
 
     'path_template_login': path_template_login,
     'path_template_home': path_template_home,
