@@ -2,17 +2,27 @@
 <div class="row">
     {% for grupo in grupos %}
         <div class="col-md-4 m-t-10">
-            <div class="card-box">
-                <h4 class="text-dark header-title m-t-0 m-b-5">{{ grupo.titulo }}</h4>
-                <div class="arvore-grupo">
+            <div class="portlet">
+                <div class="portlet-heading bg-inverse">
+                    <h3 class="portlet-title">
+                        {{ grupo.titulo }}
+                    </h3>
+                    <div class="portlet-widgets">
+                        <a href="javascript:void(0)" data-url="{% url url_grupos_deletar grupo.pk %}"
+                           class="acao-deletar-grupo" title="Apagar Grupo" data-model-title="{{ grupo.titulo }}">
+                            <i class="ion-close-round"></i></a>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="portlet-body arvore-grupo">
                     <ul>
-                        <li data-jstree='{"opened":true}'>&nbsp;&nbsp;[TRIZAYFER] - Trizayfer
+                        <li data-jstree='{"opened":true}'>&nbsp;&nbsp;{{ grupo.lider }}
                             <ul>
-                                <li data-jstree='{"icon":"mdi mdi mdi-account"}'>Darksin</li>
-                                <li data-jstree='{"icon":"mdi mdi mdi-account"}'>Zyronn</li>
-                                <li data-jstree='{"icon":"mdi mdi mdi-account"}'>Crx</li>
-                                <li data-jstree='{"icon":"mdi mdi mdi-account"}'>Kirito</li>
-                                <li data-jstree='{"icon":"mdi mdi mdi-account"}'>Furyon</li>
+                                {% for vinculo in grupo.get_membros %}
+                                    <li data-jstree='{"icon":"mdi mdi mdi-account"}'>
+                                        {{ vinculo.membro }}
+                                    </li>
+                                {% endfor %}
                             </ul>
                         </li>
                     </ul>

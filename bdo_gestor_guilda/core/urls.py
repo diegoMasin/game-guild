@@ -20,6 +20,7 @@ urlpatterns = [
     url(r'^grupos/listar/$', grupos.listar, name='grupos_listar'),
     url(r'^grupos/cadastrar/$', grupos.cadastrar, name='grupos_cadastrar'),
     url(r'^grupos/inserir/$', grupos.inserir, name='grupos_inserir'),
+    url(r'^grupos/deletar/(?P<grupo_id>(\d+))/$', grupos.deletar, name='grupos_deletar'),
 
     url(r'^vinculo-grupos/cadastrar/$', vinculo_grupos.cadastrar, name='vinculo_grupos_cadastrar'),
     url(r'^vinculo-grupos/inserir/$', vinculo_grupos.inserir, name='vinculo_grupos_inserir'),

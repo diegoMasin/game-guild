@@ -1,7 +1,7 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 
 from bdo_gestor_guilda.core.helpers import utils
 from bdo_gestor_guilda.usuario.models.user_avancado import UserAvancado

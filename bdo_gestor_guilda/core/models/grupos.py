@@ -14,3 +14,7 @@ class Grupos(models.Model):
 
     def __str__(self):
         return '{}'.format(self.titulo)
+
+    def get_membros(self):
+        from bdo_gestor_guilda.core.models.vinculo_grupos import VinculoGrupos
+        return VinculoGrupos.objects.filter(grupo=self)
