@@ -21,12 +21,16 @@
                         <p class="text-muted">{{ char }}</p>
                     </div>
                     <div class="text-left m-t-30">
+                        {% if pt_fixa %}
+                            <p class="text-muted font-13"><strong>PT Fixa :</strong> <span class="m-l-15">{{ pt_fixa }}</span></p>
+                        {% endif %}
                         <p class="text-muted font-13"><strong>ID Discord :</strong> <span class="m-l-15">{{ discord }}</span></p>
                         <p class="text-muted font-13"><strong>Classe :</strong> <span class="m-l-15">{{ classe }}</span></p>
                         <p class="text-muted font-13"><strong>Lvl Atual :</strong><span class="m-l-15">{{ level }}</span></p>
                         <p class="text-muted font-13"><strong>GS Atual :</strong> <span class="m-l-15">{{ gs }}</span></p>
                     </div>
-                    <button type="button" class="btn btn-success btn-sm w-sm waves-effect m-t-10 waves-light">Atualizar Perfil</button>
+                    <a href="{% url url_usuario_editar_perfil %}"
+                       class="btn btn-success btn-sm w-sm waves-effect m-t-10 waves-light">Atualizar Perfil</a>
                 </div>
             </div>
         </div>

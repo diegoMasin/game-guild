@@ -1,0 +1,119 @@
+{% load staticfiles %} {% load core_tags %}
+<div class="form-row">
+    <div class="form-group col-md-3">
+        <label class="col-form-label {{ form.user_discord.errors|format_label_error }}">
+            {{ form.user_discord.label }}<span class="text-danger"> *</span>
+        </label>
+        {{ form.user_discord }}
+        <span class="font-13 text-muted">exemplo: FULANO#6666</span>
+    </div>
+    <div class="col-md-3">
+        <label class="col-form-label {{ form.nome_familia.errors|format_label_error }}">
+            {{ form.nome_familia.label }}<span class="text-danger"> *</span>
+        </label>
+        {{ form.nome_familia }}
+        <span class="font-13 text-muted">nome da sua familía no Black Desert</span>
+    </div>
+    <div class="col-md-3">
+        <label class="col-form-label {{ form.nome_char_principal.errors|format_label_error }}">
+            {{ form.nome_char_principal.label }}<span class="text-danger"> *</span>
+        </label>
+        {{ form.nome_char_principal }}
+        <span class="font-13 text-muted">nome do personagem principal</span>
+    </div>
+    <div class="col-md-3">
+        <label class="col-form-label {{ form.char_lvl.errors|format_label_error }}">
+            {{ form.char_lvl.label }}<span class="text-danger"> *</span>
+        </label>
+        {{ form.char_lvl }}
+        <span class="font-13 text-muted">level do personagem principal</span>
+    </div>
+</div>
+<div class="form-row">
+    <div class="form-group col-md-3">
+        <label class="col-form-label {{ form.char_classe.errors|format_label_error }}">
+            {{ form.char_classe.label }}<span class="text-danger"> *</span>
+        </label>
+        {{ form.char_classe }}
+        <span class="font-13 text-muted">classe do personagem principal</span>
+    </div>
+    <div class="form-group col-md-3">
+        <label class="col-form-label {{ form.char_ap.errors|format_label_error }}">
+            {{ form.char_ap.label }}<span class="text-danger"> *</span>
+        </label>
+        {{ form.char_ap }}
+        <span class="font-13 text-muted">PA do personagem principal</span>
+    </div>
+    <div class="form-group col-md-3">
+        <label class="col-form-label {{ form.char_ap_despertada.errors|format_label_error }}">
+            {{ form.char_ap_despertada.label }}<span class="text-danger"> *</span>
+        </label>
+        {{ form.char_ap_despertada }}
+        <span class="font-13 text-muted">PA despertado do personagem principal</span>
+    </div>
+    <div class="form-group col-md-3">
+        <label class="col-form-label {{ form.char_dp.errors|format_label_error }}">
+            {{ form.char_dp.label }}<span class="text-danger"> *</span>
+        </label>
+        {{ form.char_dp }}
+        <span class="font-13 text-muted">PD do personagem principal</span>
+    </div>
+</div>
+<div class="form-row">
+    <div class="form-group col-md-3">
+        <label class="col-form-label {{ form.gs.errors|format_label_error }}">
+            {{ form.gs.label }}<span class="text-danger"> *</span>
+        </label>
+        {{ form.gs }}
+        <span class="font-13 text-muted">((PA + PA AWK)/2 + PD)</span>
+    </div>
+    <div class="form-group col-md-5">
+        <label class="col-form-label {{ form.url_print_status.errors|format_label_error }}">
+            {{ form.url_print_status.label }}<span class="text-danger"> *</span>
+        </label>
+        {{ form.url_print_status }}
+        <span class="font-13 text-muted">Dica: Poste um print no discord. Pegue a URL do print e copie aqui.</span>
+    </div>
+    <div class="form-group col-md-4">
+        <label class="col-form-label {{ form.siege.errors|format_label_error }}">
+            {{ form.siege.label }}<span class="text-danger"> *</span>
+        </label>
+        {{ form.siege }}
+        <span class="font-13 text-muted">aos Sábados estar disponível a partir das 21:00</span>
+    </div>
+</div>
+<div class="form-row">
+    <div class="form-group col-md-12">
+        <label class="col-form-label">Sua disponibilidade para NodeWar(a partir das 20:00)</label>
+        <span class="font-13 text-muted">marque os dias de maior certeza</span>
+    </div>
+</div>
+<div class="form-row">
+    <div class="form-group col-md-12 m-b-30">
+        <div class="checkbox checkbox-primary form-check-inline">
+            {{ form.node_seg }}
+            <label> às Segundas-feiras &nbsp;&nbsp;&nbsp;</label>
+        </div>
+        <div class="checkbox checkbox-primary form-check-inline">
+            {{ form.node_ter }}
+            <label> às Terças-feiras &nbsp;&nbsp;&nbsp;</label>
+        </div>
+        <div class="checkbox checkbox-primary form-check-inline">
+            {{ form.node_qua }}
+            <label> às Quartas-feiras &nbsp;&nbsp;&nbsp;</label>
+        </div>
+        <div class="checkbox checkbox-primary form-check-inline">
+            {{ form.node_qui }}
+            <label> às Quintas-feiras &nbsp;&nbsp;&nbsp;</label>
+        </div>
+        <div class="checkbox checkbox-primary form-check-inline">
+            {{ form.node_sex }}
+            <label> às Sextas-feiras &nbsp;&nbsp;&nbsp;</label>
+        </div>
+        <div class="checkbox checkbox-primary form-check-inline">
+            {{ form.node_dom }}
+            <label> aos Domingos &nbsp;&nbsp;&nbsp;</label>
+        </div>
+    </div>
+</div>
+<div hidden>{{ form.cargo }} {{ form.ativo }}</div>

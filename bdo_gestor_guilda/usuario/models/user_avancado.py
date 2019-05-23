@@ -124,10 +124,14 @@ class UserAvancado(models.Model):
             cargo = self.CARGO_OFICIAL_SLUG
         return cargo
 
-    def get_grupos_fixo_lider(self):
+    def get_pt_fixa(self):
         from bdo_gestor_guilda.core.models.grupos import Grupos
-        lider_grupos = Grupos.objects.filter(lider=self)
-        format = ''
-        for grupo in lider_grupos:
-            format = '{}{}, '.format(format, grupo)
-        return format[0:-2]
+        from bdo_gestor_guilda.core.models.vinculo_grupos import VinculoGrupos
+        pt_fixa = ''
+        lider_user_logado = Grupos.objects.filter(lider=self).first()
+        membro_user_logado = VinculoGrupos.objects.filter(membro=self).first()
+        if lider_user_logado:
+            pt_fixa = 'Líder do(a) {}'.format(lider_user_logado)
+        if membro_user_logado:
+            pt_fixa = 'Membro do(a) {}'.format(membro_user_logado.grupo)
+        return pt_fixa

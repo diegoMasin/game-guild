@@ -2,13 +2,15 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from django.shortcuts import render, redirect
+from django.http import HttpResponseRedirect
+from django.shortcuts import render, redirect, reverse
 
 from bdo_gestor_guilda.core.helpers import utils
 from bdo_gestor_guilda.usuario.forms.user import UserModelForm
-from bdo_gestor_guilda.usuario.models.user_avancado import UserAvancado
 from bdo_gestor_guilda.usuario.forms.user_avancado import UserAvancadoForm
+from bdo_gestor_guilda.usuario.forms.user_avancado import UserAvancadoEditarForm
 from bdo_gestor_guilda.usuario.models.recruta_reprovado import RecrutaReprovado
+from bdo_gestor_guilda.usuario.models.user_avancado import UserAvancado
 
 
 def signup(request):
@@ -135,3 +137,37 @@ def inserir_user_avancado(request):
 @login_required
 def aguarde_aprovacao(request):
     return render(request, '{0}/aguarde_aprovacao.html'.format(utils.path_user_avancado), utils.context)
+
+
+@login_required
+def editar_perfil(request):
+    try:
+        context = utils.get_context(request)
+        context.update({'form': UserAvancadoEditarForm(instance=context.get('dados_avancados'))})
+    except Exception as e:
+        messages.error(request, utils.TextosPadroes.erro_padrao())
+        return HttpResponseRedirect(reverse(utils.url_name_home))
+    return render(request, '{0}/editar.html'.format(utils.path_user_avancado), context)
+
+
+@login_required
+def atualizar_perfil(request, user_avancado_id):
+    try:
+        if request.method == 'POST':
+            user_avancado = UserAvancado.objects.get(pk=user_avancado_id)
+            form = UserAvancadoEditarForm(request.POST, instance=user_avancado)
+            if form.has_changed():
+                if form.is_valid():
+                    dados = form.cleaned_data
+                    dados['id'] = user_avancado_id
+                    data = utils.set_usuario_owner(request, dados)
+                    UserAvancado(**data).save()
+                    messages.success(request, utils.TextosPadroes.atualizar_sucesso_o(user_avancado))
+                else:
+                    erros_form = utils.TextosPadroes.errors_form(form)
+                    for error in erros_form:
+                        messages.warning(request, error)
+    except Exception as e:
+        messages.error(request, utils.TextosPadroes.erro_padrao())
+        return HttpResponseRedirect(reverse(utils.url_name_home))
+    return HttpResponseRedirect(reverse(utils.url_usuario_editar_perfil))

@@ -11,11 +11,12 @@
         <th data-hide="all">ID Discord</th>
         <th data-hide="all">GS</th>
         <th data-hide="all">Level</th>
+        <th data-hide="all">PT Fixa</th>
         <th>Joga Siege</th>
         <th>Joga Nodewar</th>
         <th data-hide="all">Dias de Nodewar</th>
         <th>Cargo</th>
-        <th data-hide="all">Data de Cadastro</th>
+        <th data-hide="all">Data de Atualização</th>
         <th class="footable-sortable">Ações</th>
     </tr>
     </thead>
@@ -32,6 +33,7 @@
             <td>{{ user.user_discord }}</td>
             <td>{{ user.gs }}</td>
             <td>{{ user.char_lvl }}</td>
+            <td>{{ user.get_pt_fixa }}</td>
             <td>{{ user.siege|bollean_sim_ou_nao }}</td>
             <td>{{ user.joga_nodewar|bollean_sim_ou_nao }}</td>
             <td>{{ user.get_dias_nodewar_format }}</td>
@@ -64,7 +66,7 @@
     </tbody>
     <tfoot>
     <tr class="active">
-        <td colspan="15">
+        <td colspan="16">
             <div class="text-right">
                 <ul class="pagination hide-if-no-paging pagination-split justify-content-center footable-pagination m-t-40 m-b-0"></ul>
             </div>
