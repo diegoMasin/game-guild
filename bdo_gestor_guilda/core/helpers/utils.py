@@ -15,6 +15,8 @@ url_name_termo = 'usuario_termo'
 url_name_cadastrar_user_avancado = 'cadastrar_user_avancado'
 url_name_inserir_user_avancado = 'inserir_user_avancado'
 url_name_aguarde_aprovacao = 'usuario_aguarde_aprovacao'
+url_usuario_editar_perfil = 'usuario_editar_perfil'
+url_usuario_atualizar_perfil = 'usuario_atualizar_perfil'
 url_name_home = 'pagina_inicial'
 url_recrutas_listar = 'recrutas_listar'
 url_recrutas_recrutar_ativar = 'recrutas_recrutar_ativar'
@@ -45,6 +47,8 @@ context = {
     'url_name_user_avancado': url_name_cadastrar_user_avancado,
     'url_name_inserir_user_avancado': url_name_inserir_user_avancado,
     'url_name_aguarde_aprovacao': url_name_aguarde_aprovacao,
+    'url_usuario_editar_perfil': url_usuario_editar_perfil,
+    'url_usuario_atualizar_perfil': url_usuario_atualizar_perfil,
     'url_name_home': url_name_home,
     'url_recrutas_listar': url_recrutas_listar,
     'url_recrutas_recrutar_ativar': url_recrutas_recrutar_ativar,
@@ -69,12 +73,13 @@ def get_context(requisicao=None):
     if requisicao:
         dados_avancados = UserAvancado.objects.filter(usuario=requisicao.user).first()
         if dados_avancados:
-            context.update({'familia': dados_avancados.nome_familia})
             nome_classe = dados_avancados.char_classe.nome_classe
             context.update({'logo_pequena': 'v1/global/assets/images/logo_classes/{0}.png'.format(nome_classe)})
             context.update({'foto_classe': 'v1/global/assets/images/foto_classes/{0}.png'.format(nome_classe)})
             context.update({'escolha_random': bool(random.getrandbits(1))})
 
+            context.update({'dados_avancados': dados_avancados})
+            context.update({'id_user_avancado': dados_avancados.pk})
             context.update({'familia': dados_avancados.nome_familia})
             context.update({'char': dados_avancados.nome_char_principal})
             context.update({'discord': dados_avancados.user_discord})
