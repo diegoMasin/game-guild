@@ -13,7 +13,7 @@ from bdo_gestor_guilda.core.models.vinculo_grupos import VinculoGrupos
 @login_required
 def listar(request):
     context = utils.get_context(request)
-    grupos = Grupos.objects.all().order_by('data_cadastro')
+    grupos = Grupos.objects.all().order_by('titulo')
     context.update({'grupos': grupos})
     return render(request, '{0}/index.html'.format(utils.path_grupos), context)
 
