@@ -1,7 +1,7 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, reverse
 
 from bdo_gestor_guilda.core.forms.grupos import GruposForm
 from bdo_gestor_guilda.core.helpers import utils
@@ -50,6 +50,7 @@ def inserir(request):
         return redirect(utils.url_grupos_cadastrar)
     return redirect(utils.url_grupos_listar)
 
+
 @login_required
 def deletar(request, grupo_id):
     try:
@@ -65,3 +66,38 @@ def deletar(request, grupo_id):
         messages.error(request, utils.TextosPadroes.erro_padrao())
 
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+
+@login_required
+def editar(request, grupo_id):
+    try:
+        grupo = Grupos.objects.get(pk=grupo_id)
+        context = utils.get_context(request)
+        context.update({'form': GruposForm(instance=grupo)})
+        context.update({'grupo': grupo})
+    except Exception as e:
+        messages.error(request, utils.TextosPadroes.erro_padrao())
+        return HttpResponseRedirect(reverse(utils.url_grupos_listar))
+    return render(request, '{0}/editar.html'.format(utils.path_grupos), context)
+
+
+@login_required
+def atualizar(request, grupo_id):
+    try:
+        if request.method == 'POST':
+            grupo = Grupos.objects.get(pk=grupo_id)
+            form = GruposForm(request.POST, instance=grupo)
+            if form.has_changed():
+                if form.is_valid():
+                    dados = form.cleaned_data
+                    dados['id'] = grupo_id
+                    Grupos(**dados).save()
+                    messages.success(request, utils.TextosPadroes.atualizar_sucesso_o(grupo))
+                else:
+                    erros_form = utils.TextosPadroes.errors_form(form)
+                    for error in erros_form:
+                        messages.warning(request, error)
+    except Exception as e:
+        messages.error(request, utils.TextosPadroes.erro_padrao())
+        return HttpResponseRedirect(reverse(utils.url_grupos_editar, args=[grupo_id]))
+    return HttpResponseRedirect(reverse(utils.url_grupos_editar, args=[grupo_id]))

@@ -27,6 +27,8 @@ url_membros_rebaixar = 'membros_rebaixar'
 url_grupos_listar = 'grupos_listar'
 url_grupos_cadastrar = 'grupos_cadastrar'
 url_grupos_inserir = 'grupos_inserir'
+url_grupos_editar = 'grupos_editar'
+url_grupos_atualizar = 'grupos_atualizar'
 url_grupos_deletar = 'grupos_deletar'
 url_vinculo_grupos_cadastrar = 'vinculo_grupos_cadastrar'
 url_vinculo_grupos_inserir = 'vinculo_grupos_inserir'
@@ -59,6 +61,8 @@ context = {
     'url_grupos_listar': url_grupos_listar,
     'url_grupos_cadastrar': url_grupos_cadastrar,
     'url_grupos_inserir': url_grupos_inserir,
+    'url_grupos_editar': url_grupos_editar,
+    'url_grupos_atualizar': url_grupos_atualizar,
     'url_grupos_deletar': url_grupos_deletar,
     'url_vinculo_grupos_cadastrar': url_vinculo_grupos_cadastrar,
     'url_vinculo_grupos_inserir': url_vinculo_grupos_inserir,
