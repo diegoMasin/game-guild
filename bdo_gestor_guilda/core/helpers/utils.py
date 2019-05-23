@@ -6,8 +6,6 @@ from django.contrib.auth.decorators import login_required
 
 from bdo_gestor_guilda.core.helpers.default_texts import TextosPadroes
 from bdo_gestor_guilda.usuario.models.user_avancado import UserAvancado
-from bdo_gestor_guilda.core.models.grupos import Grupos
-from bdo_gestor_guilda.core.models.vinculo_grupos import VinculoGrupos
 
 # URLS
 url_name_login = 'usuario_login'
@@ -87,22 +85,11 @@ def get_context(requisicao=None):
             context.update({'is_lider_or_oficial': dados_avancados.is_lider_or_oficial()})
             context.update({'is_lider': dados_avancados.is_lider()})
 
-            context.update({'pt_fixa': get_pt_fixa(dados_avancados)})
+            context.update({'pt_fixa': dados_avancados.get_pt_fixa()})
 
         context.update({'nome_usuario': requisicao.user.first_name})
         context.update({'id_usuario': requisicao.user.pk})
     return context
-
-
-def get_pt_fixa(user_dados_avancados):
-    pt_fixa = ''
-    lider_user_logado = Grupos.objects.filter(lider=user_dados_avancados).first()
-    membro_user_logado = VinculoGrupos.objects.filter(membro=user_dados_avancados).first()
-    if lider_user_logado:
-        pt_fixa = 'Líder do(a) {}'.format(lider_user_logado)
-    if membro_user_logado:
-        pt_fixa = 'Membro do(a) {}'.format(membro_user_logado.grupo)
-    return pt_fixa
 
 
 def remove_moeda(string):
