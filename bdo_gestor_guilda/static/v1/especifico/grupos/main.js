@@ -1,6 +1,6 @@
 $( document ).ready(function() {
     // Basic
-    $('#basicTree').jstree({
+    $('.arvore-grupo').jstree({
         'core' : {
             'themes' : {
                 'responsive': false

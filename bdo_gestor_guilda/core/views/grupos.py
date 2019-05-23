@@ -32,13 +32,13 @@ def inserir(request):
             form = GruposForm(request.POST)
             if form.is_valid():
                 dados = form.cleaned_data
-                user_avancado = UserAvancado.objects.filter(usuario=request.user).first()
-                grupos_atuais = Grupos.objects.filter(lider=user_avancado)
+                grupos_atuais = Grupos.objects.filter(lider=dados.get('lider'))
                 if grupos_atuais.count() == 0:
                     Grupos(**dados).save()
                     messages.success(request, TextosPadroes.salvar_sucesso_o('Grupo'))
                 else:
                     messages.error(request, '{} já é lider em outro grupo fixo.'.format(dados.get('lider')))
+                    return redirect(utils.url_grupos_cadastrar)
             else:
                 erros_form = utils.TextosPadroes.errors_form(form)
                 for error in erros_form:
