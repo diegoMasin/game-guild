@@ -1,0 +1,35 @@
+{% load core_tags %}
+<div class="row">
+    {% for grupo in grupos %}
+        <div class="col-md-4 m-t-10">
+            <div class="portlet">
+                <div class="portlet-heading bg-inverse">
+                    <h3 class="portlet-title">
+                        {{ grupo.titulo }}
+                    </h3>
+                    <div class="portlet-widgets">
+                        {% if is_lider_or_oficial %}
+                            <a href="javascript:void(0)" data-url="{% url url_grupos_deletar grupo.pk %}"
+                               class="acao-deletar-grupo" title="Apagar Grupo" data-model-title="{{ grupo.titulo }}">
+                                <i class="ion-close-round"></i></a>
+                        {% endif %}
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="portlet-body arvore-grupo">
+                    <ul>
+                        <li data-jstree='{"opened":true}'>&nbsp;&nbsp;{{ grupo.lider }}
+                            <ul>
+                                {% for vinculo in grupo.get_membros %}
+                                    <li data-jstree='{"icon":"mdi mdi mdi-account"}'>
+                                        {{ vinculo.membro }}
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>

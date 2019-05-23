@@ -123,3 +123,11 @@ class UserAvancado(models.Model):
         if self.cargo == self.CARGO_OFICIAL_ID:
             cargo = self.CARGO_OFICIAL_SLUG
         return cargo
+
+    def get_grupos_fixo_lider(self):
+        from bdo_gestor_guilda.core.models.grupos import Grupos
+        lider_grupos = Grupos.objects.filter(lider=self)
+        format = ''
+        for grupo in lider_grupos:
+            format = '{}{}, '.format(format, grupo)
+        return format[0:-2]

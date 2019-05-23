@@ -22,12 +22,20 @@ url_recrutar_reprovar = 'recrutar_reprovar'
 url_membros_listar = 'membros_listar'
 url_membros_promover = 'membros_promover'
 url_membros_rebaixar = 'membros_rebaixar'
+url_grupos_listar = 'grupos_listar'
+url_grupos_cadastrar = 'grupos_cadastrar'
+url_grupos_inserir = 'grupos_inserir'
+url_grupos_deletar = 'grupos_deletar'
+url_vinculo_grupos_cadastrar = 'vinculo_grupos_cadastrar'
+url_vinculo_grupos_inserir = 'vinculo_grupos_inserir'
 # PATHS
 path_template_login = 'login'
 path_template_home = 'pagina_inicial'
 path_user_avancado = 'user_avancado'
 path_recrutas = 'recrutas'
 path_membros = 'membros'
+path_grupos = 'grupos'
+path_vinculo_grupos = 'vinculo_grupos'
 # CONTEXT
 context = {
     'url_name_login': url_name_login,
@@ -44,6 +52,12 @@ context = {
     'url_membros_listar': url_membros_listar,
     'url_membros_promover': url_membros_promover,
     'url_membros_rebaixar': url_membros_rebaixar,
+    'url_grupos_listar': url_grupos_listar,
+    'url_grupos_cadastrar': url_grupos_cadastrar,
+    'url_grupos_inserir': url_grupos_inserir,
+    'url_grupos_deletar': url_grupos_deletar,
+    'url_vinculo_grupos_cadastrar': url_vinculo_grupos_cadastrar,
+    'url_vinculo_grupos_inserir': url_vinculo_grupos_inserir,
 
     'path_template_login': path_template_login,
     'path_template_home': path_template_home,
@@ -101,6 +115,12 @@ def set_usuario_owner(request, data):
         messages.warning(request, TextosPadroes.usuario_nao_logado())
 
     return data
+
+
+def render_com_form_preenchido(requisicao, path, html, form):
+    contexts = get_context(requisicao)
+    contexts.update({'form': form})
+    return '{}/{}'.format(path, html), contexts
 
 
 def pode_promover_ou_rebaixar(request):

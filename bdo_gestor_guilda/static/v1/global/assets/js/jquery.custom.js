@@ -23,5 +23,8 @@
 
         return value;
     }
+
+    // SELECT2
+    $(".select2").select2();
 })
 (jQuery);

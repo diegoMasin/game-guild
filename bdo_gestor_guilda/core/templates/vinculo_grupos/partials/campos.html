@@ -1,0 +1,16 @@
+{% load staticfiles %}
+{% load core_tags %}
+<div class="form-row">
+    <div class="col-md-4">
+        <label class="col-form-label {{ form.grupo.errors|format_label_error }}">
+            {{ form.grupo.label }}<span class="text-danger"> *</span>
+        </label>
+        {{ form.grupo }}
+    </div>
+    <div class="col-md-4">
+        <label class="col-form-label {{ form.membro.errors|format_label_error }}">
+            {{ form.membro.label }}<span class="text-danger"> *</span>
+        </label>
+        {{ form.membro }}
+    </div>
+</div>

@@ -1,0 +1,12 @@
+{% extends 'internas/layout.html' %}
+{% load core_tags %}
+{% load staticfiles %}
+
+{% block js_specific %}
+    <script src="{% static 'v1/global/assets/js/lib/plugins/jstree/jstree.min.js' %}"></script>
+    <script src="{% static 'v1/especifico/grupos/main.js' %}"></script>
+{% endblock js_specific %}
+
+{% block css_specific %}
+    <link href="{% static 'v1/global/assets/js/lib/plugins/jstree/style.css' %}" rel="stylesheet" type="text/css" />
+{% endblock css_specific %}
