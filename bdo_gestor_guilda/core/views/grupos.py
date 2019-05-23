@@ -32,8 +32,9 @@ def inserir(request):
             form = GruposForm(request.POST)
             if form.is_valid():
                 dados = form.cleaned_data
-                grupos_atuais = Grupos.objects.filter(lider=dados.get('lider'))
-                if grupos_atuais.count() == 0:
+                is_lider_grupo = Grupos.objects.filter(lider=dados.get('lider')).count() > 0
+                is_membro_grupo = VinculoGrupos.objects.filter(membro=dados.get('lider')).count() > 0
+                if not is_lider_grupo and not is_membro_grupo:
                     Grupos(**dados).save()
                     messages.success(request, TextosPadroes.salvar_sucesso_o('Grupo'))
                 else:
