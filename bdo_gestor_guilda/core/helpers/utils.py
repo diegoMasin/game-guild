@@ -32,6 +32,7 @@ url_grupos_atualizar = 'grupos_atualizar'
 url_grupos_deletar = 'grupos_deletar'
 url_vinculo_grupos_cadastrar = 'vinculo_grupos_cadastrar'
 url_vinculo_grupos_inserir = 'vinculo_grupos_inserir'
+url_vinculo_grupos_deletar = 'vinculo_grupos_deletar'
 # PATHS
 path_template_login = 'login'
 path_template_home = 'pagina_inicial'
@@ -66,6 +67,7 @@ context = {
     'url_grupos_deletar': url_grupos_deletar,
     'url_vinculo_grupos_cadastrar': url_vinculo_grupos_cadastrar,
     'url_vinculo_grupos_inserir': url_vinculo_grupos_inserir,
+    'url_vinculo_grupos_deletar': url_vinculo_grupos_deletar,
 
     'path_template_login': path_template_login,
     'path_template_home': path_template_home,

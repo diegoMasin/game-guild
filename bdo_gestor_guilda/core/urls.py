@@ -26,6 +26,7 @@ urlpatterns = [
 
     url(r'^vinculo-grupos/cadastrar/$', vinculo_grupos.cadastrar, name='vinculo_grupos_cadastrar'),
     url(r'^vinculo-grupos/inserir/$', vinculo_grupos.inserir, name='vinculo_grupos_inserir'),
+    url(r'^vinculo-grupos/deletar/(?P<vinculo_grupo_id>(\d+))/$', vinculo_grupos.deletar, name='vinculo_grupos_deletar'),
 
     # PADRÃO DE URLS DO SISTEMA SIC
     # url(r'^contas/$', contas.listar, name='contas_listar'),

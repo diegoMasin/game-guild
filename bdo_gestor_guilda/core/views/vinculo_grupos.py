@@ -1,5 +1,6 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 
 from bdo_gestor_guilda.core.forms.vinculo_grupos import VinculoGruposForm
@@ -41,3 +42,15 @@ def inserir(request):
         messages.warning(request, TextosPadroes.erro_padrao())
         return redirect(utils.url_vinculo_grupos_cadastrar)
     return redirect(utils.url_grupos_listar)
+
+
+@login_required
+def deletar(request, vinculo_grupo_id):
+    try:
+        context = utils.get_context(request)
+        membro = VinculoGrupos.objects.get(pk=vinculo_grupo_id)
+        membro.delete()
+        messages.success(request, '{0} Removido com Sucesso!'.format(membro))
+    except Exception as e:
+        messages.error(request, utils.TextosPadroes.erro_padrao())
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))

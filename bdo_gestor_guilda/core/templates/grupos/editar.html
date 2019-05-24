@@ -22,4 +22,12 @@
             </form>
         </div>
     </div>
+    <div class="row m-t-15">
+        <div class="col-lg-12">
+            <div class="card-box">
+                <h5 class="card-title">Membros do Grupo: {{ grupo.titulo }}</h5>
+                {% include 'grupos/partials/tabela.html' %}
+            </div>
+        </div>
+    </div>
 {% endblock content %}

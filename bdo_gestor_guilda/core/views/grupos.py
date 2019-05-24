@@ -75,6 +75,8 @@ def editar(request, grupo_id):
         context = utils.get_context(request)
         context.update({'form': GruposForm(instance=grupo)})
         context.update({'grupo': grupo})
+        membros = VinculoGrupos.objects.filter(grupo=grupo)
+        context.update({'membros': membros})
     except Exception as e:
         messages.error(request, utils.TextosPadroes.erro_padrao())
         return HttpResponseRedirect(reverse(utils.url_grupos_listar))
