@@ -17,4 +17,4 @@ class Grupos(models.Model):
 
     def get_membros(self):
         from bdo_gestor_guilda.core.models.vinculo_grupos import VinculoGrupos
-        return VinculoGrupos.objects.filter(grupo=self)
+        return VinculoGrupos.objects.filter(grupo=self).order_by('membro')

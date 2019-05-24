@@ -1,0 +1,33 @@
+{% extends 'grupos/layout.html' %}
+{% load core_tags %}
+{% load staticfiles %}
+
+{% block titulo_pagina %} OXION GUILD - Black Desert SA{% endblock titulo_pagina %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-lg-12">
+            <form class="form-horizontal" action="{% url url_grupos_atualizar grupo.pk %}" method="post">
+                <div class="card-box">
+                    <h5 class="card-title">Editando o Grupo</h5>
+                    {% csrf_token %}
+                    {% include 'grupos/partials/campos.html' %}
+                </div>
+                <button type="submit" class="btn btn-dark btn-custom waves-effect w-md waves-light m-b-5">
+                    <i class="fa fa-save m-r-5"></i> <span>Salvar</span>
+                </button>
+                <a href="{% url url_grupos_listar %}"
+                   class="btn btn-danger btn-custom waves-effect w-md waves-light m-b-5"><span>Voltar</span>
+                </a>
+            </form>
+        </div>
+    </div>
+    <div class="row m-t-15">
+        <div class="col-lg-12">
+            <div class="card-box">
+                <h5 class="card-title">Membros do Grupo: {{ grupo.titulo }}</h5>
+                {% include 'grupos/partials/tabela.html' %}
+            </div>
+        </div>
+    </div>
+{% endblock content %}
