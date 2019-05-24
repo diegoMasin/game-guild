@@ -1,0 +1,10 @@
+{% load staticfiles %}
+<div class="card-box">
+    <h5 class="card-title">
+        Anuncios Gerais
+        {% if is_lider_or_oficial %}
+            <a href="{% url url_anuncios_gerais_cadastrar %}" title="Criar Anúncio"><i class="ion-plus"></i></a>
+        {% endif %}
+    </h5>
+    <h6 class="card-subtitle text-muted">Nenhum anuncio.</h6>
+</div>
