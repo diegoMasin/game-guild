@@ -1,10 +1,17 @@
 {% load staticfiles %}
 <div class="card-box">
     <h5 class="card-title">
-        Anuncios Gerais
+        Anúncios Gerais
         {% if is_lider_or_oficial %}
-            <a href="{% url url_anuncios_gerais_cadastrar %}" title="Criar Anúncio"><i class="ion-plus"></i></a>
+            <a href="{% url url_anuncios_gerais_cadastrar %}"><span class="badge badge-dark">
+                <strong>criar anúncio</strong></span></a>
         {% endif %}
     </h5>
-    <h6 class="card-subtitle text-muted">Nenhum anuncio.</h6>
+    {% if anuncio_geral %}
+        <h6 class="card-subtitle text-danger m-t-10">{{ anuncio_geral.texto }}</h6>
+        <p class="card-text m-t-5"><small>
+            Última Atualização: {{ anuncio_geral.usuario }} - {{ anuncio_geral.data_cadastro|date:'d/m/Y' }}</p></small>
+    {% else %}
+        <h6 class="card-subtitle text-muted m-t-10">Nenhum anuncio.</h6>
+    {% endif %}
 </div>

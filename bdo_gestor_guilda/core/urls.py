@@ -30,6 +30,7 @@ urlpatterns = [
     url(r'^vinculo-grupos/deletar/(?P<vinculo_grupo_id>(\d+))/$', vinculo_grupos.deletar, name='vinculo_grupos_deletar'),
 
     url(r'^anuncios-gerais/cadastrar/$', anuncios_gerais.cadastrar, name='anuncios_gerais_cadastrar'),
+    url(r'^anuncios-gerais/inserir/$', anuncios_gerais.inserir, name='anuncios_gerais_inserir'),
 
     # PADRÃO DE URLS DO SISTEMA SIC
     # url(r'^contas/$', contas.listar, name='contas_listar'),

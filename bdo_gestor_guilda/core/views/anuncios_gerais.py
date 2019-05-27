@@ -7,6 +7,7 @@ from bdo_gestor_guilda.core.forms.anuncios_gerais import AnunciosGeraisForm
 from bdo_gestor_guilda.core.helpers import utils
 from bdo_gestor_guilda.core.helpers.default_texts import TextosPadroes
 from bdo_gestor_guilda.core.models.anuncios_gerais import AnunciosGerais
+from bdo_gestor_guilda.usuario.models.user_avancado import UserAvancado
 
 
 @login_required
@@ -16,31 +17,26 @@ def cadastrar(request):
     return render(request, '{0}/cadastrar.html'.format(utils.path_anuncios_gerais), context)
 
 
-# @login_required
-# def inserir(request):
-#     try:
-#         if request.method == 'POST':
-#             form = VinculoGruposForm(request.POST)
-#             if form.is_valid():
-#                 dados = form.cleaned_data
-#                 membro = dados.get('membro')
-#                 is_lider_grupo = Grupos.objects.filter(lider=membro).count() > 0
-#                 is_membro_grupo = VinculoGrupos.objects.filter(membro=membro).count() > 0
-#                 if not is_lider_grupo and not is_membro_grupo:
-#                     VinculoGrupos(**dados).save()
-#                     messages.success(request, TextosPadroes.salvar_sucesso_o('Vinculo'))
-#                 else:
-#                     messages.error(request, '{} já é líder ou membro em outro grupo fixo.'.format(membro))
-#                     return redirect(utils.url_vinculo_grupos_cadastrar)
-#             else:
-#                 erros_form = utils.TextosPadroes.errors_form(form)
-#                 for error in erros_form:
-#                     messages.warning(request, error)
-#                 return redirect(utils.url_vinculo_grupos_cadastrar)
-#     except Exception as e:
-#         messages.warning(request, TextosPadroes.erro_padrao())
-#         return redirect(utils.url_vinculo_grupos_cadastrar)
-#     return redirect(utils.url_grupos_listar)
+@login_required
+def inserir(request):
+    try:
+        if request.method == 'POST':
+            form = AnunciosGeraisForm(request.POST)
+            if form.is_valid():
+                usuario = UserAvancado.objects.filter(usuario=request.user).first()
+                dados = form.cleaned_data
+                dados['usuario'] = usuario
+                AnunciosGerais(**dados).save()
+                messages.success(request, TextosPadroes.salvar_sucesso_o('Anúncio'))
+            else:
+                erros_form = utils.TextosPadroes.errors_form(form)
+                for error in erros_form:
+                    messages.warning(request, error)
+                return redirect(utils.url_anuncios_gerais_cadastrar)
+    except Exception as e:
+        messages.warning(request, TextosPadroes.erro_padrao())
+        return redirect(utils.url_anuncios_gerais_cadastrar)
+    return redirect(utils.url_name_home)
 #
 #
 # @login_required

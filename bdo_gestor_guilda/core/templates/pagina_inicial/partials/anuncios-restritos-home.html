@@ -1,5 +1,10 @@
 {% load staticfiles %}
 <div class="card-box">
-    <h5 class="card-title">Anuncios Restritos</h5>
+    <h5 class="card-title">Anúncios Restritos
+        {% if is_lider_or_oficial %}
+            <a href=""><span class="badge badge-dark">
+                <strong>criar anúncio</strong></span></a>
+        {% endif %}
+    </h5>
     <h6 class="card-subtitle text-muted">Nenhum anuncio.</h6>
 </div>
