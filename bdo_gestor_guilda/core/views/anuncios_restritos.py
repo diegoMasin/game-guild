@@ -14,7 +14,7 @@ from bdo_gestor_guilda.usuario.models.user_avancado import UserAvancado
 def cadastrar(request):
     context = utils.get_context(request)
     context.update({'form': AnunciosRestritosForm()})
-    return render(request, '{0}/cadastrar.html'.format(utils.path_anuncios_gerais), context)
+    return render(request, '{0}/cadastrar.html'.format(utils.path_anuncios_restritos), context)
 
 
 @login_required
@@ -32,10 +32,10 @@ def inserir(request):
                 erros_form = utils.TextosPadroes.errors_form(form)
                 for error in erros_form:
                     messages.warning(request, error)
-                return redirect(utils.url_anuncios_gerais_cadastrar)
+                return redirect(utils.url_anuncios_restritos_cadastrar)
     except Exception as e:
         messages.warning(request, TextosPadroes.erro_padrao())
-        return redirect(utils.url_anuncios_gerais_cadastrar)
+        return redirect(utils.url_anuncios_restritos_cadastrar)
     return redirect(utils.url_name_home)
 
 
