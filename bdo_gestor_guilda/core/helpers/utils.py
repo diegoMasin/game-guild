@@ -33,6 +33,9 @@ url_grupos_deletar = 'grupos_deletar'
 url_vinculo_grupos_cadastrar = 'vinculo_grupos_cadastrar'
 url_vinculo_grupos_inserir = 'vinculo_grupos_inserir'
 url_vinculo_grupos_deletar = 'vinculo_grupos_deletar'
+url_anuncios_gerais_cadastrar = 'anuncios_gerais_cadastrar'
+url_anuncios_gerais_inserir = 'anuncios_gerais_inserir'
+url_anuncios_gerais_deletar = 'anuncios_gerais_deletar'
 # PATHS
 path_template_login = 'login'
 path_template_home = 'pagina_inicial'
@@ -41,6 +44,7 @@ path_recrutas = 'recrutas'
 path_membros = 'membros'
 path_grupos = 'grupos'
 path_vinculo_grupos = 'vinculo_grupos'
+path_anuncios_gerais = 'anuncios_gerais'
 # CONTEXT
 context = {
     'url_name_login': url_name_login,
@@ -68,6 +72,9 @@ context = {
     'url_vinculo_grupos_cadastrar': url_vinculo_grupos_cadastrar,
     'url_vinculo_grupos_inserir': url_vinculo_grupos_inserir,
     'url_vinculo_grupos_deletar': url_vinculo_grupos_deletar,
+    'url_anuncios_gerais_cadastrar': url_anuncios_gerais_cadastrar,
+    'url_anuncios_gerais_inserir': url_anuncios_gerais_inserir,
+    'url_anuncios_gerais_deletar': url_anuncios_gerais_deletar,
 
     'path_template_login': path_template_login,
     'path_template_home': path_template_home,

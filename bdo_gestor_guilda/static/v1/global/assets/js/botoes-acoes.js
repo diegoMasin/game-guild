@@ -225,6 +225,37 @@
             });
         });
 
+        //Botão de Ação Limpar Anúncios
+        $('.acao-limpar-anuncio').click(function(event) {
+            event.preventDefault();
+            var url = $(this).data('url');
+            var titulo_model = $(this).data('model-title');
+
+            swal({
+                title: 'Você deseja Limpar o Anúncio abaixo?',
+                text: 'Após excluído, o anúncio deixará de existir.',
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#DD6B55',
+                confirmButtonText: 'Sim, Limpar!',
+                cancelButtonText: 'Não, Cancele!',
+                closeOnConfirm: false,
+                closeOnCancel: false
+            }, function (isConfirm) {
+                if (isConfirm) {
+                    swal({
+                        title: 'Removido!',
+                        text: 'Você Limpou o Anúncio abaixo.',
+                        type: 'success'
+                    }, function(){
+                        window.location = url;
+                    });
+                } else {
+                    swal('Cancelado', 'Você não limpou o anúncio.', 'error');
+                }
+            });
+        });
+
     },
         //init
         $.SweetAlert = new SweetAlert, $.SweetAlert.Constructor = SweetAlert

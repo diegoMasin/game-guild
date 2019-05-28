@@ -8,37 +8,13 @@
     <div class="row">
         <div class="col-lg-3">
             <div class="text-center card-box">
-                <div class="member-card">
-                    <div class="thumb-xl member-thumb m-b-10 center-block">
-                        {% if escolha_random %}
-                            <img id="logo_pequena" height="250" src="{% static logo_pequena %}" alt="profile-image">
-                        {% else %}
-                            <img id="foto_classe" height="250" src="{% static foto_classe %}" alt="profile-image">
-                        {% endif %}
-                    </div>
-                    <div class="m-t-20 texto-preto">
-                        <h5 class="m-b-5">{{ familia }}</h5>
-                        <p class="text-muted">{{ char }}</p>
-                    </div>
-                    <div class="text-left m-t-30">
-                        {% if pt_fixa %}
-                            <p class="text-muted font-13"><strong>PT Fixa :</strong> <span class="m-l-15">{{ pt_fixa }}</span></p>
-                        {% endif %}
-                        <p class="text-muted font-13"><strong>ID Discord :</strong> <span class="m-l-15">{{ discord }}</span></p>
-                        <p class="text-muted font-13"><strong>Classe :</strong> <span class="m-l-15">{{ classe }}</span></p>
-                        <p class="text-muted font-13"><strong>Lvl Atual :</strong><span class="m-l-15">{{ level }}</span></p>
-                        <p class="text-muted font-13"><strong>GS Atual :</strong> <span class="m-l-15">{{ gs }}</span></p>
-                    </div>
-                    <a href="{% url url_usuario_editar_perfil %}"
-                       class="btn btn-success btn-sm w-sm waves-effect m-t-10 waves-light">Atualizar Perfil</a>
-                </div>
+                {% include 'pagina_inicial/partials/card-perfil.html' %}
             </div>
         </div>
         <div class="col-lg-9">
-            <div class="card-box">
-                <h5 class="card-title">Anuncios da Guilda</h5>
-                <h6 class="card-subtitle text-muted">Nenhum anuncio.</h6>
-            </div>
+            {% include 'pagina_inicial/partials/anuncios-geral-home.html' %}
+            {% include 'pagina_inicial/partials/anuncios-restritos-home.html' %}
+            {% include 'pagina_inicial/partials/anuncios-guerra-home.html' %}
         </div>
     </div>
 {% endblock content %}
