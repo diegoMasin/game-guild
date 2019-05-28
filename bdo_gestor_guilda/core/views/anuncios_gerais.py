@@ -37,15 +37,15 @@ def inserir(request):
         messages.warning(request, TextosPadroes.erro_padrao())
         return redirect(utils.url_anuncios_gerais_cadastrar)
     return redirect(utils.url_name_home)
-#
-#
-# @login_required
-# def deletar(request, vinculo_grupo_id):
-#     try:
-#         context = utils.get_context(request)
-#         membro = VinculoGrupos.objects.get(pk=vinculo_grupo_id)
-#         membro.delete()
-#         messages.success(request, '{0} Removido com Sucesso!'.format(membro))
-#     except Exception as e:
-#         messages.error(request, utils.TextosPadroes.erro_padrao())
-#     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+
+@login_required
+def deletar(request):
+    try:
+        context = utils.get_context(request)
+        anuncio = AnunciosGerais.objects.all().last()
+        anuncio.delete()
+        messages.success(request, 'Anúncio Geral Removido com Sucesso!')
+    except Exception as e:
+        messages.error(request, utils.TextosPadroes.erro_padrao())
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))

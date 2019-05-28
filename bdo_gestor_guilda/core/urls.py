@@ -31,6 +31,7 @@ urlpatterns = [
 
     url(r'^anuncios-gerais/cadastrar/$', anuncios_gerais.cadastrar, name='anuncios_gerais_cadastrar'),
     url(r'^anuncios-gerais/inserir/$', anuncios_gerais.inserir, name='anuncios_gerais_inserir'),
+    url(r'^anuncios-gerais/deletar/$', anuncios_gerais.deletar, name='anuncios_gerais_deletar'),
 
     # PADRÃO DE URLS DO SISTEMA SIC
     # url(r'^contas/$', contas.listar, name='contas_listar'),

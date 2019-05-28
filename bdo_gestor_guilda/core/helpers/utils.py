@@ -35,6 +35,7 @@ url_vinculo_grupos_inserir = 'vinculo_grupos_inserir'
 url_vinculo_grupos_deletar = 'vinculo_grupos_deletar'
 url_anuncios_gerais_cadastrar = 'anuncios_gerais_cadastrar'
 url_anuncios_gerais_inserir = 'anuncios_gerais_inserir'
+url_anuncios_gerais_deletar = 'anuncios_gerais_deletar'
 # PATHS
 path_template_login = 'login'
 path_template_home = 'pagina_inicial'
@@ -73,6 +74,7 @@ context = {
     'url_vinculo_grupos_deletar': url_vinculo_grupos_deletar,
     'url_anuncios_gerais_cadastrar': url_anuncios_gerais_cadastrar,
     'url_anuncios_gerais_inserir': url_anuncios_gerais_inserir,
+    'url_anuncios_gerais_deletar': url_anuncios_gerais_deletar,
 
     'path_template_login': path_template_login,
     'path_template_home': path_template_home,
