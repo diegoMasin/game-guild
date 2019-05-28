@@ -5,6 +5,7 @@ from bdo_gestor_guilda.core.views import membros
 from bdo_gestor_guilda.core.views import grupos
 from bdo_gestor_guilda.core.views import vinculo_grupos
 from bdo_gestor_guilda.core.views import anuncios_gerais
+from bdo_gestor_guilda.core.views import anuncios_restritos
 
 urlpatterns = [
     url(r'^$', home.pagina_inicial, name='pagina_inicial'),
@@ -32,6 +33,9 @@ urlpatterns = [
     url(r'^anuncios-gerais/cadastrar/$', anuncios_gerais.cadastrar, name='anuncios_gerais_cadastrar'),
     url(r'^anuncios-gerais/inserir/$', anuncios_gerais.inserir, name='anuncios_gerais_inserir'),
     url(r'^anuncios-gerais/deletar/$', anuncios_gerais.deletar, name='anuncios_gerais_deletar'),
+    url(r'^anuncios-restritos/cadastrar/$', anuncios_restritos.cadastrar, name='anuncios_restritos_cadastrar'),
+    url(r'^anuncios-restritos/inserir/$', anuncios_restritos.inserir, name='anuncios_restritos_inserir'),
+    url(r'^anuncios-restritos/deletar/$', anuncios_restritos.deletar, name='anuncios_restritos_deletar'),
 
     # PADRÃO DE URLS DO SISTEMA SIC
     # url(r'^contas/$', contas.listar, name='contas_listar'),

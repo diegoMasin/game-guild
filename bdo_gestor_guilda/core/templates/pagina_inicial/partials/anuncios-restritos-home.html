@@ -1,10 +1,26 @@
 {% load staticfiles %}
 <div class="card-box">
-    <h5 class="card-title"><i class="ti-announcement"></i> Anúncios Restritos
+    <h5 class="card-title">
+        <i class="ti-announcement"></i> Anúncios Restritos
         {% if is_lider_or_oficial %}
-            <a href=""><span class="badge badge-dark">
+            {% if anuncio_restrito %}
+                <a href="javascript:void(0)" data-url="{% url url_anuncios_restritos_deletar %}" class="acao-limpar-anuncio">
+                    <span class="badge badge-dark"><strong>limpar</strong></span></a>
+            {% else %}
+                <a href="{% url url_anuncios_restritos_cadastrar %}"><span class="badge badge-dark">
                 <strong>criar anúncio</strong></span></a>
+            {% endif %}
         {% endif %}
     </h5>
-    <h6 class="card-subtitle text-muted">Nenhum anuncio.</h6>
+    {% if anuncio_restrito %}
+        <h6 class="card-subtitle text-danger m-t-10">{{ anuncio_restrito.texto }}</h6>
+        <p class="card-text m-t-5">
+            <small>
+                Última Atualização:
+                {{ anuncio_restrito.usuario }}({{ anuncio_restrito.usuario.get_slug_cargo }}) - {{ anuncio_restrito.data_cadastro|date:'d/m/Y H:m' }}
+            </small>
+        </p>
+    {% else %}
+        <h6 class="card-subtitle text-muted m-t-10">Nenhum anuncio.</h6>
+    {% endif %}
 </div>
