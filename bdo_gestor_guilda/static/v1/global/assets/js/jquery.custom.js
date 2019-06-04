@@ -25,6 +25,13 @@
     }
 
     // SELECT2
-    $(".select2").select2();
+    $('.select2').select2();
+
+    // DATE PICKER
+    $('.date-picker-default').datepicker({
+        autoclose: true,
+        todayHighlight: true,
+        format: 'dd/mm/yyyy'
+    });
 })
 (jQuery);
