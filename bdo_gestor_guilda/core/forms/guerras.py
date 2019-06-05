@@ -28,10 +28,3 @@ class GuerrasForm(forms.ModelForm):
             'servidor': forms.TextInput(attrs={'class': 'form-control'}),
             'node': forms.TextInput(attrs={'class': 'form-control'}),
         }
-
-    def clean_data_inicio(self):
-        data = self.cleaned_data['data_inicio']
-        tem_guerra = Guerras.objects.filter(data_inicio=data)
-        if tem_guerra:
-            self.add_error('data_inicio', 'Já existe uma {0} nesta data!'.format(tem_guerra.first().get_slug_tipo()))
-        return data
