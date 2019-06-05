@@ -1,5 +1,31 @@
 {% load staticfiles %}
 <div class="card-box">
     <h5 class="card-title"><i class="ti-target"></i> Anúncios de Guerras</h5>
-    <h6 class="card-subtitle text-muted">Nenhum anuncio.</h6>
+    {% if guerra_de_hoje %}
+        <h6 class="card-subtitle text-danger m-t-10">
+            Guerra de Hoje: {{ guerra_de_hoje.get_slug_tipo }} ({{ guerra_de_hoje.data_inicio|date:'d/m/Y' }})</h6>
+        <p class="card-text m-t-5">
+            <small>
+                Guerra <strong>{{ guerra_de_hoje.get_slug_modelo }}</strong>
+                {% if guerra_de_hoje.servidor %}
+                    no Servidor <strong>{{ guerra_de_hoje.servidor }}</strong>
+                {% endif %}
+                {% if guerra_de_hoje.quantidade_players %}
+                    para <strong>{{ guerra_de_hoje.quantidade_players }}</strong> Participantes
+                {% endif %}
+                {% if guerra_de_hoje.node %}
+                    --- Node: <strong>{{ guerra_de_hoje.node }}</strong>
+                {% endif %}
+                {% if guerra_de_hoje.call %}
+                    --- Call de: <strong>{{ guerra_de_hoje.call }}</strong>
+                {% endif %}
+                ---- Usaremos Pt's Fixas? <strong>{{ guerra_de_hoje.pt_fixa|yesno:'Sim,Não' }}</strong>
+            </small>
+        </p>
+        <a href="javascript:void(0)" class="btn btn-outline-dark btn-sm w-sm waves-effect m-t-10 waves-light"
+           data-toggle="modal" data-target="#participar-guerra-modal" data-id-user-avancado="{{ user.pk }}">
+            <i class="fa fa-child m-r-5"></i> <span>Participar</span></a>
+    {% else %}
+        <h6 class="card-subtitle text-muted">Nenhuma guerra.</h6>
+    {% endif %}
 </div>

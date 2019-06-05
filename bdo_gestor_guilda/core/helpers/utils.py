@@ -36,6 +36,15 @@ url_vinculo_grupos_deletar = 'vinculo_grupos_deletar'
 url_anuncios_gerais_cadastrar = 'anuncios_gerais_cadastrar'
 url_anuncios_gerais_inserir = 'anuncios_gerais_inserir'
 url_anuncios_gerais_deletar = 'anuncios_gerais_deletar'
+url_anuncios_restritos_cadastrar = 'anuncios_restritos_cadastrar'
+url_anuncios_restritos_inserir = 'anuncios_restritos_inserir'
+url_anuncios_restritos_deletar = 'anuncios_restritos_deletar'
+url_guerras_listar = 'guerras_listar'
+url_guerras_cadastrar = 'guerras_cadastrar'
+url_guerras_inserir = 'guerras_inserir'
+url_guerras_editar = 'guerras_editar'
+url_guerras_atualizar = 'guerras_atualizar'
+url_guerras_excluir = 'guerras_excluir'
 # PATHS
 path_template_login = 'login'
 path_template_home = 'pagina_inicial'
@@ -45,6 +54,8 @@ path_membros = 'membros'
 path_grupos = 'grupos'
 path_vinculo_grupos = 'vinculo_grupos'
 path_anuncios_gerais = 'anuncios_gerais'
+path_anuncios_restritos = 'anuncios_restritos'
+path_guerras = 'guerras'
 # CONTEXT
 context = {
     'url_name_login': url_name_login,
@@ -75,6 +86,15 @@ context = {
     'url_anuncios_gerais_cadastrar': url_anuncios_gerais_cadastrar,
     'url_anuncios_gerais_inserir': url_anuncios_gerais_inserir,
     'url_anuncios_gerais_deletar': url_anuncios_gerais_deletar,
+    'url_anuncios_restritos_cadastrar': url_anuncios_restritos_cadastrar,
+    'url_anuncios_restritos_inserir': url_anuncios_restritos_inserir,
+    'url_anuncios_restritos_deletar': url_anuncios_restritos_deletar,
+    'url_guerras_listar': url_guerras_listar,
+    'url_guerras_cadastrar': url_guerras_cadastrar,
+    'url_guerras_inserir': url_guerras_inserir,
+    'url_guerras_editar': url_guerras_editar,
+    'url_guerras_atualizar': url_guerras_atualizar,
+    'url_guerras_excluir': url_guerras_excluir,
 
     'path_template_login': path_template_login,
     'path_template_home': path_template_home,

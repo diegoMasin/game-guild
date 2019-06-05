@@ -13,8 +13,11 @@
         </div>
         <div class="col-lg-9">
             {% include 'pagina_inicial/partials/anuncios-geral-home.html' %}
-            {% include 'pagina_inicial/partials/anuncios-restritos-home.html' %}
+            {% if is_lider_or_oficial %}
+                {% include 'pagina_inicial/partials/anuncios-restritos-home.html' %}
+            {% endif %}
             {% include 'pagina_inicial/partials/anuncios-guerra-home.html' %}
         </div>
     </div>
+    {% include 'pagina_inicial/partials/modal_participar.html' %}
 {% endblock content %}

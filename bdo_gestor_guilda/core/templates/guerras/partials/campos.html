@@ -1,0 +1,55 @@
+{% load staticfiles %} {% load core_tags %}
+<div class="form-row">
+    <div class="form-group col-md-3">
+        <label class="col-form-label {{ form.tipo.errors|format_label_error }}">
+            {{ form.tipo.label }}<span class="text-danger"> *</span>
+        </label>
+        {{ form.tipo }}
+    </div>
+    <div class="col-md-3">
+        <label class="col-form-label {{ form.modelo.errors|format_label_error }}">
+            {{ form.modelo.label }}<span class="text-danger"> *</span>
+        </label>
+        {{ form.modelo }}
+    </div>
+    <div class="col-md-3">
+        <label class="col-form-label {{ form.data_inicio.errors|format_label_error }}">
+            {{ form.data_inicio.label }}<span class="text-danger"> *</span>
+        </label>
+        {{ form.data_inicio }}
+    </div>
+    <div class="form-group col-md-3">
+        <label class="col-form-label {{ form.pt_fixa.errors|format_label_error }}">
+            {{ form.pt_fixa.label }}<span class="text-danger"> *</span>
+        </label>
+        {{ form.pt_fixa }}
+    </div>
+</div>
+<div class="form-row">
+    <div class="col-md-3">
+        <label class="col-form-label {{ form.servidor.errors|format_label_error }}">
+            {{ form.servidor.label }}
+        </label>
+        {{ form.servidor }}
+        <span class="font-13 text-muted">Ex: Serendia 1</span>
+    </div>
+    <div class="form-group col-md-3">
+        <label class="col-form-label {{ form.node.errors|format_label_error }}">
+            {{ form.node.label }}
+        </label>
+        {{ form.node }}
+        <span class="font-13 text-muted">Ex: Fazenda Alejandro(Norte de Heidel)</span>
+    </div>
+    <div class="col-md-3">
+        <label class="col-form-label {{ form.quantidade_players.errors|format_label_error }}">
+            {{ form.quantidade_players.label }}
+        </label>
+        {{ form.quantidade_players }}
+    </div>
+    <div class="col-md-3">
+        <label class="col-form-label {{ form.call.errors|format_label_error }}">
+            {{ form.call.label }}
+        </label>
+        {{ form.call }}
+    </div>
+</div>

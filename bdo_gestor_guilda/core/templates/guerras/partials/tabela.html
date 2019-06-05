@@ -1,0 +1,47 @@
+{% load core_tags %}
+<table class="table foo-table-default" data-page-size="8">
+    <thead class="table-dark">
+    <tr class="text-center">
+        <th data-toggle="true">Guerra</th>
+        <th>Quando?</th>
+        <th>Servidor</th>
+        <th>Nome do Node</th>
+        <th>Quantos Player</th>
+        <th>Estilo</th>
+        <th>Call</th>
+        <th>Terá PT Fixa?</th>
+        <th class="footable-sortable">Ações</th>
+    </tr>
+    </thead>
+    {% include 'guerras/partials/filtros.html' %}
+    <tbody>
+    {% for guerra in todas_guerras %}
+        <tr class="text-center">
+            <td class="text-left">{{ guerra.get_slug_tipo }}</td>
+            <td>{{ guerra.data_inicio|date:'d/m/Y' }}</td>
+            <td>{{ guerra.servidor|default_if_none:'-' }}</td>
+            <td>{{ guerra.node|default_if_none:'-' }}</td>
+            <td>{{ guerra.quantidade_players|default_if_none:'-' }}</td>
+            <td>{{ guerra.get_slug_modelo }}</td>
+            <td>{{ guerra.call|default_if_none:'-' }}</td>
+            <td>{{ guerra.pt_fixa|yesno:'Sim,Não' }}</td>
+            <td class="text-center" width="250">
+                <a href="{% url url_guerras_editar guerra.pk %}" title="Editar">
+                    <i class="fa fa-2x fa-edit texto-preto m-r-15"></i></a>
+                <a href="javascript:void(0)" data-url="{% url url_guerras_excluir guerra.pk %}"
+                   data-model-title="Guerra" class="acao-excluir" title="Excluir">
+                    <i class="fa fa-2x fa-ban texto-preto"></i></a>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+    <tfoot>
+    <tr class="active">
+        <td colspan="14">
+            <div class="text-right">
+                <ul class="pagination hide-if-no-paging pagination-split justify-content-center footable-pagination m-t-40 m-b-0"></ul>
+            </div>
+        </td>
+    </tr>
+    </tfoot>
+</table>
