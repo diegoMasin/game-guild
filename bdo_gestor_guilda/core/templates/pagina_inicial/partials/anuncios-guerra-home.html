@@ -14,14 +14,17 @@
                     para <strong>{{ guerra_de_hoje.quantidade_players }}</strong> Participantes
                 {% endif %}
                 {% if guerra_de_hoje.node %}
-                     --- Node: <strong>{{ guerra_de_hoje.node }}</strong>
+                    --- Node: <strong>{{ guerra_de_hoje.node }}</strong>
                 {% endif %}
                 {% if guerra_de_hoje.call %}
-                     --- Call de: <strong>{{ guerra_de_hoje.call }}</strong>
+                    --- Call de: <strong>{{ guerra_de_hoje.call }}</strong>
                 {% endif %}
-                 ---- Usaremos Pt's Fixas? <strong>{{ guerra_de_hoje.pt_fixa|yesno:'Sim,Não' }}</strong>
+                ---- Usaremos Pt's Fixas? <strong>{{ guerra_de_hoje.pt_fixa|yesno:'Sim,Não' }}</strong>
             </small>
         </p>
+        <a href="javascript:void(0)" class="btn btn-outline-dark btn-sm w-sm waves-effect m-t-10 waves-light"
+           data-toggle="modal" data-target="#participar-guerra-modal" data-id-user-avancado="{{ user.pk }}">
+            <i class="fa fa-child m-r-5"></i> <span>Participar</span></a>
     {% else %}
         <h6 class="card-subtitle text-muted">Nenhuma guerra.</h6>
     {% endif %}
