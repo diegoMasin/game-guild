@@ -3,19 +3,17 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect, reverse
 
+from bdo_gestor_guilda.core.forms.guerras import GuerrasForm
 from bdo_gestor_guilda.core.helpers import utils
 from bdo_gestor_guilda.core.helpers.default_texts import TextosPadroes
-from bdo_gestor_guilda.usuario.models.user_avancado import UserAvancado
-from django.contrib.auth.models import User
 from bdo_gestor_guilda.core.models.guerras import Guerras
-from bdo_gestor_guilda.core.forms.guerras import GuerrasForm
 
 
 @login_required
 def listar(request):
     context = utils.get_context(request)
     if context.get('is_lider_or_oficial'):
-        todas_guerras = Guerras.objects.all().order_by('-pk')
+        todas_guerras = Guerras.objects.all().order_by('-data_inicio')
         context.update({'todas_guerras': todas_guerras})
         return render(request, '{0}/index.html'.format(utils.path_guerras), context)
     return redirect(utils.url_name_home)
@@ -52,6 +50,8 @@ def inserir(request):
 def editar(request, guerra_id):
     try:
         guerra = Guerras.objects.get(pk=guerra_id)
+        data = guerra.data_inicio
+        guerra.data_inicio = '{}/{}/{}'.format(str(data.day).zfill(2), str(data.month).zfill(2), data.year)
         context = utils.get_context(request)
         context.update({'form': GuerrasForm(instance=guerra)})
         context.update({'guerra': guerra})

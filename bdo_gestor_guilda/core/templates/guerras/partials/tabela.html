@@ -19,11 +19,11 @@
         <tr class="text-center">
             <td class="text-left">{{ guerra.get_slug_tipo }}</td>
             <td>{{ guerra.data_inicio|date:'d/m/Y' }}</td>
-            <td>{{ guerra.servidor }}</td>
-            <td>{{ guerra.node }}</td>
-            <td>{{ guerra.quantidade_players }}</td>
+            <td>{{ guerra.servidor|default_if_none:'-' }}</td>
+            <td>{{ guerra.node|default_if_none:'-' }}</td>
+            <td>{{ guerra.quantidade_players|default_if_none:'-' }}</td>
             <td>{{ guerra.get_slug_modelo }}</td>
-            <td>{{ guerra.call }}</td>
+            <td>{{ guerra.call|default_if_none:'-' }}</td>
             <td>{{ guerra.pt_fixa|yesno:'Sim,Não' }}</td>
             <td class="text-center" width="250">
                 <a href="{% url url_guerras_editar guerra.pk %}" title="Editar">
