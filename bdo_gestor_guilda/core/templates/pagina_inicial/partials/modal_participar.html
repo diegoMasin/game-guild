@@ -10,13 +10,13 @@
             <form role="form" method="post" action="">
                 {% csrf_token %}
                 <div class="modal-body">
+                    {{ form_participa.guerra }}
+                    {{ form_participa.participante }}
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group no-margin">
-                                {#                                <input id="hidden-modeal-id-user" type="hidden" name="id_user_avancado">#}
-                                <label for="field-7" class="control-label">IMPLEMENTAREMOS EM BREVE...</label>
-                                {#                                <textarea name="justificativa_reprovacao" class="form-control"#}
-                                {#                                          placeholder="Indique as melhorias para o jogador."></textarea>#}
+                                <label for="field-7" class="control-label">{{ form_participa.participa.label }}</label>
+                                {{ form_participa.participa }}
                             </div>
                         </div>
                     </div>

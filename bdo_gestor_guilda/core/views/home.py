@@ -1,12 +1,14 @@
 from datetime import date
+
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 
+from bdo_gestor_guilda.core.forms.participar_guerra import ParticiparGuerraForm
 from bdo_gestor_guilda.core.helpers import utils
-from bdo_gestor_guilda.usuario.models.user_avancado import UserAvancado
 from bdo_gestor_guilda.core.models.anuncios_gerais import AnunciosGerais
 from bdo_gestor_guilda.core.models.anuncios_restrito import AnunciosRestritos
 from bdo_gestor_guilda.core.models.guerras import Guerras
+from bdo_gestor_guilda.usuario.models.user_avancado import UserAvancado
 
 
 @login_required
@@ -26,4 +28,6 @@ def pagina_inicial(request):
     context.update({'anuncio_geral': anuncio_geral})
     context.update({'anuncio_restrito': anuncio_restrito})
     context.update({'guerra_de_hoje': guerra_de_hoje})
+    context.update({'form_participa': ParticiparGuerraForm(initial={'guerra': guerra_de_hoje,
+                                                                    'participante': dados_user_avancado.first()})})
     return render(request, '{0}/index.html'.format(utils.path_template_home), context)
