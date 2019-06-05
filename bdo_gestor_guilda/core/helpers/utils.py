@@ -42,6 +42,9 @@ url_anuncios_restritos_deletar = 'anuncios_restritos_deletar'
 url_guerras_listar = 'guerras_listar'
 url_guerras_cadastrar = 'guerras_cadastrar'
 url_guerras_inserir = 'guerras_inserir'
+url_guerras_editar = 'guerras_editar'
+url_guerras_atualizar = 'guerras_atualizar'
+url_guerras_excluir = 'guerras_excluir'
 # PATHS
 path_template_login = 'login'
 path_template_home = 'pagina_inicial'
@@ -89,6 +92,9 @@ context = {
     'url_guerras_listar': url_guerras_listar,
     'url_guerras_cadastrar': url_guerras_cadastrar,
     'url_guerras_inserir': url_guerras_inserir,
+    'url_guerras_editar': url_guerras_editar,
+    'url_guerras_atualizar': url_guerras_atualizar,
+    'url_guerras_excluir': url_guerras_excluir,
 
     'path_template_login': path_template_login,
     'path_template_home': path_template_home,

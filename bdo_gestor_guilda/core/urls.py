@@ -41,5 +41,8 @@ urlpatterns = [
     url(r'^guerras/listar/$', guerras.listar, name='guerras_listar'),
     url(r'^guerras/cadastrar/$', guerras.cadastrar, name='guerras_cadastrar'),
     url(r'^guerras/inserir/$', guerras.inserir, name='guerras_inserir'),
+    url(r'^guerras/editar/(?P<guerra_id>(\d+))/$', guerras.editar, name='guerras_editar'),
+    url(r'^guerras/atualizar/(?P<guerra_id>(\d+))/$', guerras.atualizar, name='guerras_atualizar'),
+    url(r'^guerras/excluir/(?P<guerra_id>(\d+))/$', guerras.excluir, name='guerras_excluir'),
 
 ]
