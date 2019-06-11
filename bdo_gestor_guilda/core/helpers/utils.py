@@ -18,6 +18,7 @@ url_name_aguarde_aprovacao = 'usuario_aguarde_aprovacao'
 url_usuario_editar_perfil = 'usuario_editar_perfil'
 url_usuario_atualizar_perfil = 'usuario_atualizar_perfil'
 url_name_home = 'pagina_inicial'
+url_inserir_participante_guerra = 'inserir_participante_guerra'
 url_recrutas_listar = 'recrutas_listar'
 url_recrutas_recrutar_ativar = 'recrutas_recrutar_ativar'
 url_recrutar_reprovar = 'recrutar_reprovar'
@@ -68,6 +69,7 @@ context = {
     'url_usuario_editar_perfil': url_usuario_editar_perfil,
     'url_usuario_atualizar_perfil': url_usuario_atualizar_perfil,
     'url_name_home': url_name_home,
+    'url_inserir_participante_guerra': url_inserir_participante_guerra,
     'url_recrutas_listar': url_recrutas_listar,
     'url_recrutas_recrutar_ativar': url_recrutas_recrutar_ativar,
     'url_recrutar_reprovar': url_recrutar_reprovar,

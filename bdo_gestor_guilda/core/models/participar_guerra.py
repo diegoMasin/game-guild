@@ -6,17 +6,17 @@ from bdo_gestor_guilda.core.models.guerras import Guerras
 
 class ParticiparGuerra(models.Model):
     PARTICIPAR_SIM = 'Sim'
-    PARTICIPAR_NÃO = 'Não'
+    PARTICIPAR_NAO = 'Não'
     PARTICIPAR_TALVEZ = 'Talvez'
     OPCAO_PARTICIPACAO = (
         (PARTICIPAR_SIM, PARTICIPAR_SIM),
         (PARTICIPAR_TALVEZ, PARTICIPAR_TALVEZ),
-        (PARTICIPAR_NÃO, PARTICIPAR_NÃO),
+        (PARTICIPAR_NAO, PARTICIPAR_NAO),
     )
 
     id = models.AutoField(primary_key=True)
     guerra = models.ForeignKey(Guerras, on_delete=models.PROTECT)
-    participa = models.IntegerField(choices=OPCAO_PARTICIPACAO, default=PARTICIPAR_SIM)
+    participa = models.CharField(choices=OPCAO_PARTICIPACAO, max_length=10, default=PARTICIPAR_SIM)
     participante = models.ForeignKey(UserAvancado, db_column='fk_user_avancado', on_delete=models.PROTECT)
 
     class Meta:

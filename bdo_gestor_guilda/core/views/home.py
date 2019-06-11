@@ -1,13 +1,16 @@
 from datetime import date
 
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 
 from bdo_gestor_guilda.core.forms.participar_guerra import ParticiparGuerraForm
 from bdo_gestor_guilda.core.helpers import utils
+from bdo_gestor_guilda.core.helpers.default_texts import TextosPadroes
 from bdo_gestor_guilda.core.models.anuncios_gerais import AnunciosGerais
 from bdo_gestor_guilda.core.models.anuncios_restrito import AnunciosRestritos
 from bdo_gestor_guilda.core.models.guerras import Guerras
+from bdo_gestor_guilda.core.models.participar_guerra import ParticiparGuerra
 from bdo_gestor_guilda.usuario.models.user_avancado import UserAvancado
 
 
@@ -31,3 +34,22 @@ def pagina_inicial(request):
     context.update({'form_participa': ParticiparGuerraForm(initial={'guerra': guerra_de_hoje,
                                                                     'participante': dados_user_avancado.first()})})
     return render(request, '{0}/index.html'.format(utils.path_template_home), context)
+
+
+@login_required
+def inserir_participante_guerra(request):
+    try:
+        if request.method == 'POST':
+            form = ParticiparGuerraForm(request.POST)
+            if form.is_valid():
+                dados = form.cleaned_data
+                ParticiparGuerra(**dados).save()
+                messages.success(request, 'Sua participação foi realizada com Sucesso.')
+                return redirect(utils.url_name_home)
+            else:
+                erros_form = TextosPadroes.errors_form(form)
+                for error in erros_form:
+                    messages.warning(request, error)
+    except Exception as e:
+        messages.warning(request, TextosPadroes.erro_padrao())
+    return redirect(utils.url_name_home)

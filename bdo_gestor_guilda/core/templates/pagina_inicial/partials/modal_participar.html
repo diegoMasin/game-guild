@@ -7,7 +7,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 <h4 id="titulo-modal-reprovar" class="modal-title">Participar da Guerra</h4>
             </div>
-            <form role="form" method="post" action="">
+            <form role="form" method="post" action="{% url url_inserir_participante_guerra %}">
                 {% csrf_token %}
                 <div class="modal-body">
                     {{ form_participa.guerra }}
