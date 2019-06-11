@@ -25,6 +25,12 @@
         <a href="javascript:void(0)" class="btn btn-outline-dark btn-sm w-sm waves-effect m-t-10 waves-light"
            data-toggle="modal" data-target="#participar-guerra-modal" data-id-user-avancado="{{ user.pk }}">
             <i class="fa fa-child m-r-5"></i> <span>Participar</span></a>
+        {% if logado_participa_guerra %}
+            <span class="small p-2 text-danger">
+                Você marcou a participação nesta guerra como: <strong class="text-uppercase">
+                {{ logado_participa_guerra.participa }}</strong>. Para alterar click em <strong>Participar</strong> novamente.
+            </span>
+        {% endif %}
     {% else %}
         <h6 class="card-subtitle text-muted">Nenhuma guerra.</h6>
     {% endif %}

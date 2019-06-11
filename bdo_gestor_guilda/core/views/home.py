@@ -28,9 +28,12 @@ def pagina_inicial(request):
     anuncio_geral = AnunciosGerais.objects.last()
     anuncio_restrito = AnunciosRestritos.objects.last()
     guerra_de_hoje = Guerras.objects.filter(data_inicio=date.today()).first()
+    logado_participa_guerra = ParticiparGuerra.objects.filter(guerra=guerra_de_hoje).first()
+
     context.update({'anuncio_geral': anuncio_geral})
     context.update({'anuncio_restrito': anuncio_restrito})
     context.update({'guerra_de_hoje': guerra_de_hoje})
+    context.update({'logado_participa_guerra': logado_participa_guerra})
     context.update({'form_participa': ParticiparGuerraForm(initial={'guerra': guerra_de_hoje,
                                                                     'participante': dados_user_avancado.first()})})
     return render(request, '{0}/index.html'.format(utils.path_template_home), context)
