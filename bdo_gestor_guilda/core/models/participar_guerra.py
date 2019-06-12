@@ -24,3 +24,13 @@ class ParticiparGuerra(models.Model):
 
     def __str__(self):
         return '{}-{}-{}'.format(self.guerra, self.participante, self.participa)
+
+    def get_color_participa(self):
+        result = ''
+        if self.participa == self.PARTICIPAR_SIM:
+            result = 'text-success'
+        elif self.participa == self.PARTICIPAR_NAO:
+            result = 'text-danger'
+        elif self.participa == self.PARTICIPAR_TALVEZ:
+            result = 'text-warning'
+        return result

@@ -46,6 +46,10 @@ def inserir_participante_guerra(request):
             form = ParticiparGuerraForm(request.POST)
             if form.is_valid():
                 dados = form.cleaned_data
+                participacao = ParticiparGuerra.objects.filter(guerra=dados.get('guerra'),
+                                                               participante=dados.get('participante')).first()
+                if participacao:
+                    participacao.delete()
                 ParticiparGuerra(**dados).save()
                 messages.success(request, 'Sua participação foi realizada com Sucesso.')
                 return redirect(utils.url_name_home)

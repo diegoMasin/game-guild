@@ -1,0 +1,12 @@
+<h6 class="m-t-30">Membros Sem Grupo</h6>
+<ul class="list-inline m-b-0">
+    {% for membro in sem_grupo %}
+        <li class="list-inline-item small {{ membro.get_color_participa_guerra_hoje }}">
+            {% if membro.pk == id_user_avancado %}
+                <strong><i class="mdi mdi-chevron-double-right"></i>{{ membro }}</strong>
+            {% else %}
+                <i class="mdi mdi-chevron-double-right"></i>{{ membro }}
+            {% endif %}
+        </li>
+    {% endfor %}
+</ul>

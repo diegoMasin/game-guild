@@ -135,3 +135,15 @@ class UserAvancado(models.Model):
         if membro_user_logado:
             pt_fixa = 'Membro do(a) {}'.format(membro_user_logado.grupo)
         return pt_fixa
+
+    def get_color_participa_guerra_hoje(self):
+        from datetime import date
+        from bdo_gestor_guilda.core.models.guerras import Guerras
+        from bdo_gestor_guilda.core.models.participar_guerra import ParticiparGuerra
+        guerra_de_hoje = Guerras.objects.filter(data_inicio=date.today()).first()
+        is_participa_guerra_hoje = ParticiparGuerra.objects.filter(guerra=guerra_de_hoje, participante=self).first()
+        result = ''
+        if is_participa_guerra_hoje:
+            result = is_participa_guerra_hoje.get_color_participa()
+        return result
+

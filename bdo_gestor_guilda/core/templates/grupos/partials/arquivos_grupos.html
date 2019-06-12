@@ -20,11 +20,12 @@
                 </div>
                 <div class="portlet-body arvore-grupo">
                     <ul>
-                        <li data-jstree='{"opened":true}'>&nbsp;&nbsp;{{ grupo.lider }}
+                        <li data-jstree='{"opened":false}'>&nbsp;&nbsp;{{ grupo.lider }}
                             <ul>
                                 {% for vinculo in grupo.get_membros %}
                                     <li data-jstree='{"icon":"mdi mdi mdi-account"}'>
-                                        {{ vinculo.membro }}
+                                        <span class="{{ vinculo.membro.get_color_participa_guerra_hoje }}">
+                                            {{ vinculo.membro }}</span>
                                     </li>
                                 {% endfor %}
                             </ul>
