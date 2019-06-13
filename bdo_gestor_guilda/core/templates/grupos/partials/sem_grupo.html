@@ -1,6 +1,6 @@
 {% load staticfiles %}
 {% if sem_grupo %}
-    <h6 class="m-t-30">Membros Sem Grupo</h6>
+    <h6 class="m-t-30">Membros Sem Grupo ({{ sem_grupo.count }} Jogadores)</h6>
     <div class="row">
         {% for membro in sem_grupo %}
             <div class="col-lg-3">
