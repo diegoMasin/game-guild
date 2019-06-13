@@ -10,6 +10,7 @@ from bdo_gestor_guilda.core.helpers import utils
 from bdo_gestor_guilda.core.helpers.default_texts import TextosPadroes
 from bdo_gestor_guilda.core.models.grupos import Grupos
 from bdo_gestor_guilda.core.models.guerras import Guerras
+from bdo_gestor_guilda.core.models.participar_guerra import ParticiparGuerra
 from bdo_gestor_guilda.core.models.vinculo_grupos import VinculoGrupos
 from bdo_gestor_guilda.usuario.models.user_avancado import UserAvancado
 
@@ -24,10 +25,18 @@ def listar(request):
     sem_grupo = UserAvancado.objects.filter(ativo=True).exclude(pk__in=em_grupo).exclude(pk__in=lider_de_pt)
 
     guerra_de_hoje = Guerras.objects.filter(data_inicio=date.today()).first()
+    total_guerra_hoje = ParticiparGuerra.objects.filter(guerra=guerra_de_hoje)
+    total_sim_guerra_hoje = total_guerra_hoje.filter(participa=ParticiparGuerra.PARTICIPAR_SIM)
+    total_nao_guerra_hoje = total_guerra_hoje.filter(participa=ParticiparGuerra.PARTICIPAR_NAO)
+    total_talvez_guerra_hoje = total_guerra_hoje.filter(participa=ParticiparGuerra.PARTICIPAR_TALVEZ)
 
     context.update({'grupos': grupos})
     context.update({'sem_grupo': sem_grupo})
     context.update({'guerra_de_hoje': guerra_de_hoje})
+    context.update({'total_guerra_hoje': total_guerra_hoje.count()})
+    context.update({'total_sim_guerra_hoje': total_sim_guerra_hoje.count()})
+    context.update({'total_nao_guerra_hoje': total_nao_guerra_hoje.count()})
+    context.update({'total_talvez_guerra_hoje': total_talvez_guerra_hoje.count()})
     return render(request, '{0}/index.html'.format(utils.path_grupos), context)
 
 

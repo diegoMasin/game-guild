@@ -6,10 +6,10 @@
 {% block breadcrumb %}
     {% if guerra_de_hoje %}
         <ol class="breadcrumb float-right">
-            <li class="list-inline-item"><strong>Guerra de Hoje:</strong> </li>
-            <li class="list-inline-item"><span class="badge badge-success">SIM</span></li>
-            <li class="list-inline-item"><span class="badge badge-danger">NÃO</span></li>
-            <li class="list-inline-item"><span class="badge badge-warning">TALVEZ</span></li>
+            <li class="list-inline-item"><strong>Membros para Guerra de Hoje ({{ total_guerra_hoje }}):</strong> </li>
+            <li class="list-inline-item"><span class="badge badge-success">SIM: {{ total_sim_guerra_hoje }}</span></li>
+            <li class="list-inline-item"><span class="badge badge-danger">NÃO: {{ total_nao_guerra_hoje }} </span></li>
+            <li class="list-inline-item"><span class="badge badge-warning">TALVEZ: {{ total_talvez_guerra_hoje }}</span></li>
         </ol>
     {% endif %}
 {% endblock breadcrumb %}
