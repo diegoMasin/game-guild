@@ -1,14 +1,18 @@
+{% load staticfiles %}
 {% if sem_grupo %}
     <h6 class="m-t-30">Membros Sem Grupo</h6>
-    <ul class="list-inline m-b-0">
+    <div class="row">
         {% for membro in sem_grupo %}
-            <li class="list-inline-item small {{ membro.get_color_participa_guerra_hoje }}">
+            <div class="col-lg-3">
+            <span class="small {{ membro.get_color_participa_guerra_hoje }}">
                 {% if membro.pk == id_user_avancado %}
-                    <strong><i class="mdi mdi-chevron-double-right"></i>{{ membro }}</strong>
+                    <strong><i class="mdi mdi-chevron-double-right"></i>{{ membro }} - {{ membro.char_classe }}</strong>
                 {% else %}
-                    <i class="mdi mdi-chevron-double-right"></i>{{ membro }}
+                    <i class="mdi mdi-chevron-double-right"></i>{{ membro }} - {{ membro.char_classe }}
                 {% endif %}
-            </li>
+            </span>
+                <img src="{% static membro.get_logo_pequena %}" width="20" class="rounded-circle">
+            </div>
         {% endfor %}
-    </ul>
+    </div>
 {% endif %}
