@@ -10,6 +10,7 @@ from bdo_gestor_guilda.core.views import guerras
 
 urlpatterns = [
     url(r'^$', home.pagina_inicial, name='pagina_inicial'),
+    url(r'^inserir-participante-guerra/$', home.inserir_participante_guerra, name='inserir_participante_guerra'),
 
     url(r'^recrutas/listar/$', recrutas.listar, name='recrutas_listar'),
     url(r'^recrutas/recrutar_ativar/(?P<user_avancado_id>(\d+))/$', recrutas.recrutar_ativar,

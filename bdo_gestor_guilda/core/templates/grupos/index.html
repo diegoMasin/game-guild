@@ -3,16 +3,27 @@
 {% load staticfiles %}
 
 {% block titulo_pagina %} OXION GUILD - Black Desert SA{% endblock titulo_pagina %}
+{% block breadcrumb %}
+    {% if guerra_de_hoje %}
+        <ol class="breadcrumb float-right">
+            <li class="list-inline-item"><strong>Membros para Guerra de Hoje ({{ total_guerra_hoje }}):</strong> </li>
+            <li class="list-inline-item"><span class="badge badge-success">SIM: {{ total_sim_guerra_hoje }}</span></li>
+            <li class="list-inline-item"><span class="badge badge-danger">NÃO: {{ total_nao_guerra_hoje }} </span></li>
+            <li class="list-inline-item"><span class="badge badge-warning">TALVEZ: {{ total_talvez_guerra_hoje }}</span></li>
+        </ol>
+    {% endif %}
+{% endblock breadcrumb %}
 
 {% block content %}
-    <h5 class="card-title">Organização das Parties Fixas</h5>
+    <h5 class="card-title">Organização dos Grupos Fixos</h5>
     {% if is_lider_or_oficial %}
         <a href="{% url url_grupos_cadastrar %}" class="btn btn-dark btn-custom waves-effect w-md waves-light m-b-5">
             <i class="fa fa-plus m-r-5"></i> <span>Novo Grupo Fixo</span>
         </a>
         <a href="{% url url_vinculo_grupos_cadastrar %}" class="btn btn-dark btn-custom waves-effect w-md waves-light m-b-5">
-            <i class="fa fa-user-plus m-r-5"></i> <span>Vincular Membro</span>
+            <i class="fa fa-user-plus m-r-5"></i> <span>Vincular Membros</span>
         </a>
     {% endif %}
     {% include 'grupos/partials/arquivos_grupos.html' %}
+    {% include 'grupos/partials/sem_grupo.html' %}
 {% endblock content %}

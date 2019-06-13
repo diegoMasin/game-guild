@@ -1,5 +1,6 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.db import transaction
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect, reverse
 
@@ -89,12 +90,19 @@ def atualizar(request, guerra_id):
 
 @login_required
 def excluir(request, guerra_id):
+    from bdo_gestor_guilda.core.models.participar_guerra import ParticiparGuerra
     try:
-        guerra = Guerras.objects.get(pk=guerra_id)
-        guerra.delete()
-        messages.success(request, TextosPadroes.apagar_sucesso_a('Guerra'))
+        with transaction.atomic():
+            guerra = Guerras.objects.get(pk=guerra_id)
+            participacoes_na_guerra = ParticiparGuerra.objects.filter(guerra=guerra)
+            participacoes_na_guerra.delete()
+            guerra.delete()
+            messages.success(request, TextosPadroes.apagar_sucesso_a('Guerra'))
     except Exception as e:
         messages.error(request, TextosPadroes.erro_padrao())
+        transaction.rollback()
+    else:
+        transaction.commit()
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 

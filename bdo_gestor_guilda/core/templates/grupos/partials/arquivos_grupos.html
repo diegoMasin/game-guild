@@ -20,11 +20,24 @@
                 </div>
                 <div class="portlet-body arvore-grupo">
                     <ul>
-                        <li data-jstree='{"opened":true}'>&nbsp;&nbsp;{{ grupo.lider }}
+                        <li data-jstree='{"opened":false}'>
+                            {% if grupo.lider.pk == id_user_avancado %}
+                                <strong><span class="{{ grupo.lider.get_color_participa_guerra_hoje }}">
+                                &nbsp;&nbsp;{{ grupo.lider }}</span></strong>
+                            {% else %}
+                                <span class="{{ grupo.lider.get_color_participa_guerra_hoje }}">
+                                &nbsp;&nbsp;{{ grupo.lider }}</span>
+                            {% endif %}
                             <ul>
                                 {% for vinculo in grupo.get_membros %}
                                     <li data-jstree='{"icon":"mdi mdi mdi-account"}'>
-                                        {{ vinculo.membro }}
+                                        {% if vinculo.membro.pk == id_user_avancado %}
+                                            <strong><span class="{{ vinculo.membro.get_color_participa_guerra_hoje }}">
+                                            {{ vinculo.membro }}</span></strong>
+                                        {% else %}
+                                            <span class="{{ vinculo.membro.get_color_participa_guerra_hoje }}">
+                                            {{ vinculo.membro }}</span>
+                                        {% endif %}
                                     </li>
                                 {% endfor %}
                             </ul>
