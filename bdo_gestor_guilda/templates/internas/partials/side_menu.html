@@ -6,39 +6,39 @@
                 <li class="menu-title text-white">Menu Principal</li>
                 <li>
                     <a href="{% url url_name_home %}" class="waves-effect waves-primary"><i
-                            class="ti-home"></i><span> Página Inicial </span></a>
+                            class="fa fa-home"></i><span> Página Inicial </span></a>
                 </li>
                 {% if is_lider_or_oficial %}
                     <li>
                         <a href="{% url url_recrutas_listar %}" class="waves-effect waves-primary">
-                            <i class="ti-plus"></i><span> Recrutamento </span></a>
+                            <i class="fa fa-plus"></i><span> Recrutamento </span></a>
                     </li>
                 {% endif %}
                 <li>
                     <a href="{% url url_membros_listar %}" class="waves-effect waves-primary">
-                        <i class="ti-user"></i><span> Membros </span></a>
+                        <i class="fa fa-user"></i><span> Membros </span></a>
                 </li>
                 <li>
                     <a href="{% url url_grupos_listar %}" class="waves-effect waves-primary">
-                        <i class="ti-layout-menu-v"></i><span> Grupos </span></a>
+                        <i class="fa fa-users"></i><span> Grupos </span></a>
                 </li>
                 {% if is_lider_or_oficial %}
                     <li>
                         <a href="{% url url_guerras_listar %}" class="waves-effect waves-primary">
-                            <i class="ti-target"></i><span> Guerras </span></a>
+                            <i class="fa fa-flag"></i><span> Guerras </span></a>
                     </li>
                     <li>
                         <a href="#" class="waves-effect waves-primary">
-                            <i class="ti-money"></i><span> Payout </span></a>
+                            <i class="fa fa-spin fa-circle-o-notch"></i><span> Payout </span></a>
                     </li>
                     <li>
                         <a href="#" class="waves-effect waves-primary">
-                            <i class="ti-face-sad"></i><span> Lista Negra </span></a>
+                            <i class="fa fa-spin fa-circle-o-notch"></i><span> Lista Negra </span></a>
                     </li>
                 {% endif %}
                 <li>
                     <a href="http://oxion-guild.com/" target="_blank" class="waves-effect waves-primary">
-                        <i class="ti-link"></i><span> oxion-guild.com </span></a>
+                        <i class="fa fa-link"></i><span> oxion-guild.com </span></a>
                 </li>
             </ul>
             <div class="clearfix"></div>
