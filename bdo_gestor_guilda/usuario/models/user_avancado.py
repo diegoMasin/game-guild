@@ -147,3 +147,6 @@ class UserAvancado(models.Model):
             result = is_participa_guerra_hoje.get_color_participa()
         return result
 
+    def get_logo_pequena(self):
+        return 'v1/global/assets/images/logo_classes/{0}.png'.format(self.char_classe.nome_classe)
+

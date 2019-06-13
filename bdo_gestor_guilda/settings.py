@@ -148,3 +148,7 @@ FILE_UPLOAD_HANDLERS = (
 LOGIN_URL = '/login'
 
 ADMINS = (('Diego Masin', 'diegoifce@gmail.com'),)
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'diegoifce@gmail.com'
+EMAIL_HOST_PASSWORD = 'Dyiegoqwe123!'
