@@ -1,4 +1,4 @@
-{% load staticfiles %}
+{% load staticfiles %}{% load core_tags %}
 <div class="card-box">
     <h5 class="card-title">
         <i class="ti-announcement"></i> Anúncios Gerais
@@ -17,7 +17,8 @@
         <p class="card-text m-t-5">
             <small>
                 Última Atualização:
-                {{ anuncio_geral.usuario }}({{ anuncio_geral.usuario.get_slug_cargo }}) - {{ anuncio_geral.data_cadastro|date:'d/m/Y H:m' }}
+                {{ anuncio_geral.usuario }} - <span class="badge badge-{{ anuncio_geral.usuario.get_slug_cargo|cor_cargo }}">
+                {{ anuncio_geral.usuario.get_slug_cargo }}</span> - {{ anuncio_geral.data_cadastro|date:'d/m/Y H:m' }}
             </small>
         </p>
     {% else %}

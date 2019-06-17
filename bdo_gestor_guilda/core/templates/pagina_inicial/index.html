@@ -20,4 +20,7 @@
         </div>
     </div>
     {% include 'pagina_inicial/partials/modal_participar.html' %}
+    {% if siege_da_semana %}
+        {% include 'pagina_inicial/partials/modal_participar_siege.html' %}
+    {% endif %}
 {% endblock content %}
