@@ -57,7 +57,7 @@ class UserAvancado(models.Model):
         db_table = 'tb_user_avancado'
 
     def __str__(self):
-        return '[{0}] {1}'.format(self.nome_familia, self.nome_char_principal)
+        return '{0} ({1})'.format(self.nome_familia, self.nome_char_principal)
 
     def is_lider(self):
         return True if self.cargo == self.CARGO_LIDER_ID else False
