@@ -16,6 +16,7 @@
         <th data-hide="all">Dias de Nodewar</th>
         <th>Cargo</th>
         <th data-hide="all">Data de Atualização</th>
+        <th data-hide="all">Justificativa Inativo</th>
         <th class="footable-sortable">Ações</th>
     </tr>
     </thead>
@@ -39,6 +40,7 @@
                 <span class="badge badge-{{ user.get_slug_cargo|cor_cargo }}">{{ user.get_slug_cargo }}</span>
             </td>
             <td>{{ user.data_cadastro|date:'d/m/Y' }}</td>
+            <td><i>{{ user.justificativa_inativo }}</i></td>
             <td class="text-center" width="150">
                 <a target="_blank" href="{{ user.get_url_print }}" title="Print do GS">
                     <i class="fa fa-2x fa-photo texto-preto"></i></a>
