@@ -14,7 +14,6 @@
         <th>Siege</th>
         <th>Nodewar</th>
         <th data-hide="all">Dias de Nodewar</th>
-        <th>Cargo</th>
         <th data-hide="all">Data de Atualização</th>
         <th data-hide="all">Justificativa Inativo</th>
         <th class="footable-sortable">Ações</th>
@@ -36,9 +35,6 @@
             <td>{{ user.siege|bollean_sim_ou_nao }}</td>
             <td>{{ user.joga_nodewar|bollean_sim_ou_nao }}</td>
             <td>{{ user.get_dias_nodewar_format }}</td>
-            <td>
-                <span class="badge badge-{{ user.get_slug_cargo|cor_cargo }}">{{ user.get_slug_cargo }}</span>
-            </td>
             <td>{{ user.data_cadastro|date:'d/m/Y' }}</td>
             <td><i>{{ user.justificativa_inativo }}</i></td>
             <td class="text-center" width="150">
