@@ -256,6 +256,37 @@
             });
         });
 
+        //Botão de Ação Reativar Ex-membro
+        $('.acao-reativar-membro').click(function(event) {
+            event.preventDefault();
+            var url = $(this).data('url');
+            var titulo_model = $(this).data('model-title');
+
+            swal({
+                title: 'Você deseja Reativar ' + titulo_model + ' ?',
+                text: 'Após reativado, ' + titulo_model + ' voltará a ser Membro da Guilda.',
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#DD6B55',
+                confirmButtonText: 'Sim, Reativar!',
+                cancelButtonText: 'Não, Cancele!',
+                closeOnConfirm: false,
+                closeOnCancel: false
+            }, function (isConfirm) {
+                if (isConfirm) {
+                    swal({
+                        title: 'Reativado!',
+                        text: 'Você Reativou ' + titulo_model + '.',
+                        type: 'success'
+                    }, function(){
+                        window.location = url;
+                    });
+                } else {
+                    swal('Cancelado', 'Você não reativou ' + titulo_model + '.', 'error');
+                }
+            });
+        });
+
     },
         //init
         $.SweetAlert = new SweetAlert, $.SweetAlert.Constructor = SweetAlert

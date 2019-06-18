@@ -2,6 +2,7 @@ from django.conf.urls import url
 from bdo_gestor_guilda.core.views import home
 from bdo_gestor_guilda.core.views import recrutas
 from bdo_gestor_guilda.core.views import membros
+from bdo_gestor_guilda.core.views import lista_negra
 from bdo_gestor_guilda.core.views import grupos
 from bdo_gestor_guilda.core.views import vinculo_grupos
 from bdo_gestor_guilda.core.views import anuncios_gerais
@@ -46,5 +47,8 @@ urlpatterns = [
     url(r'^guerras/editar/(?P<guerra_id>(\d+))/$', guerras.editar, name='guerras_editar'),
     url(r'^guerras/atualizar/(?P<guerra_id>(\d+))/$', guerras.atualizar, name='guerras_atualizar'),
     url(r'^guerras/excluir/(?P<guerra_id>(\d+))/$', guerras.excluir, name='guerras_excluir'),
+
+    url(r'^lista-negra/listar/$', lista_negra.listar, name='lista_negra_listar'),
+    url(r'^lista-negra/reativar/(?P<user_avancado_id>(\d+))/$', lista_negra.reativar, name='lista_negra_reativar'),
 
 ]

@@ -61,7 +61,7 @@ def do_login(request):
 
         if user is None:
             verifica_user = User.objects.all()
-            logouse_com_usuario = verifica_user.filter(usuario=request.POST['username'])
+            logouse_com_usuario = verifica_user.filter(username=request.POST['username'])
             logouse_com_email = verifica_user.filter(email=request.POST['username'])
             if logouse_com_email:
                 username = logouse_com_email.first().username

@@ -47,12 +47,15 @@ url_guerras_inserir = 'guerras_inserir'
 url_guerras_editar = 'guerras_editar'
 url_guerras_atualizar = 'guerras_atualizar'
 url_guerras_excluir = 'guerras_excluir'
+url_lista_negra_listar = 'lista_negra_listar'
+url_lista_negra_reativar = 'lista_negra_reativar'
 # PATHS
 path_template_login = 'login'
 path_template_home = 'pagina_inicial'
 path_user_avancado = 'user_avancado'
 path_recrutas = 'recrutas'
 path_membros = 'membros'
+path_lista_negra = 'lista_negra'
 path_grupos = 'grupos'
 path_vinculo_grupos = 'vinculo_grupos'
 path_anuncios_gerais = 'anuncios_gerais'
@@ -99,6 +102,8 @@ context = {
     'url_guerras_editar': url_guerras_editar,
     'url_guerras_atualizar': url_guerras_atualizar,
     'url_guerras_excluir': url_guerras_excluir,
+    'url_lista_negra_listar': url_lista_negra_listar,
+    'url_lista_negra_reativar': url_lista_negra_reativar,
 
     'path_template_login': path_template_login,
     'path_template_home': path_template_home,
