@@ -73,6 +73,7 @@ def inativar(request):
                     messages.error(request, '{} é Membro de uma PT Fixa. Remova-o da PT!'.format(user_avancado))
                 else:
                     user_avancado.ativo = False
+                    user_avancado.cargo = UserAvancado.CARGO_NENHUM_ID
                     user_avancado.justificativa_inativo = justificativa
                     user_avancado.save()
                     user = User.objects.filter(pk=user_avancado.usuario.pk).first()

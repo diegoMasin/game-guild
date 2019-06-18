@@ -26,6 +26,7 @@ def reativar(request, user_avancado_id):
             if context.get('is_lider'):
                 user_avancado = UserAvancado.objects.filter(pk=user_avancado_id).first()
                 user_avancado.ativo = True
+                user_avancado.cargo = UserAvancado.CARGO_MEMBRO_ID
                 user_avancado.justificativa_inativo = None
                 user_avancado.save()
                 user = User.objects.filter(pk=user_avancado.usuario.pk).first()
