@@ -41,7 +41,7 @@
                 <span class="badge badge-{{ user.get_slug_cargo|cor_cargo }}">{{ user.get_slug_cargo }}</span>
             </td>
             <td>{{ user.data_cadastro|date:'d/m/Y' }}</td>
-            <td class="text-center" width="150">
+            <td class="text-center" width="200">
                 <a target="_blank" href="{{ user.get_url_print }}" title="Print do GS">
                     <i class="fa fa-2x fa-photo texto-preto"></i></a>
                 {% if is_lider %}
@@ -59,6 +59,14 @@
                         <a href="javascript:void(0)" class="sem-pointer" title="Rebaixar">
                             <i class="fa fa-2x fa-arrow-down text-muted"></i></a>
                     {%  endif %}
+                    {% if not user.usuario.pk == id_usuario %}
+                        <a class="inativar-membro" href="javascript:void(0)" title="Inativar" data-toggle="modal"
+                           data-model-title="{{ user.nome_familia }}" data-id-user-avancado="{{ user.pk }}"
+                           data-target="#inativar-membro-modal"><i class="fa fa-2x fa-ban texto-preto"></i></a>
+                    {% else %}
+                        <a href="javascript:void(0)" class="sem-pointer" title="Inativar">
+                            <i class="fa fa-2x fa-ban text-muted"></i></a>
+                    {% endif %}
                 {% endif %}
             </td>
         </tr>

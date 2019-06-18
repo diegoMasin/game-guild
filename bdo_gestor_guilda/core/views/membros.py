@@ -1,5 +1,7 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
+from django.db import transaction
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 
@@ -49,4 +51,28 @@ def rebaixar(request, user_avancado_id):
     except Exception as e:
         messages.error(request, utils.TextosPadroes.erro_padrao())
 
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+
+@login_required
+def inativar(request):
+    try:
+        with transaction.atomic():
+            context = utils.get_context(request)
+            id_user_avancado = request.POST.get('id_user_avancado')
+            justificativa = request.POST.get('justificativa_inativacao')
+            if context.get('is_lider'):
+                user_avancado = UserAvancado.objects.filter(pk=id_user_avancado).first()
+                user_avancado.ativo = False
+                user_avancado.justificativa_inativo = justificativa
+                user_avancado.save()
+                user = User.objects.filter(pk=user_avancado.usuario.pk).first()
+                user.is_active = False
+                user.save()
+                messages.success(request, 'Membro Inativado com Sucesso! Movido para a Lista Negra.')
+    except Exception as e:
+        messages.error(request, utils.TextosPadroes.erro_padrao())
+        transaction.rollback()
+    else:
+        transaction.commit()
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))

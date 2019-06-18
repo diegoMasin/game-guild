@@ -20,6 +20,7 @@ urlpatterns = [
     url(r'^membros/listar/$', membros.listar, name='membros_listar'),
     url(r'^membros/promover/(?P<user_avancado_id>(\d+))/$', membros.promover, name='membros_promover'),
     url(r'^membros/rebaixar/(?P<user_avancado_id>(\d+))/$', membros.rebaixar, name='membros_rebaixar'),
+    url(r'^membros/inativar/$', membros.inativar, name='membros_inativar'),
 
     url(r'^grupos/listar/$', grupos.listar, name='grupos_listar'),
     url(r'^grupos/cadastrar/$', grupos.cadastrar, name='grupos_cadastrar'),

@@ -25,6 +25,7 @@ url_recrutar_reprovar = 'recrutar_reprovar'
 url_membros_listar = 'membros_listar'
 url_membros_promover = 'membros_promover'
 url_membros_rebaixar = 'membros_rebaixar'
+url_membros_inativar = 'membros_inativar'
 url_grupos_listar = 'grupos_listar'
 url_grupos_cadastrar = 'grupos_cadastrar'
 url_grupos_inserir = 'grupos_inserir'
@@ -76,6 +77,7 @@ context = {
     'url_membros_listar': url_membros_listar,
     'url_membros_promover': url_membros_promover,
     'url_membros_rebaixar': url_membros_rebaixar,
+    'url_membros_inativar': url_membros_inativar,
     'url_grupos_listar': url_grupos_listar,
     'url_grupos_cadastrar': url_grupos_cadastrar,
     'url_grupos_inserir': url_grupos_inserir,
