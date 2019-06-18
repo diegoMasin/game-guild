@@ -1,4 +1,4 @@
-{% extends 'membros/layout.html' %}
+{% extends 'lista_negra/layout.html' %}
 {% load core_tags %}
 {% load staticfiles %}
 
@@ -8,10 +8,9 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="card-box">
-                <h5 class="card-title">Lista de Membros da Guilda Cadastrados e Ativados ({{ todos_usuarios.count }} Jogadores)</h5>
-                {% include 'membros/partials/tabela.html' %}
+                <h5 class="card-title">Lista de Ex-Membros da Guilda ({{ todos_usuarios_inativos.count }} Jogadores)</h5>
+                {% include 'lista_negra/partials/tabela.html' %}
             </div>
         </div>
     </div>
-    {% include 'membros/partials/modal_inativar.html' %}
 {% endblock content %}

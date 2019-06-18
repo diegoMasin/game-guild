@@ -46,6 +46,7 @@ def signup(request):
 def do_login(request):
     form = UserModelForm(request.POST or None)
     user_remember_cookie = 'userremember'
+    user_inativo = False
 
     if request.method == 'POST':
         user = authenticate(request, username=request.POST['username'], password=request.POST['password'])
@@ -59,10 +60,19 @@ def do_login(request):
                 del request.session[user_remember_cookie]
 
         if user is None:
-            userqueryset = User.objects.all().filter(email=request.POST['username'])
-            if userqueryset:
-                username = userqueryset[0].username
+            verifica_user = User.objects.all()
+            logouse_com_usuario = verifica_user.filter(username=request.POST['username'])
+            logouse_com_email = verifica_user.filter(email=request.POST['username'])
+            if logouse_com_email:
+                username = logouse_com_email.first().username
                 user = authenticate(request, username=username, password=request.POST['password'])
+
+            if logouse_com_usuario:
+                if not logouse_com_usuario.first().is_active:
+                    user_inativo = True
+            if logouse_com_email:
+                if not logouse_com_email.first().is_active:
+                    user_inativo = True
 
         if user is not None:
             login(request, user)
@@ -77,9 +87,14 @@ def do_login(request):
             messages.success(request, 'Bem Vindo à OXION GUILD!')
             return redirect(utils.url_name_home)
         else:
-            messages.warning(request, 'Usuário ou senha não existente!')
+            if user_inativo:
+                messages.error(request,
+                               'VOCÊ ERA MEMBRO, MAS FOI DESATIVADO! Procure um Oficial ou Líder se deseja voltar.')
+            else:
+                messages.warning(request, 'Usuário ou senha não existente!')
 
     form.fields['username'].initial = request.session.get(user_remember_cookie, '')
+    form.fields['username'].widget.attrs['placeholder'] = 'Usuário ou Email'
     utils.context['form'] = form
     utils.context[user_remember_cookie] = request.session.get(user_remember_cookie, False)
     return render(request, '{0}/login.html'.format(utils.path_template_login), utils.context)

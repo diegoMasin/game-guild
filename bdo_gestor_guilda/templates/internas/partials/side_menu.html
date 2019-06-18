@@ -11,12 +11,12 @@
                 {% if is_lider_or_oficial %}
                     <li>
                         <a href="{% url url_recrutas_listar %}" class="waves-effect waves-primary">
-                            <i class="fa fa-plus"></i><span> Recrutamento </span></a>
+                            <i class="fa fa-user-plus"></i><span> Recrutamento </span></a>
                     </li>
                 {% endif %}
                 <li>
                     <a href="{% url url_membros_listar %}" class="waves-effect waves-primary">
-                        <i class="fa fa-user"></i><span> Membros </span></a>
+                        <i class="fa fa-child"></i><span> Membros </span></a>
                 </li>
                 <li>
                     <a href="{% url url_grupos_listar %}" class="waves-effect waves-primary">
@@ -27,15 +27,15 @@
                         <a href="{% url url_guerras_listar %}" class="waves-effect waves-primary">
                             <i class="fa fa-flag"></i><span> Guerras </span></a>
                     </li>
-                    <li>
-                        <a href="#" class="waves-effect waves-primary">
-                            <i class="fa fa-spin fa-circle-o-notch"></i><span> Payout </span></a>
-                    </li>
-                    <li>
-                        <a href="#" class="waves-effect waves-primary">
-                            <i class="fa fa-spin fa-circle-o-notch"></i><span> Lista Negra </span></a>
-                    </li>
                 {% endif %}
+                <li>
+                    <a href="#" class="waves-effect waves-primary">
+                        <i class="fa fa-spin fa-circle-o-notch"></i><span> Payout </span></a>
+                </li>
+                <li>
+                    <a href="{% url url_lista_negra_listar %}" class="waves-effect waves-primary">
+                        <i class="fa fa-recycle"></i><span> Lista Negra </span></a>
+                </li>
                 <li>
                     <a href="http://oxion-guild.com/" target="_blank" class="waves-effect waves-primary">
                         <i class="fa fa-link"></i><span> oxion-guild.com </span></a>
