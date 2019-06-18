@@ -6,6 +6,8 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 
 from bdo_gestor_guilda.core.helpers import utils
+from bdo_gestor_guilda.core.models.grupos import Grupos
+from bdo_gestor_guilda.core.models.vinculo_grupos import VinculoGrupos
 from bdo_gestor_guilda.usuario.models.user_avancado import UserAvancado
 
 
@@ -63,13 +65,20 @@ def inativar(request):
             justificativa = request.POST.get('justificativa_inativacao')
             if context.get('is_lider'):
                 user_avancado = UserAvancado.objects.filter(pk=id_user_avancado).first()
-                user_avancado.ativo = False
-                user_avancado.justificativa_inativo = justificativa
-                user_avancado.save()
-                user = User.objects.filter(pk=user_avancado.usuario.pk).first()
-                user.is_active = False
-                user.save()
-                messages.success(request, 'Membro Inativado com Sucesso! Movido para a Lista Negra.')
+                is_user_lider_pt_fixa = Grupos.objects.filter(lider=user_avancado).first()
+                is_user_membro_pt_fixa = VinculoGrupos.objects.filter(membro=user_avancado).first()
+                if is_user_lider_pt_fixa:
+                    messages.error(request, '{} é Líder de uma PT Fixa. Remova-o da PT!'.format(user_avancado))
+                elif is_user_membro_pt_fixa:
+                    messages.error(request, '{} é Membro de uma PT Fixa. Remova-o da PT!'.format(user_avancado))
+                else:
+                    user_avancado.ativo = False
+                    user_avancado.justificativa_inativo = justificativa
+                    user_avancado.save()
+                    user = User.objects.filter(pk=user_avancado.usuario.pk).first()
+                    user.is_active = False
+                    user.save()
+                    messages.success(request, 'Membro Inativado com Sucesso! Movido para a Lista Negra.')
     except Exception as e:
         messages.error(request, utils.TextosPadroes.erro_padrao())
         transaction.rollback()

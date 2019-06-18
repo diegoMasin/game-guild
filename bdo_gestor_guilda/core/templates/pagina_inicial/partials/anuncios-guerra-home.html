@@ -2,7 +2,7 @@
 <div class="card-box">
     <h5 class="card-title"><i class="ti-target"></i> Anúncios de Guerras</h5>
     {% if guerra_de_hoje %}
-        <h6 class="card-subtitle text-danger m-t-10">
+        <h6 class="card-subtitle m-t-10">
             Guerra de Hoje: {{ guerra_de_hoje.get_slug_tipo }} ({{ guerra_de_hoje.data_inicio|date:'d/m/Y' }})</h6>
         <p class="card-text m-t-5">
             <small>
