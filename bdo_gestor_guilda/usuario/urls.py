@@ -1,6 +1,8 @@
-from django.conf.urls import url
+from django.conf.urls import url, include
+
 
 from bdo_gestor_guilda.usuario import views as usuario_view
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     url(r'^login/$', usuario_view.do_login, name='usuario_login'),
@@ -13,10 +15,10 @@ urlpatterns = [
     url(r'^editar-perfil/$', usuario_view.editar_perfil, name='usuario_editar_perfil'),
     url(r'^atualizar-perfil/(?P<user_avancado_id>(\d+))/$', usuario_view.atualizar_perfil,
         name='usuario_atualizar_perfil'),
-
-    url(r'^reset-senha/$', usuario_view.reset_senha, name='reset_senha'),
-    # url(r'^password_reset/done/$', auth_views.password_reset_done, name='password_reset_done'),
-    # url(r'^reset/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
-    #     auth_views.password_reset_confirm, name='password_reset_confirm'),
-    # url(r'^reset/done/$', auth_views.password_reset_complete, name='password_reset_complete'),
+    # Password reset
+    url(r'^password-reset/$', auth_views.password_reset, name='password_reset'),
+    url(r'^password-reset/done/$', auth_views.password_reset_done, name='password_reset_done'),
+    url(r'^password-reset/confirm/(?P<uidb64>[\w-]+)/(?P<token>[\w-]+)/$', auth_views.password_reset_confirm,
+        name='password_reset_confirm'),
+    url(r'^password-reset/complete/$', auth_views.password_reset_complete, name='password_reset_complete')
 ]
