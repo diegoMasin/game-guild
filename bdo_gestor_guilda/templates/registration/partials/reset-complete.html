@@ -1,0 +1,16 @@
+{% load staticfiles %}
+<div class="wrapper-page">
+    <div class="text-center m-r-15">
+        <a href="{% url 'usuario_login' %}" class="logo-lg"><img src="{% static 'v1/global/assets/images/OXION_black.png' %}" alt="OX"> <span></span> </a>
+    </div>
+    <form class="form-horizontal m-t-20" method="post">
+        {% csrf_token %}
+        <div class="form-group row">
+            <div class="col-12">
+                <h6>
+                    Sua senha foi redefinida com sucesso. Você pode acessar o sistema e fazer o <a class="text-success" href="{% url 'usuario_login' %}">Log in</a> agora.
+                </h6>
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,7 +1,7 @@
 {% load staticfiles %}
 <div class="wrapper-page">
-    <div class="text-center">
-        <a href="{% url url_name_login %}" class="logo-lg"><img src="{% static 'v1/global/assets/images/OXION_black.png' %}" alt="OX"> <span></span> </a>
+    <div class="text-center m-r-15">
+        <a href="{% url 'usuario_login' %}" class="logo-lg"><img src="{% static 'v1/global/assets/images/OXION_black.png' %}" alt="OX"> <span></span> </a>
     </div>
     <form class="form-horizontal m-t-20" method="post">
         {% csrf_token %}
@@ -11,18 +11,12 @@
         </div>
         <div class="form-group row">
             <div class="col-12">
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text input-group-text-custom bg-dark border-dark">
-                            <i class="mdi mdi-account text-white "></i></span>
-                    </div>
-                    {{ form.as_p }}
-                </div>
+                {{ form.as_p }}
             </div>
         </div>
         <div class="form-group text-right m-t-20">
             <div class="col-xs-12">
-                <button class="btn btn-dark btn-custom w-md waves-effect waves-light" type="submit">Entrar
+                <button class="btn btn-dark btn-custom w-md waves-effect waves-light" type="submit">Enviar
                 </button>
             </div>
         </div>
