@@ -11,5 +11,6 @@ urlpatterns = [
     url(r'^inserir-user-avancado/$', usuario_view.inserir_user_avancado, name='inserir_user_avancado'),
     url(r'^aguarde-aprovacao/$', usuario_view.aguarde_aprovacao, name='usuario_aguarde_aprovacao'),
     url(r'^editar-perfil/$', usuario_view.editar_perfil, name='usuario_editar_perfil'),
-    url(r'^atualizar-perfil/(?P<user_avancado_id>(\d+))/$', usuario_view.atualizar_perfil, name='usuario_atualizar_perfil'),
+    url(r'^atualizar-perfil/(?P<user_avancado_id>(\d+))/$', usuario_view.atualizar_perfil,
+        name='usuario_atualizar_perfil'),
 ]

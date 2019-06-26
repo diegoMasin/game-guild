@@ -186,3 +186,9 @@ def atualizar_perfil(request, user_avancado_id):
         messages.error(request, utils.TextosPadroes.erro_padrao())
         return HttpResponseRedirect(reverse(utils.url_name_home))
     return HttpResponseRedirect(reverse(utils.url_usuario_editar_perfil))
+
+
+def reset_senha(request):
+    from bdo_gestor_guilda.usuario.forms.reset_senha import ResetSenhaForm
+    utils.context['form'] = ResetSenhaForm()
+    return render(request, '{0}/index.html'.format(utils.path_recover), utils.context)
