@@ -49,4 +49,6 @@ class TipoClasseChar(models.Model):
             slug = 'Lahn'
         if self.nome_classe == 'dark_knight':
             slug = 'Cavaleira das Trevas'
+        if self.nome_classe == 'shai':
+            slug = 'Shai'
         return slug
