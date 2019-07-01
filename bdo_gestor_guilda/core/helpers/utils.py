@@ -50,6 +50,8 @@ url_guerras_atualizar = 'guerras_atualizar'
 url_guerras_excluir = 'guerras_excluir'
 url_lista_negra_listar = 'lista_negra_listar'
 url_lista_negra_reativar = 'lista_negra_reativar'
+url_frequencia_guerra_listar = 'frequencia_guerra_listar'
+url_frequencia_guerra_marcar = 'frequencia_guerra_marcar'
 # PATHS
 path_template_login = 'login'
 path_template_home = 'pagina_inicial'
@@ -107,6 +109,8 @@ context = {
     'url_guerras_excluir': url_guerras_excluir,
     'url_lista_negra_listar': url_lista_negra_listar,
     'url_lista_negra_reativar': url_lista_negra_reativar,
+    'url_frequencia_guerra_listar': url_frequencia_guerra_listar,
+    'url_frequencia_guerra_marcar': url_frequencia_guerra_marcar,
 
     'path_template_login': path_template_login,
     'path_template_home': path_template_home,

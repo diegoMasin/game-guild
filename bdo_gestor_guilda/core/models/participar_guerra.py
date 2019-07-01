@@ -34,3 +34,12 @@ class ParticiparGuerra(models.Model):
         elif self.participa == self.PARTICIPAR_TALVEZ:
             result = 'text-warning'
         return result
+
+    def get_frequencia(self):
+        result = ''
+        from bdo_gestor_guilda.core.models.frequencia_guerra import FrequenciaGuerra
+        participante = [self.participante.pk]
+        tem_freq = FrequenciaGuerra.objects.filter(guerra=self.guerra, participantes__contains=participante).count() > 0
+        if tem_freq:
+            result = 'checked'
+        return result

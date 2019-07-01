@@ -91,11 +91,14 @@ def atualizar(request, guerra_id):
 @login_required
 def excluir(request, guerra_id):
     from bdo_gestor_guilda.core.models.participar_guerra import ParticiparGuerra
+    from bdo_gestor_guilda.core.models.frequencia_guerra import FrequenciaGuerra
     try:
         with transaction.atomic():
             guerra = Guerras.objects.get(pk=guerra_id)
             participacoes_na_guerra = ParticiparGuerra.objects.filter(guerra=guerra)
             participacoes_na_guerra.delete()
+            frequencias_na_guerra = FrequenciaGuerra.objects.filter(guerra=guerra)
+            frequencias_na_guerra.delete()
             guerra.delete()
             messages.success(request, TextosPadroes.apagar_sucesso_a('Guerra'))
     except Exception as e:

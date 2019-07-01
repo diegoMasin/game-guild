@@ -1,0 +1,24 @@
+{% extends 'guerras/layout.html' %}
+{% load core_tags %}
+{% load staticfiles %}
+
+{% block titulo_pagina %} OXION GUILD - Black Desert SA{% endblock titulo_pagina %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card-box">
+                <h5 class="card-title">Marcar Frequência dos Participantes na Guerra ({{ guerra.data_inicio|date:'d/m/Y' }})</h5>
+                <form action="{% url url_frequencia_guerra_marcar guerra.pk %}" method="post">
+                    {% csrf_token %}
+                    {% if is_lider_or_oficial %}
+                        <button type="submit" class="btn btn-dark btn-custom waves-effect w-md waves-light m-b-5">
+                            <i class="fa fa-plus m-r-5"></i> <span>Salvar Frequência</span>
+                        </button>
+                    {% endif %}
+                    {% include 'guerras/partials/tabela_frequencia.html' %}
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
