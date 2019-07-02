@@ -10,6 +10,7 @@ from bdo_gestor_guilda.core.views import anuncios_restritos
 from bdo_gestor_guilda.core.views import guerras
 from bdo_gestor_guilda.core.views import frequencia_guerra
 
+
 urlpatterns = [
     url(r'^$', home.pagina_inicial, name='pagina_inicial'),
     url(r'^inserir-participante-guerra/$', home.inserir_participante_guerra, name='inserir_participante_guerra'),
@@ -53,6 +54,6 @@ urlpatterns = [
     url(r'^lista-negra/reativar/(?P<user_avancado_id>(\d+))/$', lista_negra.reativar, name='lista_negra_reativar'),
 
     url(r'^frequencia-guerra/listar/(?P<guerra_id>(\d+))/$', frequencia_guerra.listar, name='frequencia_guerra_listar'),
-    url(r'^frequencia-guerra/marcar/(?P<guerra_id>(\d+))/$', frequencia_guerra.marcar, name='frequencia_guerra_marcar'),
+    url(r'^frequencia-guerra/marcar/$', frequencia_guerra.marcar, name='frequencia_guerra_marcar'),
 
 ]

@@ -19,19 +19,44 @@ def listar(request, guerra_id):
         guerra = Guerras.objects.filter(pk=int(guerra_id)).first()
         participacoes_guerra = ParticiparGuerra.objects.filter(
             guerra__pk=int(guerra_id), participa=ParticiparGuerra.PARTICIPAR_SIM).order_by('participante__nome_familia')
+        url_marcar = reverse(utils.url_frequencia_guerra_marcar)
         context.update({'guerra': guerra})
         context.update({'participacoes_guerra': participacoes_guerra})
+        context.update({'url_marcar': url_marcar})
         return render(request, '{0}/marcar_frequencia.html'.format(utils.path_guerras), context)
     return redirect(utils.url_guerras_listar)
 
 
 @login_required
-def marcar(request, guerra_id):
+def marcar(request):
+    import json
+    from django.http import HttpResponse
+    data = {'sucesso': True}
     try:
-        if request.method == 'POST':
-            # FrequenciaGuerra(**dados).save()
-            messages.success(request, TextosPadroes.salvar_sucesso_a('Guerra'))
-            return redirect(utils.url_guerras_listar)
+        if request.method == 'GET':
+            lista_frequencia = []
+            guerra_id = int(request.GET.get('guerra'))
+            user_avancado_id = int(request.GET.get('user_avancado'))
+            tem_frequencia = FrequenciaGuerra.objects.filter(guerra=guerra_id)
+            if tem_frequencia:
+                frequencia_guerra = tem_frequencia.first()
+                ja_frequente = tem_frequencia.filter(participantes__contains=[user_avancado_id]).count() > 0
+                if ja_frequente:
+                    lista_frequencia = frequencia_guerra.participantes
+                    lista_frequencia.remove(user_avancado_id)
+                    frequencia_guerra.participantes = lista_frequencia
+                    frequencia_guerra.save()
+                else:
+                    lista_frequencia = frequencia_guerra.participantes
+                    lista_frequencia.append(user_avancado_id)
+                    frequencia_guerra.participantes = lista_frequencia
+                    frequencia_guerra.save()
+            else:
+                lista_frequencia.append(user_avancado_id)
+                guerra = Guerras.objects.filter(pk=guerra_id).first()
+                dados = {'guerra': guerra, 'participantes': lista_frequencia}
+                FrequenciaGuerra(**dados).save()
     except Exception as e:
         messages.warning(request, TextosPadroes.erro_padrao())
-    return redirect(utils.url_guerras_cadastrar)
+    dump = json.dumps(data)
+    return HttpResponse(dump, content_type='application/json')

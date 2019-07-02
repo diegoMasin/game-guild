@@ -13,11 +13,9 @@ from bdo_gestor_guilda.core.models.guerras import Guerras
 @login_required
 def listar(request):
     context = utils.get_context(request)
-    if context.get('is_lider_or_oficial'):
-        todas_guerras = Guerras.objects.all().order_by('-data_inicio')
-        context.update({'todas_guerras': todas_guerras})
-        return render(request, '{0}/index.html'.format(utils.path_guerras), context)
-    return redirect(utils.url_name_home)
+    todas_guerras = Guerras.objects.all().order_by('-data_inicio')
+    context.update({'todas_guerras': todas_guerras})
+    return render(request, '{0}/index.html'.format(utils.path_guerras), context)
 
 
 @login_required
