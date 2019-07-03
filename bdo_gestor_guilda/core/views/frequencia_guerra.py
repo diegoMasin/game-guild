@@ -15,16 +15,14 @@ from bdo_gestor_guilda.core.models.frequencia_guerra import FrequenciaGuerra
 @login_required
 def listar(request, guerra_id):
     context = utils.get_context(request)
-    if context.get('is_lider_or_oficial'):
-        guerra = Guerras.objects.filter(pk=int(guerra_id)).first()
-        participacoes_guerra = ParticiparGuerra.objects.filter(
-            guerra__pk=int(guerra_id), participa=ParticiparGuerra.PARTICIPAR_SIM).order_by('participante__nome_familia')
-        url_marcar = reverse(utils.url_frequencia_guerra_marcar)
-        context.update({'guerra': guerra})
-        context.update({'participacoes_guerra': participacoes_guerra})
-        context.update({'url_marcar': url_marcar})
-        return render(request, '{0}/marcar_frequencia.html'.format(utils.path_guerras), context)
-    return redirect(utils.url_guerras_listar)
+    guerra = Guerras.objects.filter(pk=int(guerra_id)).first()
+    participacoes_guerra = ParticiparGuerra.objects.filter(
+        guerra__pk=int(guerra_id), participa=ParticiparGuerra.PARTICIPAR_SIM).order_by('participante__nome_familia')
+    url_marcar = reverse(utils.url_frequencia_guerra_marcar)
+    context.update({'guerra': guerra})
+    context.update({'participacoes_guerra': participacoes_guerra})
+    context.update({'url_marcar': url_marcar})
+    return render(request, '{0}/marcar_frequencia.html'.format(utils.path_guerras), context)
 
 
 @login_required

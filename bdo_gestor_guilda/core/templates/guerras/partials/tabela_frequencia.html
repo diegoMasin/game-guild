@@ -20,14 +20,20 @@
     {% for p in participacoes_guerra %}
         <tr class="text-center">
             <td class="text-left">
-                <div class="checkbox checkbox-success">
-                    <i class="fa fa-spin fa-spinner check-spin" style="display: none"></i>
-                    <input id="{{ p.participante.pk }}" class="marca-freq-player" type="checkbox"
-                           data-guerra-id="{{ guerra.pk }}" value="{{ p.participante.pk }}" {{ p.get_frequencia }}>
-                    <label for="{{ p.participante.pk }}">
+                {% if is_lider_or_oficial %}
+                    <div class="checkbox checkbox-success">
+                        <i class="fa fa-spin fa-spinner check-spin" style="display: none"></i>
+                        <input id="{{ p.participante.pk }}" class="marca-freq-player" type="checkbox"
+                               data-guerra-id="{{ guerra.pk }}" value="{{ p.participante.pk }}" {{ p.get_frequencia }}>
+                        <label for="{{ p.participante.pk }}">
+                            <strong>{{ p.participante.nome_familia }}</strong>
+                        </label>
+                    </div>
+                {% else %}
+                    <div class="checkbox checkbox-success">
                         <strong>{{ p.participante.nome_familia }}</strong>
-                    </label>
-                </div>
+                    </div>
+                {% endif %}
             </td>
             <td class="text-left">{{ p.participante.nome_char_principal }}</td>
             <td>{{ p.participante.char_ap }}</td>
