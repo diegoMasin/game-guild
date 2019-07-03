@@ -9,11 +9,6 @@
         <div class="col-lg-12">
             <div class="card-box">
                 <h5 class="card-title">Marcar Frequência dos Participantes na Guerra ({{ guerra.data_inicio|date:'d/m/Y' }})</h5>
-                {% if is_lider_or_oficial %}
-                    <button type="submit" class="btn btn-dark btn-custom waves-effect w-md waves-light m-b-5">
-                        <i class="fa fa-plus m-r-5"></i> <span>Salvar Frequência</span>
-                    </button>
-                {% endif %}
                 {% include 'guerras/partials/tabela_frequencia.html' %}
             </div>
         </div>

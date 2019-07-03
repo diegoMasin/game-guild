@@ -3,6 +3,8 @@ $( document ).ready(function() {
         console.log($(this).val());
         console.log($(this).data('guerra-id'));
         console.log(URL_MARCAR);
+        var spinner = $(this).siblings('.check-spin');
+        spinner.show();
         $.ajax({
             type: 'GET',
             url: URL_MARCAR,
@@ -12,8 +14,8 @@ $( document ).ready(function() {
                 user_avancado: $(this).val(),
             },
             success: function (data) {
-                console.log('Presença de ' + data.user_avancado + 'foi marcado com sucesso.');
-            } 
+                spinner.hide();
+            }
         });
     });
 });

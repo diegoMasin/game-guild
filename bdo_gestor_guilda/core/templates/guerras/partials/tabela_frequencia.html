@@ -15,11 +15,13 @@
         <th>Cargo</th>
     </tr>
     </thead>
+    {% include 'guerras/partials/filtros_frequencia.html' %}
     <tbody>
     {% for p in participacoes_guerra %}
         <tr class="text-center">
             <td class="text-left">
                 <div class="checkbox checkbox-success">
+                    <i class="fa fa-spin fa-spinner check-spin" style="display: none"></i>
                     <input id="{{ p.participante.pk }}" class="marca-freq-player" type="checkbox"
                            data-guerra-id="{{ guerra.pk }}" value="{{ p.participante.pk }}" {{ p.get_frequencia }}>
                     <label for="{{ p.participante.pk }}">
