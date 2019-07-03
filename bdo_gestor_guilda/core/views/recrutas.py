@@ -12,11 +12,9 @@ from bdo_gestor_guilda.usuario.models.recruta_reprovado import RecrutaReprovado
 @login_required
 def listar(request):
     context = utils.get_context(request)
-    if context.get('is_lider_or_oficial'):
-        todos_usuarios = UserAvancado.objects.filter(ativo=False, justificativa_inativo=None).order_by('-data_cadastro')
-        context.update({'todos_usuarios': todos_usuarios})
-        return render(request, '{0}/index.html'.format(utils.path_recrutas), context)
-    return redirect(utils.url_name_home)
+    todos_usuarios = UserAvancado.objects.filter(ativo=False, justificativa_inativo=None).order_by('-data_cadastro')
+    context.update({'todos_usuarios': todos_usuarios})
+    return render(request, '{0}/index.html'.format(utils.path_recrutas), context)
 
 
 @login_required

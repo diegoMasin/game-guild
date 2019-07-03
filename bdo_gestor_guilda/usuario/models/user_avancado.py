@@ -39,6 +39,7 @@ class UserAvancado(models.Model):
     char_dp = models.IntegerField()
     gs = models.IntegerField()
     url_print_status = models.CharField(max_length=100)
+    url_bdo_planner = models.CharField(max_length=100, null=True, blank=True)
     siege = models.BooleanField(choices=SIM_OU_NAO, default=True)
     node_seg = models.BooleanField(default=False)
     node_ter = models.BooleanField(default=False)

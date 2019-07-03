@@ -26,11 +26,15 @@
             <td>{{ guerra.call|default_if_none:'-' }}</td>
             <td>{{ guerra.pt_fixa|yesno:'Sim,Não' }}</td>
             <td class="text-center" width="250">
-                <a href="{% url url_guerras_editar guerra.pk %}" title="Editar">
-                    <i class="fa fa-2x fa-edit texto-preto m-r-15"></i></a>
-                <a href="javascript:void(0)" data-url="{% url url_guerras_excluir guerra.pk %}"
-                   data-model-title="Guerra" class="acao-excluir" title="Excluir">
-                    <i class="fa fa-2x fa-ban texto-preto"></i></a>
+                {% if is_lider_or_oficial %}
+                    <a href="{% url url_guerras_editar guerra.pk %}" title="Editar">
+                        <i class="fa fa-2x fa-edit texto-preto m-r-15"></i></a>
+                    <a href="{% url url_frequencia_guerra_listar guerra.pk %}" title="Frequência">
+                        <i class="fa fa-2x fa-check texto-preto m-r-15"></i></a>
+                    <a href="javascript:void(0)" data-url="{% url url_guerras_excluir guerra.pk %}"
+                       data-model-title="Guerra" class="acao-excluir" title="Excluir">
+                        <i class="fa fa-2x fa-ban texto-preto"></i></a>
+                {% endif %}
             </td>
         </tr>
     {% endfor %}

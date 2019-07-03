@@ -67,14 +67,20 @@
         {{ form.gs }}
         <span class="font-13 text-muted">((PA + PA AWK)/2 + PD)</span>
     </div>
-    <div class="form-group col-md-5">
+    <div class="form-group col-md-3">
         <label class="col-form-label {{ form.url_print_status.errors|format_label_error }}">
             {{ form.url_print_status.label }}<span class="text-danger"> *</span>
         </label>
         {{ form.url_print_status }}
         <span class="font-13 text-muted">Dica: Poste um print no discord. Pegue a URL do print e copie aqui.</span>
     </div>
-    <div class="form-group col-md-4">
+    <div class="form-group col-md-3">
+        <label class="col-form-label {{ form.url_bdo_planner.errors|format_label_error }}">
+            {{ form.url_bdo_planner.label }}<span class="text-danger"> *</span>
+        </label>
+        {{ form.url_bdo_planner }}
+    </div>
+    <div class="form-group col-md-3">
         <label class="col-form-label {{ form.siege.errors|format_label_error }}">
             {{ form.siege.label }}<span class="text-danger"> *</span>
         </label>

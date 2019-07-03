@@ -42,8 +42,8 @@ class UserAvancadoEditarForm(forms.ModelForm):
     class Meta:
         model = UserAvancado
         fields = ['user_discord', 'nome_familia', 'nome_char_principal', 'char_lvl', 'char_classe', 'char_ap',
-                  'char_ap_despertada', 'char_dp', 'gs', 'url_print_status', 'siege', 'node_seg', 'node_ter',
-                  'node_qua', 'node_qui', 'node_sex', 'node_dom', 'ativo', 'cargo']
+                  'char_ap_despertada', 'char_dp', 'gs', 'url_print_status', 'url_bdo_planner', 'siege', 'node_seg',
+                  'node_ter', 'node_qua', 'node_qui', 'node_sex', 'node_dom', 'ativo', 'cargo']
         labels = {
             'user_discord': 'ID Discord',
             'nome_familia': 'Nome da Família',
@@ -55,6 +55,7 @@ class UserAvancadoEditarForm(forms.ModelForm):
             'char_dp': 'PD',
             'gs': 'GS',
             'url_print_status': 'Print da Tela Inteira do jogo com seu PA e PD',
+            'url_bdo_planner': 'URL da sua Build Atual no BDO Planner',
             'siege': 'Disponível para participar de Siege aos Sábados'
         }
         widgets = {
@@ -69,5 +70,6 @@ class UserAvancadoEditarForm(forms.ModelForm):
             'gs': forms.TextInput(attrs={'class': 'form-control font-bold text-primary', 'required': True,
                                          'type': 'number', 'readonly': True}),
             'url_print_status': forms.TextInput(attrs={'class': 'form-control', 'required': True}),
+            'url_bdo_planner': forms.TextInput(attrs={'class': 'form-control'}),
             'siege': forms.Select(attrs={'class': 'form-control', 'required': True}),
         }
