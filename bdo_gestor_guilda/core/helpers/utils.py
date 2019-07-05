@@ -135,7 +135,7 @@ def get_context(requisicao=None):
             context.update({'discord': dados_avancados.user_discord})
             context.update({'level': dados_avancados.char_lvl})
             context.update({'gs': dados_avancados.gs})
-            context.update({'cargo': dados_avancados.cargo})
+            context.update({'cargo': dados_avancados.get_slug_cargo})
             context.update({'classe': dados_avancados.char_classe})
             context.update({'is_lider_or_oficial': dados_avancados.is_lider_or_oficial()})
             context.update({'is_lider': dados_avancados.is_lider()})
