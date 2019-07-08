@@ -75,10 +75,20 @@ def inserir_participante_guerra(request):
                 dados = form.cleaned_data
                 participacao = ParticiparGuerra.objects.filter(guerra=dados.get('guerra'),
                                                                participante=dados.get('participante')).first()
-                if participacao:
-                    participacao.delete()
-                ParticiparGuerra(**dados).save()
-                messages.success(request, 'Sua participação foi realizada com Sucesso.')
+                is_guerra_de_hoje = Guerras.objects.filter(data_inicio=date.today()).first() == dados.get('guerra')
+                if is_guerra_de_hoje:
+                    if not utils.passou_das_21hr():
+                        if participacao:
+                            participacao.delete()
+                        ParticiparGuerra(**dados).save()
+                        messages.success(request, 'Sua participação foi realizada com Sucesso.')
+                    else:
+                        messages.warning(request, 'Passou do horário de Registrar a Participação na Guerra.')
+                else:
+                    if participacao:
+                        participacao.delete()
+                    ParticiparGuerra(**dados).save()
+                    messages.success(request, 'Sua participação foi realizada com Sucesso.')
                 return redirect(utils.url_name_home)
             else:
                 erros_form = TextosPadroes.errors_form(form)

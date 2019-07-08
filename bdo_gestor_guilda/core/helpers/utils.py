@@ -144,6 +144,7 @@ def get_context(requisicao=None):
 
         context.update({'nome_usuario': requisicao.user.first_name})
         context.update({'id_usuario': requisicao.user.pk})
+        context.update({'passou_das_21hr': passou_das_21hr()})
     return context
 
 
@@ -184,3 +185,10 @@ def pode_promover_ou_rebaixar(request):
     from bdo_gestor_guilda.usuario.models.user_avancado import UserAvancado
     dados_avancados = UserAvancado.objects.filter(usuario=request.user, cargo=UserAvancado.CARGO_LIDER_ID)
     return True if dados_avancados else False
+
+
+def passou_das_21hr():
+    from datetime import datetime
+    import pytz
+    agora = datetime.now(pytz.timezone('Brazil/East'))
+    return agora.hour >= 21
