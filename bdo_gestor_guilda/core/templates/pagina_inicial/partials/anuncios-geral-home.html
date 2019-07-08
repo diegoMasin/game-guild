@@ -5,10 +5,10 @@
         {% if is_lider_or_oficial %}
             {% if anuncio_geral %}
                 <a href="javascript:void(0)" data-url="{% url url_anuncios_gerais_deletar %}" class="acao-limpar-anuncio">
-                    <span class="badge badge-dark"><strong>limpar</strong></span></a>
+                    <span class="badge badge-dark"><i class="fa fa-trash text-white m-r-5"></i><strong>Limpar</strong></span></a>
             {% else %}
                 <a href="{% url url_anuncios_gerais_cadastrar %}"><span class="badge badge-dark">
-                <strong>criar anúncio</strong></span></a>
+                    <i class="fa fa-plus text-white m-r-5"></i><strong>Criar anúncio</strong></span></a>
             {% endif %}
         {% endif %}
     </h5>
