@@ -191,4 +191,4 @@ def passou_das_21hr():
     from datetime import datetime
     import pytz
     agora = datetime.now(pytz.timezone('Brazil/East'))
-    return agora.hour >= 21
+    return agora.hour >= 22
