@@ -77,7 +77,7 @@ def inserir_participante_guerra(request):
                                                                participante=dados.get('participante')).first()
                 is_guerra_de_hoje = Guerras.objects.filter(data_inicio=date.today()).first() == dados.get('guerra')
                 if is_guerra_de_hoje:
-                    if not utils.passou_das_21hr():
+                    if not utils.passou_da_hora_para_participar_guerra():
                         if participacao:
                             participacao.delete()
                         ParticiparGuerra(**dados).save()

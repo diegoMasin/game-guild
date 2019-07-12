@@ -144,7 +144,7 @@ def get_context(requisicao=None):
 
         context.update({'nome_usuario': requisicao.user.first_name})
         context.update({'id_usuario': requisicao.user.pk})
-        context.update({'passou_das_21hr': passou_das_21hr()})
+        context.update({'passou_da_hora_para_participar_guerra': passou_da_hora_para_participar_guerra()})
     return context
 
 
@@ -187,7 +187,7 @@ def pode_promover_ou_rebaixar(request):
     return True if dados_avancados else False
 
 
-def passou_das_21hr():
+def passou_da_hora_para_participar_guerra():
     from datetime import datetime
     import pytz
     agora = datetime.now(pytz.timezone('Brazil/East'))

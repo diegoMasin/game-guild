@@ -35,7 +35,7 @@
             <span class="badge badge-danger">NÃO: {{ total_nao_guerra_hoje }} </span>
             <span class="badge badge-warning">TALVEZ: {{ total_talvez_guerra_hoje }}</span>
         </p>
-        {% if not passou_das_21hr %}
+        {% if not passou_da_hora_para_participar_guerra %}
             <a href="javascript:void(0)" class="btn btn-outline-dark btn-sm w-sm waves-effect waves-light m-t-10"
                data-toggle="modal" data-target="#participar-guerra-modal" data-id-user-avancado="{{ user.pk }}">
                 <i class="fa fa-child m-r-5"></i> <span>Participar</span></a>
