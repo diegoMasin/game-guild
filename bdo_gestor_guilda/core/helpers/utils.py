@@ -135,7 +135,7 @@ def get_context(requisicao=None):
             context.update({'discord': dados_avancados.user_discord})
             context.update({'level': dados_avancados.char_lvl})
             context.update({'gs': dados_avancados.gs})
-            context.update({'cargo': dados_avancados.cargo})
+            context.update({'cargo': dados_avancados.get_slug_cargo})
             context.update({'classe': dados_avancados.char_classe})
             context.update({'is_lider_or_oficial': dados_avancados.is_lider_or_oficial()})
             context.update({'is_lider': dados_avancados.is_lider()})
@@ -144,6 +144,7 @@ def get_context(requisicao=None):
 
         context.update({'nome_usuario': requisicao.user.first_name})
         context.update({'id_usuario': requisicao.user.pk})
+        context.update({'passou_da_hora_para_participar_guerra': passou_da_hora_para_participar_guerra()})
     return context
 
 
@@ -184,3 +185,10 @@ def pode_promover_ou_rebaixar(request):
     from bdo_gestor_guilda.usuario.models.user_avancado import UserAvancado
     dados_avancados = UserAvancado.objects.filter(usuario=request.user, cargo=UserAvancado.CARGO_LIDER_ID)
     return True if dados_avancados else False
+
+
+def passou_da_hora_para_participar_guerra():
+    from datetime import datetime
+    import pytz
+    agora = datetime.now(pytz.timezone('Brazil/East'))
+    return agora.hour >= 22
