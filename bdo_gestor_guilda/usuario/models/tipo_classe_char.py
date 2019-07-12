@@ -13,8 +13,8 @@ class TipoClasseChar(models.Model):
 
     def get_slug(self):
         slug = ''
-        if self.nome_classe == 'cavaleiro':
-            slug = 'Cavaleiro'
+        if self.nome_classe == 'guerreiro':
+            slug = 'Guerreiro'
         if self.nome_classe == 'valkyria':
             slug = 'Valkyria'
         if self.nome_classe == 'berserker':
