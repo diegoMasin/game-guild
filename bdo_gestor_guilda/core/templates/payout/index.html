@@ -1,0 +1,17 @@
+{% extends 'payout/layout.html' %}
+{% load core_tags %}
+{% load staticfiles %}
+
+{% block titulo_pagina %} OXION GUILD - Black Desert SA{% endblock titulo_pagina %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card-box">
+                <h5 class="card-title">Listagem de Payouts</h5>
+                <p class="card-text">A cada semana(período) nova(o) que começar crie um Payout e escolha com cuidado o período equivalente.</p>
+                {% include 'payout/partials/tabela_payout.html' %}
+            </div>
+        </div>
+    </div>
+{% endblock content %}

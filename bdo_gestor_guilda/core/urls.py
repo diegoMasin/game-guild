@@ -9,6 +9,7 @@ from bdo_gestor_guilda.core.views import anuncios_gerais
 from bdo_gestor_guilda.core.views import anuncios_restritos
 from bdo_gestor_guilda.core.views import guerras
 from bdo_gestor_guilda.core.views import frequencia_guerra
+from bdo_gestor_guilda.core.views import payout
 
 
 urlpatterns = [
@@ -55,5 +56,8 @@ urlpatterns = [
 
     url(r'^frequencia-guerra/listar/(?P<guerra_id>(\d+))/$', frequencia_guerra.listar, name='frequencia_guerra_listar'),
     url(r'^frequencia-guerra/marcar/$', frequencia_guerra.marcar, name='frequencia_guerra_marcar'),
+
+    url(r'^payout/listar/$', payout.listar, name='payout_listar'),
+    url(r'^payout/cadastrar/$', payout.cadastrar, name='payout_cadastrar'),
 
 ]

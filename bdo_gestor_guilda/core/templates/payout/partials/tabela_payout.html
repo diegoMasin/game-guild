@@ -1,0 +1,37 @@
+{% load core_tags %}
+<table class="table foo-table-default" data-page-size="8">
+    <thead class="table-dark">
+    <tr class="text-center">
+        <th>Data Início da Semana</th>
+        <th>Data Fim da Semana</th>
+        <th class="footable-sortable">Ações</th>
+    </tr>
+    </thead>
+    {% include 'payout/partials/filtros.html' %}
+    <tbody>
+    {% for payout in payouts %}
+        <tr class="text-center">
+            <td>{{ payout.data_inicio|date:'d/m/Y' }}</td>
+            <td>{{ payout.data_fim|date:'d/m/Y' }}</td>
+            <td class="text-center" width="250">
+                <a href="{% url url_guerras_editar guerra.pk %}" title="Visualizar">
+                    <i class="fa fa-2x fa-eye texto-preto m-r-15"></i></a>
+{#                {% if is_lider_or_oficial %}#}
+{#                    <a href="javascript:void(0)" data-url="{% url url_guerras_excluir guerra.pk %}"#}
+{#                       data-model-title="Guerra" class="acao-excluir" title="Excluir">#}
+{#                        <i class="fa fa-2x fa-ban texto-preto"></i></a>#}
+{#                {% endif %}#}
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+    <tfoot>
+    <tr class="active">
+        <td colspan="14">
+            <div class="text-right">
+                <ul class="pagination hide-if-no-paging pagination-split justify-content-center footable-pagination m-t-40 m-b-0"></ul>
+            </div>
+        </td>
+    </tr>
+    </tfoot>
+</table>
