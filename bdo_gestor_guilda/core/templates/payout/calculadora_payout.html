@@ -1,0 +1,20 @@
+{% extends 'guerras/layout.html' %}
+{% load core_tags %}
+{% load staticfiles %}
+
+{% block titulo_pagina %} OXION GUILD - Black Desert SA{% endblock titulo_pagina %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card-box">
+                <h5 class="card-title">Calculadora de Payout</h5>
+                <p class="card-text">
+                    Regras de Payout: Nodewar = <span class="text-success">+ 1 Ponto</span> /
+                    Siege = <span class="text-success">+ 2 Pontos</span>.
+                    Poderão haver mais regras, consulte oficiais ou lider.</p>
+                {% include 'payout/partials/tabela_calculadora.html' %}
+            </div>
+        </div>
+    </div>
+{% endblock content %}

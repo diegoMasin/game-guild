@@ -4,14 +4,12 @@ from django.db import transaction
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect, reverse
 
-from bdo_gestor_guilda.core.forms.guerras import GuerrasForm
 from bdo_gestor_guilda.core.forms.payout import PayoutForm
 from bdo_gestor_guilda.core.helpers import utils
 from bdo_gestor_guilda.core.helpers.default_texts import TextosPadroes
-from bdo_gestor_guilda.core.models.guerras import Guerras
 from bdo_gestor_guilda.core.models.payout import Payout
-from bdo_gestor_guilda.core.models.participar_guerra import ParticiparGuerra
-from bdo_gestor_guilda.core.models.frequencia_guerra import FrequenciaGuerra
+from bdo_gestor_guilda.core.models.guerras import Guerras
+from bdo_gestor_guilda.usuario.models.user_avancado import UserAvancado
 
 
 @login_required
@@ -107,17 +105,22 @@ def excluir(request, payout_id):
         transaction.commit()
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
-# @login_required
-# def listar(request):
-#     context = utils.get_context(request)
-#     guerra = Guerras.objects.filter(pk=int(guerra_id)).first()
-#     participacoes_guerra = ParticiparGuerra.objects.filter(
-#         guerra__pk=int(guerra_id), participa=ParticiparGuerra.PARTICIPAR_SIM).order_by('participante__nome_familia')
-#     url_marcar = reverse(utils.url_frequencia_guerra_marcar)
-#     context.update({'guerra': guerra})
-#     context.update({'participacoes_guerra': participacoes_guerra})
-#     context.update({'url_marcar': url_marcar})
-#     return render(request, '{0}/marcar_frequencia.html'.format(utils.path_guerras), context)
+
+@login_required
+def listar_calculos(request, payout_id):
+    context = utils.get_context(request)
+    todos_membros_ativos = UserAvancado.objects.filter(ativo=True).order_by('cargo')
+    payout = Payout.objects.filter(pk=int(payout_id)).first()
+    total_guerras_by_payout = Guerras.objects.filter(data_inicio__range=[payout.data_inicio, payout.data_fim])
+    total_de_nodes_by_payout = total_guerras_by_payout.filter(tipo=Guerras.TIPO_NODEWAR_ID)
+    total_de_siege_by_payout = total_guerras_by_payout.filter(tipo=Guerras.TIPO_SIEGE_ID)
+    context.update({'payout': payout})
+    context.update({'todos_membros_ativos': todos_membros_ativos})
+    context.update({'total_de_nodes_by_payout': total_de_nodes_by_payout})
+    context.update({'total_de_siege_by_payout': total_de_siege_by_payout})
+    # url_marcar = reverse(utils.url_frequencia_guerra_marcar)
+    # context.update({'url_marcar': url_marcar})
+    return render(request, '{0}/calculadora_payout.html'.format(utils.path_payout), context)
 
 
 # @login_required

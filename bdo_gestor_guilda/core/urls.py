@@ -63,5 +63,6 @@ urlpatterns = [
     url(r'^payout/editar/(?P<payout_id>(\d+))/$', payout.editar, name='payout_editar'),
     url(r'^payout/atualizar/(?P<payout_id>(\d+))/$', payout.atualizar, name='payout_atualizar'),
     url(r'^payout/excluir/(?P<payout_id>(\d+))/$', payout.excluir, name='payout_excluir'),
+    url(r'^payout/listar_calculos/(?P<payout_id>(\d+))/$', payout.listar_calculos, name='payout_listar_calculos'),
 
 ]
