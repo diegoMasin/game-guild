@@ -4,8 +4,7 @@
     <tr class="text-center">
         <th>Família</th>
         <th>Char Principal</th>
-        <th>PA</th>
-        <th>PA AWK</th>
+        <th>PA/PA AWK</th>
         <th>Classe</th>
         <th>Cargo</th>
         <th>Nodes da Semana ({{ total_de_nodes_by_payout.count|default:'0' }})</th>
@@ -20,8 +19,7 @@
         <tr class="text-center">
             <td class="text-left">{{ membro.nome_familia }}</td>
             <td>{{ membro.nome_char_principal }}</td>
-            <td>{{ membro.char_ap }}</td>
-            <td>{{ membro.char_ap_despertada }}</td>
+            <td>{{ membro.char_ap }} / {{ membro.char_ap_despertada }}</td>
             <td>{{ membro.char_classe|title }}</td>
             <td>
                 <span class="badge badge-{{ membro.get_slug_cargo|cor_cargo }}">
@@ -29,8 +27,24 @@
             </td>
             <td>{% get_frequencia_tipo_guerra_by_payout membro total_de_nodes_by_payout %}</td>
             <td>{% get_frequencia_tipo_guerra_by_payout membro total_de_siege_by_payout %}</td>
-            <td></td>
-            <td></td>
+            <td>
+                <div class="row">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input id="demo0" type="text" value="0" name="demo0" data-bts-min="0" data-bts-max="100"
+                                   data-bts-init-val="" data-bts-step="1" data-bts-decimal="0" data-bts-step-interval="100"
+                                   data-bts-force-step-divisibility="round" data-bts-step-interval-delay="500" data-bts-prefix=""
+                                   data-bts-postfix="" data-bts-prefix-extra-class="" data-bts-postfix-extra-class=""
+                                   data-bts-booster="true" data-bts-boostat="10" data-bts-max-boosted-step="false"
+                                   data-bts-mousewheel="true" data-bts-button-down-class="btn btn-default"
+                                   data-bts-button-up-class="btn btn-default"/>
+                        </div>
+                    </div>
+                    <div class="col-md-3"></div>
+                </div>
+            </td>
+            <td>Tier 0</td>
         </tr>
     {% endfor %}
     </tbody>
