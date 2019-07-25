@@ -59,5 +59,9 @@ urlpatterns = [
 
     url(r'^payout/listar/$', payout.listar, name='payout_listar'),
     url(r'^payout/cadastrar/$', payout.cadastrar, name='payout_cadastrar'),
+    url(r'^payout/inserir/$', payout.inserir, name='payout_inserir'),
+    url(r'^payout/editar/(?P<payout_id>(\d+))/$', payout.editar, name='payout_editar'),
+    url(r'^payout/atualizar/(?P<payout_id>(\d+))/$', payout.atualizar, name='payout_atualizar'),
+    url(r'^payout/excluir/(?P<payout_id>(\d+))/$', payout.excluir, name='payout_excluir'),
 
 ]

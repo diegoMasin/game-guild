@@ -14,13 +14,22 @@
             <td>{{ payout.data_inicio|date:'d/m/Y' }}</td>
             <td>{{ payout.data_fim|date:'d/m/Y' }}</td>
             <td class="text-center" width="250">
-                <a href="{% url url_guerras_editar guerra.pk %}" title="Visualizar">
-                    <i class="fa fa-2x fa-eye texto-preto m-r-15"></i></a>
-{#                {% if is_lider_or_oficial %}#}
-{#                    <a href="javascript:void(0)" data-url="{% url url_guerras_excluir guerra.pk %}"#}
-{#                       data-model-title="Guerra" class="acao-excluir" title="Excluir">#}
-{#                        <i class="fa fa-2x fa-ban texto-preto"></i></a>#}
-{#                {% endif %}#}
+                <a href="" title="Cálculos">
+                    <i class="fa fa-2x fa-calculator texto-preto m-r-15"></i></a>
+                {% if payout.url_print_payout %}
+                    <a target="_blank" href="{{ payout.get_url_print_payout }}" title="Print do Payout">
+                        <i class="fa fa-2x fa-eye texto-preto m-r-15"></i></a>
+                {% else %}
+                    <a target="_blank" href="javascript:void(0)" title="Sem Print" class="sem-pointer">
+                        <i class="fa fa-2x fa-eye-slash text-muted m-r-15"></i></a>
+                {% endif %}
+                {% if is_lider %}
+                    <a href="{% url url_payout_editar payout.pk %}" title="Editar">
+                        <i class="fa fa-2x fa-edit texto-preto m-r-15"></i></a>
+                    <a href="javascript:void(0)" data-url="{% url url_payout_excluir payout.pk %}"
+                       data-model-title="Payout" class="acao-excluir" title="Excluir">
+                        <i class="fa fa-2x fa-ban texto-preto"></i></a>
+                {% endif %}
             </td>
         </tr>
     {% endfor %}

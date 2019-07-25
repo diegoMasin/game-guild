@@ -54,6 +54,10 @@ url_frequencia_guerra_listar = 'frequencia_guerra_listar'
 url_frequencia_guerra_marcar = 'frequencia_guerra_marcar'
 url_payout_listar = 'payout_listar'
 url_payout_cadastrar = 'payout_cadastrar'
+url_payout_inserir = 'payout_inserir'
+url_payout_editar = 'payout_editar'
+url_payout_atualizar = 'payout_atualizar'
+url_payout_excluir = 'payout_excluir'
 # PATHS
 path_template_login = 'login'
 path_template_home = 'pagina_inicial'
@@ -116,6 +120,10 @@ context = {
     'url_frequencia_guerra_marcar': url_frequencia_guerra_marcar,
     'url_payout_listar': url_payout_listar,
     'url_payout_cadastrar': url_payout_cadastrar,
+    'url_payout_inserir': url_payout_inserir,
+    'url_payout_editar': url_payout_editar,
+    'url_payout_atualizar': url_payout_atualizar,
+    'url_payout_excluir': url_payout_excluir,
 
     'path_template_login': path_template_login,
     'path_template_home': path_template_home,
