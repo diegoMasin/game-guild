@@ -7,9 +7,9 @@ from django.shortcuts import render, redirect, reverse
 from bdo_gestor_guilda.core.forms.payout import PayoutForm
 from bdo_gestor_guilda.core.helpers import utils
 from bdo_gestor_guilda.core.helpers.default_texts import TextosPadroes
+from bdo_gestor_guilda.core.models.guerras import Guerras
 from bdo_gestor_guilda.core.models.payout import Payout
 from bdo_gestor_guilda.core.models.payout_personalizado import PayoutPersonalizado
-from bdo_gestor_guilda.core.models.guerras import Guerras
 from bdo_gestor_guilda.usuario.models.user_avancado import UserAvancado
 
 

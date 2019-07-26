@@ -1,16 +1,16 @@
 from django.conf.urls import url
-from bdo_gestor_guilda.core.views import home
-from bdo_gestor_guilda.core.views import recrutas
-from bdo_gestor_guilda.core.views import membros
-from bdo_gestor_guilda.core.views import lista_negra
-from bdo_gestor_guilda.core.views import grupos
-from bdo_gestor_guilda.core.views import vinculo_grupos
+
 from bdo_gestor_guilda.core.views import anuncios_gerais
 from bdo_gestor_guilda.core.views import anuncios_restritos
-from bdo_gestor_guilda.core.views import guerras
 from bdo_gestor_guilda.core.views import frequencia_guerra
+from bdo_gestor_guilda.core.views import grupos
+from bdo_gestor_guilda.core.views import guerras
+from bdo_gestor_guilda.core.views import home
+from bdo_gestor_guilda.core.views import lista_negra
+from bdo_gestor_guilda.core.views import membros
 from bdo_gestor_guilda.core.views import payout
-
+from bdo_gestor_guilda.core.views import recrutas
+from bdo_gestor_guilda.core.views import vinculo_grupos
 
 urlpatterns = [
     url(r'^$', home.pagina_inicial, name='pagina_inicial'),

@@ -3,11 +3,8 @@ from django import template
 from django.utils.html import strip_tags
 
 from bdo_gestor_guilda.core.helpers.masks import Money
-from bdo_gestor_guilda.core.models.guerras import Guerras
 from bdo_gestor_guilda.core.models.frequencia_guerra import FrequenciaGuerra
-from bdo_gestor_guilda.core.models.payout import Payout
 from bdo_gestor_guilda.core.models.payout_personalizado import PayoutPersonalizado
-from bdo_gestor_guilda.usuario.models.user_avancado import UserAvancado
 
 register = template.Library()
 
