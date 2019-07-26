@@ -1,0 +1,25 @@
+{% load staticfiles %} {% load core_tags %}
+<div class="form-row">
+    <div class="form-group col-md-3">
+        <label class="col-form-label {{ form.data_inicio.errors|format_label_error }}">
+            {{ form.data_inicio.label }}<span class="text-danger"> *</span>
+        </label>
+        {{ form.data_inicio }}
+        <span class="font-13 text-muted">Primeiro Dia da Semana para o Payout</span>
+    </div>
+    <div class="col-md-3">
+        <label class="col-form-label {{ form.data_fim.errors|format_label_error }}">
+            {{ form.data_fim.label }}<span class="text-danger"> *</span>
+        </label>
+        {{ form.data_fim }}
+        <span class="font-13 text-muted">Último Dia da Semana para o Payout</span>
+    </div>
+    <div class="col-md-6">
+        <label class="col-form-label {{ form.url_print_payout.errors|format_label_error }}">
+            {{ form.url_print_payout.label }}
+        </label>
+        {{ form.url_print_payout }}
+        <span class="font-13 text-muted">
+            Depois de pago o Payout, anexe uma url de um print da tela no jogo mostrando o Tier de cada membro.</span>
+    </div>
+</div>

@@ -17,7 +17,7 @@ def listar(request, guerra_id):
     context = utils.get_context(request)
     guerra = Guerras.objects.filter(pk=int(guerra_id)).first()
     participacoes_guerra = ParticiparGuerra.objects.filter(
-        guerra__pk=int(guerra_id), participa=ParticiparGuerra.PARTICIPAR_SIM).order_by('participante__nome_familia')
+        guerra__pk=int(guerra_id)).order_by('participante__nome_familia')
     url_marcar = reverse(utils.url_frequencia_guerra_marcar)
     context.update({'guerra': guerra})
     context.update({'participacoes_guerra': participacoes_guerra})

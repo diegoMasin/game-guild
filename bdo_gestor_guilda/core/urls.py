@@ -1,15 +1,16 @@
 from django.conf.urls import url
-from bdo_gestor_guilda.core.views import home
-from bdo_gestor_guilda.core.views import recrutas
-from bdo_gestor_guilda.core.views import membros
-from bdo_gestor_guilda.core.views import lista_negra
-from bdo_gestor_guilda.core.views import grupos
-from bdo_gestor_guilda.core.views import vinculo_grupos
+
 from bdo_gestor_guilda.core.views import anuncios_gerais
 from bdo_gestor_guilda.core.views import anuncios_restritos
-from bdo_gestor_guilda.core.views import guerras
 from bdo_gestor_guilda.core.views import frequencia_guerra
-
+from bdo_gestor_guilda.core.views import grupos
+from bdo_gestor_guilda.core.views import guerras
+from bdo_gestor_guilda.core.views import home
+from bdo_gestor_guilda.core.views import lista_negra
+from bdo_gestor_guilda.core.views import membros
+from bdo_gestor_guilda.core.views import payout
+from bdo_gestor_guilda.core.views import recrutas
+from bdo_gestor_guilda.core.views import vinculo_grupos
 
 urlpatterns = [
     url(r'^$', home.pagina_inicial, name='pagina_inicial'),
@@ -55,5 +56,14 @@ urlpatterns = [
 
     url(r'^frequencia-guerra/listar/(?P<guerra_id>(\d+))/$', frequencia_guerra.listar, name='frequencia_guerra_listar'),
     url(r'^frequencia-guerra/marcar/$', frequencia_guerra.marcar, name='frequencia_guerra_marcar'),
+
+    url(r'^payout/listar/$', payout.listar, name='payout_listar'),
+    url(r'^payout/cadastrar/$', payout.cadastrar, name='payout_cadastrar'),
+    url(r'^payout/inserir/$', payout.inserir, name='payout_inserir'),
+    url(r'^payout/editar/(?P<payout_id>(\d+))/$', payout.editar, name='payout_editar'),
+    url(r'^payout/atualizar/(?P<payout_id>(\d+))/$', payout.atualizar, name='payout_atualizar'),
+    url(r'^payout/excluir/(?P<payout_id>(\d+))/$', payout.excluir, name='payout_excluir'),
+    url(r'^payout/listar_calculos/(?P<payout_id>(\d+))/$', payout.listar_calculos, name='payout_listar_calculos'),
+    url(r'^payout/adicionar-tier/$', payout.adicionar_tier, name='payout_adicionar_tier'),
 
 ]

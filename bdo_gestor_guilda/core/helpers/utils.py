@@ -52,6 +52,14 @@ url_lista_negra_listar = 'lista_negra_listar'
 url_lista_negra_reativar = 'lista_negra_reativar'
 url_frequencia_guerra_listar = 'frequencia_guerra_listar'
 url_frequencia_guerra_marcar = 'frequencia_guerra_marcar'
+url_payout_listar = 'payout_listar'
+url_payout_cadastrar = 'payout_cadastrar'
+url_payout_inserir = 'payout_inserir'
+url_payout_editar = 'payout_editar'
+url_payout_atualizar = 'payout_atualizar'
+url_payout_excluir = 'payout_excluir'
+url_payout_listar_calculos = 'payout_listar_calculos'
+url_payout_adicionar_tier = 'payout_adicionar_tier'
 # PATHS
 path_template_login = 'login'
 path_template_home = 'pagina_inicial'
@@ -65,6 +73,7 @@ path_vinculo_grupos = 'vinculo_grupos'
 path_anuncios_gerais = 'anuncios_gerais'
 path_anuncios_restritos = 'anuncios_restritos'
 path_guerras = 'guerras'
+path_payout = 'payout'
 # CONTEXT
 context = {
     'url_name_login': url_name_login,
@@ -111,6 +120,14 @@ context = {
     'url_lista_negra_reativar': url_lista_negra_reativar,
     'url_frequencia_guerra_listar': url_frequencia_guerra_listar,
     'url_frequencia_guerra_marcar': url_frequencia_guerra_marcar,
+    'url_payout_listar': url_payout_listar,
+    'url_payout_cadastrar': url_payout_cadastrar,
+    'url_payout_inserir': url_payout_inserir,
+    'url_payout_editar': url_payout_editar,
+    'url_payout_atualizar': url_payout_atualizar,
+    'url_payout_excluir': url_payout_excluir,
+    'url_payout_listar_calculos': url_payout_listar_calculos,
+    'url_payout_adicionar_tier': url_payout_adicionar_tier,
 
     'path_template_login': path_template_login,
     'path_template_home': path_template_home,

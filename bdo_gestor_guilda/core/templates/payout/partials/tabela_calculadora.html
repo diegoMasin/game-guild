@@ -1,0 +1,64 @@
+{% load core_tags %}
+<table class="table foo-table-default" data-page-size="50">
+    <thead class="table-dark">
+    <tr class="text-center">
+        <th>Família</th>
+        <th>Char Principal</th>
+        <th>PA/PA AWK</th>
+        <th>Classe</th>
+        <th>Cargo</th>
+        <th>Nodes da Semana ({{ total_de_nodes_by_payout.count|default:'0' }})</th>
+        <th>Siege da Semana ({{ total_de_siege_by_payout.count|default:'0' }})</th>
+        <th>Pontos Adicionais</th>
+        <th>Payout Tier Total</th>
+    </tr>
+    </thead>
+    {% include 'payout/partials/filtros_calculadora.html' %}
+    <tbody>
+    {% for membro in todos_membros_ativos %}
+        <tr class="text-center">
+            <td class="text-left">{{ membro.nome_familia }}</td>
+            <td>{{ membro.nome_char_principal }}</td>
+            <td>{{ membro.char_ap }} / {{ membro.char_ap_despertada }}</td>
+            <td>{{ membro.char_classe|title }}</td>
+            <td>
+                <span class="badge badge-{{ membro.get_slug_cargo|cor_cargo }}">
+                    {{ membro.get_slug_cargo }}</span>
+            </td>
+            <td>{% get_frequencia_tipo_guerra_by_payout membro total_de_nodes_by_payout %}</td>
+            <td>{% get_frequencia_tipo_guerra_by_payout membro total_de_siege_by_payout %}</td>
+            <td>
+                {% if is_lider %}
+                    <form action="{% url url_payout_adicionar_tier %}" method="post">
+                        {% csrf_token %}
+                        <div class="input-group">
+                            <input type="hidden" name="payout_id" value="{{ payout.pk }}">
+                            <input type="hidden" name="membro_id" value="{{ membro.pk }}">
+                            <input type="number" name="tier_adicional" class="form-control" value="{% get_tier_adicional_by_payout membro payout %}">
+                            <div class="input-group-append">
+                                <button class="btn btn-dark waves-effect waves-light" type="submit"><i class="fa fa-save"></i></button>
+                            </div>
+                        </div>
+                    </form>
+                {% else %}
+                    {% get_tier_adicional_by_payout membro payout %}
+                {% endif %}
+            </td>
+            <td class="total-tier">
+                <strong>
+                    {% get_total_tier_by_membro_by_payout membro total_de_nodes_by_payout total_de_siege_by_payout payout %}
+                </strong>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+    <tfoot>
+    <tr class="active">
+        <td colspan="16">
+            <div class="text-right">
+                <ul class="pagination hide-if-no-paging pagination-split justify-content-center footable-pagination m-t-40 m-b-0"></ul>
+            </div>
+        </td>
+    </tr>
+    </tfoot>
+</table>
