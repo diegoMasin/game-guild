@@ -9,10 +9,10 @@
         <th>PD</th>
         <th>GS</th>
         <th>Classe</th>
-        <th>ID Discord</th>
         <th>Level</th>
         <th>PT Fixa</th>
         <th>Cargo</th>
+        <th>Marcou</th>
     </tr>
     </thead>
     {% include 'guerras/partials/filtros_frequencia.html' %}
@@ -51,12 +51,16 @@
             <td>{{ p.participante.char_dp }}</td>
             <td>{{ p.participante.gs }}</td>
             <td>{{ p.participante.char_classe|title }}</td>
-            <td>{{ p.participante.user_discord }}</td>
             <td>{{ p.participante.char_lvl }}</td>
             <td>{{ p.participante.get_pt_fixa }}</td>
             <td>
                 <span class="badge badge-{{ p.participante.get_slug_cargo|cor_cargo }}">
                     {{ p.participante.get_slug_cargo }}</span>
+            </td>
+            <td>
+                <span class="badge badge-{{ p.participa|cor_participacao_guerra }}">
+                    {{ p.participa }}
+                </span>
             </td>
         </tr>
     {% endfor %}

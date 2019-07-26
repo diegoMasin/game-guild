@@ -54,6 +54,17 @@ def cor_cargo(value):
     return cor
 
 
+@register.filter
+def cor_participacao_guerra(value):
+    from bdo_gestor_guilda.core.models import ParticiparGuerra
+    cor = 'success'
+    if value == ParticiparGuerra.PARTICIPAR_NAO:
+        cor = 'danger'
+    if value == ParticiparGuerra.PARTICIPAR_TALVEZ:
+        cor = 'warning'
+    return cor
+
+
 @register.simple_tag
 def get_frequencia_tipo_guerra_by_payout(usuario, guerras_by_payout):
     return FrequenciaGuerra.objects.filter(guerra__pk__in=guerras_by_payout.values_list('pk', flat=True),

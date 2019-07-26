@@ -28,17 +28,21 @@
             <td>{% get_frequencia_tipo_guerra_by_payout membro total_de_nodes_by_payout %}</td>
             <td>{% get_frequencia_tipo_guerra_by_payout membro total_de_siege_by_payout %}</td>
             <td>
-                <form action="{% url url_payout_adicionar_tier %}" method="post">
-                    {% csrf_token %}
-                    <div class="input-group">
-                        <input type="hidden" name="payout_id" value="{{ payout.pk }}">
-                        <input type="hidden" name="membro_id" value="{{ membro.pk }}">
-                        <input type="number" name="tier_adicional" class="form-control" value="{% get_tier_adicional_by_payout membro payout %}">
-                        <div class="input-group-append">
-                            <button class="btn btn-dark waves-effect waves-light" type="submit"><i class="fa fa-save"></i></button>
+                {% if is_lider %}
+                    <form action="{% url url_payout_adicionar_tier %}" method="post">
+                        {% csrf_token %}
+                        <div class="input-group">
+                            <input type="hidden" name="payout_id" value="{{ payout.pk }}">
+                            <input type="hidden" name="membro_id" value="{{ membro.pk }}">
+                            <input type="number" name="tier_adicional" class="form-control" value="{% get_tier_adicional_by_payout membro payout %}">
+                            <div class="input-group-append">
+                                <button class="btn btn-dark waves-effect waves-light" type="submit"><i class="fa fa-save"></i></button>
+                            </div>
                         </div>
-                    </div>
-                </form>
+                    </form>
+                {% else %}
+                    {% get_tier_adicional_by_payout membro payout %}
+                {% endif %}
             </td>
             <td class="total-tier">
                 <strong>
