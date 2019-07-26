@@ -8,6 +8,7 @@ from bdo_gestor_guilda.core.forms.payout import PayoutForm
 from bdo_gestor_guilda.core.helpers import utils
 from bdo_gestor_guilda.core.helpers.default_texts import TextosPadroes
 from bdo_gestor_guilda.core.models.payout import Payout
+from bdo_gestor_guilda.core.models.payout_personalizado import PayoutPersonalizado
 from bdo_gestor_guilda.core.models.guerras import Guerras
 from bdo_gestor_guilda.usuario.models.user_avancado import UserAvancado
 
@@ -111,9 +112,12 @@ def listar_calculos(request, payout_id):
     context = utils.get_context(request)
     todos_membros_ativos = UserAvancado.objects.filter(ativo=True).order_by('cargo')
     payout = Payout.objects.filter(pk=int(payout_id)).first()
+
     total_guerras_by_payout = Guerras.objects.filter(data_inicio__range=[payout.data_inicio, payout.data_fim])
     total_de_nodes_by_payout = total_guerras_by_payout.filter(tipo=Guerras.TIPO_NODEWAR_ID)
     total_de_siege_by_payout = total_guerras_by_payout.filter(tipo=Guerras.TIPO_SIEGE_ID)
+    tier_adicional = PayoutPersonalizado.objects.filter(payout=payout)
+
     context.update({'payout': payout})
     context.update({'todos_membros_ativos': todos_membros_ativos})
     context.update({'total_de_nodes_by_payout': total_de_nodes_by_payout})
@@ -123,36 +127,24 @@ def listar_calculos(request, payout_id):
     return render(request, '{0}/calculadora_payout.html'.format(utils.path_payout), context)
 
 
-# @login_required
-# def marcar(request):
-#     import json
-#     from django.http import HttpResponse
-#     data = {'sucesso': True}
-#     try:
-#         if request.method == 'GET':
-#             lista_frequencia = []
-#             guerra_id = int(request.GET.get('guerra'))
-#             user_avancado_id = int(request.GET.get('user_avancado'))
-#             tem_frequencia = FrequenciaGuerra.objects.filter(guerra=guerra_id)
-#             if tem_frequencia:
-#                 frequencia_guerra = tem_frequencia.first()
-#                 ja_frequente = tem_frequencia.filter(participantes__contains=[user_avancado_id]).count() > 0
-#                 if ja_frequente:
-#                     lista_frequencia = frequencia_guerra.participantes
-#                     lista_frequencia.remove(user_avancado_id)
-#                     frequencia_guerra.participantes = lista_frequencia
-#                     frequencia_guerra.save()
-#                 else:
-#                     lista_frequencia = frequencia_guerra.participantes
-#                     lista_frequencia.append(user_avancado_id)
-#                     frequencia_guerra.participantes = lista_frequencia
-#                     frequencia_guerra.save()
-#             else:
-#                 lista_frequencia.append(user_avancado_id)
-#                 guerra = Guerras.objects.filter(pk=guerra_id).first()
-#                 dados = {'guerra': guerra, 'participantes': lista_frequencia}
-#                 FrequenciaGuerra(**dados).save()
-#     except Exception as e:
-#         messages.warning(request, TextosPadroes.erro_padrao())
-#     dump = json.dumps(data)
-#     return HttpResponse(dump, content_type='application/json')
+@login_required
+def adicionar_tier(request):
+    try:
+        payout = Payout.objects.get(pk=int(request.POST.get('payout_id')))
+        membro = UserAvancado.objects.get(pk=int(request.POST.get('membro_id')))
+        tier_adicional = int(request.POST.get('tier_adicional'))
+        tem_tier_adicional = PayoutPersonalizado.objects.filter(payout=payout, usuario=membro).first()
+        if tier_adicional < 0:
+            messages.error(request, 'Não é permitido colocar valor negativo.')
+        else:
+            if tem_tier_adicional:
+                tem_tier_adicional.tier_adicional = tier_adicional
+                tem_tier_adicional.save()
+                messages.success(request, 'Tier Adicionado com Sucesso para {}!'.format(membro.nome_familia))
+            else:
+                dados = {'payout': payout, 'usuario': membro, 'tier_adicional': tier_adicional}
+                PayoutPersonalizado(**dados).save()
+                messages.success(request, 'Tier Adicionado com Sucesso para {}!'.format(membro.nome_familia))
+    except Exception as e:
+        messages.error(request, TextosPadroes.erro_padrao())
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))

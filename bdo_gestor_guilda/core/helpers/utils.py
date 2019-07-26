@@ -59,6 +59,7 @@ url_payout_editar = 'payout_editar'
 url_payout_atualizar = 'payout_atualizar'
 url_payout_excluir = 'payout_excluir'
 url_payout_listar_calculos = 'payout_listar_calculos'
+url_payout_adicionar_tier = 'payout_adicionar_tier'
 # PATHS
 path_template_login = 'login'
 path_template_home = 'pagina_inicial'
@@ -126,6 +127,7 @@ context = {
     'url_payout_atualizar': url_payout_atualizar,
     'url_payout_excluir': url_payout_excluir,
     'url_payout_listar_calculos': url_payout_listar_calculos,
+    'url_payout_adicionar_tier': url_payout_adicionar_tier,
 
     'path_template_login': path_template_login,
     'path_template_home': path_template_home,

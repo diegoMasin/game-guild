@@ -2,6 +2,7 @@
 <table class="table foo-table-default" data-page-size="8">
     <thead class="table-dark">
     <tr class="text-center">
+        <th>#</th>
         <th>Data Início da Semana</th>
         <th>Data Fim da Semana</th>
         <th class="footable-sortable">Ações</th>
@@ -11,6 +12,7 @@
     <tbody>
     {% for payout in payouts %}
         <tr class="text-center">
+            <td>{{ forloop.counter }}</td>
             <td>{{ payout.data_inicio|date:'d/m/Y' }}</td>
             <td>{{ payout.data_fim|date:'d/m/Y' }}</td>
             <td class="text-center" width="250">

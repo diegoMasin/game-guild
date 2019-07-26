@@ -6,6 +6,7 @@ from bdo_gestor_guilda.core.helpers.masks import Money
 from bdo_gestor_guilda.core.models.guerras import Guerras
 from bdo_gestor_guilda.core.models.frequencia_guerra import FrequenciaGuerra
 from bdo_gestor_guilda.core.models.payout import Payout
+from bdo_gestor_guilda.core.models.payout_personalizado import PayoutPersonalizado
 from bdo_gestor_guilda.usuario.models.user_avancado import UserAvancado
 
 register = template.Library()
@@ -60,3 +61,23 @@ def cor_cargo(value):
 def get_frequencia_tipo_guerra_by_payout(usuario, guerras_by_payout):
     return FrequenciaGuerra.objects.filter(guerra__pk__in=guerras_by_payout.values_list('pk', flat=True),
                                            participantes__contains=[usuario.pk]).count()
+
+
+@register.simple_tag
+def get_tier_adicional_by_payout(usuario, payout):
+    result = 0
+    tem_tier_adicional = PayoutPersonalizado.objects.filter(payout=payout, usuario=usuario).first()
+    if tem_tier_adicional:
+        result = tem_tier_adicional.tier_adicional
+    return result
+
+
+@register.simple_tag
+def get_total_tier_by_membro_by_payout(usuario, nodes, siege, payout):
+    total_nodes = get_frequencia_tipo_guerra_by_payout(usuario, nodes)
+    total_siege = get_frequencia_tipo_guerra_by_payout(usuario, siege)
+    tier_adicional = get_tier_adicional_by_payout(usuario, payout)
+    calculo_tier_total = 1 + total_nodes + (2 * total_siege) + tier_adicional
+    if calculo_tier_total > 10:
+        calculo_tier_total = 10
+    return 'Tier {}'. format(calculo_tier_total)
