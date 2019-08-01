@@ -7,11 +7,13 @@ from bdo_gestor_guilda.usuario.models.tipo_classe_char import TipoClasseChar
 
 
 class UserAvancado(models.Model):
+    CARGO_HEROI_ID = 6
     CARGO_QUARTEL_MESTRE_ID = 5
     CARGO_NENHUM_ID = 4
     CARGO_MEMBRO_ID = 3
     CARGO_OFICIAL_ID = 2
     CARGO_LIDER_ID = 1
+    CARGO_HEROI_SLUG = 'Herói'
     CARGO_QUARTEL_MESTRE_SLUG = 'Quartel-mestre'
     CARGO_NENHUM_SLUG = 'Não é Membro'
     CARGO_MEMBRO_SLUG = 'Membro'
@@ -21,7 +23,8 @@ class UserAvancado(models.Model):
         (CARGO_LIDER_ID, CARGO_LIDER_SLUG),
         (CARGO_OFICIAL_ID, CARGO_OFICIAL_SLUG),
         (CARGO_QUARTEL_MESTRE_ID, CARGO_QUARTEL_MESTRE_SLUG),
-        (CARGO_MEMBRO_ID, CARGO_MEMBRO_SLUG)
+        (CARGO_MEMBRO_ID, CARGO_MEMBRO_SLUG),
+        (CARGO_HEROI_ID, CARGO_HEROI_SLUG)
     )
     SIM_OU_NAO = (
         (True, 'Sim'),
