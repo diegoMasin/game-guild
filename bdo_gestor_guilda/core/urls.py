@@ -25,6 +25,7 @@ urlpatterns = [
     url(r'^membros/promover/(?P<user_avancado_id>(\d+))/$', membros.promover, name='membros_promover'),
     url(r'^membros/rebaixar/(?P<user_avancado_id>(\d+))/$', membros.rebaixar, name='membros_rebaixar'),
     url(r'^membros/inativar/$', membros.inativar, name='membros_inativar'),
+    url(r'^membros/tornar-heroi/(?P<user_avancado_id>(\d+))/$', membros.tornar_heroi, name='membros_tornar_heroi'),
 
     url(r'^grupos/listar/$', grupos.listar, name='grupos_listar'),
     url(r'^grupos/cadastrar/$', grupos.cadastrar, name='grupos_cadastrar'),

@@ -49,8 +49,10 @@ def cor_cargo(value):
     cor = 'success'
     if value == UserAvancado.CARGO_LIDER_SLUG:
         cor = 'danger'
-    if value == UserAvancado.CARGO_OFICIAL_SLUG:
+    elif value == UserAvancado.CARGO_OFICIAL_SLUG:
         cor = 'warning'
+    elif value == UserAvancado.CARGO_HEROI_SLUG:
+        cor = 'purple'
     return cor
 
 

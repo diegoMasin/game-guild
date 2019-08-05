@@ -126,6 +126,8 @@ class UserAvancado(models.Model):
             cargo = self.CARGO_MEMBRO_SLUG
         if self.cargo == self.CARGO_OFICIAL_ID:
             cargo = self.CARGO_OFICIAL_SLUG
+        if self.cargo == self.CARGO_HEROI_ID:
+            cargo = self.CARGO_HEROI_SLUG
         return cargo
 
     def get_pt_fixa(self):

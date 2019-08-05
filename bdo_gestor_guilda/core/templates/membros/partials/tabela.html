@@ -47,8 +47,9 @@
                 <a target="_blank" href="{{ user.get_url_print }}" title="Print do GS">
                     <i class="fa fa-2x fa-photo texto-preto m-r-5"></i></a>
                 {% if is_lider %}
-                    <a target="_blank" href="{{ user.get_url_print }}" title="Tornar Herói">
-                        <i class="fa fa-2x fa-rebel texto-preto m-r-5"></i></a>
+                    <a href="javascript:void(0)" data-url="{% url url_membros_tornar_heroi user.pk %}"
+                       data-model-title="{{ user.nome_familia }}" class="acao-tornar-heroi" title="Tornar Herói">
+                        <i class="fa fa-2x fa-shield texto-preto m-r-5"></i></a>
                     {% if pode_promover_ou_rebaixar and user.pode_ser_promovido and not user.usuario.pk == id_usuario %}
                         <a href="#" data-url="{% url url_membros_promover user.pk %}" data-model-title="{{ user.nome_familia }}"
                            class="acao-promover" title="Promover"><i class="fa fa-2x fa-arrow-up texto-preto m-r-5"></i></a>

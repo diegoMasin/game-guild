@@ -14,7 +14,7 @@ from bdo_gestor_guilda.usuario.models.user_avancado import UserAvancado
 @login_required
 def listar(request):
     context = utils.get_context(request)
-    todos_usuarios = UserAvancado.objects.filter(ativo=True).order_by('cargo')
+    todos_usuarios = UserAvancado.objects.filter(ativo=True).exclude(cargo=UserAvancado.CARGO_HEROI_ID).order_by('cargo')
     context.update({'todos_usuarios': todos_usuarios})
     context.update({'pode_promover_ou_rebaixar': utils.pode_promover_ou_rebaixar(request)})
     return render(request, '{0}/index.html'.format(utils.path_membros), context)
@@ -85,4 +85,20 @@ def inativar(request):
         transaction.rollback()
     else:
         transaction.commit()
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+
+def tornar_heroi(request, user_avancado_id):
+    try:
+        context = utils.get_context(request)
+        user = UserAvancado.objects.filter(pk=user_avancado_id).first()
+        if user and context.get('is_lider'):
+            if user.cargo == UserAvancado.CARGO_MEMBRO_ID:
+                user.cargo = UserAvancado.CARGO_HEROI_ID
+                user.save()
+                messages.success(request, '{0} agora é um Herói da Guilda!'.format(user))
+            else:
+                messages.warning(request, 'Você deve rebaixe {} a Membro primeiramente'.format(user))
+    except Exception as e:
+        messages.error(request, utils.TextosPadroes.erro_padrao())
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))

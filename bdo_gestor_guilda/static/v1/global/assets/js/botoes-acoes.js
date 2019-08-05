@@ -287,6 +287,37 @@
             });
         });
 
+        //Botão de Ação Tornar Heroi
+        $('.acao-tornar-heroi').click(function(event) {
+            event.preventDefault();
+            var url = $(this).data('url');
+            var titulo_model = $(this).data('model-title');
+
+            swal({
+                title: 'Você deseja Tornar ' + titulo_model + ' um Herói?',
+                text: 'Após esta ação, ' + titulo_model + ' será um Herói da Guilda.',
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#DD6B55',
+                confirmButtonText: 'Sim, Tornar Herói!',
+                cancelButtonText: 'Não, Cancele!',
+                closeOnConfirm: false,
+                closeOnCancel: false
+            }, function (isConfirm) {
+                if (isConfirm) {
+                    swal({
+                        title: 'É um Herói!',
+                        text: 'Você tornou ' + titulo_model + ' um Herói.',
+                        type: 'success'
+                    }, function(){
+                        window.location = url;
+                    });
+                } else {
+                    swal('Cancelado', 'Você não tornou ' + titulo_model + ' um Herói.', 'error');
+                }
+            });
+        });
+
     },
         //init
         $.SweetAlert = new SweetAlert, $.SweetAlert.Constructor = SweetAlert
