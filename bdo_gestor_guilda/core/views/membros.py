@@ -102,3 +102,25 @@ def tornar_heroi(request, user_avancado_id):
     except Exception as e:
         messages.error(request, utils.TextosPadroes.erro_padrao())
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+
+@login_required
+def listar_herois(request):
+    context = utils.get_context(request)
+    todos_usuarios = UserAvancado.objects.filter(ativo=True, cargo=UserAvancado.CARGO_HEROI_ID).order_by('cargo')
+    context.update({'todos_usuarios': todos_usuarios})
+    return render(request, '{0}/index.html'.format(utils.path_herois), context)
+
+
+@login_required
+def tornar_membro(request, user_avancado_id):
+    try:
+        context = utils.get_context(request)
+        user = UserAvancado.objects.filter(pk=user_avancado_id).first()
+        if user and context.get('is_lider'):
+            user.cargo = UserAvancado.CARGO_MEMBRO_ID
+            user.save()
+            messages.success(request, '{0} agora é um Membro da Guilda!'.format(user))
+    except Exception as e:
+        messages.error(request, utils.TextosPadroes.erro_padrao())
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))

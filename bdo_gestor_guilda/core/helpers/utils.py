@@ -28,6 +28,8 @@ url_membros_promover = 'membros_promover'
 url_membros_rebaixar = 'membros_rebaixar'
 url_membros_inativar = 'membros_inativar'
 url_membros_tornar_heroi = 'membros_tornar_heroi'
+url_herois_tornar_membro = 'herois_tornar_membro'
+url_herois_listar = 'herois_listar'
 url_grupos_listar = 'grupos_listar'
 url_grupos_cadastrar = 'grupos_cadastrar'
 url_grupos_inserir = 'grupos_inserir'
@@ -68,6 +70,7 @@ path_user_avancado = 'user_avancado'
 path_recover = 'recover'
 path_recrutas = 'recrutas'
 path_membros = 'membros'
+path_herois = 'herois'
 path_lista_negra = 'lista_negra'
 path_grupos = 'grupos'
 path_vinculo_grupos = 'vinculo_grupos'
@@ -97,6 +100,8 @@ context = {
     'url_membros_rebaixar': url_membros_rebaixar,
     'url_membros_inativar': url_membros_inativar,
     'url_membros_tornar_heroi': url_membros_tornar_heroi,
+    'url_herois_listar': url_herois_listar,
+    'url_herois_tornar_membro': url_herois_tornar_membro,
     'url_grupos_listar': url_grupos_listar,
     'url_grupos_cadastrar': url_grupos_cadastrar,
     'url_grupos_inserir': url_grupos_inserir,

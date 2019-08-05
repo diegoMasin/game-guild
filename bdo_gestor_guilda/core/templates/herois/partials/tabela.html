@@ -21,7 +21,7 @@
         <th class="footable-sortable">Ações</th>
     </tr>
     </thead>
-    {% include 'recrutas/partials/filtros.html' %}
+    {% include 'herois/partials/filtros.html' %}
     <tbody>
     {% for user in todos_usuarios %}
         <tr class="text-center">
@@ -47,27 +47,13 @@
                 <a target="_blank" href="{{ user.get_url_print }}" title="Print do GS">
                     <i class="fa fa-2x fa-photo texto-preto m-r-5"></i></a>
                 {% if is_lider %}
-                    <a href="javascript:void(0)" data-url="{% url url_membros_tornar_heroi user.pk %}"
-                       data-model-title="{{ user.nome_familia }}" class="acao-tornar-heroi" title="Tornar Herói">
-                        <i class="fa fa-2x fa-shield texto-preto m-r-5"></i></a>
-                    {% if pode_promover_ou_rebaixar and user.pode_ser_promovido and not user.usuario.pk == id_usuario %}
-                        <a href="#" data-url="{% url url_membros_promover user.pk %}" data-model-title="{{ user.nome_familia }}"
-                           class="acao-promover" title="Promover"><i class="fa fa-2x fa-arrow-up texto-preto m-r-5"></i></a>
-                    {% else %}
-                        <a href="javascript:void(0)" class="sem-pointer" title="Promover"><i class="fa fa-2x fa-arrow-up text-muted m-r-5"></i></a>
-                    {%  endif %}
-
-                    {% if pode_promover_ou_rebaixar and user.pode_ser_rebaixado and not user.usuario.pk == id_usuario %}
-                        <a href="#" data-url="{% url url_membros_rebaixar user.pk %}" data-model-title="{{ user.nome_familia }}"
-                           class="acao-rebaixar" title="Rebaixar"><i class="fa fa-2x fa-arrow-down texto-preto m-r-5"></i></a>
-                    {% else %}
-                        <a href="javascript:void(0)" class="sem-pointer" title="Rebaixar">
-                            <i class="fa fa-2x fa-arrow-down text-muted m-r-5"></i></a>
-                    {%  endif %}
+                    <a href="javascript:void(0)" data-url="{% url url_herois_tornar_membro user.pk %}"
+                       data-model-title="{{ user.nome_familia }}" class="acao-tornar-membro" title="Tornar Herói">
+                        <i class="fa fa-2x fa-child texto-preto m-r-5"></i></a>
                     {% if not user.usuario.pk == id_usuario %}
-                        <a class="inativar-membro" href="javascript:void(0)" title="Inativar" data-toggle="modal"
+                        <a class="inativar-heroi" href="javascript:void(0)" title="Inativar" data-toggle="modal"
                            data-model-title="{{ user.nome_familia }}" data-id-user-avancado="{{ user.pk }}"
-                           data-target="#inativar-membro-modal"><i class="fa fa-2x fa-ban texto-preto"></i></a>
+                           data-target="#inativar-heroi-modal"><i class="fa fa-2x fa-ban texto-preto"></i></a>
                     {% else %}
                         <a href="javascript:void(0)" class="sem-pointer" title="Inativar">
                             <i class="fa fa-2x fa-ban text-muted"></i></a>

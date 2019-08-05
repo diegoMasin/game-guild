@@ -306,7 +306,7 @@
             }, function (isConfirm) {
                 if (isConfirm) {
                     swal({
-                        title: 'É um Herói!',
+                        title: 'Agora é um Herói!',
                         text: 'Você tornou ' + titulo_model + ' um Herói.',
                         type: 'success'
                     }, function(){
@@ -314,6 +314,37 @@
                     });
                 } else {
                     swal('Cancelado', 'Você não tornou ' + titulo_model + ' um Herói.', 'error');
+                }
+            });
+        });
+
+        //Botão de Ação Tornar Membro
+        $('.acao-tornar-membro').click(function(event) {
+            event.preventDefault();
+            var url = $(this).data('url');
+            var titulo_model = $(this).data('model-title');
+
+            swal({
+                title: 'Você deseja Tornar ' + titulo_model + ' um Membro?',
+                text: 'Após esta ação, ' + titulo_model + ' será um Membro da Guilda.',
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#DD6B55',
+                confirmButtonText: 'Sim, Tornar Membro!',
+                cancelButtonText: 'Não, Cancele!',
+                closeOnConfirm: false,
+                closeOnCancel: false
+            }, function (isConfirm) {
+                if (isConfirm) {
+                    swal({
+                        title: 'Agora é um Membro!',
+                        text: 'Você tornou ' + titulo_model + ' um Membro.',
+                        type: 'success'
+                    }, function(){
+                        window.location = url;
+                    });
+                } else {
+                    swal('Cancelado', 'Você não tornou ' + titulo_model + ' um Membro.', 'error');
                 }
             });
         });
