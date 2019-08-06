@@ -37,14 +37,17 @@
             <td>{{ user.get_dias_nodewar_format }}</td>
             <td>{{ user.data_cadastro|date:'d/m/Y' }}</td>
             <td><i>{{ user.justificativa_inativo }}</i></td>
-            <td class="text-center" width="150">
+            <td class="text-center" width="180">
                 <a target="_blank" href="{{ user.get_url_print }}" title="Print do GS">
                     <i class="fa fa-2x fa-photo texto-preto"></i></a>
                 {% if is_lider %}
                     {% if not user.usuario.pk == id_usuario %}
                         <a href="javascript:void(0)" data-url="{% url url_lista_negra_reativar user.pk %}"
-                           data-model-title="{{ user.nome_familia }}" class="acao-reativar-membro m-l-10" title="Reativar">
+                           data-model-title="{{ user.nome_familia }}" class="acao-reativar-membro m-l-10" title="Reativar como Membro">
                             <i class="fa fa-2x fa-handshake-o texto-preto"></i></a>
+                        <a href="javascript:void(0)" data-url="{% url url_lista_negra_reativar_heroi user.pk %}"
+                           data-model-title="{{ user.nome_familia }}" class="acao-reativar-heroi m-l-10" title="Reativar como Herói">
+                            <i class="fa fa-2x fa-handshake-o text-purple"></i></a>
                     {% endif %}
                 {% endif %}
             </td>

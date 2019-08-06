@@ -56,6 +56,8 @@ urlpatterns = [
 
     url(r'^lista-negra/listar/$', lista_negra.listar, name='lista_negra_listar'),
     url(r'^lista-negra/reativar/(?P<user_avancado_id>(\d+))/$', lista_negra.reativar, name='lista_negra_reativar'),
+    url(r'^lista-negra/reativar-heroi/(?P<user_avancado_id>(\d+))/$', lista_negra.reativar_heroi,
+        name='lista_negra_reativar_heroi'),
 
     url(r'^frequencia-guerra/listar/(?P<guerra_id>(\d+))/$', frequencia_guerra.listar, name='frequencia_guerra_listar'),
     url(r'^frequencia-guerra/marcar/$', frequencia_guerra.marcar, name='frequencia_guerra_marcar'),

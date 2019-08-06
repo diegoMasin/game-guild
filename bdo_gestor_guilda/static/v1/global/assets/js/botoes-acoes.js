@@ -287,6 +287,37 @@
             });
         });
 
+        //Botão de Ação Reativar Ex-heroi
+        $('.acao-reativar-heroi').click(function(event) {
+            event.preventDefault();
+            var url = $(this).data('url');
+            var titulo_model = $(this).data('model-title');
+
+            swal({
+                title: 'Você deseja Reativar ' + titulo_model + ' como Herói?',
+                text: 'Após reativado, ' + titulo_model + ' voltará a ser Herói da Guilda.',
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#DD6B55',
+                confirmButtonText: 'Sim, Reativar Herói!',
+                cancelButtonText: 'Não, Cancele!',
+                closeOnConfirm: false,
+                closeOnCancel: false
+            }, function (isConfirm) {
+                if (isConfirm) {
+                    swal({
+                        title: 'Herói Reativado!',
+                        text: 'Você Reativou ' + titulo_model + ' como Herói.',
+                        type: 'success'
+                    }, function(){
+                        window.location = url;
+                    });
+                } else {
+                    swal('Cancelado', 'Você não reativou ' + titulo_model + '.', 'error');
+                }
+            });
+        });
+
         //Botão de Ação Tornar Heroi
         $('.acao-tornar-heroi').click(function(event) {
             event.preventDefault();
