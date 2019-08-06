@@ -8,10 +8,12 @@
                     <a href="{% url url_name_home %}" class="waves-effect waves-primary"><i
                             class="fa fa-home"></i><span> Página Inicial </span></a>
                 </li>
-                <li>
-                    <a href="{% url url_recrutas_listar %}" class="waves-effect waves-primary">
-                        <i class="fa fa-user-plus"></i><span> Recrutamento </span></a>
-                </li>
+                {% if not is_heroi %}
+                    <li>
+                        <a href="{% url url_recrutas_listar %}" class="waves-effect waves-primary">
+                            <i class="fa fa-user-plus"></i><span> Recrutamento </span></a>
+                    </li>
+                {% endif %}
                 <li>
                     <a href="{% url url_membros_listar %}" class="waves-effect waves-primary">
                         <i class="fa fa-child"></i><span> Membros </span></a>
@@ -24,18 +26,21 @@
                     <a href="{% url url_grupos_listar %}" class="waves-effect waves-primary">
                         <i class="fa fa-users"></i><span> Grupos </span></a>
                 </li>
-                <li>
-                    <a href="{% url url_guerras_listar %}" class="waves-effect waves-primary">
-                        <i class="fa fa-flag"></i><span> Guerras </span></a>
-                </li>
-                <li>
-                    <a href="{% url url_payout_listar %}" class="waves-effect waves-primary">
-                        <i class="fa fa-dollar"></i><span> Payout </span></a>
-                </li>
-                <li>
-                    <a href="{% url url_lista_negra_listar %}" class="waves-effect waves-primary">
-                        <i class="fa fa-recycle"></i><span> Lista Negra </span></a>
-                </li>
+                {% if not is_heroi %}
+                    <li>
+                        <a href="{% url url_guerras_listar %}" class="waves-effect waves-primary">
+                            <i class="fa fa-flag"></i><span> Guerras </span></a>
+                    </li>
+
+                    <li>
+                        <a href="{% url url_payout_listar %}" class="waves-effect waves-primary">
+                            <i class="fa fa-dollar"></i><span> Payout </span></a>
+                    </li>
+                    <li>
+                        <a href="{% url url_lista_negra_listar %}" class="waves-effect waves-primary">
+                            <i class="fa fa-recycle"></i><span> Lista Negra </span></a>
+                    </li>
+                {% endif %}
                 <li>
                     <a href="http://oxion-guild.com/" target="_blank" class="waves-effect waves-primary">
                         <i class="fa fa-link"></i><span> oxion-guild.com </span></a>

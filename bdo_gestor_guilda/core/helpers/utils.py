@@ -165,6 +165,7 @@ def get_context(requisicao=None):
             context.update({'classe': dados_avancados.char_classe})
             context.update({'is_lider_or_oficial': dados_avancados.is_lider_or_oficial()})
             context.update({'is_lider': dados_avancados.is_lider()})
+            context.update({'is_heroi': dados_avancados.is_heroi()})
 
             context.update({'pt_fixa': dados_avancados.get_pt_fixa()})
 

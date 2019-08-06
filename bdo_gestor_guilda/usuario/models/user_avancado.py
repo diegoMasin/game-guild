@@ -64,13 +64,16 @@ class UserAvancado(models.Model):
         return '{0} ({1})'.format(self.nome_familia, self.nome_char_principal)
 
     def is_lider(self):
-        return True if self.cargo == self.CARGO_LIDER_ID else False
+        return self.cargo == self.CARGO_LIDER_ID
 
     def is_oficial(self):
-        return True if self.cargo == self.CARGO_OFICIAL_ID else False
+        return self.cargo == self.CARGO_OFICIAL_ID
 
     def is_lider_or_oficial(self):
-        return True if self.cargo == self.CARGO_OFICIAL_ID or self.cargo == self.CARGO_LIDER_ID else False
+        return self.cargo == self.CARGO_OFICIAL_ID or self.cargo == self.CARGO_LIDER_ID
+
+    def is_heroi(self):
+        return self.cargo == self.CARGO_HEROI_ID
 
     def get_dias_nodewar(self):
         dias = []
