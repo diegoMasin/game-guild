@@ -1,0 +1,22 @@
+{% load staticfiles %}
+{% if sem_grupo_herois %}
+    <h6 class="m-t-30">Heróis Sem Grupo ({{ sem_grupo_herois.count }} Jogadores)</h6>
+    <div class="row">
+        {% for membro in sem_grupo_herois %}
+            <div class="col-lg-3">
+            <span class="small {{ membro.get_color_participa_guerra_hoje }}">
+                {% if membro.pk == id_user_avancado %}
+                    <strong><i class="mdi mdi-chevron-double-right"></i>
+                        <i class="fa fa-shield text-purple" title="Herói"></i>
+                        {{ membro }} - {{ membro.char_classe }}</strong>
+                {% else %}
+                    <i class="mdi mdi-chevron-double-right"></i>
+                    <i class="fa fa-shield text-purple" title="Herói"></i>
+                    {{ membro }} - {{ membro.char_classe }}
+                {% endif %}
+            </span>
+                <img src="{% static membro.get_logo_pequena %}" width="20" class="rounded-circle">
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}

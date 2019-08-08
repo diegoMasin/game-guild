@@ -78,7 +78,38 @@
 
             swal({
                 title: 'Você deseja Recrutar/Ativar?',
-                text: 'Após ativado, ' + titulo_model + ' pertencerá a Guilda OXION.',
+                text: 'Após ativado, ' + titulo_model + ' pertencerá a Guilda.',
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#DD6B55',
+                confirmButtonText: 'Sim, Recrutar/Ativar!',
+                cancelButtonText: 'Não, Cancele!',
+                closeOnConfirm: false,
+                closeOnCancel: false
+            }, function (isConfirm) {
+                if (isConfirm) {
+                    swal({
+                        title: 'Ativado!',
+                        text: 'Você Ativou ' + titulo_model + ' como Herói.',
+                        type: 'success'
+                    }, function(){
+                        window.location = url;
+                    });
+                } else {
+                    swal('Cancelada', 'Você não ativou ' + titulo_model + '.', 'error');
+                }
+            });
+        });
+
+        //Botão de Ação Ativar Herói
+        $('.acao-ativar-heroi').click(function(event) {
+            event.preventDefault();
+            var url = $(this).data('url');
+            var titulo_model = $(this).data('model-title');
+
+            swal({
+                title: 'Você deseja Recrutar/Ativar este Herói?',
+                text: 'Após ativado, ' + titulo_model + ' será Herói da Guilda.',
                 type: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#DD6B55',

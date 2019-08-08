@@ -48,7 +48,7 @@
                     <i class="fa fa-2x fa-photo texto-preto m-r-5"></i></a>
                 {% if is_lider %}
                     <a href="javascript:void(0)" data-url="{% url url_herois_tornar_membro user.pk %}"
-                       data-model-title="{{ user.nome_familia }}" class="acao-tornar-membro" title="Tornar Herói">
+                       data-model-title="{{ user.nome_familia }}" class="acao-tornar-membro" title="Tornar Membro">
                         <i class="fa fa-2x fa-child texto-preto m-r-5"></i></a>
                     {% if not user.usuario.pk == id_usuario %}
                         <a class="inativar-heroi" href="javascript:void(0)" title="Inativar" data-toggle="modal"

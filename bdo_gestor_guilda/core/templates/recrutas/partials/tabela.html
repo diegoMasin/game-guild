@@ -13,6 +13,7 @@
         <th data-hide="all">Level</th>
         <th>Siege</th>
         <th>Nodewar</th>
+        <th>Candidato à</th>
         <th data-hide="all">Dias de Nodewar</th>
         <th data-hide="all">Data de Cadastro</th>
         <th class="footable-sortable">Ações</th>
@@ -33,6 +34,7 @@
             <td>{{ user.char_lvl }}</td>
             <td>{{ user.siege|bollean_sim_ou_nao }}</td>
             <td>{{ user.joga_nodewar|bollean_sim_ou_nao }}</td>
+            <td>{{ user.get_slug_candidato }}</td>
             <td>{{ user.get_dias_nodewar_format }}</td>
             <td>{{ user.data_cadastro|date:'d/m/Y' }}</td>
             <td class="text-center" width="250">
@@ -43,6 +45,10 @@
                     <a href="javascript:void(0)" data-url="{% url url_recrutas_recrutar_ativar user.pk %}"
                        data-model-title="{{ user.nome_familia }}" class="acao-ativar" title="Recrutar/Ativar">
                         <i class="fa fa-2x fa-user-plus texto-preto"></i></a>
+                    &nbsp;&nbsp;
+                    <a href="javascript:void(0)" data-url="{% url url_recrutas_recrutar_ativar_heroi user.pk %}"
+                       data-model-title="{{ user.nome_familia }}" class="acao-ativar-heroi" title="Recrutar/Ativar Herói">
+                        <i class="fa fa-2x fa-user-plus text-purple"></i></a>
                     &nbsp;&nbsp;
                     <a class="reprovar-recruta" href="javascript:void(0)" title="Reprovar" data-toggle="modal"
                        data-model-title="{{ user.nome_familia }}" data-id-user-avancado="{{ user.pk }}"

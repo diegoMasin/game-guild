@@ -72,6 +72,7 @@ def inativar(request):
                 elif is_user_membro_pt_fixa:
                     messages.error(request, '{} é Membro de uma PT Fixa. Remova-o da PT!'.format(user_avancado))
                 else:
+                    nome_cargo = user_avancado.get_slug_cargo()
                     user_avancado.ativo = False
                     user_avancado.cargo = UserAvancado.CARGO_NENHUM_ID
                     user_avancado.justificativa_inativo = justificativa
@@ -79,7 +80,7 @@ def inativar(request):
                     user = User.objects.filter(pk=user_avancado.usuario.pk).first()
                     user.is_active = False
                     user.save()
-                    messages.success(request, 'Membro Inativado com Sucesso! Movido para a Lista Negra.')
+                    messages.success(request, '{} Inativado com Sucesso! Movido para a Lista Negra.'.format(nome_cargo))
     except Exception as e:
         messages.error(request, utils.TextosPadroes.erro_padrao())
         transaction.rollback()

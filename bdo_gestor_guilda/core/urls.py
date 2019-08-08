@@ -19,6 +19,8 @@ urlpatterns = [
     url(r'^recrutas/listar/$', recrutas.listar, name='recrutas_listar'),
     url(r'^recrutas/recrutar_ativar/(?P<user_avancado_id>(\d+))/$', recrutas.recrutar_ativar,
         name='recrutas_recrutar_ativar'),
+    url(r'^recrutas/recrutar_ativar_heroi/(?P<user_avancado_id>(\d+))/$', recrutas.recrutar_ativar_heroi,
+        name='recrutas_recrutar_ativar_heroi'),
     url(r'^recrutas/recrutar_reprovar/$', recrutas.recrutar_reprovar, name='recrutar_reprovar'),
 
     url(r'^membros/listar/$', membros.listar, name='membros_listar'),

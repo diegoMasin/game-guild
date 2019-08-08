@@ -2,10 +2,12 @@
 <div class="card-box">
     <h5 class="card-title"><i class="ti-target"></i>
         Anúncios de Guerras
-        {% if guerra_de_hoje %}
-            <a href="{% url url_frequencia_guerra_listar guerra_de_hoje.pk %}">
+        {% if not is_heroi %}
+            {% if guerra_de_hoje %}
+                <a href="{% url url_frequencia_guerra_listar guerra_de_hoje.pk %}">
                 <span class="badge badge-dark"><i class="fa fa-check text-white m-r-5">
                 </i><strong>Frequência</strong></span></a>
+            {% endif %}
         {% endif %}
     </h5>
     {% if guerra_de_hoje %}

@@ -26,6 +26,10 @@ class UserAvancado(models.Model):
         (CARGO_MEMBRO_ID, CARGO_MEMBRO_SLUG),
         (CARGO_HEROI_ID, CARGO_HEROI_SLUG)
     )
+    RECRUTA = (
+        (CARGO_MEMBRO_ID, CARGO_MEMBRO_SLUG),
+        (CARGO_HEROI_ID, CARGO_HEROI_SLUG)
+    )
     SIM_OU_NAO = (
         (True, 'Sim'),
         (False, 'Não')
@@ -53,6 +57,7 @@ class UserAvancado(models.Model):
 
     cargo = models.IntegerField(choices=CARGOS, default=CARGO_NENHUM_ID)
     ativo = models.BooleanField(default=False)
+    recruta_para_ser = models.IntegerField(choices=RECRUTA, default=CARGO_MEMBRO_ID)
     justificativa_inativo = models.CharField(max_length=200, null=True, blank=True)
     usuario = models.ForeignKey(User, db_column='fk_user', on_delete=models.PROTECT)
     data_cadastro = models.DateTimeField(null=True, blank=True, auto_now=True)
@@ -132,6 +137,14 @@ class UserAvancado(models.Model):
         if self.cargo == self.CARGO_HEROI_ID:
             cargo = self.CARGO_HEROI_SLUG
         return cargo
+
+    def get_slug_candidato(self):
+        candidato = ''
+        if self.recruta_para_ser == self.CARGO_MEMBRO_ID:
+            candidato = self.CARGO_MEMBRO_SLUG
+        if self.recruta_para_ser == self.CARGO_HEROI_ID:
+            candidato = self.CARGO_HEROI_SLUG
+        return candidato
 
     def get_pt_fixa(self):
         from bdo_gestor_guilda.core.models.grupos import Grupos

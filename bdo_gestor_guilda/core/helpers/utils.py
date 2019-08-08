@@ -22,6 +22,7 @@ url_name_home = 'pagina_inicial'
 url_inserir_participante_guerra = 'inserir_participante_guerra'
 url_recrutas_listar = 'recrutas_listar'
 url_recrutas_recrutar_ativar = 'recrutas_recrutar_ativar'
+url_recrutas_recrutar_ativar_heroi = 'recrutas_recrutar_ativar_heroi'
 url_recrutar_reprovar = 'recrutar_reprovar'
 url_membros_listar = 'membros_listar'
 url_membros_promover = 'membros_promover'
@@ -95,6 +96,7 @@ context = {
     'url_inserir_participante_guerra': url_inserir_participante_guerra,
     'url_recrutas_listar': url_recrutas_listar,
     'url_recrutas_recrutar_ativar': url_recrutas_recrutar_ativar,
+    'url_recrutas_recrutar_ativar_heroi': url_recrutas_recrutar_ativar_heroi,
     'url_recrutar_reprovar': url_recrutar_reprovar,
     'url_membros_listar': url_membros_listar,
     'url_membros_promover': url_membros_promover,
