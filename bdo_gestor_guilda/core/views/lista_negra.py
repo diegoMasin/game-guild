@@ -39,3 +39,26 @@ def reativar(request, user_avancado_id):
     else:
         transaction.commit()
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+
+@login_required
+def reativar_heroi(request, user_avancado_id):
+    try:
+        with transaction.atomic():
+            context = utils.get_context(request)
+            if context.get('is_lider'):
+                user_avancado = UserAvancado.objects.filter(pk=user_avancado_id).first()
+                user_avancado.ativo = True
+                user_avancado.cargo = UserAvancado.CARGO_HEROI_ID
+                user_avancado.justificativa_inativo = None
+                user_avancado.save()
+                user = User.objects.filter(pk=user_avancado.usuario.pk).first()
+                user.is_active = True
+                user.save()
+                messages.success(request, 'Herói Reativado na Guilda com Sucesso!')
+    except Exception as e:
+        messages.error(request, utils.TextosPadroes.erro_padrao())
+        transaction.rollback()
+    else:
+        transaction.commit()
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))

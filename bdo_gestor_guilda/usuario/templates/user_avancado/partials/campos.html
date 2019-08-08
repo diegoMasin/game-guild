@@ -31,27 +31,34 @@
 </div>
 <div class="form-row">
     <div class="form-group col-md-3">
+        <label class="col-form-label {{ form.recruta_para_ser.errors|format_label_error }}">
+            {{ form.recruta_para_ser.label }}<span class="text-danger"> *</span>
+        </label>
+        {{ form.recruta_para_ser }}
+        <span class="font-13 text-muted">Escolha Membro ou Herói</span>
+    </div>
+    <div class="form-group col-md-3">
         <label class="col-form-label {{ form.char_classe.errors|format_label_error }}">
             {{ form.char_classe.label }}<span class="text-danger"> *</span>
         </label>
         {{ form.char_classe }}
         <span class="font-13 text-muted">classe do personagem principal</span>
     </div>
-    <div class="form-group col-md-3">
+    <div class="form-group col-md-2">
         <label class="col-form-label {{ form.char_ap.errors|format_label_error }}">
             {{ form.char_ap.label }}<span class="text-danger"> *</span>
         </label>
         {{ form.char_ap }}
         <span class="font-13 text-muted">PA do personagem principal</span>
     </div>
-    <div class="form-group col-md-3">
+    <div class="form-group col-md-2">
         <label class="col-form-label {{ form.char_ap_despertada.errors|format_label_error }}">
             {{ form.char_ap_despertada.label }}<span class="text-danger"> *</span>
         </label>
         {{ form.char_ap_despertada }}
         <span class="font-13 text-muted">PA despertado do personagem principal</span>
     </div>
-    <div class="form-group col-md-3">
+    <div class="form-group col-md-2">
         <label class="col-form-label {{ form.char_dp.errors|format_label_error }}">
             {{ form.char_dp.label }}<span class="text-danger"> *</span>
         </label>

@@ -23,10 +23,18 @@
                         <li data-jstree='{"opened":false}'>
                             {% if grupo.lider.pk == id_user_avancado %}
                                 <strong><span class="{{ grupo.lider.get_color_participa_guerra_hoje }}">
-                                &nbsp;&nbsp;{{ grupo.lider }} - {{ grupo.lider.char_classe }}</span></strong>
+                                &nbsp;&nbsp;
+                                    {% if grupo.lider.is_heroi %}
+                                        <i class="fa fa-shield text-purple" title="Herói"></i>
+                                    {% endif %}
+                                    {{ grupo.lider }} - {{ grupo.lider.char_classe }}</span></strong>
                             {% else %}
                                 <span class="{{ grupo.lider.get_color_participa_guerra_hoje }}">
-                                &nbsp;&nbsp;{{ grupo.lider }} - {{ grupo.lider.char_classe }}</span>
+                                &nbsp;&nbsp;
+                                    {% if grupo.lider.is_heroi %}
+                                        <i class="fa fa-shield text-purple" title="Herói"></i>
+                                    {% endif %}
+                                    {{ grupo.lider }} - {{ grupo.lider.char_classe }}</span>
                             {% endif %}
                             <img src="{% static grupo.lider.get_logo_pequena %}" width="25" class="rounded-circle">
                             <ul>
@@ -34,10 +42,16 @@
                                     <li data-jstree='{"icon":"mdi mdi mdi-account"}'>
                                         {% if vinculo.membro.pk == id_user_avancado %}
                                             <strong><span class="{{ vinculo.membro.get_color_participa_guerra_hoje }}">
-                                            {{ vinculo.membro }} - {{ vinculo.membro.char_classe }}</span></strong>
+                                                {% if vinculo.membro.is_heroi %}
+                                                    <i class="fa fa-shield text-purple" title="Herói"></i>
+                                                {% endif %}
+                                                {{ vinculo.membro }} - {{ vinculo.membro.char_classe }}</span></strong>
                                         {% else %}
                                             <span class="{{ vinculo.membro.get_color_participa_guerra_hoje }}">
-                                            {{ vinculo.membro }} - {{ vinculo.membro.char_classe }}</span>
+                                                {% if vinculo.membro.is_heroi %}
+                                                    <i class="fa fa-shield text-purple" title="Herói"></i>
+                                                {% endif %}
+                                                {{ vinculo.membro }} - {{ vinculo.membro.char_classe }}</span>
                                         {% endif %}
                                         <img src="{% static vinculo.membro.get_logo_pequena %}" width="25" class="rounded-circle">
                                     </li>

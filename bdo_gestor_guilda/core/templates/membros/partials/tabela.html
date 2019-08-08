@@ -1,5 +1,5 @@
 {% load core_tags %}
-<table class="table foo-table-default toggle-circle" data-page-size="8">
+<table class="table foo-table-default toggle-circle" data-page-size="10">
     <thead class="table-dark">
     <tr class="text-center">
         <th data-toggle="true">Família</th>
@@ -42,24 +42,32 @@
                 <span class="badge badge-{{ user.get_slug_cargo|cor_cargo }}">{{ user.get_slug_cargo }}</span>
             </td>
             <td>{{ user.data_cadastro|date:'d/m/Y' }}</td>
-            <td>{{ user.url_bdo_planner }}</td>
-            <td class="text-center" width="200">
+            <td>{{ user.url_bdo_planner|default:'-' }}</td>
+            <td class="text-center" width="210">
                 <a target="_blank" href="{{ user.get_url_print }}" title="Print do GS">
-                    <i class="fa fa-2x fa-photo texto-preto"></i></a>
+                    <i class="fa fa-2x fa-photo texto-preto m-r-5"></i></a>
                 {% if is_lider %}
+                    {% if user.cargo == user.CARGO_MEMBRO_ID %}
+                        <a href="javascript:void(0)" data-url="{% url url_membros_tornar_heroi user.pk %}"
+                           data-model-title="{{ user.nome_familia }}" class="acao-tornar-heroi" title="Tornar Herói">
+                            <i class="fa fa-2x fa-shield texto-preto m-r-5"></i></a>
+                    {% else %}
+                        <a href="javascript:void(0)" class="sem-pointer" title="Tornar Herói - Somente Membros">
+                            <i class="fa fa-2x fa-shield text-muted"></i></a>
+                    {% endif %}
                     {% if pode_promover_ou_rebaixar and user.pode_ser_promovido and not user.usuario.pk == id_usuario %}
                         <a href="#" data-url="{% url url_membros_promover user.pk %}" data-model-title="{{ user.nome_familia }}"
-                           class="acao-promover" title="Promover"><i class="fa fa-2x fa-arrow-up texto-preto"></i></a>
+                           class="acao-promover" title="Promover"><i class="fa fa-2x fa-arrow-up texto-preto m-r-5"></i></a>
                     {% else %}
-                        <a href="javascript:void(0)" class="sem-pointer" title="Promover"><i class="fa fa-2x fa-arrow-up text-muted"></i></a>
+                        <a href="javascript:void(0)" class="sem-pointer" title="Promover"><i class="fa fa-2x fa-arrow-up text-muted m-r-5"></i></a>
                     {%  endif %}
 
                     {% if pode_promover_ou_rebaixar and user.pode_ser_rebaixado and not user.usuario.pk == id_usuario %}
                         <a href="#" data-url="{% url url_membros_rebaixar user.pk %}" data-model-title="{{ user.nome_familia }}"
-                           class="acao-rebaixar" title="Rebaixar"><i class="fa fa-2x fa-arrow-down texto-preto"></i></a>
+                           class="acao-rebaixar" title="Rebaixar"><i class="fa fa-2x fa-arrow-down texto-preto m-r-5"></i></a>
                     {% else %}
                         <a href="javascript:void(0)" class="sem-pointer" title="Rebaixar">
-                            <i class="fa fa-2x fa-arrow-down text-muted"></i></a>
+                            <i class="fa fa-2x fa-arrow-down text-muted m-r-5"></i></a>
                     {%  endif %}
                     {% if not user.usuario.pk == id_usuario %}
                         <a class="inativar-membro" href="javascript:void(0)" title="Inativar" data-toggle="modal"

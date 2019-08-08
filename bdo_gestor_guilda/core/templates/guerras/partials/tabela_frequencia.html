@@ -32,7 +32,8 @@
                 {% else %}
                     <div class="checkbox checkbox-success">
                         {% if p.get_frequencia %}
-                            <strong class="text-success">{{ p.participante.nome_familia }}</strong>
+                            <strong class="text-success">
+                                <i class="fa fa-check"></i> {{ p.participante.nome_familia }}</strong>
                         {% else %}
                             <strong>{{ p.participante.nome_familia }}</strong>
                         {% endif %}
@@ -40,11 +41,7 @@
                 {% endif %}
             </td>
             <td class="text-left">
-                {% if p.get_frequencia %}
-                    <span class="text-success">{{ p.participante.nome_char_principal }}</span>
-                {% else %}
-                    {{ p.participante.nome_char_principal }}
-                {% endif %}
+                {{ p.participante.nome_char_principal }}
             </td>
             <td>{{ p.participante.char_ap }}</td>
             <td>{{ p.participante.char_ap_despertada }}</td>

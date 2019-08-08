@@ -7,8 +7,8 @@ class UserAvancadoForm(forms.ModelForm):
     class Meta:
         model = UserAvancado
         fields = ['user_discord', 'nome_familia', 'nome_char_principal', 'char_lvl', 'char_classe', 'char_ap',
-                  'char_ap_despertada', 'char_dp', 'gs', 'url_print_status', 'siege', 'node_seg', 'node_ter',
-                  'node_qua', 'node_qui', 'node_sex', 'node_dom']
+                  'char_ap_despertada', 'char_dp', 'gs', 'recruta_para_ser', 'url_print_status', 'siege', 'node_seg',
+                  'node_ter', 'node_qua', 'node_qui', 'node_sex', 'node_dom']
         labels = {
             'user_discord': 'ID Discord',
             'nome_familia': 'Nome da Família',
@@ -20,7 +20,8 @@ class UserAvancadoForm(forms.ModelForm):
             'char_dp': 'PD',
             'gs': 'GS',
             'url_print_status': 'Print da Tela Inteira do jogo com seu PA e PD',
-            'siege': 'Disponível para participar de Siege aos Sábados'
+            'siege': 'Disponível para participar de Siege aos Sábados',
+            'recruta_para_ser': 'Candidato para ser',
         }
         widgets = {
             'user_discord': forms.TextInput(attrs={'class': 'form-control', 'required': True}),
@@ -35,6 +36,7 @@ class UserAvancadoForm(forms.ModelForm):
                                          'type': 'number', 'readonly': True}),
             'url_print_status': forms.TextInput(attrs={'class': 'form-control', 'required': True}),
             'siege': forms.Select(attrs={'class': 'form-control', 'required': True}),
+            'recruta_para_ser': forms.Select(attrs={'class': 'form-control', 'required': True}),
         }
 
 

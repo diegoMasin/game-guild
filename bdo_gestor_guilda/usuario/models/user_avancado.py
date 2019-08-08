@@ -7,11 +7,13 @@ from bdo_gestor_guilda.usuario.models.tipo_classe_char import TipoClasseChar
 
 
 class UserAvancado(models.Model):
+    CARGO_HEROI_ID = 6
     CARGO_QUARTEL_MESTRE_ID = 5
     CARGO_NENHUM_ID = 4
     CARGO_MEMBRO_ID = 3
     CARGO_OFICIAL_ID = 2
     CARGO_LIDER_ID = 1
+    CARGO_HEROI_SLUG = 'Herói'
     CARGO_QUARTEL_MESTRE_SLUG = 'Quartel-mestre'
     CARGO_NENHUM_SLUG = 'Não é Membro'
     CARGO_MEMBRO_SLUG = 'Membro'
@@ -21,7 +23,12 @@ class UserAvancado(models.Model):
         (CARGO_LIDER_ID, CARGO_LIDER_SLUG),
         (CARGO_OFICIAL_ID, CARGO_OFICIAL_SLUG),
         (CARGO_QUARTEL_MESTRE_ID, CARGO_QUARTEL_MESTRE_SLUG),
-        (CARGO_MEMBRO_ID, CARGO_MEMBRO_SLUG)
+        (CARGO_MEMBRO_ID, CARGO_MEMBRO_SLUG),
+        (CARGO_HEROI_ID, CARGO_HEROI_SLUG)
+    )
+    RECRUTA = (
+        (CARGO_MEMBRO_ID, CARGO_MEMBRO_SLUG),
+        (CARGO_HEROI_ID, CARGO_HEROI_SLUG)
     )
     SIM_OU_NAO = (
         (True, 'Sim'),
@@ -50,6 +57,7 @@ class UserAvancado(models.Model):
 
     cargo = models.IntegerField(choices=CARGOS, default=CARGO_NENHUM_ID)
     ativo = models.BooleanField(default=False)
+    recruta_para_ser = models.IntegerField(choices=RECRUTA, default=CARGO_MEMBRO_ID)
     justificativa_inativo = models.CharField(max_length=200, null=True, blank=True)
     usuario = models.ForeignKey(User, db_column='fk_user', on_delete=models.PROTECT)
     data_cadastro = models.DateTimeField(null=True, blank=True, auto_now=True)
@@ -61,13 +69,16 @@ class UserAvancado(models.Model):
         return '{0} ({1})'.format(self.nome_familia, self.nome_char_principal)
 
     def is_lider(self):
-        return True if self.cargo == self.CARGO_LIDER_ID else False
+        return self.cargo == self.CARGO_LIDER_ID
 
     def is_oficial(self):
-        return True if self.cargo == self.CARGO_OFICIAL_ID else False
+        return self.cargo == self.CARGO_OFICIAL_ID
 
     def is_lider_or_oficial(self):
-        return True if self.cargo == self.CARGO_OFICIAL_ID or self.cargo == self.CARGO_LIDER_ID else False
+        return self.cargo == self.CARGO_OFICIAL_ID or self.cargo == self.CARGO_LIDER_ID
+
+    def is_heroi(self):
+        return self.cargo == self.CARGO_HEROI_ID
 
     def get_dias_nodewar(self):
         dias = []
@@ -123,7 +134,17 @@ class UserAvancado(models.Model):
             cargo = self.CARGO_MEMBRO_SLUG
         if self.cargo == self.CARGO_OFICIAL_ID:
             cargo = self.CARGO_OFICIAL_SLUG
+        if self.cargo == self.CARGO_HEROI_ID:
+            cargo = self.CARGO_HEROI_SLUG
         return cargo
+
+    def get_slug_candidato(self):
+        candidato = ''
+        if self.recruta_para_ser == self.CARGO_MEMBRO_ID:
+            candidato = self.CARGO_MEMBRO_SLUG
+        if self.recruta_para_ser == self.CARGO_HEROI_ID:
+            candidato = self.CARGO_HEROI_SLUG
+        return candidato
 
     def get_pt_fixa(self):
         from bdo_gestor_guilda.core.models.grupos import Grupos

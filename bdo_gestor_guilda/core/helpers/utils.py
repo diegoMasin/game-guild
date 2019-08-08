@@ -22,11 +22,15 @@ url_name_home = 'pagina_inicial'
 url_inserir_participante_guerra = 'inserir_participante_guerra'
 url_recrutas_listar = 'recrutas_listar'
 url_recrutas_recrutar_ativar = 'recrutas_recrutar_ativar'
+url_recrutas_recrutar_ativar_heroi = 'recrutas_recrutar_ativar_heroi'
 url_recrutar_reprovar = 'recrutar_reprovar'
 url_membros_listar = 'membros_listar'
 url_membros_promover = 'membros_promover'
 url_membros_rebaixar = 'membros_rebaixar'
 url_membros_inativar = 'membros_inativar'
+url_membros_tornar_heroi = 'membros_tornar_heroi'
+url_herois_tornar_membro = 'herois_tornar_membro'
+url_herois_listar = 'herois_listar'
 url_grupos_listar = 'grupos_listar'
 url_grupos_cadastrar = 'grupos_cadastrar'
 url_grupos_inserir = 'grupos_inserir'
@@ -50,6 +54,7 @@ url_guerras_atualizar = 'guerras_atualizar'
 url_guerras_excluir = 'guerras_excluir'
 url_lista_negra_listar = 'lista_negra_listar'
 url_lista_negra_reativar = 'lista_negra_reativar'
+url_lista_negra_reativar_heroi = 'lista_negra_reativar_heroi'
 url_frequencia_guerra_listar = 'frequencia_guerra_listar'
 url_frequencia_guerra_marcar = 'frequencia_guerra_marcar'
 url_payout_listar = 'payout_listar'
@@ -67,6 +72,7 @@ path_user_avancado = 'user_avancado'
 path_recover = 'recover'
 path_recrutas = 'recrutas'
 path_membros = 'membros'
+path_herois = 'herois'
 path_lista_negra = 'lista_negra'
 path_grupos = 'grupos'
 path_vinculo_grupos = 'vinculo_grupos'
@@ -90,11 +96,15 @@ context = {
     'url_inserir_participante_guerra': url_inserir_participante_guerra,
     'url_recrutas_listar': url_recrutas_listar,
     'url_recrutas_recrutar_ativar': url_recrutas_recrutar_ativar,
+    'url_recrutas_recrutar_ativar_heroi': url_recrutas_recrutar_ativar_heroi,
     'url_recrutar_reprovar': url_recrutar_reprovar,
     'url_membros_listar': url_membros_listar,
     'url_membros_promover': url_membros_promover,
     'url_membros_rebaixar': url_membros_rebaixar,
     'url_membros_inativar': url_membros_inativar,
+    'url_membros_tornar_heroi': url_membros_tornar_heroi,
+    'url_herois_listar': url_herois_listar,
+    'url_herois_tornar_membro': url_herois_tornar_membro,
     'url_grupos_listar': url_grupos_listar,
     'url_grupos_cadastrar': url_grupos_cadastrar,
     'url_grupos_inserir': url_grupos_inserir,
@@ -118,6 +128,7 @@ context = {
     'url_guerras_excluir': url_guerras_excluir,
     'url_lista_negra_listar': url_lista_negra_listar,
     'url_lista_negra_reativar': url_lista_negra_reativar,
+    'url_lista_negra_reativar_heroi': url_lista_negra_reativar_heroi,
     'url_frequencia_guerra_listar': url_frequencia_guerra_listar,
     'url_frequencia_guerra_marcar': url_frequencia_guerra_marcar,
     'url_payout_listar': url_payout_listar,
@@ -156,6 +167,7 @@ def get_context(requisicao=None):
             context.update({'classe': dados_avancados.char_classe})
             context.update({'is_lider_or_oficial': dados_avancados.is_lider_or_oficial()})
             context.update({'is_lider': dados_avancados.is_lider()})
+            context.update({'is_heroi': dados_avancados.is_heroi()})
 
             context.update({'pt_fixa': dados_avancados.get_pt_fixa()})
 

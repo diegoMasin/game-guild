@@ -1,0 +1,30 @@
+{% load staticfiles %}
+<div id="inativar-heroi-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 id="titulo-modal-reprovar" class="modal-title">Inativar Herói</h4>
+            </div>
+            <form role="form" method="post" action="{% url url_membros_inativar %}">
+                {% csrf_token %}
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group no-margin">
+                                <input id="hidden-modal-id-user" type="hidden" name="id_user_avancado">
+                                <label for="field-7" class="control-label">Justificativa de saída da Guilda</label>
+                                <textarea name="justificativa_inativacao" class="form-control"
+                                          placeholder="Escreva os motivos em detalhes." required="required">Herói: </textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-danger waves-effect waves-light">Inativar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

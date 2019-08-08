@@ -78,7 +78,38 @@
 
             swal({
                 title: 'Você deseja Recrutar/Ativar?',
-                text: 'Após ativado, ' + titulo_model + ' pertencerá a Guilda OXION.',
+                text: 'Após ativado, ' + titulo_model + ' pertencerá a Guilda.',
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#DD6B55',
+                confirmButtonText: 'Sim, Recrutar/Ativar!',
+                cancelButtonText: 'Não, Cancele!',
+                closeOnConfirm: false,
+                closeOnCancel: false
+            }, function (isConfirm) {
+                if (isConfirm) {
+                    swal({
+                        title: 'Ativado!',
+                        text: 'Você Ativou ' + titulo_model + ' como Herói.',
+                        type: 'success'
+                    }, function(){
+                        window.location = url;
+                    });
+                } else {
+                    swal('Cancelada', 'Você não ativou ' + titulo_model + '.', 'error');
+                }
+            });
+        });
+
+        //Botão de Ação Ativar Herói
+        $('.acao-ativar-heroi').click(function(event) {
+            event.preventDefault();
+            var url = $(this).data('url');
+            var titulo_model = $(this).data('model-title');
+
+            swal({
+                title: 'Você deseja Recrutar/Ativar este Herói?',
+                text: 'Após ativado, ' + titulo_model + ' será Herói da Guilda.',
                 type: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#DD6B55',
@@ -283,6 +314,99 @@
                     });
                 } else {
                     swal('Cancelado', 'Você não reativou ' + titulo_model + '.', 'error');
+                }
+            });
+        });
+
+        //Botão de Ação Reativar Ex-heroi
+        $('.acao-reativar-heroi').click(function(event) {
+            event.preventDefault();
+            var url = $(this).data('url');
+            var titulo_model = $(this).data('model-title');
+
+            swal({
+                title: 'Você deseja Reativar ' + titulo_model + ' como Herói?',
+                text: 'Após reativado, ' + titulo_model + ' voltará a ser Herói da Guilda.',
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#DD6B55',
+                confirmButtonText: 'Sim, Reativar Herói!',
+                cancelButtonText: 'Não, Cancele!',
+                closeOnConfirm: false,
+                closeOnCancel: false
+            }, function (isConfirm) {
+                if (isConfirm) {
+                    swal({
+                        title: 'Herói Reativado!',
+                        text: 'Você Reativou ' + titulo_model + ' como Herói.',
+                        type: 'success'
+                    }, function(){
+                        window.location = url;
+                    });
+                } else {
+                    swal('Cancelado', 'Você não reativou ' + titulo_model + '.', 'error');
+                }
+            });
+        });
+
+        //Botão de Ação Tornar Heroi
+        $('.acao-tornar-heroi').click(function(event) {
+            event.preventDefault();
+            var url = $(this).data('url');
+            var titulo_model = $(this).data('model-title');
+
+            swal({
+                title: 'Você deseja Tornar ' + titulo_model + ' um Herói?',
+                text: 'Após esta ação, ' + titulo_model + ' será um Herói da Guilda.',
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#DD6B55',
+                confirmButtonText: 'Sim, Tornar Herói!',
+                cancelButtonText: 'Não, Cancele!',
+                closeOnConfirm: false,
+                closeOnCancel: false
+            }, function (isConfirm) {
+                if (isConfirm) {
+                    swal({
+                        title: 'Agora é um Herói!',
+                        text: 'Você tornou ' + titulo_model + ' um Herói.',
+                        type: 'success'
+                    }, function(){
+                        window.location = url;
+                    });
+                } else {
+                    swal('Cancelado', 'Você não tornou ' + titulo_model + ' um Herói.', 'error');
+                }
+            });
+        });
+
+        //Botão de Ação Tornar Membro
+        $('.acao-tornar-membro').click(function(event) {
+            event.preventDefault();
+            var url = $(this).data('url');
+            var titulo_model = $(this).data('model-title');
+
+            swal({
+                title: 'Você deseja Tornar ' + titulo_model + ' um Membro?',
+                text: 'Após esta ação, ' + titulo_model + ' será um Membro da Guilda.',
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#DD6B55',
+                confirmButtonText: 'Sim, Tornar Membro!',
+                cancelButtonText: 'Não, Cancele!',
+                closeOnConfirm: false,
+                closeOnCancel: false
+            }, function (isConfirm) {
+                if (isConfirm) {
+                    swal({
+                        title: 'Agora é um Membro!',
+                        text: 'Você tornou ' + titulo_model + ' um Membro.',
+                        type: 'success'
+                    }, function(){
+                        window.location = url;
+                    });
+                } else {
+                    swal('Cancelado', 'Você não tornou ' + titulo_model + ' um Membro.', 'error');
                 }
             });
         });

@@ -110,7 +110,8 @@ def excluir(request, payout_id):
 @login_required
 def listar_calculos(request, payout_id):
     context = utils.get_context(request)
-    todos_membros_ativos = UserAvancado.objects.filter(ativo=True).order_by('cargo')
+    todos_membros_ativos = UserAvancado.objects.filter(ativo=True).exclude(
+        cargo=UserAvancado.CARGO_HEROI_ID).order_by('cargo')
     payout = Payout.objects.filter(pk=int(payout_id)).first()
 
     total_guerras_by_payout = Guerras.objects.filter(data_inicio__range=[payout.data_inicio, payout.data_fim])

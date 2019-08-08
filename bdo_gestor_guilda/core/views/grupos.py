@@ -22,7 +22,10 @@ def listar(request):
 
     lider_de_pt = grupos.values_list('lider', flat=True).distinct()
     em_grupo = VinculoGrupos.objects.all().values_list('membro', flat=True).distinct()
-    sem_grupo = UserAvancado.objects.filter(ativo=True).exclude(pk__in=em_grupo).exclude(pk__in=lider_de_pt)
+    sem_grupo = UserAvancado.objects.filter(ativo=True).exclude(
+        cargo=UserAvancado.CARGO_HEROI_ID).exclude(pk__in=em_grupo).exclude(pk__in=lider_de_pt)
+    sem_grupo_herois = UserAvancado.objects.filter(
+        ativo=True, cargo=UserAvancado.CARGO_HEROI_ID).exclude(pk__in=em_grupo).exclude(pk__in=lider_de_pt)
 
     guerra_de_hoje = Guerras.objects.filter(data_inicio=date.today()).first()
     total_guerra_hoje = ParticiparGuerra.objects.filter(guerra=guerra_de_hoje)
@@ -32,6 +35,7 @@ def listar(request):
 
     context.update({'grupos': grupos})
     context.update({'sem_grupo': sem_grupo})
+    context.update({'sem_grupo_herois': sem_grupo_herois})
     context.update({'guerra_de_hoje': guerra_de_hoje})
     context.update({'total_guerra_hoje': total_guerra_hoje.count()})
     context.update({'total_sim_guerra_hoje': total_sim_guerra_hoje.count()})
@@ -60,7 +64,7 @@ def inserir(request):
                     Grupos(**dados).save()
                     messages.success(request, TextosPadroes.salvar_sucesso_o('Grupo'))
                 else:
-                    messages.error(request, '{} já é lider em outro grupo fixo.'.format(dados.get('lider')))
+                    messages.error(request, '{} já é Líder ou Membro em outro grupo fixo.'.format(dados.get('lider')))
                     return redirect(utils.url_grupos_cadastrar)
             else:
                 erros_form = utils.TextosPadroes.errors_form(form)
@@ -114,9 +118,14 @@ def atualizar(request, grupo_id):
             if form.has_changed():
                 if form.is_valid():
                     dados = form.cleaned_data
-                    dados['id'] = grupo_id
-                    Grupos(**dados).save()
-                    messages.success(request, utils.TextosPadroes.atualizar_sucesso_o(grupo))
+                    is_lider_grupo = Grupos.objects.filter(lider=dados.get('lider')).count() > 0
+                    is_membro_grupo = VinculoGrupos.objects.filter(membro=dados.get('lider')).count() > 0
+                    if not is_lider_grupo and not is_membro_grupo:
+                        dados['id'] = grupo_id
+                        Grupos(**dados).save()
+                        messages.success(request, utils.TextosPadroes.atualizar_sucesso_o(grupo))
+                    else:
+                        messages.error(request, '{} já é Líder ou Membro em outro grupo fixo.'.format(dados.get('lider')))
                 else:
                     erros_form = utils.TextosPadroes.errors_form(form)
                     for error in erros_form:

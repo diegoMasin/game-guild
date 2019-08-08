@@ -19,12 +19,17 @@ urlpatterns = [
     url(r'^recrutas/listar/$', recrutas.listar, name='recrutas_listar'),
     url(r'^recrutas/recrutar_ativar/(?P<user_avancado_id>(\d+))/$', recrutas.recrutar_ativar,
         name='recrutas_recrutar_ativar'),
+    url(r'^recrutas/recrutar_ativar_heroi/(?P<user_avancado_id>(\d+))/$', recrutas.recrutar_ativar_heroi,
+        name='recrutas_recrutar_ativar_heroi'),
     url(r'^recrutas/recrutar_reprovar/$', recrutas.recrutar_reprovar, name='recrutar_reprovar'),
 
     url(r'^membros/listar/$', membros.listar, name='membros_listar'),
     url(r'^membros/promover/(?P<user_avancado_id>(\d+))/$', membros.promover, name='membros_promover'),
     url(r'^membros/rebaixar/(?P<user_avancado_id>(\d+))/$', membros.rebaixar, name='membros_rebaixar'),
     url(r'^membros/inativar/$', membros.inativar, name='membros_inativar'),
+    url(r'^membros/tornar-heroi/(?P<user_avancado_id>(\d+))/$', membros.tornar_heroi, name='membros_tornar_heroi'),
+    url(r'^herois/listar/$', membros.listar_herois, name='herois_listar'),
+    url(r'^herois/tornar-membro/(?P<user_avancado_id>(\d+))/$', membros.tornar_membro, name='herois_tornar_membro'),
 
     url(r'^grupos/listar/$', grupos.listar, name='grupos_listar'),
     url(r'^grupos/cadastrar/$', grupos.cadastrar, name='grupos_cadastrar'),
@@ -53,6 +58,8 @@ urlpatterns = [
 
     url(r'^lista-negra/listar/$', lista_negra.listar, name='lista_negra_listar'),
     url(r'^lista-negra/reativar/(?P<user_avancado_id>(\d+))/$', lista_negra.reativar, name='lista_negra_reativar'),
+    url(r'^lista-negra/reativar-heroi/(?P<user_avancado_id>(\d+))/$', lista_negra.reativar_heroi,
+        name='lista_negra_reativar_heroi'),
 
     url(r'^frequencia-guerra/listar/(?P<guerra_id>(\d+))/$', frequencia_guerra.listar, name='frequencia_guerra_listar'),
     url(r'^frequencia-guerra/marcar/$', frequencia_guerra.marcar, name='frequencia_guerra_marcar'),
