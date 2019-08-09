@@ -2,7 +2,7 @@
 <div class="topbar">
     <div class="topbar-left">
         <div class="text-center">
-{#            <a href="{% url url_name_home %}" class="logo"><i class="mdi mdi-radar"></i> <span>OXION GUILD</span></a>#}
+            {#            <a href="{% url url_name_home %}" class="logo"><i class="mdi mdi-radar"></i> <span>OXION GUILD</span></a>#}
             <a href="{% url url_name_home %}" class="logo"><img src="{% static 'v1/global/assets/images/OXION.png' %}" alt="OX"> <span></span></a>
         </div>
     </div>
@@ -25,9 +25,11 @@
                     <a href="{% url url_usuario_editar_perfil %}" class="dropdown-item notify-item">
                         <i class="mdi mdi-account"></i> <span>Perfil</span>
                     </a>
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <i class="mdi mdi-settings"></i> <span>Configurações</span>
-                    </a>
+                    {% if is_lider %}
+                        <a href="{% url url_configuracoes_index %}" class="dropdown-item notify-item">
+                            <i class="mdi mdi-settings"></i> <span>Configurações</span>
+                        </a>
+                    {% endif %}
                     <a href="{% url url_name_logout %}" class="dropdown-item notify-item">
                         <i class="mdi mdi-logout"></i> <span>Sair</span>
                     </a>

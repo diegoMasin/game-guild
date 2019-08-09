@@ -65,6 +65,7 @@ url_payout_atualizar = 'payout_atualizar'
 url_payout_excluir = 'payout_excluir'
 url_payout_listar_calculos = 'payout_listar_calculos'
 url_payout_adicionar_tier = 'payout_adicionar_tier'
+url_configuracoes_index = 'configuracoes_index'
 # PATHS
 path_template_login = 'login'
 path_template_home = 'pagina_inicial'
@@ -80,6 +81,7 @@ path_anuncios_gerais = 'anuncios_gerais'
 path_anuncios_restritos = 'anuncios_restritos'
 path_guerras = 'guerras'
 path_payout = 'payout'
+path_configuracoes = 'configuracoes'
 # CONTEXT
 context = {
     'url_name_login': url_name_login,
@@ -139,6 +141,7 @@ context = {
     'url_payout_excluir': url_payout_excluir,
     'url_payout_listar_calculos': url_payout_listar_calculos,
     'url_payout_adicionar_tier': url_payout_adicionar_tier,
+    'url_configuracoes_index': url_configuracoes_index,
 
     'path_template_login': path_template_login,
     'path_template_home': path_template_home,
