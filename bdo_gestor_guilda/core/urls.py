@@ -75,5 +75,6 @@ urlpatterns = [
     url(r'^payout/adicionar-tier/$', payout.adicionar_tier, name='payout_adicionar_tier'),
 
     url(r'^configuracoes/index/$', configuracoes.index, name='configuracoes_index'),
+    url(r'^configuracoes/atualizar/(?P<conf_id>(\d+))/$', configuracoes.atualizar, name='configuracoes_atualizar'),
 
 ]

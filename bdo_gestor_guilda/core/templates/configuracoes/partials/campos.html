@@ -1,0 +1,30 @@
+{% load staticfiles %}
+{% load core_tags %}
+{% for conf in todas_configuracoes %}
+    <div class="form-row m-b-15">
+        <div class="col-md-8">
+            <form class="form-horizontal" role="form" method="post" action="{% url url_configuracoes_atualizar conf.pk %}">
+                {% csrf_token %}
+                <div class="form-group row">
+                    <label class="col-3 col-form-label">{{ conf.slug_variavel }}:
+                        {% if conf.descricao %}
+                            <i class="fa fa-question" title="{{ conf.descricao }}"></i>
+                        {% endif %}
+                    </label>
+                    <div class="col-8 input-group">
+                        {% if conf.tipo_variavel == conf.STRING_ID %}
+                            <input name="valor_conf" type="text" class="form-control" value="{{ conf.valor_string }}" required>
+                        {% elif conf.tipo_variavel == conf.INTEIRO_ID %}
+                            <input name="valor_conf" type="number" class="form-control" value="{{ conf.valor_inteiro }}" required>
+                        {% elif conf.tipo_variavel == conf.BOOL_ID %}
+                            <input name="valor_conf" type="checkbox" value="{{ conf.valor_bool }}">
+                        {% endif %}
+                        <div class="input-group-append">
+                            <button class="btn btn-dark waves-effect waves-light" type="submit"><i class="fa fa-save"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endfor %}

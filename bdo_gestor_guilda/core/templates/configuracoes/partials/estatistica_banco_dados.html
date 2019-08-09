@@ -1,0 +1,28 @@
+{% load staticfiles %}
+{% load core_tags %}
+<div class="row">
+    <div class="col-lg-4">
+        <div class="card-box widget-icon bg-dark text-white">
+            <div>
+                <i class="mdi mdi mdi-database text-white"></i>
+                <div class="wid-icon-info text-right">
+                    <p class="m-b-5 font-15 text-uppercase">Nº de Registros no Banco de Dados</p>
+                    <h4 class="m-t-0 m-b-5 counter font-bold">6521</h4>
+                    <small class="text-danger"><b>56% Dados Consumidos(Limite Máx: 10 mil)</b></small>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="col-8 input-group">
+                    <input name="valor_conf" type="text" class="form-control" value="{{ conf.valor_string }}" required>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <button type="button" class="btn btn-outline-dark waves-effect waves-light">Limpar Registros</button>
+            </div>
+        </div>
+    </div>
+</div>

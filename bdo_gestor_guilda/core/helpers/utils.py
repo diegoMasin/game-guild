@@ -5,6 +5,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
 from bdo_gestor_guilda.core.helpers.default_texts import TextosPadroes
+from bdo_gestor_guilda.core.models.configuracoes import Configuracoes
 from bdo_gestor_guilda.usuario.models.user_avancado import UserAvancado
 
 # URLS
@@ -66,6 +67,7 @@ url_payout_excluir = 'payout_excluir'
 url_payout_listar_calculos = 'payout_listar_calculos'
 url_payout_adicionar_tier = 'payout_adicionar_tier'
 url_configuracoes_index = 'configuracoes_index'
+url_configuracoes_atualizar = 'configuracoes_atualizar'
 # PATHS
 path_template_login = 'login'
 path_template_home = 'pagina_inicial'
@@ -142,6 +144,7 @@ context = {
     'url_payout_listar_calculos': url_payout_listar_calculos,
     'url_payout_adicionar_tier': url_payout_adicionar_tier,
     'url_configuracoes_index': url_configuracoes_index,
+    'url_configuracoes_atualizar': url_configuracoes_atualizar,
 
     'path_template_login': path_template_login,
     'path_template_home': path_template_home,
@@ -153,6 +156,7 @@ context = {
 def get_context(requisicao=None):
     if requisicao:
         dados_avancados = UserAvancado.objects.filter(usuario=requisicao.user).first()
+        configuracoes = Configuracoes.objects.all()
         if dados_avancados:
             nome_classe = dados_avancados.char_classe.nome_classe
             context.update({'logo_pequena': 'v1/global/assets/images/logo_classes/{0}.png'.format(nome_classe)})
@@ -177,6 +181,8 @@ def get_context(requisicao=None):
         context.update({'nome_usuario': requisicao.user.first_name})
         context.update({'id_usuario': requisicao.user.pk})
         context.update({'passou_da_hora_para_participar_guerra': passou_da_hora_para_participar_guerra()})
+        context.update({'nome_guilda': configuracoes.filter(nome_variavel='nome_guilda').first().valor_string})
+        context.update({'nome_jogo': configuracoes.filter(nome_variavel='nome_jogo').first().valor_string})
     return context
 
 
