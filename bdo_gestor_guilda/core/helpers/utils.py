@@ -68,6 +68,7 @@ url_payout_listar_calculos = 'payout_listar_calculos'
 url_payout_adicionar_tier = 'payout_adicionar_tier'
 url_configuracoes_index = 'configuracoes_index'
 url_configuracoes_atualizar = 'configuracoes_atualizar'
+url_configuracoes_limpar_registros = 'configuracoes_limpar_registros'
 # PATHS
 path_template_login = 'login'
 path_template_home = 'pagina_inicial'
@@ -145,6 +146,7 @@ context = {
     'url_payout_adicionar_tier': url_payout_adicionar_tier,
     'url_configuracoes_index': url_configuracoes_index,
     'url_configuracoes_atualizar': url_configuracoes_atualizar,
+    'url_configuracoes_limpar_registros': url_configuracoes_limpar_registros,
 
     'path_template_login': path_template_login,
     'path_template_home': path_template_home,
@@ -230,3 +232,26 @@ def passou_da_hora_para_participar_guerra():
     import pytz
     agora = datetime.now(pytz.timezone('Brazil/East'))
     return agora.hour >= 22
+
+
+def contador_de_registros():
+    from bdo_gestor_guilda.core.models.guerras import Guerras
+    from bdo_gestor_guilda.core.models.participar_guerra import ParticiparGuerra
+    from bdo_gestor_guilda.core.models.frequencia_guerra import FrequenciaGuerra
+    from bdo_gestor_guilda.core.models.payout import Payout
+    from bdo_gestor_guilda.core.models.payout_personalizado import PayoutPersonalizado
+    from bdo_gestor_guilda.usuario.models.user_avancado import UserAvancado
+
+    start_de_seguranca = 500
+    num_registros = start_de_seguranca
+    reg_guerras = Guerras.objects.all().count()
+    reg_participacoes = ParticiparGuerra.objects.all().count()
+    reg_frequencias = FrequenciaGuerra.objects.all().count()
+    reg_payout = Payout.objects.all().count()
+    reg_payout_personalizado = PayoutPersonalizado.objects.all().count()
+    reg_black_list = UserAvancado.objects.filter(ativo=False, cargo=UserAvancado.CARGO_NENHUM_ID).count()
+
+    soma = reg_guerras + reg_participacoes + reg_frequencias + reg_payout + reg_payout_personalizado + reg_black_list
+    num_registros = num_registros + soma
+    percent = (num_registros * 100) / 10000
+    return num_registros, percent

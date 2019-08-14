@@ -1,6 +1,6 @@
 {% load staticfiles %}
 {% load core_tags %}
-<form method="post" action="">
+<form method="post" action="{% url url_configuracoes_limpar_registros %}">
     {% csrf_token %}
     <div class="row">
         <div class="col-lg-4">
@@ -18,10 +18,10 @@
         <div class="col-lg-6">
             <div class="row ">
                 <div class="col-10 input-group m-l-15">
-                    <input name="periodo_limpar" type="number" placeholder="Se colocar 0(zero) limpará tudo."
-                           class="form-control" value="{{ conf.valor_string }}" required>
+                    <input name="meses_limpar" type="number" placeholder="Se colocar 0(zero) limpará tudo."
+                           class="form-control" required>
                     <div class="input-group-append">
-                        <button type="button" class="btn btn-dark waves-effect waves-light">Limpar Registros</button>
+                        <button type="submit" class="btn btn-dark waves-effect waves-light">Limpar Registros</button>
                     </div>
                 </div>
             </div>
@@ -29,11 +29,11 @@
                 <div class="col-10 m-l-15 m-t-5">
                     <strong>Conforme citado no <a href="{% url url_name_termo %}" target="_blank" class="text-danger">Termos e Condições</a> do
                         sistema:</strong> Existe uma limitação técnica para comportar apenas 10 mil registros em banco de
-                    dados. É preciso limpar registros antigos do sistema regularmente <em><strong>para não cessar a sua atividade</strong></em>.
+                    dados. É preciso limpar registros antigos do sistema regularmente para não cessar a sua atividade.
                     Coloque no campo acima a quantidade de meses atrás para limpar os registros. <br> Exemplo: Limpar tudo
                     de <code><ins><strong>2</strong></ins></code> meses para trás.
                     <span class="cursor-pointer" title="Excluirá: Guerras, Payout, Frequências, Participações e Black List.">
-                        <strong>Clique para + info...</strong></span>
+                        <strong>Passe para + info...</strong></span>
                 </div>
             </div>
         </div>

@@ -4,13 +4,12 @@ from django.db import transaction
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect, reverse
 
-from bdo_gestor_guilda.core.forms.guerras import GuerrasForm
 from bdo_gestor_guilda.core.helpers import utils
 from bdo_gestor_guilda.core.helpers.default_texts import TextosPadroes
 from bdo_gestor_guilda.core.models.configuracoes import Configuracoes
+from bdo_gestor_guilda.core.models.frequencia_guerra import FrequenciaGuerra
 from bdo_gestor_guilda.core.models.guerras import Guerras
 from bdo_gestor_guilda.core.models.participar_guerra import ParticiparGuerra
-from bdo_gestor_guilda.core.models.frequencia_guerra import FrequenciaGuerra
 from bdo_gestor_guilda.core.models.payout import Payout
 from bdo_gestor_guilda.core.models.payout_personalizado import PayoutPersonalizado
 from bdo_gestor_guilda.usuario.models.user_avancado import UserAvancado
@@ -20,7 +19,7 @@ from bdo_gestor_guilda.usuario.models.user_avancado import UserAvancado
 def index(request):
     context = utils.get_context(request)
     if context.get('dados_avancados').is_lider():
-        num_registros, percent = contador_de_registros(request)
+        num_registros, percent = utils.contador_de_registros()
         todas_configuracoes = Configuracoes.objects.all().order_by('pk')
 
         context.update({'todas_configuracoes': todas_configuracoes})
@@ -59,19 +58,41 @@ def validacao_geral(conf):
     return validado, mensagem
 
 
-def contador_de_registros(request):
-    start_de_seguranca = 500
-    num_registros = start_de_seguranca
-    reg_guerras = Guerras.objects.all().count()
-    reg_participacoes = ParticiparGuerra.objects.all().count()
-    reg_frequencias = FrequenciaGuerra.objects.all().count()
-    reg_payout = Payout.objects.all().count()
-    reg_payout_personalizado = PayoutPersonalizado.objects.all().count()
-    reg_black_list = UserAvancado.objects.filter(ativo=False, cargo=UserAvancado.CARGO_NENHUM_ID).count()
+@login_required
+def limpar_registros(request):
+    from datetime import date, datetime
+    from monthdelta import monthdelta
+    try:
+        with transaction.atomic():
+            if request.method == 'POST':
+                meses = int(request.POST.get('meses_limpar'))
+                data_limpeza = date.today() - monthdelta(meses)
+                guerras_limpeza = Guerras.objects.filter(data_inicio__lte=data_limpeza)
+                participacoes_limpeza = ParticiparGuerra.objects.filter(guerra__in=guerras_limpeza)
+                frequencias_limpeza = FrequenciaGuerra.objects.filter(guerra__in=guerras_limpeza)
+                payout_limpeza = Payout.objects.filter(data_inicio__lte=data_limpeza)
+                payout_personalizado_limpeza = PayoutPersonalizado.objects.filter(payout__in=payout_limpeza)
+                convert_datetime = datetime.combine(data_limpeza, datetime.max.time())
+                black_list_limpeza = UserAvancado.objects.filter(ativo=False, cargo=UserAvancado.CARGO_NENHUM_ID,
+                                                                 data_cadastro__lte=convert_datetime)
 
-    soma = reg_guerras + reg_participacoes + reg_frequencias + reg_payout + reg_payout_personalizado + reg_black_list
-    num_registros = num_registros + soma
-    if soma == 0:
-        num_registros = 0
-    percent = (num_registros * 100) / 10000
-    return num_registros, percent
+                contador = guerras_limpeza.count() + participacoes_limpeza.count() + frequencias_limpeza.count()
+                contador = contador + payout_limpeza.count() + payout_personalizado_limpeza.count()
+                contador = contador + black_list_limpeza.count()
+
+                participacoes_limpeza.delete()
+                frequencias_limpeza.delete()
+                guerras_limpeza.delete()
+                payout_personalizado_limpeza.delete()
+                payout_limpeza.delete()
+                black_list_limpeza.delete()
+                if contador == 0:
+                    messages.warning(request, 'Não havia registros a serem apagados.')
+                else:
+                    messages.success(request, '{} registros foram apagados.'.format(contador))
+    except Exception as e:
+        messages.warning(request, TextosPadroes.erro_padrao())
+        transaction.rollback()
+    else:
+        transaction.commit()
+    return redirect(utils.url_configuracoes_index)
