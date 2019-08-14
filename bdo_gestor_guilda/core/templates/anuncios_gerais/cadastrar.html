@@ -2,7 +2,7 @@
 {% load core_tags %}
 {% load staticfiles %}
 
-{% block titulo_pagina %} OXION GUILD - Black Desert SA{% endblock titulo_pagina %}
+{% block titulo_pagina %} {{ nome_guilda }} - {{ nome_jogo }}{% endblock titulo_pagina %}
 
 {% block content %}
     <form action="{% url url_anuncios_gerais_inserir %}" method="post">

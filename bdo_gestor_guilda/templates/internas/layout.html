@@ -10,6 +10,7 @@
     <title>OXION GUILD - BDO SA</title>
     <link rel="shortcut icon" href="{% static 'v1/global/assets/images/favicon.ico' %}">
 
+    <link href="{% static 'v1/global/assets/js/lib/plugins/jquery-circliful/css/jquery.circliful.css' %}" rel="stylesheet" type="text/css" />
     <link href="{% static 'v1/global/assets/js/lib/plugins/footable/css/footable.core.css' %}" rel="stylesheet">
     <link href="{% static 'v1/global/assets/js/lib/plugins/switchery/switchery.min.css' %}" rel="stylesheet" />
     <link href="{% static 'v1/global/assets/js/lib/plugins/morris/morris.css' %}" rel="stylesheet">
@@ -85,10 +86,12 @@
 <script src="{% static 'v1/global/assets/js/lib/plugins/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js' %}" type="text/javascript"></script>
 <script src="{% static 'v1/global/assets/js/lib/plugins/moment/moment.js' %}"></script>
 <script src="{% static 'v1/global/assets/js/lib/plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js' %}"></script>
+<script src="{% static 'v1/global/assets/js/lib/plugins/jquery-circliful/js/jquery.circliful.min.js' %}"></script>
 
 <!-- Custom main Js -->
 <script src="{% static 'v1/global/assets/js/jquery.core.js' %}"></script>
 <script src="{% static 'v1/global/assets/js/jquery.app.js' %}"></script>
+<script src="{% static 'v1/global/assets/js/widgets.js' %}"></script>
 <script src="{% static 'v1/global/assets/js/lib/plugins/mask-custom/jquery.maskMoney.js' %}"></script>
 <script src="{% static 'v1/global/assets/js/jquery.custom.js' %}"></script>
 <script src="{% static 'v1/global/assets/js/jquery.footable.js' %}"></script>
@@ -102,6 +105,7 @@
             delay: 100,
             time: 1200
         });
+        $('.circliful-chart').circliful();
     });
 </script>
 

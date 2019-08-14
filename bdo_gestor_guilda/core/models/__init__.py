@@ -7,3 +7,4 @@ from bdo_gestor_guilda.core.models.participar_guerra import ParticiparGuerra
 from bdo_gestor_guilda.core.models.frequencia_guerra import FrequenciaGuerra
 from bdo_gestor_guilda.core.models.payout import Payout
 from bdo_gestor_guilda.core.models.payout_personalizado import PayoutPersonalizado
+from bdo_gestor_guilda.core.models.configuracoes import Configuracoes

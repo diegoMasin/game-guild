@@ -5,6 +5,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
 from bdo_gestor_guilda.core.helpers.default_texts import TextosPadroes
+from bdo_gestor_guilda.core.models.configuracoes import Configuracoes
 from bdo_gestor_guilda.usuario.models.user_avancado import UserAvancado
 
 # URLS
@@ -65,6 +66,9 @@ url_payout_atualizar = 'payout_atualizar'
 url_payout_excluir = 'payout_excluir'
 url_payout_listar_calculos = 'payout_listar_calculos'
 url_payout_adicionar_tier = 'payout_adicionar_tier'
+url_configuracoes_index = 'configuracoes_index'
+url_configuracoes_atualizar = 'configuracoes_atualizar'
+url_configuracoes_limpar_registros = 'configuracoes_limpar_registros'
 # PATHS
 path_template_login = 'login'
 path_template_home = 'pagina_inicial'
@@ -80,6 +84,7 @@ path_anuncios_gerais = 'anuncios_gerais'
 path_anuncios_restritos = 'anuncios_restritos'
 path_guerras = 'guerras'
 path_payout = 'payout'
+path_configuracoes = 'configuracoes'
 # CONTEXT
 context = {
     'url_name_login': url_name_login,
@@ -139,6 +144,9 @@ context = {
     'url_payout_excluir': url_payout_excluir,
     'url_payout_listar_calculos': url_payout_listar_calculos,
     'url_payout_adicionar_tier': url_payout_adicionar_tier,
+    'url_configuracoes_index': url_configuracoes_index,
+    'url_configuracoes_atualizar': url_configuracoes_atualizar,
+    'url_configuracoes_limpar_registros': url_configuracoes_limpar_registros,
 
     'path_template_login': path_template_login,
     'path_template_home': path_template_home,
@@ -150,6 +158,7 @@ context = {
 def get_context(requisicao=None):
     if requisicao:
         dados_avancados = UserAvancado.objects.filter(usuario=requisicao.user).first()
+        configuracoes = Configuracoes.objects.all()
         if dados_avancados:
             nome_classe = dados_avancados.char_classe.nome_classe
             context.update({'logo_pequena': 'v1/global/assets/images/logo_classes/{0}.png'.format(nome_classe)})
@@ -174,6 +183,8 @@ def get_context(requisicao=None):
         context.update({'nome_usuario': requisicao.user.first_name})
         context.update({'id_usuario': requisicao.user.pk})
         context.update({'passou_da_hora_para_participar_guerra': passou_da_hora_para_participar_guerra()})
+        context.update({'nome_guilda': configuracoes.filter(nome_variavel='nome_guilda').first().valor_string})
+        context.update({'nome_jogo': configuracoes.filter(nome_variavel='nome_jogo').first().valor_string})
     return context
 
 
@@ -221,3 +232,26 @@ def passou_da_hora_para_participar_guerra():
     import pytz
     agora = datetime.now(pytz.timezone('Brazil/East'))
     return agora.hour >= 22
+
+
+def contador_de_registros():
+    from bdo_gestor_guilda.core.models.guerras import Guerras
+    from bdo_gestor_guilda.core.models.participar_guerra import ParticiparGuerra
+    from bdo_gestor_guilda.core.models.frequencia_guerra import FrequenciaGuerra
+    from bdo_gestor_guilda.core.models.payout import Payout
+    from bdo_gestor_guilda.core.models.payout_personalizado import PayoutPersonalizado
+    from bdo_gestor_guilda.usuario.models.user_avancado import UserAvancado
+
+    start_de_seguranca = 500
+    num_registros = start_de_seguranca
+    reg_guerras = Guerras.objects.all().count()
+    reg_participacoes = ParticiparGuerra.objects.all().count()
+    reg_frequencias = FrequenciaGuerra.objects.all().count()
+    reg_payout = Payout.objects.all().count()
+    reg_payout_personalizado = PayoutPersonalizado.objects.all().count()
+    reg_black_list = UserAvancado.objects.filter(ativo=False, cargo=UserAvancado.CARGO_NENHUM_ID).count()
+
+    soma = reg_guerras + reg_participacoes + reg_frequencias + reg_payout + reg_payout_personalizado + reg_black_list
+    num_registros = num_registros + soma
+    percent = (num_registros * 100) / 10000
+    return num_registros, percent

@@ -11,6 +11,7 @@ from bdo_gestor_guilda.core.views import membros
 from bdo_gestor_guilda.core.views import payout
 from bdo_gestor_guilda.core.views import recrutas
 from bdo_gestor_guilda.core.views import vinculo_grupos
+from bdo_gestor_guilda.core.views import configuracoes
 
 urlpatterns = [
     url(r'^$', home.pagina_inicial, name='pagina_inicial'),
@@ -72,5 +73,9 @@ urlpatterns = [
     url(r'^payout/excluir/(?P<payout_id>(\d+))/$', payout.excluir, name='payout_excluir'),
     url(r'^payout/listar_calculos/(?P<payout_id>(\d+))/$', payout.listar_calculos, name='payout_listar_calculos'),
     url(r'^payout/adicionar-tier/$', payout.adicionar_tier, name='payout_adicionar_tier'),
+
+    url(r'^configuracoes/index/$', configuracoes.index, name='configuracoes_index'),
+    url(r'^configuracoes/atualizar/(?P<conf_id>(\d+))/$', configuracoes.atualizar, name='configuracoes_atualizar'),
+    url(r'^configuracoes/limpar-registros/$', configuracoes.limpar_registros, name='configuracoes_limpar_registros'),
 
 ]
