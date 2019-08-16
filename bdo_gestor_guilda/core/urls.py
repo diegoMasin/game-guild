@@ -77,5 +77,6 @@ urlpatterns = [
     url(r'^configuracoes/index/$', configuracoes.index, name='configuracoes_index'),
     url(r'^configuracoes/atualizar/(?P<conf_id>(\d+))/$', configuracoes.atualizar, name='configuracoes_atualizar'),
     url(r'^configuracoes/limpar-registros/$', configuracoes.limpar_registros, name='configuracoes_limpar_registros'),
+    url(r'^configuracoes/termo-condicoes/$', configuracoes.termo_condicoes, name='configuracoes_termo_condicoes'),
 
 ]

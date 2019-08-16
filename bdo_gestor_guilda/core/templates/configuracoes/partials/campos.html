@@ -1,7 +1,7 @@
 {% load staticfiles %}
 {% load core_tags %}
 {% for conf in todas_configuracoes %}
-    <div class="form-row m-b-15">
+    <div class="form-row m-b-15 m-t-15">
         <div class="col-md-10">
             <form class="form-horizontal" role="form" method="post" action="{% url url_configuracoes_atualizar conf.pk %}">
                 {% csrf_token %}

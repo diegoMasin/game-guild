@@ -6,15 +6,18 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect, reverse
 
 from bdo_gestor_guilda.core.helpers import utils
+from bdo_gestor_guilda.core.models.termo_condicoes import TermoCondicoes
 from bdo_gestor_guilda.usuario.forms.user import UserModelForm
-from bdo_gestor_guilda.usuario.forms.user_avancado import UserAvancadoForm
 from bdo_gestor_guilda.usuario.forms.user_avancado import UserAvancadoEditarForm
+from bdo_gestor_guilda.usuario.forms.user_avancado import UserAvancadoForm
 from bdo_gestor_guilda.usuario.models.recruta_reprovado import RecrutaReprovado
 from bdo_gestor_guilda.usuario.models.user_avancado import UserAvancado
 
 
 def signup(request):
     form = UserModelForm(request.POST or None)
+    termo = TermoCondicoes.objects.all().last()
+    utils.context['termo_texto'] = termo.texto
 
     if request.method == 'POST':
         if form.is_valid():
@@ -110,10 +113,6 @@ def do_logout(request):
 
     messages.success(request, 'Saiu com Sucesso!')
     return redirect(utils.url_name_login)
-
-
-def termo(request):
-    return render(request, '{0}/termo_de_uso.html'.format(utils.path_template_login), utils.context)
 
 
 @login_required

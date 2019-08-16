@@ -2,6 +2,9 @@
 {% load core_tags %}
 {% load staticfiles %}
 
-{% block js_specific %}{% endblock js_specific %}
+{% block js_specific %}
+    <script src="{% static 'v1/global/assets/js/lib/plugins/tinymce/tinymce.min.js' %}"></script>
+    <script src="{% static 'v1/especifico/configuracoes/termo_condicoes.js' %}"></script>
+{% endblock js_specific %}
 
 {% block css_specific %}{% endblock css_specific %}

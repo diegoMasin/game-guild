@@ -12,7 +12,6 @@ from bdo_gestor_guilda.usuario.models.user_avancado import UserAvancado
 url_name_login = 'usuario_login'
 url_name_logout = 'usuario_logout'
 url_name_signup = 'usuario_signup'
-url_name_termo = 'usuario_termo'
 url_reset_senha = 'password_reset'
 url_name_cadastrar_user_avancado = 'cadastrar_user_avancado'
 url_name_inserir_user_avancado = 'inserir_user_avancado'
@@ -69,6 +68,7 @@ url_payout_adicionar_tier = 'payout_adicionar_tier'
 url_configuracoes_index = 'configuracoes_index'
 url_configuracoes_atualizar = 'configuracoes_atualizar'
 url_configuracoes_limpar_registros = 'configuracoes_limpar_registros'
+url_configuracoes_termo_condicoes = 'configuracoes_termo_condicoes'
 # PATHS
 path_template_login = 'login'
 path_template_home = 'pagina_inicial'
@@ -90,7 +90,6 @@ context = {
     'url_name_login': url_name_login,
     'url_name_logout': url_name_logout,
     'url_name_signup': url_name_signup,
-    'url_name_termo': url_name_termo,
     'url_reset_senha': url_reset_senha,
     'url_name_user_avancado': url_name_cadastrar_user_avancado,
     'url_name_inserir_user_avancado': url_name_inserir_user_avancado,
@@ -147,6 +146,7 @@ context = {
     'url_configuracoes_index': url_configuracoes_index,
     'url_configuracoes_atualizar': url_configuracoes_atualizar,
     'url_configuracoes_limpar_registros': url_configuracoes_limpar_registros,
+    'url_configuracoes_termo_condicoes': url_configuracoes_termo_condicoes,
 
     'path_template_login': path_template_login,
     'path_template_home': path_template_home,
