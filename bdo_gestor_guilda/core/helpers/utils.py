@@ -242,7 +242,7 @@ def contador_de_registros():
     from bdo_gestor_guilda.core.models.payout_personalizado import PayoutPersonalizado
     from bdo_gestor_guilda.usuario.models.user_avancado import UserAvancado
 
-    start_de_seguranca = 500
+    start_de_seguranca = 1500
     num_registros = start_de_seguranca
     reg_guerras = Guerras.objects.all().count()
     reg_participacoes = ParticiparGuerra.objects.all().count()
