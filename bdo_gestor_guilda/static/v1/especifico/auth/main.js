@@ -36,4 +36,8 @@ $(document).ready(function(){
         });
     }
 
+    $('#concorda-termo').click(function () {
+        $('#checkbox-signup').attr('checked', true);
+    });
+
 });

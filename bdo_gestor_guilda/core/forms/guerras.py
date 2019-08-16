@@ -7,8 +7,7 @@ from bdo_gestor_guilda.usuario.models.user_avancado import UserAvancado
 class GuerrasForm(forms.ModelForm):
     call = forms.ModelChoiceField(
         label='Call de ...',
-        queryset=UserAvancado.objects.filter(ativo=True,
-                                             cargo__in=[UserAvancado.CARGO_OFICIAL_ID, UserAvancado.CARGO_LIDER_ID]),
+        queryset=UserAvancado.objects.filter(ativo=True),
         widget=forms.Select(attrs={'class': 'form-control select2'})
     )
 

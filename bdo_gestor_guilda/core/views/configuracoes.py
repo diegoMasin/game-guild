@@ -13,6 +13,7 @@ from bdo_gestor_guilda.core.models.participar_guerra import ParticiparGuerra
 from bdo_gestor_guilda.core.models.payout import Payout
 from bdo_gestor_guilda.core.models.payout_personalizado import PayoutPersonalizado
 from bdo_gestor_guilda.usuario.models.user_avancado import UserAvancado
+from bdo_gestor_guilda.core.models.termo_condicoes import TermoCondicoes
 
 
 @login_required
@@ -95,4 +96,21 @@ def limpar_registros(request):
         transaction.rollback()
     else:
         transaction.commit()
+    return redirect(utils.url_configuracoes_index)
+
+
+@login_required
+def termo_condicoes(request):
+    context = utils.get_context(request)
+    if context.get('dados_avancados').is_lider():
+        termo = TermoCondicoes.objects.all().last()
+        context.update({'termo': termo})
+        if request.method == 'POST':
+            try:
+                termo.texto = request.POST.get('termo_condicoes')
+                termo.save()
+                messages.success(request, 'O texto de Termo e Condições foi Atualizado com Sucesso!')
+            except Exception as e:
+                messages.warning(request, TextosPadroes.erro_padrao())
+        return render(request, '{0}/termo_condicoes.html'.format(utils.path_configuracoes), context)
     return redirect(utils.url_configuracoes_index)
