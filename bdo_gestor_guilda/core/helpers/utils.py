@@ -69,6 +69,8 @@ url_configuracoes_index = 'configuracoes_index'
 url_configuracoes_atualizar = 'configuracoes_atualizar'
 url_configuracoes_limpar_registros = 'configuracoes_limpar_registros'
 url_configuracoes_termo_condicoes = 'configuracoes_termo_condicoes'
+url_configuracoes_tipo_classe_char_listar = 'configuracoes_tipo_classe_char_listar'
+url_configuracoes_tipo_classe_char_editar = 'configuracoes_tipo_classe_char_editar'
 # PATHS
 path_template_login = 'login'
 path_template_home = 'pagina_inicial'
@@ -147,6 +149,8 @@ context = {
     'url_configuracoes_atualizar': url_configuracoes_atualizar,
     'url_configuracoes_limpar_registros': url_configuracoes_limpar_registros,
     'url_configuracoes_termo_condicoes': url_configuracoes_termo_condicoes,
+    'url_configuracoes_tipo_classe_char_listar': url_configuracoes_tipo_classe_char_listar,
+    'url_configuracoes_tipo_classe_char_editar': url_configuracoes_tipo_classe_char_editar,
 
     'path_template_login': path_template_login,
     'path_template_home': path_template_home,
@@ -255,3 +259,9 @@ def contador_de_registros():
     num_registros = num_registros + soma
     percent = (num_registros * 100) / 10000
     return num_registros, percent
+
+
+def normaliza_texto(texto):
+        from unicodedata import normalize
+        result = normalize('NFKD', texto).encode('ASCII', 'ignore').decode('ASCII')
+        return result.lower().replace(' ', '_')

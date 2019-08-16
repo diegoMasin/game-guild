@@ -1,0 +1,16 @@
+{% extends 'configuracoes/layout.html' %}
+{% load core_tags %}
+{% load staticfiles %}
+
+{% block titulo_pagina %} {{ nome_guilda }} - {{ nome_jogo }}{% endblock titulo_pagina %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card-box">
+                <h5 class="card-title">Listagem e Cadastro de Classes do Jogo</h5>
+                {% include 'configuracoes/partials/tabela_classes.html' %}
+            </div>
+        </div>
+    </div>
+{% endblock content %}

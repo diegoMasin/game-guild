@@ -1,0 +1,9 @@
+{% load staticfiles %} {% load core_tags %}
+<div class="form-row">
+    <div class="form-group col-md-3">
+        <label class="col-form-label {{ form.slug.errors|format_label_error }}">
+            {{ form.slug.label }}<span class="text-danger"> *</span>
+        </label>
+        {{ form.slug }}
+    </div>
+</div>
