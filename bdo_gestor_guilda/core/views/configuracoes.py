@@ -135,7 +135,7 @@ def tipo_classe_char_editar(request, tipo_classe_id):
         classe = TipoClasseChar.objects.get(pk=tipo_classe_id)
         context = utils.get_context(request)
         context.update({'form': TipoClasseCharForm(instance=classe)})
-        context.update({'classe': classe})
+        context.update({'classes': classe})
     except Exception as e:
         messages.error(request, TextosPadroes.erro_padrao())
         return HttpResponseRedirect(reverse(utils.url_configuracoes_tipo_classe_char_listar))
