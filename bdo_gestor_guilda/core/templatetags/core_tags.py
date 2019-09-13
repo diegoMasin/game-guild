@@ -91,3 +91,15 @@ def get_total_tier_by_membro_by_payout(usuario, nodes, siege, payout):
     if calculo_tier_total > 10:
         calculo_tier_total = 10
     return 'Tier {}'. format(calculo_tier_total)
+
+
+@register.filter
+def get_logo(value):
+    from django.conf import settings
+    return '{}{}'.format(value, settings.NOME_LOGO_LOGIN)
+
+
+@register.filter
+def get_fav(value):
+    from django.conf import settings
+    return '{}{}'.format(value, settings.NOME_LOGO_ICON)

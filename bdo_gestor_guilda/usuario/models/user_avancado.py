@@ -74,6 +74,9 @@ class UserAvancado(models.Model):
     def is_oficial(self):
         return self.cargo == self.CARGO_OFICIAL_ID
 
+    def is_membro(self):
+        return self.cargo == self.CARGO_MEMBRO_ID
+
     def is_lider_or_oficial(self):
         return self.cargo == self.CARGO_OFICIAL_ID or self.cargo == self.CARGO_LIDER_ID
 

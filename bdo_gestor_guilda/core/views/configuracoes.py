@@ -13,6 +13,8 @@ from bdo_gestor_guilda.core.models.participar_guerra import ParticiparGuerra
 from bdo_gestor_guilda.core.models.payout import Payout
 from bdo_gestor_guilda.core.models.payout_personalizado import PayoutPersonalizado
 from bdo_gestor_guilda.usuario.models.user_avancado import UserAvancado
+from bdo_gestor_guilda.usuario.models.tipo_classe_char import TipoClasseChar
+from bdo_gestor_guilda.usuario.forms.tipo_classe_char import TipoClasseCharForm
 from bdo_gestor_guilda.core.models.termo_condicoes import TermoCondicoes
 
 
@@ -114,3 +116,27 @@ def termo_condicoes(request):
                 messages.warning(request, TextosPadroes.erro_padrao())
         return render(request, '{0}/termo_condicoes.html'.format(utils.path_configuracoes), context)
     return redirect(utils.url_configuracoes_index)
+
+
+@login_required
+def tipo_classe_char_listar(request):
+    context = utils.get_context(request)
+    if context.get('dados_avancados').is_lider():
+        all_classes = TipoClasseChar.objects.all().order_by('slug')
+
+        context.update({'all_classes': all_classes})
+        return render(request, '{0}/tipo_classe_char_listar.html'.format(utils.path_configuracoes), context)
+    return redirect(utils.url_configuracoes_index)
+
+
+@login_required
+def tipo_classe_char_editar(request, tipo_classe_id):
+    try:
+        classe = TipoClasseChar.objects.get(pk=tipo_classe_id)
+        context = utils.get_context(request)
+        context.update({'form': TipoClasseCharForm(instance=classe)})
+        context.update({'classe': classe})
+    except Exception as e:
+        messages.error(request, TextosPadroes.erro_padrao())
+        return HttpResponseRedirect(reverse(utils.url_configuracoes_tipo_classe_char_listar))
+    return render(request, '{0}/tipo_classe_char_editar.html'.format(utils.path_configuracoes), context)

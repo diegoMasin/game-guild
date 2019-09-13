@@ -90,7 +90,7 @@
                 if (isConfirm) {
                     swal({
                         title: 'Ativado!',
-                        text: 'Você Ativou ' + titulo_model + ' como Herói.',
+                        text: 'Você Ativou ' + titulo_model + ' como Membro da Guilda.',
                         type: 'success'
                     }, function(){
                         window.location = url;
@@ -121,7 +121,7 @@
                 if (isConfirm) {
                     swal({
                         title: 'Ativado!',
-                        text: 'Você Ativou ' + titulo_model + '.',
+                        text: 'Você Ativou ' + titulo_model + ' como Herói da Guilda.',
                         type: 'success'
                     }, function(){
                         window.location = url;

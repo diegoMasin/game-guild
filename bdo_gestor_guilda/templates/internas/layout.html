@@ -8,7 +8,7 @@
     <meta name="author" content="Maximum Tech">
 
     <title>OXION GUILD - BDO SA</title>
-    <link rel="shortcut icon" href="{% static 'v1/global/assets/images/favicon.ico' %}">
+    <link rel="shortcut icon" href="{% static 'v1/global/assets/images/favicon_guildas/'|add:nome_logo_icon %}">
 
     <link href="{% static 'v1/global/assets/js/lib/plugins/jquery-circliful/css/jquery.circliful.css' %}" rel="stylesheet" type="text/css" />
     <link href="{% static 'v1/global/assets/js/lib/plugins/footable/css/footable.core.css' %}" rel="stylesheet">
@@ -27,6 +27,21 @@
     {% block css_specific %}{% endblock css_specific %}
 
     <script src="{% static 'v1/global/assets/js/modernizr.min.js' %}"></script>
+
+    <style>
+        .topbar .topbar-left {
+            background-color: {{ cor_topo }} !important;
+        }
+        .navbar-custom {
+            background-color: {{ cor_topo }} !important;
+        }
+        .button-menu-mobile {
+            background-color: {{ cor_topo }} !important;
+        }
+        .side-menu.left {
+            background-color: {{ cor_lateral }} !important;
+        }
+    </style>
 </head>
 
 <body class="fixed-left">

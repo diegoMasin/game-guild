@@ -118,7 +118,7 @@ def atualizar(request, grupo_id):
             if form.has_changed():
                 if form.is_valid():
                     dados = form.cleaned_data
-                    is_lider_grupo = Grupos.objects.filter(lider=dados.get('lider')).count() > 0
+                    is_lider_grupo = Grupos.objects.filter(lider=dados.get('lider')).exclude(pk=grupo.pk).count() > 0
                     is_membro_grupo = VinculoGrupos.objects.filter(membro=dados.get('lider')).count() > 0
                     if not is_lider_grupo and not is_membro_grupo:
                         dados['id'] = grupo_id

@@ -13,7 +13,11 @@
                     </label>
                     <div class="col-8 input-group">
                         {% if conf.tipo_variavel == conf.STRING_ID %}
-                            <input name="valor_conf" type="text" class="form-control" value="{{ conf.valor_string }}" required>
+                            {% if conf.nome_variavel == "cor_topo" or conf.nome_variavel == "cor_lateral" %}
+                                <input class="form-control" type="color" name="valor_conf" value="{{ conf.valor_string }}" required>
+                            {% else %}
+                                <input name="valor_conf" type="text" class="form-control" value="{{ conf.valor_string }}" required>
+                            {% endif %}
                         {% elif conf.tipo_variavel == conf.INTEIRO_ID %}
                             <input name="valor_conf" type="number" class="form-control" value="{{ conf.valor_inteiro }}" required>
                         {% elif conf.tipo_variavel == conf.BOOL_ID %}

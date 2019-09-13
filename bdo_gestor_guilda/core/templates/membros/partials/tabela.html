@@ -78,6 +78,16 @@
                             <i class="fa fa-2x fa-ban text-muted"></i></a>
                     {% endif %}
                 {% endif %}
+                {% if is_oficial %}
+                    {% if not user.usuario.pk == id_usuario and user.is_membro %}
+                        <a class="inativar-membro" href="javascript:void(0)" title="Inativar" data-toggle="modal"
+                           data-model-title="{{ user.nome_familia }}" data-id-user-avancado="{{ user.pk }}"
+                           data-target="#inativar-membro-modal"><i class="fa fa-2x fa-ban texto-preto"></i></a>
+                    {% else %}
+                        <a href="javascript:void(0)" class="sem-pointer" title="Inativar">
+                            <i class="fa fa-2x fa-ban text-muted"></i></a>
+                    {% endif %}
+                {% endif %}
             </td>
         </tr>
     {% endfor %}

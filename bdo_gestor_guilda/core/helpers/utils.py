@@ -3,6 +3,7 @@ from decimal import Decimal
 
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.conf import settings
 
 from bdo_gestor_guilda.core.helpers.default_texts import TextosPadroes
 from bdo_gestor_guilda.core.models.configuracoes import Configuracoes
@@ -69,6 +70,8 @@ url_configuracoes_index = 'configuracoes_index'
 url_configuracoes_atualizar = 'configuracoes_atualizar'
 url_configuracoes_limpar_registros = 'configuracoes_limpar_registros'
 url_configuracoes_termo_condicoes = 'configuracoes_termo_condicoes'
+url_configuracoes_tipo_classe_char_listar = 'configuracoes_tipo_classe_char_listar'
+url_configuracoes_tipo_classe_char_editar = 'configuracoes_tipo_classe_char_editar'
 # PATHS
 path_template_login = 'login'
 path_template_home = 'pagina_inicial'
@@ -147,6 +150,8 @@ context = {
     'url_configuracoes_atualizar': url_configuracoes_atualizar,
     'url_configuracoes_limpar_registros': url_configuracoes_limpar_registros,
     'url_configuracoes_termo_condicoes': url_configuracoes_termo_condicoes,
+    'url_configuracoes_tipo_classe_char_listar': url_configuracoes_tipo_classe_char_listar,
+    'url_configuracoes_tipo_classe_char_editar': url_configuracoes_tipo_classe_char_editar,
 
     'path_template_login': path_template_login,
     'path_template_home': path_template_home,
@@ -176,6 +181,7 @@ def get_context(requisicao=None):
             context.update({'classe': dados_avancados.char_classe})
             context.update({'is_lider_or_oficial': dados_avancados.is_lider_or_oficial()})
             context.update({'is_lider': dados_avancados.is_lider()})
+            context.update({'is_oficial': dados_avancados.is_oficial()})
             context.update({'is_heroi': dados_avancados.is_heroi()})
 
             context.update({'pt_fixa': dados_avancados.get_pt_fixa()})
@@ -185,6 +191,11 @@ def get_context(requisicao=None):
         context.update({'passou_da_hora_para_participar_guerra': passou_da_hora_para_participar_guerra()})
         context.update({'nome_guilda': configuracoes.filter(nome_variavel='nome_guilda').first().valor_string})
         context.update({'nome_jogo': configuracoes.filter(nome_variavel='nome_jogo').first().valor_string})
+        context.update({'cor_topo': configuracoes.filter(nome_variavel='cor_topo').first().valor_string})
+        context.update({'cor_lateral': configuracoes.filter(nome_variavel='cor_lateral').first().valor_string})
+        context.update({'nome_logo': settings.NOME_LOGO})
+        context.update({'nome_logo_icon': settings.NOME_LOGO_ICON})
+        context.update({'nome_logo_login': settings.NOME_LOGO_LOGIN})
     return context
 
 
@@ -255,3 +266,9 @@ def contador_de_registros():
     num_registros = num_registros + soma
     percent = (num_registros * 100) / 10000
     return num_registros, percent
+
+
+def normaliza_texto(texto):
+        from unicodedata import normalize
+        result = normalize('NFKD', texto).encode('ASCII', 'ignore').decode('ASCII')
+        return result.lower().replace(' ', '_')

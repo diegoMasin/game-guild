@@ -78,5 +78,9 @@ urlpatterns = [
     url(r'^configuracoes/atualizar/(?P<conf_id>(\d+))/$', configuracoes.atualizar, name='configuracoes_atualizar'),
     url(r'^configuracoes/limpar-registros/$', configuracoes.limpar_registros, name='configuracoes_limpar_registros'),
     url(r'^configuracoes/termo-condicoes/$', configuracoes.termo_condicoes, name='configuracoes_termo_condicoes'),
+    url(r'^configuracoes/tipo-classe-listar/$', configuracoes.tipo_classe_char_listar,
+        name='configuracoes_tipo_classe_char_listar'),
+    url(r'^configuracoes/tipo-classe-editar/(?P<tipo_classe_id>(\d+))/$', configuracoes.tipo_classe_char_editar,
+        name='configuracoes_tipo_classe_char_editar'),
 
 ]

@@ -1,0 +1,35 @@
+{% load core_tags %}
+<table class="table foo-table-default" data-page-size="20">
+    <thead class="table-dark">
+    <tr class="text-center">
+        <th class="text-left">Nome da Classe</th>
+        <th class="footable-sortable">Ações</th>
+    </tr>
+    </thead>
+    {% include 'configuracoes/partials/filtros_classes.html' %}
+    <tbody>
+    {% for classe in all_classes %}
+        <tr>
+            <td class="text-left">{{ classe.slug }}</td>
+            <td class="text-center" width="250">
+                {% if is_lider %}
+                    <a href="{% url url_configuracoes_tipo_classe_char_editar classe.pk %}" title="Editar">
+                        <i class="fa fa-2x fa-edit texto-preto m-r-15"></i></a>
+                    <a href="javascript:void(0)" data-url=""
+                       data-model-title="Guerra" class="acao-excluir" title="Excluir">
+                        <i class="fa fa-2x fa-ban texto-preto"></i></a>
+                {% endif %}
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+    <tfoot>
+    <tr class="active">
+        <td colspan="14">
+            <div class="text-right">
+                <ul class="pagination hide-if-no-paging pagination-split justify-content-center footable-pagination m-t-40 m-b-0"></ul>
+            </div>
+        </td>
+    </tr>
+    </tfoot>
+</table>

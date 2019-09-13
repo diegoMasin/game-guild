@@ -63,7 +63,7 @@ def inativar(request):
             context = utils.get_context(request)
             id_user_avancado = request.POST.get('id_user_avancado')
             justificativa = request.POST.get('justificativa_inativacao')
-            if context.get('is_lider'):
+            if context.get('is_lider') or context.get('is_oficial'):
                 user_avancado = UserAvancado.objects.filter(pk=id_user_avancado).first()
                 is_user_lider_pt_fixa = Grupos.objects.filter(lider=user_avancado).first()
                 is_user_membro_pt_fixa = VinculoGrupos.objects.filter(membro=user_avancado).first()

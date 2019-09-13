@@ -1,0 +1,25 @@
+{% extends 'configuracoes/layout.html' %}
+{% load core_tags %}
+{% load staticfiles %}
+
+{% block titulo_pagina %} {{ nome_guilda }} - {{ nome_jogo }}{% endblock titulo_pagina %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-lg-12">
+            <form class="form-horizontal" action="" method="post">
+                <div class="card-box">
+                    <h5 class="card-title">Editar Classe</h5>
+                    {% csrf_token %}
+                    {% include 'configuracoes/partials/campos_tipo_classe.html' %}
+                </div>
+                <button type="submit" class="btn btn-dark btn-custom waves-effect w-md waves-light m-b-5">
+                    <i class="fa fa-save m-r-5"></i> <span>Salvar</span>
+                </button>
+                <a href="{% url url_configuracoes_tipo_classe_char_listar %}"
+                   class="btn btn-danger btn-custom waves-effect w-md waves-light m-b-5"><span>Voltar</span>
+                </a>
+            </form>
+        </div>
+    </div>
+{% endblock content %}
