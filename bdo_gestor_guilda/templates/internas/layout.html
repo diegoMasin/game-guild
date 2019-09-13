@@ -27,6 +27,21 @@
     {% block css_specific %}{% endblock css_specific %}
 
     <script src="{% static 'v1/global/assets/js/modernizr.min.js' %}"></script>
+
+    <style>
+        .topbar .topbar-left {
+            background-color: {{ cor_topo }} !important;
+        }
+        .navbar-custom {
+            background-color: {{ cor_topo }} !important;
+        }
+        .button-menu-mobile {
+            background-color: {{ cor_topo }} !important;
+        }
+        .side-menu.left {
+            background-color: {{ cor_lateral }} !important;
+        }
+    </style>
 </head>
 
 <body class="fixed-left">
