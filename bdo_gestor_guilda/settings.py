@@ -30,6 +30,10 @@ DEBUG = config('DEBUG', default=False, cast=bool)
 
 ALLOWED_HOSTS = [config('LOCAL_URL', default='localhost')]
 
+# VARIÁVEIS LOGO
+NOME_LOGO_LOGIN = config('NOME_LOGO_LOGIN', default='padrao_logo_login')
+NOME_LOGO = config('NOME_LOGO', default='padrao_logo')
+NOME_LOGO_ICON = config('NOME_LOGO_ICON', default='favicon_padrao')
 
 # Application definition
 

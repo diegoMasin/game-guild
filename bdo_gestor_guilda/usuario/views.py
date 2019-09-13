@@ -12,6 +12,7 @@ from bdo_gestor_guilda.usuario.forms.user_avancado import UserAvancadoEditarForm
 from bdo_gestor_guilda.usuario.forms.user_avancado import UserAvancadoForm
 from bdo_gestor_guilda.usuario.models.recruta_reprovado import RecrutaReprovado
 from bdo_gestor_guilda.usuario.models.user_avancado import UserAvancado
+from django.conf import settings
 
 
 def signup(request):
@@ -100,6 +101,9 @@ def do_login(request):
     form.fields['username'].widget.attrs['placeholder'] = 'Usuário ou Email'
     utils.context['form'] = form
     utils.context[user_remember_cookie] = request.session.get(user_remember_cookie, False)
+    utils.context['nome_logo'] = settings.NOME_LOGO
+    utils.context['nome_logo_login'] = settings.NOME_LOGO_LOGIN
+    utils.context['nome_logo_icon'] = settings.NOME_LOGO_ICON
     return render(request, '{0}/login.html'.format(utils.path_template_login), utils.context)
 
 
