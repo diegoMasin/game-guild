@@ -3,6 +3,7 @@ from decimal import Decimal
 
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.conf import settings
 
 from bdo_gestor_guilda.core.helpers.default_texts import TextosPadroes
 from bdo_gestor_guilda.core.models.configuracoes import Configuracoes
@@ -192,6 +193,9 @@ def get_context(requisicao=None):
         context.update({'nome_jogo': configuracoes.filter(nome_variavel='nome_jogo').first().valor_string})
         context.update({'cor_topo': configuracoes.filter(nome_variavel='cor_topo').first().valor_string})
         context.update({'cor_lateral': configuracoes.filter(nome_variavel='cor_lateral').first().valor_string})
+        context.update({'nome_logo': settings.NOME_LOGO})
+        context.update({'nome_logo_icon': settings.NOME_LOGO_ICON})
+        context.update({'nome_logo_login': settings.NOME_LOGO_LOGIN})
     return context
 
 
