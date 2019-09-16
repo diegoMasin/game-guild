@@ -19,7 +19,15 @@
                                 <input name="valor_conf" type="text" class="form-control" value="{{ conf.valor_string }}" required>
                             {% endif %}
                         {% elif conf.tipo_variavel == conf.INTEIRO_ID %}
-                            <input name="valor_conf" type="number" class="form-control" value="{{ conf.valor_inteiro }}" required>
+                            {% if conf.nome_variavel == "fechamento_war" %}
+                                <select name="char_classe" class="form-control" required="" id="id_char_classe">
+                                    <option value="21">21 Horas</option>
+                                    <option value="22">22 Horas</option>
+                                    <option value="23">23 Horas</option>
+                                </select>
+                            {% else %}
+                                <input name="valor_conf" type="number" class="form-control" value="{{ conf.valor_inteiro }}" required>
+                            {% endif %}
                         {% elif conf.tipo_variavel == conf.BOOL_ID %}
                             <input name="valor_conf" type="checkbox" value="{{ conf.valor_bool }}">
                         {% endif %}
