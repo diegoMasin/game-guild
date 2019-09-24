@@ -150,11 +150,15 @@ FILE_UPLOAD_HANDLERS = (
 )
 
 LOGIN_URL = '/login'
+DEFAULT_FROM_EMAIL = 'suportegameguilda@gmail.com'
+SERVER_EMAIL = 'suportegameguilda@gmail.com'
 
 ADMINS = (('Diego Masin', 'diegoifce@gmail.com'),)
+MANAGERS = ADMINS
+
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'guildoxionbdosa@gmail.com'
-EMAIL_HOST_PASSWORD = 'oxionbdosa'
+EMAIL_HOST_USER = 'suportegameguilda@gmail.com'
+EMAIL_HOST_PASSWORD = 'Dyiegoqwe123!'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
