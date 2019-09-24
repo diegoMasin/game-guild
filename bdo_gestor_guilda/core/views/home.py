@@ -9,6 +9,7 @@ from bdo_gestor_guilda.core.helpers import utils
 from bdo_gestor_guilda.core.helpers.default_texts import TextosPadroes
 from bdo_gestor_guilda.core.models.anuncios_gerais import AnunciosGerais
 from bdo_gestor_guilda.core.models.anuncios_restrito import AnunciosRestritos
+from bdo_gestor_guilda.core.models.configuracoes import Configuracoes
 from bdo_gestor_guilda.core.models.guerras import Guerras
 from bdo_gestor_guilda.core.models.participar_guerra import ParticiparGuerra
 from bdo_gestor_guilda.usuario.models.user_avancado import UserAvancado
@@ -76,8 +77,9 @@ def inserir_participante_guerra(request):
                 participacao = ParticiparGuerra.objects.filter(guerra=dados.get('guerra'),
                                                                participante=dados.get('participante')).first()
                 is_guerra_de_hoje = Guerras.objects.filter(data_inicio=date.today()).first() == dados.get('guerra')
-                if is_guerra_de_hoje:
-                    if not utils.passou_da_hora_para_participar_guerra():
+                hora_fechamento_war = Configuracoes.objects.filter(nome_variavel='fechamento_war').first().valor_inteiro
+                if is_guerra_de_hoje and hora_fechamento_war:
+                    if not utils.passou_da_hora_para_participar_guerra(hora_fechamento_war):
                         if participacao:
                             participacao.delete()
                         ParticiparGuerra(**dados).save()

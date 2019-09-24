@@ -11,8 +11,8 @@
                 <h5 class="card-title">Calculadora do Payout de <strong class="text-success">{{ payout.data_inicio|date:'d/m/Y' }}</strong> a
                     <strong class="text-success">{{ payout.data_fim|date:'d/m/Y' }}</strong></h5>
                 <p class="card-text">
-                    Regras de Payout: Nodewar = <strong class="text-success">+ 1 Ponto</strong>,
-                    Siege = <strong class="text-success">+ 2 Pontos</strong>.
+                    Regras de Payout: Nodewar = <strong class="text-success">+ {{ tier_por_node }} Ponto</strong>,
+                    Siege = <strong class="text-success">+ {{ tier_por_siege }} Pontos</strong>.
                     Poderão haver mais regras, consulte os Oficiais ou Líder.</p>
                 {% include 'payout/partials/tabela_calculadora.html' %}
             </div>

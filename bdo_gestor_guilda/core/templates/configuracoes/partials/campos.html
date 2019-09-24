@@ -8,7 +8,7 @@
                 <div class="form-group row">
                     <label class="col-3 col-form-label">{{ conf.slug_variavel }}:
                         {% if conf.descricao %}
-                            <i class="fa fa-question" title="{{ conf.descricao }}"></i>
+                            <i class="fa fa-info-circle cursor-pointer" title="{{ conf.descricao }}"></i>
                         {% endif %}
                     </label>
                     <div class="col-8 input-group">
@@ -19,7 +19,15 @@
                                 <input name="valor_conf" type="text" class="form-control" value="{{ conf.valor_string }}" required>
                             {% endif %}
                         {% elif conf.tipo_variavel == conf.INTEIRO_ID %}
-                            <input name="valor_conf" type="number" class="form-control" value="{{ conf.valor_inteiro }}" required>
+                            {% if conf.nome_variavel == "fechamento_war" %}
+                                <select name="valor_conf" class="form-control" required="" id="id_char_classe">
+                                    <option value="21" {% get_selected_fechamento_war fechamento_war 21 %}>21 Horas</option>
+                                    <option value="22" {% get_selected_fechamento_war fechamento_war 22 %}>22 Horas</option>
+                                    <option value="23" {% get_selected_fechamento_war fechamento_war 23 %}>23 Horas</option>
+                                </select>
+                            {% else %}
+                                <input name="valor_conf" type="number" class="form-control" value="{{ conf.valor_inteiro }}" required>
+                            {% endif %}
                         {% elif conf.tipo_variavel == conf.BOOL_ID %}
                             <input name="valor_conf" type="checkbox" value="{{ conf.valor_bool }}">
                         {% endif %}

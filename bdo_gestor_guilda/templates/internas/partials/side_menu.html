@@ -41,10 +41,12 @@
                             <i class="fa fa-recycle"></i><span> Lista Negra </span></a>
                     </li>
                 {% endif %}
-                <li>
-                    <a href="http://oxion-guild.com/" target="_blank" class="waves-effect waves-primary">
-                        <i class="fa fa-link"></i><span> oxion-guild.com </span></a>
-                </li>
+                {% if site_guilda %}
+                    <li>
+                        <a href="{{ site_guilda }}" target="_blank" class="waves-effect waves-primary">
+                            <i class="fa fa-link"></i><span> Site da Guilda </span></a>
+                    </li>
+                {% endif %}
             </ul>
             <div class="clearfix"></div>
         </div>

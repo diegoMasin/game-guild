@@ -8,7 +8,8 @@ class GuerrasForm(forms.ModelForm):
     call = forms.ModelChoiceField(
         label='Call de ...',
         queryset=UserAvancado.objects.filter(ativo=True),
-        widget=forms.Select(attrs={'class': 'form-control select2'})
+        required=False,
+        widget=forms.Select(attrs={'class': 'form-control select2', 'required': False})
     )
 
     class Meta:

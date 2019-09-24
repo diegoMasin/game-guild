@@ -83,11 +83,11 @@ def get_tier_adicional_by_payout(usuario, payout):
 
 
 @register.simple_tag
-def get_total_tier_by_membro_by_payout(usuario, nodes, siege, payout):
+def get_total_tier_by_membro_by_payout(usuario, nodes, siege, payout, x, y):
     total_nodes = get_frequencia_tipo_guerra_by_payout(usuario, nodes)
     total_siege = get_frequencia_tipo_guerra_by_payout(usuario, siege)
     tier_adicional = get_tier_adicional_by_payout(usuario, payout)
-    calculo_tier_total = 1 + total_nodes + (2 * total_siege) + tier_adicional
+    calculo_tier_total = 1 + (x * total_nodes) + (y * total_siege) + tier_adicional
     if calculo_tier_total > 10:
         calculo_tier_total = 10
     return 'Tier {}'. format(calculo_tier_total)
@@ -103,3 +103,8 @@ def get_logo(value):
 def get_fav(value):
     from django.conf import settings
     return '{}{}'.format(value, settings.NOME_LOGO_ICON)
+
+
+@register.simple_tag
+def get_selected_fechamento_war(fechamento_war, opcao):
+    return 'selected' if fechamento_war == opcao else ''

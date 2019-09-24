@@ -42,6 +42,8 @@ def atualizar(request, conf_id):
                 valor = request.POST.get('valor_conf')
                 if conf.tipo_variavel == conf.STRING_ID:
                     conf.valor_string = valor
+                    if 'http' not in valor and conf.nome_variavel == Configuracoes.NOME_VARIAVEL_SITE_GUILDA:
+                        conf.valor_string = '{0}{1}'.format('https://', valor)
                 elif conf.tipo_variavel == conf.INTEIRO_ID:
                     conf.valor_inteiro = valor
                 elif conf.tipo_variavel == conf.BOOL_ID:
