@@ -23,7 +23,7 @@ class Migration(migrations.Migration):
           'tier_por_node', 'Quantos Tier por Nodewar', 1, 1, 'Quantidade de tier para cálculo automático da frequência de guerra');
         '''),
         migrations.RunSQL('''
-          INSERT INTO tb_configuracoes (nome_variavel, slug_variavel, tipo_variavel, valor_inteiro, decricao) VALUES (
+          INSERT INTO tb_configuracoes (nome_variavel, slug_variavel, tipo_variavel, valor_inteiro, descricao) VALUES (
           'tier_por_siege', 'Quantos Tier por Siege', 1, 2, 'Quantidade de tier para cálculo automático da frequência de guerra');
         '''),
     ]
