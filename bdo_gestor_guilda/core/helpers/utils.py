@@ -196,6 +196,9 @@ def get_context(requisicao=None):
         context.update({'cor_topo': configuracoes.filter(nome_variavel='cor_topo').first().valor_string})
         context.update({'cor_lateral': configuracoes.filter(nome_variavel='cor_lateral').first().valor_string})
         context.update({'site_guilda': configuracoes.filter(nome_variavel='site_guilda').first().valor_string})
+        context.update({'fechamento_war': configuracoes.filter(nome_variavel='fechamento_war').first().valor_inteiro})
+        context.update({'tier_por_node': configuracoes.filter(nome_variavel='tier_por_node').first().valor_inteiro})
+        context.update({'tier_por_siege': configuracoes.filter(nome_variavel='tier_por_siege').first().valor_inteiro})
 
         context.update({'nome_logo': settings.NOME_LOGO})
         context.update({'nome_logo_icon': settings.NOME_LOGO_ICON})

@@ -15,15 +15,15 @@ class Migration(migrations.Migration):
           'site_guilda', 'Site da Guilda', 0, '');
         '''),
         migrations.RunSQL('''
-          INSERT INTO tb_configuracoes (nome_variavel, slug_variavel, tipo_variavel, valor_inteiro) VALUES (
-          'fechamento_war', 'Fechamento das Participações em Guerras', 1, 22);
+          INSERT INTO tb_configuracoes (nome_variavel, slug_variavel, tipo_variavel, valor_inteiro, descricao) VALUES (
+          'fechamento_war', 'Fechamento das Participações', 1, 22, 'Hora do fechamento para participações da guerra do dia.');
         '''),
         migrations.RunSQL('''
-          INSERT INTO tb_configuracoes (nome_variavel, slug_variavel, tipo_variavel, valor_inteiro) VALUES (
-          'tier_por_node', 'Quantos Tier por Nodewar', 1, 1);
+          INSERT INTO tb_configuracoes (nome_variavel, slug_variavel, tipo_variavel, valor_inteiro, descricao) VALUES (
+          'tier_por_node', 'Quantos Tier por Nodewar', 1, 1, 'Quantidade de tier para cálculo automático da frequência de guerra');
         '''),
         migrations.RunSQL('''
-          INSERT INTO tb_configuracoes (nome_variavel, slug_variavel, tipo_variavel, valor_inteiro) VALUES (
-          'tier_por_siege', 'Quantos Tier por Siege', 1, 2);
+          INSERT INTO tb_configuracoes (nome_variavel, slug_variavel, tipo_variavel, valor_inteiro, decricao) VALUES (
+          'tier_por_siege', 'Quantos Tier por Siege', 1, 2, 'Quantidade de tier para cálculo automático da frequência de guerra');
         '''),
     ]
