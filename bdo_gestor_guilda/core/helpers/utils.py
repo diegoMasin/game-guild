@@ -189,10 +189,13 @@ def get_context(requisicao=None):
         context.update({'nome_usuario': requisicao.user.first_name})
         context.update({'id_usuario': requisicao.user.pk})
         context.update({'passou_da_hora_para_participar_guerra': passou_da_hora_para_participar_guerra()})
+
         context.update({'nome_guilda': configuracoes.filter(nome_variavel='nome_guilda').first().valor_string})
         context.update({'nome_jogo': configuracoes.filter(nome_variavel='nome_jogo').first().valor_string})
         context.update({'cor_topo': configuracoes.filter(nome_variavel='cor_topo').first().valor_string})
         context.update({'cor_lateral': configuracoes.filter(nome_variavel='cor_lateral').first().valor_string})
+        context.update({'site_guilda': configuracoes.filter(nome_variavel='site_guilda').first().valor_string})
+
         context.update({'nome_logo': settings.NOME_LOGO})
         context.update({'nome_logo_icon': settings.NOME_LOGO_ICON})
         context.update({'nome_logo_login': settings.NOME_LOGO_LOGIN})

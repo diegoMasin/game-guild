@@ -10,6 +10,7 @@ class Configuracoes(models.Model):
         (INTEIRO_ID, 'Inteiro'),
         (BOOL_ID, 'Booleano'),
     )
+    NOME_VARIAVEL_SITE_GUILDA = 'site_guilda'
 
     id = models.AutoField(primary_key=True)
     nome_variavel = models.CharField(max_length=100)
