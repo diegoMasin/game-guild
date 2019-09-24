@@ -188,7 +188,8 @@ def get_context(requisicao=None):
 
         context.update({'nome_usuario': requisicao.user.first_name})
         context.update({'id_usuario': requisicao.user.pk})
-        context.update({'passou_da_hora_para_participar_guerra': passou_da_hora_para_participar_guerra()})
+        context.update({'passou_da_hora_para_participar_guerra': passou_da_hora_para_participar_guerra(
+            configuracoes.filter(nome_variavel='fechamento_war').first().valor_inteiro)})
 
         context.update({'nome_guilda': configuracoes.filter(nome_variavel='nome_guilda').first().valor_string})
         context.update({'nome_jogo': configuracoes.filter(nome_variavel='nome_jogo').first().valor_string})
@@ -241,11 +242,11 @@ def pode_promover_ou_rebaixar(request):
     return True if dados_avancados else False
 
 
-def passou_da_hora_para_participar_guerra():
+def passou_da_hora_para_participar_guerra(hora):
     from datetime import datetime
     import pytz
     agora = datetime.now(pytz.timezone('Brazil/East'))
-    return agora.hour >= 22
+    return agora.hour >= hora
 
 
 def contador_de_registros():
