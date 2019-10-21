@@ -88,7 +88,7 @@ def do_login(request):
             if not dados_user_avancado:
                 return redirect(utils.url_name_cadastrar_user_avancado)
 
-            messages.success(request, 'Bem Vindo à OXION GUILD!')
+            messages.success(request, 'Bem Vindo ao sistema Game Guild!')
             return redirect(utils.url_name_home)
         else:
             if user_inativo:
