@@ -14,14 +14,16 @@
                             <i class="fa fa-user-plus"></i><span> Recrutamento </span></a>
                     </li>
                 {% endif %}
-                <li>
-                    <a href="{% url url_membros_listar %}" class="waves-effect waves-primary">
-                        <i class="fa fa-child"></i><span> Membros </span></a>
-                </li>
-                <li>
-                    <a href="{% url url_herois_listar %}" class="waves-effect waves-primary">
-                        <i class="fa fa-shield"></i><span> Heróis </span></a>
-                </li>
+                {% if is_lider or is_oficial or is_heroi and not limitacao_heroi %}
+                    <li>
+                        <a href="{% url url_membros_listar %}" class="waves-effect waves-primary">
+                            <i class="fa fa-child"></i><span> Membros </span></a>
+                    </li>
+                    <li>
+                        <a href="{% url url_herois_listar %}" class="waves-effect waves-primary">
+                            <i class="fa fa-shield"></i><span> Heróis </span></a>
+                    </li>
+                {% endif %}
                 <li>
                     <a href="{% url url_grupos_listar %}" class="waves-effect waves-primary">
                         <i class="fa fa-users"></i><span> Grupos </span></a>

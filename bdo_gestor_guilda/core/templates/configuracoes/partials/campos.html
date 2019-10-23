@@ -25,6 +25,16 @@
                                     <option value="22" {% get_selected_fechamento_war fechamento_war 22 %}>22 Horas</option>
                                     <option value="23" {% get_selected_fechamento_war fechamento_war 23 %}>23 Horas</option>
                                 </select>
+                            {% elif conf.nome_variavel == "limitacao_membro" %}
+                                <select name="valor_conf" class="form-control" required="">
+                                    <option value="0" {% get_selected_limitacao_membro limitacao_membro 0 %}>Nenhuma Restrição</option>
+                                    <option value="1" {% get_selected_limitacao_membro limitacao_membro 1 %}>Com Restrições</option>
+                                </select>
+                            {% elif conf.nome_variavel == "limitacao_heroi" %}
+                                <select name="valor_conf" class="form-control" required="">
+                                    <option value="0" {% get_selected_limitacao_heroi limitacao_heroi 0 %}>Nenhuma Restrição</option>
+                                    <option value="1" {% get_selected_limitacao_heroi limitacao_heroi 1 %}>Com Restrições</option>
+                                </select>
                             {% else %}
                                 <input name="valor_conf" type="number" class="form-control" value="{{ conf.valor_inteiro }}" required>
                             {% endif %}

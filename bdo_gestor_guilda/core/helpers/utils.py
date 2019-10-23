@@ -183,6 +183,7 @@ def get_context(requisicao=None):
             context.update({'is_lider': dados_avancados.is_lider()})
             context.update({'is_oficial': dados_avancados.is_oficial()})
             context.update({'is_heroi': dados_avancados.is_heroi()})
+            context.update({'is_membro': dados_avancados.is_membro()})
 
             context.update({'pt_fixa': dados_avancados.get_pt_fixa()})
 
@@ -199,6 +200,8 @@ def get_context(requisicao=None):
         context.update({'fechamento_war': configuracoes.filter(nome_variavel='fechamento_war').first().valor_inteiro})
         context.update({'tier_por_node': configuracoes.filter(nome_variavel='tier_por_node').first().valor_inteiro})
         context.update({'tier_por_siege': configuracoes.filter(nome_variavel='tier_por_siege').first().valor_inteiro})
+        context.update({'limitacao_membro': configuracoes.filter(nome_variavel='limitacao_membro').first().valor_inteiro})
+        context.update({'limitacao_heroi': configuracoes.filter(nome_variavel='limitacao_heroi').first().valor_inteiro})
 
         context.update({'nome_logo': settings.NOME_LOGO})
         context.update({'nome_logo_icon': settings.NOME_LOGO_ICON})
