@@ -18,6 +18,7 @@ from django.conf.urls import url, include
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
+from bdo_gestor_guilda.core.views import errors_500_404
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -33,3 +34,6 @@ urlpatterns = [
 
     ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL,
                                                                                  document_root=settings.MEDIA_ROOT)
+
+handler404 = errors_500_404.handler404
+handler500 = errors_500_404.handler500
