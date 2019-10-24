@@ -108,3 +108,13 @@ def get_fav(value):
 @register.simple_tag
 def get_selected_fechamento_war(fechamento_war, opcao):
     return 'selected' if fechamento_war == opcao else ''
+
+
+@register.simple_tag
+def get_selected_limitacao_membro(limitacao_membro, opcao):
+    return 'selected' if limitacao_membro == opcao else ''
+
+
+@register.simple_tag
+def get_selected_limitacao_heroi(limitacao_heroi, opcao):
+    return 'selected' if limitacao_heroi == opcao else ''

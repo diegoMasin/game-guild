@@ -4,10 +4,12 @@
     <tr class="text-center">
         <th data-toggle="true">Família</th>
         <th>Char Principal</th>
-        <th>PA</th>
-        <th>PA AWK</th>
-        <th>PD</th>
-        <th>GS</th>
+        {% if is_lider or is_oficial or is_membro and not limitacao_membro %}
+            <th>PA</th>
+            <th>PA AWK</th>
+            <th>PD</th>
+            <th>GS</th>
+        {% endif %}
         <th>Classe</th>
         <th data-hide="all">ID Discord</th>
         <th data-hide="all">Level</th>
@@ -25,10 +27,12 @@
         <tr class="text-center">
             <td class="text-left">{{ user.nome_familia }}</td>
             <td class="text-left">{{ user.nome_char_principal }}</td>
-            <td>{{ user.char_ap }}</td>
-            <td>{{ user.char_ap_despertada }}</td>
-            <td>{{ user.char_dp }}</td>
-            <td>{{ user.gs }}</td>
+            {% if is_lider or is_oficial or is_membro and not limitacao_membro %}
+                <td>{{ user.char_ap }}</td>
+                <td>{{ user.char_ap_despertada }}</td>
+                <td>{{ user.char_dp }}</td>
+                <td>{{ user.gs }}</td>
+            {% endif %}
             <td>{{ user.char_classe|title }}</td>
             <td>{{ user.user_discord }}</td>
             <td>{{ user.char_lvl }}</td>
@@ -38,8 +42,13 @@
             <td>{{ user.data_cadastro|date:'d/m/Y' }}</td>
             <td><i>{{ user.justificativa_inativo }}</i></td>
             <td class="text-center" width="180">
-                <a target="_blank" href="{{ user.get_url_print }}" title="Print do GS">
-                    <i class="fa fa-2x fa-photo texto-preto"></i></a>
+                {% if user.usuario.pk == id_usuario or is_lider or is_oficial or is_membro and not limitacao_membro %}
+                    <a target="_blank" href="{{ user.get_url_print }}" title="Print do GS">
+                        <i class="fa fa-2x fa-photo texto-preto m-r-5"></i></a>
+                {% else %}
+                    <a href="javascript:void(0)" class="sem-pointer" title="Inativar">
+                        <i class="fa fa-2x fa-photo text-muted m-r-5"></i></a>
+                {% endif %}
                 {% if is_lider %}
                     {% if not user.usuario.pk == id_usuario %}
                         <a href="javascript:void(0)" data-url="{% url url_lista_negra_reativar user.pk %}"
