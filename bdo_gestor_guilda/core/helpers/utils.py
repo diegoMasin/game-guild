@@ -72,6 +72,7 @@ url_configuracoes_limpar_registros = 'configuracoes_limpar_registros'
 url_configuracoes_termo_condicoes = 'configuracoes_termo_condicoes'
 url_configuracoes_tipo_classe_char_listar = 'configuracoes_tipo_classe_char_listar'
 url_configuracoes_tipo_classe_char_editar = 'configuracoes_tipo_classe_char_editar'
+url_estatisticas_index = 'estatisticas_index'
 # PATHS
 path_template_login = 'login'
 path_template_home = 'pagina_inicial'
@@ -88,6 +89,7 @@ path_anuncios_restritos = 'anuncios_restritos'
 path_guerras = 'guerras'
 path_payout = 'payout'
 path_configuracoes = 'configuracoes'
+path_estatisticas = 'estatisticas'
 # CONTEXT
 context = {
     'url_name_login': url_name_login,
@@ -152,6 +154,7 @@ context = {
     'url_configuracoes_termo_condicoes': url_configuracoes_termo_condicoes,
     'url_configuracoes_tipo_classe_char_listar': url_configuracoes_tipo_classe_char_listar,
     'url_configuracoes_tipo_classe_char_editar': url_configuracoes_tipo_classe_char_editar,
+    'url_estatisticas_index': url_estatisticas_index,
 
     'path_template_login': path_template_login,
     'path_template_home': path_template_home,

@@ -12,6 +12,7 @@ from bdo_gestor_guilda.core.views import payout
 from bdo_gestor_guilda.core.views import recrutas
 from bdo_gestor_guilda.core.views import vinculo_grupos
 from bdo_gestor_guilda.core.views import configuracoes
+from bdo_gestor_guilda.core.views import estatisticas
 
 urlpatterns = [
     url(r'^$', home.pagina_inicial, name='pagina_inicial'),
@@ -82,5 +83,7 @@ urlpatterns = [
         name='configuracoes_tipo_classe_char_listar'),
     url(r'^configuracoes/tipo-classe-editar/(?P<tipo_classe_id>(\d+))/$', configuracoes.tipo_classe_char_editar,
         name='configuracoes_tipo_classe_char_editar'),
+
+    url(r'^estatisticas/index/$', estatisticas.index, name='estatisticas_index'),
 
 ]
