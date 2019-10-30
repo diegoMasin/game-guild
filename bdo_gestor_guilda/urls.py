@@ -19,11 +19,13 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from bdo_gestor_guilda.core.views import errors_500_404
+from django.http import HttpResponse
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^', include('bdo_gestor_guilda.core.urls')),
     url(r'^', include('bdo_gestor_guilda.usuario.urls')),
+    url(r'^robots.txt', lambda x: HttpResponse("User-Agent: *\nDisallow: /", content_type="text/plain"), name="robots_file"),
 
     # Password reset
     url(r'^password-reset/$', auth_views.password_reset, name='password_reset'),
