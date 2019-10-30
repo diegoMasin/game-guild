@@ -2,6 +2,9 @@
 {% load core_tags %}
 {% load staticfiles %}
 
-{% block js_specific %}{% endblock js_specific %}
+{% block js_specific %}
+    <script>JSON_GRAFICO_GUERRA_DIA = {{ json_grafico_guerra_dia|safe }};</script>
+    <script src="{% static 'v1/especifico/estatisticas/main_graficos.js' %}"></script>
+{% endblock js_specific %}
 
 {% block css_specific %}{% endblock css_specific %}

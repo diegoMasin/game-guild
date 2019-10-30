@@ -1,15 +1,13 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.db import transaction
-from django.http import HttpResponseRedirect
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import render, reverse
 
-from bdo_gestor_guilda.core.forms.guerras import GuerrasForm
 from bdo_gestor_guilda.core.helpers import utils
 from bdo_gestor_guilda.core.helpers.default_texts import TextosPadroes
+from bdo_gestor_guilda.core.models.frequencia_guerra import FrequenciaGuerra
 from bdo_gestor_guilda.core.models.guerras import Guerras
 from bdo_gestor_guilda.core.models.participar_guerra import ParticiparGuerra
-from bdo_gestor_guilda.core.models.frequencia_guerra import FrequenciaGuerra
+from bdo_gestor_guilda.usuario.models.user_avancado import UserAvancado
 
 
 @login_required
@@ -17,7 +15,8 @@ def listar(request, guerra_id):
     context = utils.get_context(request)
     guerra = Guerras.objects.filter(pk=int(guerra_id)).first()
     participacoes_guerra = ParticiparGuerra.objects.filter(
-        guerra__pk=int(guerra_id)).order_by('participante__nome_familia')
+        guerra__pk=int(guerra_id)).exclude(
+        participante__cargo=UserAvancado.CARGO_HEROI_ID).order_by('participante__nome_familia')
     url_marcar = reverse(utils.url_frequencia_guerra_marcar)
     context.update({'guerra': guerra})
     context.update({'participacoes_guerra': participacoes_guerra})
