@@ -24,6 +24,8 @@ def index(request):
         frequencias = FrequenciaGuerra.objects.filter(guerra=guerra).first()
         if frequencias and frequencias.participantes:
             frequencias = frequencias.participantes.__len__()
+        else:
+            frequencias = 0
         grafico_guerra_dia.append({
             'dia': '{}/{}/{}'.format(guerra.data_inicio.day, guerra.data_inicio.month, guerra.data_inicio.year),
             'participacoes': participacoes, 'frequencias': frequencias})
