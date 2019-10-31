@@ -4,7 +4,9 @@
     <tr class="text-center">
         <th>Família</th>
         <th>Char Principal</th>
-        <th>PA/PA AWK</th>
+        {% if is_lider or is_oficial or is_membro and not limitacao_membro %}
+            <th>PA/PA AWK</th>
+        {% endif %}
         <th>Classe</th>
         <th>Cargo</th>
         <th>Nodes da Semana ({{ total_de_nodes_by_payout.count|default:'0' }})</th>
@@ -19,7 +21,9 @@
         <tr class="text-center">
             <td class="text-left">{{ membro.nome_familia }}</td>
             <td>{{ membro.nome_char_principal }}</td>
-            <td>{{ membro.char_ap }} / {{ membro.char_ap_despertada }}</td>
+            {% if is_lider or is_oficial or is_membro and not limitacao_membro %}
+                <td>{{ membro.char_ap }} / {{ membro.char_ap_despertada }}</td>
+            {% endif %}
             <td>{{ membro.char_classe|title }}</td>
             <td>
                 <span class="badge badge-{{ membro.get_slug_cargo|cor_cargo }}">
