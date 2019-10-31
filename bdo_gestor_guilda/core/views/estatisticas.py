@@ -12,9 +12,15 @@ from datetime import date
 
 @login_required
 def index(request):
+    context = utils.get_context(request)
+    json_grafico_guerra_dia = json.dumps(montar_grafico_7_ultimas_guerras())
+    context.update({'json_grafico_guerra_dia': json_grafico_guerra_dia})
+    return render(request, '{0}/index.html'.format(utils.path_estatisticas), context)
+
+
+def montar_grafico_7_ultimas_guerras():
     hoje = date.today()
     grafico_guerra_dia = []
-    context = utils.get_context(request)
     ultimas_7_guerras = Guerras.objects.all().exclude(data_inicio=hoje).order_by('-data_inicio')[:7]
     ultimas_7_guerras = reversed(ultimas_7_guerras)
     for guerra in ultimas_7_guerras:
@@ -30,6 +36,4 @@ def index(request):
             'dia': '{}/{}/{}'.format(guerra.data_inicio.day, guerra.data_inicio.month, guerra.data_inicio.year),
             'participacoes': participacoes, 'frequencias': frequencias})
 
-    json_grafico_guerra_dia = json.dumps(grafico_guerra_dia)
-    context.update({'json_grafico_guerra_dia': json_grafico_guerra_dia})
-    return render(request, '{0}/index.html'.format(utils.path_estatisticas), context)
+    return grafico_guerra_dia
