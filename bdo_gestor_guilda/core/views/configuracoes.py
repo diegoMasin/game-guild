@@ -78,8 +78,9 @@ def limpar_registros(request):
                 payout_limpeza = Payout.objects.filter(data_inicio__lte=data_limpeza)
                 payout_personalizado_limpeza = PayoutPersonalizado.objects.filter(payout__in=payout_limpeza)
                 convert_datetime = datetime.combine(data_limpeza, datetime.max.time())
-                black_list_limpeza = UserAvancado.objects.filter(ativo=False, cargo=UserAvancado.CARGO_NENHUM_ID,
-                                                                 data_cadastro__lte=convert_datetime)
+                black_list_limpeza = UserAvancado.objects.filter(
+                    ativo=False, cargo=UserAvancado.CARGO_NENHUM_ID, justificativa_inativo__isnull=False, 
+                    data_cadastro__lte=convert_datetime)
 
                 contador = guerras_limpeza.count() + participacoes_limpeza.count() + frequencias_limpeza.count()
                 contador = contador + payout_limpeza.count() + payout_personalizado_limpeza.count()
