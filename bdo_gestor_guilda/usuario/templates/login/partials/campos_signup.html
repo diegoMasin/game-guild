@@ -1,7 +1,13 @@
 {% load staticfiles %}
 <div class="wrapper-page wrapper-page-important">
-    <div class="text-center">
-        <a href="{% url url_name_login %}" class="logo-lg"><img src="{% static 'v1/global/assets/images/logo_guildas/'|add:nome_logo_login %}" alt="LOGO"> <span></span> </a>
+    <div class="text-center m-b-15">
+        <a href="{% url url_name_login %}" class="logo-lg"><img
+                src="{% static 'v1/global/assets/images/logo_guildas/'|add:nome_logo_login %}" alt="LOGO"> <span></span>
+        </a>
+    </div>
+    <div class="text-center m-b-15">
+        <span class="small text-danger">Se a tela carregar sem os campos de cadastros, Por favor pressione um
+            <strong>F5</strong>.</span>
     </div>
     <form id="form-signup" class="form-horizontal m-t-20" method="post" action="{% url url_name_signup %}">
         {% csrf_token %}
@@ -78,12 +84,14 @@
                         <input id="checkbox-signup" type="checkbox" name="check_termo">
                         <label for="checkbox-signup">
                             Eu aceito
-                            <a href="javascript:void(0)" data-toggle="modal" data-target="#termo-condicoes-modal">os Termos e Condições</a>
+                            <a href="javascript:void(0)" data-toggle="modal" data-target="#termo-condicoes-modal">os
+                                Termos e Condições</a>
                         </label>
                     </div>
                     <div>
                         <label>
-                            Obs: Após cadastrado seu acesso, faça o login para preencher um cadastro de Recrutamento/Informações.
+                            Obs: Após cadastrado seu acesso, faça o login para preencher um cadastro de
+                            Recrutamento/Informações.
                         </label>
                     </div>
                 </div>
@@ -102,9 +110,7 @@
             </div>
         </div>
     </form>
-     <a id="senha-diverge" class="autohidebut text-hide"
-       href="javascript:;"
-       onclick='$.Notification.autoHideNotify("error", "top right", "Mensagem:",
+    <a id="senha-diverge" class="autohidebut text-hide" href="javascript:;" onclick='$.Notification.autoHideNotify("error", "top right", "Mensagem:",
        "A senha não corresponde! Por favor, repita a senha corretamente.")'>
     </a>
 </div>
