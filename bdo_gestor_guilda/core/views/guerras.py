@@ -15,6 +15,7 @@ def listar(request):
     context = utils.get_context(request)
     todas_guerras = Guerras.objects.all().order_by('-data_inicio')
     context.update({'todas_guerras': todas_guerras})
+    context.update({'url_marcar': reverse(utils.url_frequencia_guerra_marcar)})
     return render(request, '{0}/index.html'.format(utils.path_guerras), context)
 
 
