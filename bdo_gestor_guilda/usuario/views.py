@@ -154,7 +154,8 @@ def inserir_user_avancado(request):
 
 @login_required
 def aguarde_aprovacao(request):
-    return render(request, '{0}/aguarde_aprovacao.html'.format(utils.path_user_avancado), utils.context)
+    context = utils.get_context(request)
+    return render(request, '{0}/aguarde_aprovacao.html'.format(utils.path_user_avancado), context)
 
 
 @login_required
