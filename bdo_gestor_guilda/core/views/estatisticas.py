@@ -33,7 +33,7 @@ def montar_grafico_7_ultimas_guerras():
         else:
             frequencias = 0
         grafico_guerra_dia.append({
-            'dia': '{}/{}/{}'.format(guerra.data_inicio.day, guerra.data_inicio.month, guerra.data_inicio.year),
+            'dia': '{}/{}'.format(guerra.data_inicio.day, guerra.data_inicio.month),
             'participacoes': participacoes, 'frequencias': frequencias})
 
     return grafico_guerra_dia
