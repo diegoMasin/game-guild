@@ -25,7 +25,7 @@
       pointFillColors: Pfillcolor,
       pointStrokeColors: Pstockcolor,
       behaveLikeLine: true,
-      gridLineColor: "#999",
+      gridLineColor: "#eee",
       hideHover: "auto",
       resize: true, //defaulted to true
       lineColors: lineColors,
@@ -60,6 +60,14 @@
         barColors: lineColors
       });
     }),
+    (MorrisCharts.prototype.createDonutChart = function(element, data, colors) {
+      Morris.Donut({
+        element: element,
+        data: data,
+        resize: true, //defaulted to true
+        colors: colors
+      });
+    }),
     (MorrisCharts.prototype.init = function() {
       var dicionario_guerra_dia = JSON_GRAFICO_GUERRA_DIA;
       var $data = [];
@@ -85,7 +93,7 @@
         ["0.1"],
         ["#fff"],
         ["#000"],
-        ["#163282", "#14aa41"]
+        ["#163282", "#66bb6a"]
       );
 
       var dicionario_ultimas_siege = JSON_GRAFICO_ULTIMAS_SIEGE;
@@ -115,6 +123,29 @@
         ["Heróis", "Membros"],
         ["#9c27b0", "#66bb6a"]
       );
+
+      var dicionario_qtd_classes = JSON_GRAFICO_QTD_CLASSES;
+      // var $donutData = [
+      //   { label: "Download Sales", value: 12 },
+      //   { label: "In-Store Sales", value: 30 },
+      //   { label: "Mail-Order Sales", value: 20 }
+      // ];
+      var $donutData = [];
+      var cores = [];
+      function montaGraficoQtdClasses(value, index, array) {
+        var nome_classe = value.nome;
+        var cor = value.cor;
+        var numero = value.n;
+        if (numero != 0) {
+          $donutData.push({
+            label: nome_classe,
+            value: numero
+          });
+          cores.push(cor);
+        }
+      }
+      dicionario_qtd_classes.forEach(montaGraficoQtdClasses);
+      this.createDonutChart("morris-donut-example", $donutData, cores);
     }),
     //init
     ($.MorrisCharts = new MorrisCharts()),
