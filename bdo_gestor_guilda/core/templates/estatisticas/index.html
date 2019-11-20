@@ -5,17 +5,23 @@
 {% block titulo_pagina %} {{ nome_guilda }} - {{ nome_jogo }}{% endblock titulo_pagina %}
 
 {% block content %}
-    <div class="row">
-        <div class="col-sm-12">
-            <div class="page-title-box">
-                <h4 class="page-title">Informações Gráficas da Guilda</h4>
-                <div class="clearfix"></div>
-            </div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="page-title-box">
+            <h4 class="page-title">Informações Gráficas da Guilda</h4>
+            <div class="clearfix"></div>
         </div>
     </div>
-    {% include 'estatisticas/partials/btn_relatorios.html' %}
-    <div class="row">
-        {% include 'estatisticas/partials/participacao_node.html' %}
-        {% include 'estatisticas/partials/qtd_participacao_siege.html' %}
-    </div>
+</div>
+{% include 'estatisticas/partials/btn_relatorios.html' %}
+<div class="row">
+    {% include 'estatisticas/partials/quantitativos.html' %}
+</div>
+<div class="row">
+    {% include 'estatisticas/partials/participacao_node.html' %}
+    {% include 'estatisticas/partials/qtd_participacao_siege.html' %}
+</div>
+<div class="row">
+    {% include 'estatisticas/partials/qtd_classes_guilda.html' %}
+</div>
 {% endblock content %}

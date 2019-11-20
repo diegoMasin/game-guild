@@ -3,9 +3,10 @@
 {% load staticfiles %}
 
 {% block js_specific %}
-    <script>JSON_GRAFICO_GUERRA_DIA = {{ json_grafico_guerra_dia|safe }};</script>
-    <script>JSON_GRAFICO_ULTIMAS_SIEGE = {{ json_grafico_ultimas_siege|safe }};</script>
-    <script src="{% static 'v1/especifico/estatisticas/main_graficos.js' %}"></script>
+<script>JSON_GRAFICO_GUERRA_DIA = {{ json_grafico_guerra_dia | safe }};</script>
+<script>JSON_GRAFICO_ULTIMAS_SIEGE = {{ json_grafico_ultimas_siege | safe }};</script>
+<script>JSON_GRAFICO_QTD_CLASSES = {{ json_grafico_qtd_classes_guilda | safe }};</script>
+<script src="{% static 'v1/especifico/estatisticas/main_graficos.js' %}"></script>
 {% endblock js_specific %}
 
 {% block css_specific %}{% endblock css_specific %}

@@ -1,0 +1,25 @@
+<div class="col-lg-12">
+    <div class="portlet">
+        <div class="portlet-heading bg-inverse">
+            <h3 class="portlet-title text-white"> Quantidade de Classes na Guilda </h3>
+            <div class="clearfix"></div>
+        </div>
+        <div class="panel-collapse collapse show">
+            <div class="portlet-body">
+                <div id="morris-donut-example" style="height: 300px;"></div>
+
+                <div class="text-center">
+                    <ul class="list-inline chart-detail-list">
+                        {% for classe in classes %}
+                        {% if classe.n %}
+                        <li class="list-inline-item">
+                            <h5><i class="fa fa-circle m-r-5" style="color: {{ classe.cor }}"></i>{{classe.nome}}</h5>
+                        </li>
+                        {% endif %}
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
