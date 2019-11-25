@@ -14,7 +14,8 @@ from bdo_gestor_guilda.usuario.models.user_avancado import UserAvancado
 @login_required
 def listar(request):
     context = utils.get_context(request)
-    todos_usuarios = UserAvancado.objects.filter(ativo=True).exclude(cargo=UserAvancado.CARGO_HEROI_ID).order_by('cargo')
+    todos_usuarios = UserAvancado.objects.filter(ativo=True).exclude(
+        cargo=UserAvancado.CARGO_HEROI_ID).order_by('cargo')
     context.update({'todos_usuarios': todos_usuarios})
     context.update({'pode_promover_ou_rebaixar': utils.pode_promover_ou_rebaixar(request)})
     return render(request, '{0}/index.html'.format(utils.path_membros), context)

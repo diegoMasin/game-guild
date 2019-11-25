@@ -145,3 +145,21 @@ def get_quantitativos(all_membros_ativos):
     result.update({'gs_medio': math.ceil(gs_medio), 'pa_medio': math.ceil(pa_medio),
                    'paawk_medio': math.ceil(paawk_medio), 'pd_medio': math.ceil(pd_medio)})
     return result
+
+
+@login_required
+def frequencias_nodewar_by_membros(request):
+    context = utils.get_context(request)
+    todos_usuarios = UserAvancado.objects.filter(ativo=True).exclude(
+        cargo=UserAvancado.CARGO_HEROI_ID).order_by('cargo')
+    context.update({'todos_usuarios': todos_usuarios})
+    return render(request, '{0}/relatorio_nodewar.html'.format(utils.path_estatisticas), context)
+
+
+@login_required
+def frequencias_siege_by_membros(request):
+    context = utils.get_context(request)
+    todos_usuarios = UserAvancado.objects.filter(ativo=True).exclude(
+        cargo=UserAvancado.CARGO_HEROI_ID).order_by('cargo')
+    context.update({'todos_usuarios': todos_usuarios})
+    return render(request, '{0}/relatorio_siege.html'.format(utils.path_estatisticas), context)

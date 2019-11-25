@@ -4,11 +4,13 @@
     <div class="col-lg-4 m-b-15">
         <div class="btn-group">
             <button type="button" class="btn btn-dark dropdown-toggle waves-effect waves-light" data-toggle="dropdown"
-                    aria-expanded="false">Outros Relatórios <span class="caret"></span></button>
-            <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 38px, 0px); top: 0px; left: 0px; will-change: transform;">
-                <a class="dropdown-item" href="#">Quantidade de Participações em NodeWar</a>
-                <a class="dropdown-item" href="#">Quantidade de Participações em Siege</a>
-                <a class="dropdown-item" href="#">Atualizações mais recentes de Perfil (últimos 30 dias)</a>
+                aria-expanded="false">Outros Relatórios <span class="caret"></span></button>
+            <div class="dropdown-menu" x-placement="bottom-start"
+                style="position: absolute; transform: translate3d(0px, 38px, 0px); top: 0px; left: 0px; will-change: transform;">
+                <a class="dropdown-item" href="{% url 'estatisticas_relatorio_nodewar' %}">Quantidade de Participações
+                    em NodeWar</a>
+                <a class="dropdown-item" href="{% url 'estatisticas_relatorio_siege' %}">Quantidade de Participações
+                    em Siege</a>
             </div>
         </div>
     </div>

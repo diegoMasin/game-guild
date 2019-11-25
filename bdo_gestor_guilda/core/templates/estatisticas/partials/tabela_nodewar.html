@@ -1,0 +1,54 @@
+{% load core_tags %}
+<table class="table foo-table-default toggle-circle" data-page-size="10">
+    <thead class="table-dark">
+        <tr class="text-center">
+            <th data-toggle="true">Família</th>
+            <th>Char Principal</th>
+            <th>Classe</th>
+            <th data-hide="all">PA</th>
+            <th data-hide="all">PA AWK</th>
+            <th data-hide="all">PD</th>
+            <th data-hide="all">GS</th>
+            <th data-hide="all">Level</th>
+            <th data-hide="all">PT Fixa</th>
+            <th>Cargo</th>
+            <th>Total de Guerras <i class="fa fa-question-circle-o"
+                    title="Quantidade total de todas as guerras que este membro era ativo para participar"></i></th>
+            <th>Total de Participações Marcadas</th>
+            <th>Total de Frequências</th>
+        </tr>
+    </thead>
+    {% include 'estatisticas/partials/filtros.html' %}
+    <tbody>
+        {% for user in todos_usuarios %}
+        <tr class="text-center">
+            <td class="text-left">{{ user.nome_familia }}</td>
+            <td class="text-left">{{ user.nome_char_principal }}</td>
+            <td>{{ user.char_classe|title }}</td>
+            <td>{{ user.char_ap }}</td>
+            <td>{{ user.char_ap_despertada }}</td>
+            <td>{{ user.char_dp }}</td>
+            <td>{{ user.gs }}</td>
+            <td>{{ user.char_lvl }}</td>
+            <td><strong>{{ user.get_pt_fixa }}</strong></td>
+            <td>
+                <span class="badge badge-{{ user.get_slug_cargo|cor_cargo }}">{{ user.get_slug_cargo }}</span>
+            </td>
+            <td>{{ user.get_total_guerras }}</td>
+            <td>{{ user.get_total_participacoes_guerras }}</td>
+            <td>{{ user.get_total_frequencias_guerras }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+    <tfoot>
+        <tr class="active">
+            <td colspan="16">
+                <div class="text-right">
+                    <ul
+                        class="pagination hide-if-no-paging pagination-split justify-content-center footable-pagination m-t-40 m-b-0">
+                    </ul>
+                </div>
+            </td>
+        </tr>
+    </tfoot>
+</table>

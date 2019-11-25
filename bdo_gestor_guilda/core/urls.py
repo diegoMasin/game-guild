@@ -85,5 +85,9 @@ urlpatterns = [
         name='configuracoes_tipo_classe_char_editar'),
 
     url(r'^estatisticas/index/$', estatisticas.index, name='estatisticas_index'),
+    url(r'^estatisticas/relatorio-nodewar/$', estatisticas.frequencias_nodewar_by_membros,
+        name='estatisticas_relatorio_nodewar'),
+    url(r'^estatisticas/relatorio-siege/$', estatisticas.frequencias_siege_by_membros,
+        name='estatisticas_relatorio_siege'),
 
 ]
