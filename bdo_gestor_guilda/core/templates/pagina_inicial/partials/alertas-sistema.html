@@ -3,9 +3,7 @@
     <h5 class="card-title text-danger">
         <i class="ti-announcement"></i> Alertas do Sistema
     </h5>
-    <h6 class="card-subtitle text-danger m-t-10">
-        {% for texto in alerta_sistema.texto %}
-        {{ texto }}
-        {% endfor %}
-    </h6>
+    {% for texto in alerta_sistema.texto %}
+    <h6 class="card-subtitle text-danger m-t-10">- {{ texto }}</h6>
+    {% endfor %}
 </div>
