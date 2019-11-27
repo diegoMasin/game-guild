@@ -5,22 +5,28 @@
 {% block titulo_pagina %} {{ nome_guilda }} - {{ nome_jogo }}{% endblock titulo_pagina %}
 
 {% block content %}
-    <div class="row">
-        <div class="col-lg-3">
-            <div class="text-center card-box">
-                {% include 'pagina_inicial/partials/card-perfil.html' %}
-            </div>
-        </div>
-        <div class="col-lg-9">
-            {% include 'pagina_inicial/partials/anuncios-geral-home.html' %}
-            {% if is_lider_or_oficial %}
-                {% include 'pagina_inicial/partials/anuncios-restritos-home.html' %}
-            {% endif %}
-            {% include 'pagina_inicial/partials/anuncios-guerra-home.html' %}
+<div class="row">
+    <div class="col-lg-3">
+        <div class="text-center card-box">
+            {% include 'pagina_inicial/partials/card-perfil.html' %}
         </div>
     </div>
-    {% include 'pagina_inicial/partials/modal_participar.html' %}
-    {% if siege_da_semana %}
-        {% include 'pagina_inicial/partials/modal_participar_siege.html' %}
-    {% endif %}
+    <div class="col-lg-9">
+        {% if alerta_sistema.exibe_alerta %}
+        {% include 'pagina_inicial/partials/alertas-sistema.html' %}
+        {% endif %}
+
+        {% include 'pagina_inicial/partials/anuncios-geral-home.html' %}
+
+        {% if is_lider_or_oficial %}
+        {% include 'pagina_inicial/partials/anuncios-restritos-home.html' %}
+        {% endif %}
+
+        {% include 'pagina_inicial/partials/anuncios-guerra-home.html' %}
+    </div>
+</div>
+{% include 'pagina_inicial/partials/modal_participar.html' %}
+{% if siege_da_semana %}
+{% include 'pagina_inicial/partials/modal_participar_siege.html' %}
+{% endif %}
 {% endblock content %}

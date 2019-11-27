@@ -13,6 +13,7 @@ from bdo_gestor_guilda.core.models.configuracoes import Configuracoes
 from bdo_gestor_guilda.core.models.guerras import Guerras
 from bdo_gestor_guilda.core.models.participar_guerra import ParticiparGuerra
 from bdo_gestor_guilda.usuario.models.user_avancado import UserAvancado
+from bdo_gestor_guilda.core.helpers.alerta_sistema import alerta_sistema
 
 
 @login_required
@@ -60,6 +61,7 @@ def pagina_inicial(request):
         context.update({'form_participa_siege_semana': ParticiparGuerraForm(initial={
             'guerra': siege_da_semana, 'participante': dados_user_avancado.first()})})
 
+    context.update({'alerta_sistema': alerta_sistema(dados_user_avancado.first())})
     context.update({'anuncio_geral': anuncio_geral})
     context.update({'anuncio_restrito': anuncio_restrito})
     context.update({'form_participa': ParticiparGuerraForm(initial={'guerra': guerra_de_hoje,
