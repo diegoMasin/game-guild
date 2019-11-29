@@ -3,7 +3,7 @@ from bdo_gestor_guilda.core.helpers import utils
 
 def alerta_sistema(usuario):
     arr_texto = []
-    limitador_para_alerta_por_registros = 1600
+    limitador_para_alerta_por_registros = 8000
     num_registros, percent = utils.contador_de_registros()
     contexto = {
         'exibe_alerta': False,
