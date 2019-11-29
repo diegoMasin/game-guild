@@ -1,5 +1,4 @@
 import re
-
 from django.contrib.auth.models import User
 from django.db import models
 
@@ -175,3 +174,52 @@ class UserAvancado(models.Model):
     def get_logo_pequena(self):
         return 'v1/global/assets/images/logo_classes/{0}.png'.format(self.char_classe.nome_classe)
 
+    def muita_ausencia_ultimas_guerras(self):
+        from datetime import date
+        from bdo_gestor_guilda.core.models.frequencia_guerra import FrequenciaGuerra
+        from bdo_gestor_guilda.core.models.guerras import Guerras
+        from bdo_gestor_guilda.core.helpers import utils
+        hoje = date.today()
+        constante_de_aceitacao_para_frequencia = utils.get_variavel_frequencia_alerta()
+        ultimas_7_guerras = Guerras.objects.all().exclude(data_inicio=hoje).order_by('-data_inicio')[:7]
+        frequencia = FrequenciaGuerra.objects.filter(
+            guerra__in=ultimas_7_guerras, participantes__contains=[self.pk]).count()
+        return True if frequencia <= constante_de_aceitacao_para_frequencia else False
+
+    def get_todas_guerras_disponiveis(self):
+        from bdo_gestor_guilda.core.models.guerras import Guerras
+        data_entrou_sistema = self.usuario.date_joined
+        return Guerras.objects.filter(data_inicio__gte=data_entrou_sistema, tipo=Guerras.TIPO_NODEWAR_ID)
+
+    def get_total_guerras(self):
+        return self.get_todas_guerras_disponiveis().count()
+
+    def get_total_participacoes_guerras(self):
+        from bdo_gestor_guilda.core.models.participar_guerra import ParticiparGuerra
+        todas_guerras = self.get_todas_guerras_disponiveis()
+        return ParticiparGuerra.objects.filter(guerra__in=todas_guerras, participante=self).count()
+
+    def get_total_frequencias_guerras(self):
+        from bdo_gestor_guilda.core.models.frequencia_guerra import FrequenciaGuerra
+        todas_guerras = self.get_todas_guerras_disponiveis()
+        return FrequenciaGuerra.objects.filter(
+            guerra__in=todas_guerras, participantes__contains=[self.pk]).count()
+
+    def get_todas_siege_disponiveis(self):
+        from bdo_gestor_guilda.core.models.guerras import Guerras
+        data_entrou_sistema = self.usuario.date_joined
+        return Guerras.objects.filter(data_inicio__gte=data_entrou_sistema, tipo=Guerras.TIPO_SIEGE_ID)
+
+    def get_total_sieges(self):
+        return self.get_todas_siege_disponiveis().count()
+
+    def get_total_participacoes_guerras(self):
+        from bdo_gestor_guilda.core.models.participar_guerra import ParticiparGuerra
+        todas_guerras = self.get_todas_siege_disponiveis()
+        return ParticiparGuerra.objects.filter(guerra__in=todas_guerras, participante=self).count()
+
+    def get_total_frequencias_guerras(self):
+        from bdo_gestor_guilda.core.models.frequencia_guerra import FrequenciaGuerra
+        todas_guerras = self.get_todas_siege_disponiveis()
+        return FrequenciaGuerra.objects.filter(
+            guerra__in=todas_guerras, participantes__contains=[self.pk]).count()

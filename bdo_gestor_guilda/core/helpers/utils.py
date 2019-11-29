@@ -203,8 +203,11 @@ def get_context(requisicao=None):
         context.update({'fechamento_war': configuracoes.filter(nome_variavel='fechamento_war').first().valor_inteiro})
         context.update({'tier_por_node': configuracoes.filter(nome_variavel='tier_por_node').first().valor_inteiro})
         context.update({'tier_por_siege': configuracoes.filter(nome_variavel='tier_por_siege').first().valor_inteiro})
-        context.update({'limitacao_membro': configuracoes.filter(nome_variavel='limitacao_membro').first().valor_inteiro})
+        context.update({'limitacao_membro': configuracoes.filter(
+            nome_variavel='limitacao_membro').first().valor_inteiro})
         context.update({'limitacao_heroi': configuracoes.filter(nome_variavel='limitacao_heroi').first().valor_inteiro})
+        context.update({'variavel_frequencia_alerta': configuracoes.filter(
+            nome_variavel='variavel_frequencia_alerta').first().valor_inteiro})
 
         context.update({'nome_logo': settings.NOME_LOGO})
         context.update({'nome_logo_icon': settings.NOME_LOGO_ICON})
@@ -282,6 +285,10 @@ def contador_de_registros():
 
 
 def normaliza_texto(texto):
-        from unicodedata import normalize
-        result = normalize('NFKD', texto).encode('ASCII', 'ignore').decode('ASCII')
-        return result.lower().replace(' ', '_')
+    from unicodedata import normalize
+    result = normalize('NFKD', texto).encode('ASCII', 'ignore').decode('ASCII')
+    return result.lower().replace(' ', '_')
+
+
+def get_variavel_frequencia_alerta():
+    return Configuracoes.objects.filter(nome_variavel='variavel_frequencia_alerta').first().valor_inteiro
