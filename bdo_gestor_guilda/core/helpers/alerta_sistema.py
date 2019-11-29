@@ -1,10 +1,10 @@
-from bdo_gestor_guilda.core.helpers.utils import contador_de_registros
+from bdo_gestor_guilda.core.helpers import utils
 
 
 def alerta_sistema(usuario):
     arr_texto = []
     limitador_para_alerta_por_registros = 1600
-    num_registros, percent = contador_de_registros()
+    num_registros, percent = utils.contador_de_registros()
     contexto = {
         'exibe_alerta': False,
         'texto': arr_texto,
@@ -18,7 +18,7 @@ def alerta_sistema(usuario):
         contexto.update({'texto': arr_texto})
 
     if usuario.muita_ausencia_ultimas_guerras():
-        constante_de_aceitacao = 2
+        constante_de_aceitacao = utils.get_variavel_frequencia_alerta()
         contexto.update({'exibe_alerta': True})
         arr_texto.append('''
         Seu nível de Frequência nas últimas 7 (sete) Guerras está muito baixo, por favor tente participar mais de {} por semana.

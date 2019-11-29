@@ -178,8 +178,9 @@ class UserAvancado(models.Model):
         from datetime import date
         from bdo_gestor_guilda.core.models.frequencia_guerra import FrequenciaGuerra
         from bdo_gestor_guilda.core.models.guerras import Guerras
+        from bdo_gestor_guilda.core.helpers import utils
         hoje = date.today()
-        constante_de_aceitacao_para_frequencia = 2
+        constante_de_aceitacao_para_frequencia = utils.get_variavel_frequencia_alerta()
         ultimas_7_guerras = Guerras.objects.all().exclude(data_inicio=hoje).order_by('-data_inicio')[:7]
         frequencia = FrequenciaGuerra.objects.filter(
             guerra__in=ultimas_7_guerras, participantes__contains=[self.pk]).count()
