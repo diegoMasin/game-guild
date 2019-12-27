@@ -1,0 +1,19 @@
+{% extends 'estatisticas/layout_relatorio.html' %}
+{% load core_tags %}
+{% load staticfiles %}
+
+{% block titulo_pagina %} {{ nome_guilda }} - {{ nome_jogo }}{% endblock titulo_pagina %}
+
+{% block content %}
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card-box">
+            <h5 class="card-title">Relatório: Quantidade de Participações em Siege</h5>
+            <p class="card-text">Aqui leva-se em consideração todas as guerras cadastradas até o momento. Se zerado os
+                registros no banco de dados na tela de configurações, é possível que seja zerada a contagem dos totais.
+            </p>
+            {% include 'estatisticas/partials/tabela_siege.html' %}
+        </div>
+    </div>
+</div>
+{% endblock content %}

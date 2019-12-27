@@ -1,0 +1,9 @@
+{% load staticfiles %}{% load core_tags %}
+<div class="card-box">
+    <h5 class="card-title text-danger">
+        <i class="ti-announcement"></i> Alertas do Sistema
+    </h5>
+    {% for texto in alerta_sistema.texto %}
+    <h6 class="card-subtitle text-danger m-t-10">- {{ texto }}</h6>
+    {% endfor %}
+</div>
