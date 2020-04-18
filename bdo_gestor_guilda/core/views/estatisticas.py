@@ -128,6 +128,9 @@ def get_qtd_by_classe(all_membros_ativos):
     classes.append({
         'nome': 'Shai', 'cor': '#9ea32b', 'n': get_numero_classe(all_membros_ativos, 'Shai')
     })
+    classes.append({
+        'nome': 'Guardian', 'cor': '#ffb5b5', 'n': get_numero_classe(all_membros_ativos, 'Guardian')
+    })
     return classes
 
 
