@@ -182,6 +182,8 @@ class UserAvancado(models.Model):
         hoje = date.today()
         constante_de_aceitacao_para_frequencia = utils.get_variavel_frequencia_alerta()
         ultimas_7_guerras = Guerras.objects.all().exclude(data_inicio=hoje).order_by('-data_inicio')[:7]
+        if ultimas_7_guerras.count() < 7:
+            return False
         frequencia = FrequenciaGuerra.objects.filter(
             guerra__in=ultimas_7_guerras, participantes__contains=[self.pk]).count()
         return True if frequencia <= constante_de_aceitacao_para_frequencia else False
