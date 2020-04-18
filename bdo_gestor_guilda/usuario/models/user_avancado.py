@@ -215,12 +215,12 @@ class UserAvancado(models.Model):
     def get_total_sieges(self):
         return self.get_todas_siege_disponiveis().count()
 
-    def get_total_participacoes_guerras(self):
+    def get_total_participacoes_sieges(self):
         from bdo_gestor_guilda.core.models.participar_guerra import ParticiparGuerra
         todas_guerras = self.get_todas_siege_disponiveis()
         return ParticiparGuerra.objects.filter(guerra__in=todas_guerras, participante=self).count()
 
-    def get_total_frequencias_guerras(self):
+    def get_total_frequencias_sieges(self):
         from bdo_gestor_guilda.core.models.frequencia_guerra import FrequenciaGuerra
         todas_guerras = self.get_todas_siege_disponiveis()
         return FrequenciaGuerra.objects.filter(
