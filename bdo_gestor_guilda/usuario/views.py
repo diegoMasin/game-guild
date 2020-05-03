@@ -43,7 +43,7 @@ def signup(request):
             if form.errors['username']:
                 messages.warning(request, form.errors['username'][0])
 
-        utils.context['form'] = form
+    utils.context['form'] = form
     return render(request, '{0}/signup.html'.format(utils.path_template_login), utils.context)
 
 

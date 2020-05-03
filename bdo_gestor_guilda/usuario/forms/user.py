@@ -21,30 +21,35 @@ class UserModelForm(forms.ModelForm):
                 'class': 'form-control',
                 'placeholder': 'Nome',
                 'required': True,
-                'maxlength': 15
+                'maxlength': 15,
+                'value': ''
             }),
             'last_name': forms.TextInput(attrs={
                 'class': 'form-control',
                 'placeholder': 'Sobrenome',
                 'required': True,
-                'maxlength': 15
+                'maxlength': 15,
+                'value': ''
             }),
             'email': forms.EmailInput(attrs={
                 'class': 'form-control',
                 'placeholder': 'Email',
                 'required': True,
-                'maxlength': 100
+                'maxlength': 100,
+                'value': ''
             }),
             'username': forms.TextInput(attrs={
                 'class': 'form-control',
                 'placeholder': 'Usuário',
                 'required': True,
-                'maxlength': 50
+                'maxlength': 50,
+                'value': ''
             }),
             'password': forms.PasswordInput(attrs={
                 'class': 'form-control',
                 'placeholder': 'Senha',
                 'required': True,
-                'maxlength': 50
+                'maxlength': 50,
+                'value': ''
             }),
         }

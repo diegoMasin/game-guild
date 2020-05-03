@@ -159,7 +159,11 @@ context = {
     'path_template_login': path_template_login,
     'path_template_home': path_template_home,
     'path_user_avancado': path_user_avancado,
-    'path_recover': path_recover
+    'path_recover': path_recover,
+
+    'nome_logo': settings.NOME_LOGO,
+    'nome_logo_icon': settings.NOME_LOGO_ICON,
+    'nome_logo_login': settings.NOME_LOGO_LOGIN,
 }
 
 
