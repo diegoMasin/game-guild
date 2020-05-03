@@ -9,7 +9,8 @@
         <span class="small text-danger">Se a tela carregar sem os campos de cadastros, Por favor pressione um
             <strong>F5</strong>.</span>
     </div>
-    <form id="form-signup" class="form-horizontal m-t-20" method="post" action="{% url url_name_signup %}">
+    <form id="form-signup" class="form-horizontal m-t-20" method="post" action="{% url url_name_signup %}"
+        autocomplete="off">
         {% csrf_token %}
         <div class="form-group row">
             <div class="col-6">
