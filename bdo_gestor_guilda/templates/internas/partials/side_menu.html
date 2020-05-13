@@ -8,50 +8,52 @@
                     <a href="{% url url_name_home %}" class="waves-effect waves-primary"><i
                             class="fa fa-home"></i><span> Página Inicial </span></a>
                 </li>
-                {% if not is_heroi %}
-                    <li>
-                        <a href="{% url url_recrutas_listar %}" class="waves-effect waves-primary">
-                            <i class="fa fa-user-plus"></i><span> Recrutamento </span></a>
-                    </li>
+                {% if is_lider or is_oficial %}
+                <li>
+                    <a href="{% url url_recrutas_listar %}" class="waves-effect waves-primary">
+                        <i class="fa fa-user-plus"></i><span> Recrutamento </span></a>
+                </li>
                 {% endif %}
                 {% if is_lider or is_oficial or is_membro or is_heroi and not limitacao_heroi %}
-                    <li>
-                        <a href="{% url url_membros_listar %}" class="waves-effect waves-primary">
-                            <i class="fa fa-child"></i><span> Membros </span></a>
-                    </li>
-                    <li>
-                        <a href="{% url url_herois_listar %}" class="waves-effect waves-primary">
-                            <i class="fa fa-shield"></i><span> Heróis </span></a>
-                    </li>
+                <li>
+                    <a href="{% url url_membros_listar %}" class="waves-effect waves-primary">
+                        <i class="fa fa-child"></i><span> Membros </span></a>
+                </li>
+                <li>
+                    <a href="{% url url_herois_listar %}" class="waves-effect waves-primary">
+                        <i class="fa fa-shield"></i><span> Heróis </span></a>
+                </li>
                 {% endif %}
                 <li>
                     <a href="{% url url_grupos_listar %}" class="waves-effect waves-primary">
                         <i class="fa fa-users"></i><span> Grupos </span></a>
                 </li>
                 {% if not is_heroi %}
-                    <li>
-                        <a href="{% url url_guerras_listar %}" class="waves-effect waves-primary">
-                            <i class="fa fa-flag"></i><span> Guerras </span></a>
-                    </li>
+                <li>
+                    <a href="{% url url_guerras_listar %}" class="waves-effect waves-primary">
+                        <i class="fa fa-flag"></i><span> Guerras </span></a>
+                </li>
 
-                    <li>
-                        <a href="{% url url_payout_listar %}" class="waves-effect waves-primary">
-                            <i class="fa fa-dollar"></i><span> Payout </span></a>
-                    </li>
-                    <li>
-                        <a href="{% url url_lista_negra_listar %}" class="waves-effect waves-primary">
-                            <i class="fa fa-recycle"></i><span> Lista Negra </span></a>
-                    </li>
-                    <li>
+                <li>
+                    <a href="{% url url_payout_listar %}" class="waves-effect waves-primary">
+                        <i class="fa fa-dollar"></i><span> Payout </span></a>
+                </li>
+                <li>
+                    <a href="{% url url_lista_negra_listar %}" class="waves-effect waves-primary">
+                        <i class="fa fa-recycle"></i><span> Lista Negra </span></a>
+                </li>
+                {% if is_lider or is_oficial or is_membro and not limitacao_membro %}
+                <li>
                     <a href="{% url url_estatisticas_index %}" class="waves-effect waves-primary">
-                            <i class="fa fa-bar-chart-o"></i><span> Estatísticas </span></a>
-                    </li>
+                        <i class="fa fa-bar-chart-o"></i><span> Estatísticas </span></a>
+                </li>
+                {% endif %}
                 {% endif %}
                 {% if site_guilda %}
-                    <li>
-                        <a href="{{ site_guilda }}" target="_blank" class="waves-effect waves-primary">
-                            <i class="fa fa-link"></i><span> Site da Guilda </span></a>
-                    </li>
+                <li>
+                    <a href="{{ site_guilda }}" target="_blank" class="waves-effect waves-primary">
+                        <i class="fa fa-link"></i><span> Site da Guilda </span></a>
+                </li>
                 {% endif %}
             </ul>
             <div class="clearfix"></div>
