@@ -1,52 +1,59 @@
 {% load staticfiles %}
 {% load core_tags %}
 {% for conf in todas_configuracoes %}
-    <div class="form-row m-b-15 m-t-15">
-        <div class="col-md-10">
-            <form class="form-horizontal" role="form" method="post" action="{% url url_configuracoes_atualizar conf.pk %}">
-                {% csrf_token %}
-                <div class="form-group row">
-                    <label class="col-3 col-form-label">{{ conf.slug_variavel }}:
-                        {% if conf.descricao %}
-                            <i class="fa fa-info-circle cursor-pointer" title="{{ conf.descricao }}"></i>
-                        {% endif %}
-                    </label>
-                    <div class="col-8 input-group">
-                        {% if conf.tipo_variavel == conf.STRING_ID %}
-                            {% if conf.nome_variavel == "cor_topo" or conf.nome_variavel == "cor_lateral" %}
-                                <input class="form-control" type="color" name="valor_conf" value="{{ conf.valor_string }}" required>
-                            {% else %}
-                                <input name="valor_conf" type="text" class="form-control" value="{{ conf.valor_string }}" required>
-                            {% endif %}
-                        {% elif conf.tipo_variavel == conf.INTEIRO_ID %}
-                            {% if conf.nome_variavel == "fechamento_war" %}
-                                <select name="valor_conf" class="form-control" required="" id="id_char_classe">
-                                    <option value="21" {% get_selected_fechamento_war fechamento_war 21 %}>21 Horas</option>
-                                    <option value="22" {% get_selected_fechamento_war fechamento_war 22 %}>22 Horas</option>
-                                    <option value="23" {% get_selected_fechamento_war fechamento_war 23 %}>23 Horas</option>
-                                </select>
-                            {% elif conf.nome_variavel == "limitacao_membro" %}
-                                <select name="valor_conf" class="form-control" required="">
-                                    <option value="0" {% get_selected_limitacao_membro limitacao_membro 0 %}>Nenhuma Restrição</option>
-                                    <option value="1" {% get_selected_limitacao_membro limitacao_membro 1 %}>Com Restrições</option>
-                                </select>
-                            {% elif conf.nome_variavel == "limitacao_heroi" %}
-                                <select name="valor_conf" class="form-control" required="">
-                                    <option value="0" {% get_selected_limitacao_heroi limitacao_heroi 0 %}>Nenhuma Restrição</option>
-                                    <option value="1" {% get_selected_limitacao_heroi limitacao_heroi 1 %}>Com Restrições</option>
-                                </select>
-                            {% else %}
-                                <input name="valor_conf" type="number" class="form-control" value="{{ conf.valor_inteiro }}" required>
-                            {% endif %}
-                        {% elif conf.tipo_variavel == conf.BOOL_ID %}
-                            <input name="valor_conf" type="checkbox" value="{{ conf.valor_bool }}">
-                        {% endif %}
-                        <div class="input-group-append">
-                            <button class="btn btn-dark waves-effect waves-light" type="submit"><i class="fa fa-save"></i></button>
-                        </div>
+<div class="form-row m-b-15 m-t-15">
+    <div class="col-md-10">
+        <form class="form-horizontal" role="form" method="post" action="{% url url_configuracoes_atualizar conf.pk %}">
+            {% csrf_token %}
+            <div class="form-group row">
+                <label class="col-3 col-form-label">{{ conf.slug_variavel }}:
+                    {% if conf.descricao %}
+                    <i class="fa fa-info-circle cursor-pointer" title="{{ conf.descricao }}"></i>
+                    {% endif %}
+                </label>
+                <div class="col-8 input-group">
+                    {% if conf.tipo_variavel == conf.STRING_ID %}
+                    {% if conf.nome_variavel == "cor_topo" or conf.nome_variavel == "cor_lateral" %}
+                    <input class="form-control" type="color" name="valor_conf" value="{{ conf.valor_string }}" required>
+                    {% else %}
+                    <input name="valor_conf" type="text" class="form-control" value="{{ conf.valor_string }}" required>
+                    {% endif %}
+                    {% elif conf.tipo_variavel == conf.INTEIRO_ID %}
+                    {% if conf.nome_variavel == "fechamento_war" %}
+                    <select name="valor_conf" class="form-control" required="" id="id_char_classe">
+                        <option value="18" {% get_selected_fechamento_war fechamento_war 18 %}>18 Horas</option>
+                        <option value="19" {% get_selected_fechamento_war fechamento_war 19 %}>19 Horas</option>
+                        <option value="20" {% get_selected_fechamento_war fechamento_war 20 %}>20 Horas</option>
+                        <option value="21" {% get_selected_fechamento_war fechamento_war 21 %}>21 Horas</option>
+                        <option value="22" {% get_selected_fechamento_war fechamento_war 22 %}>22 Horas</option>
+                        <option value="23" {% get_selected_fechamento_war fechamento_war 23 %}>23 Horas</option>
+                    </select>
+                    {% elif conf.nome_variavel == "limitacao_membro" %}
+                    <select name="valor_conf" class="form-control" required="">
+                        <option value="0" {% get_selected_limitacao_membro limitacao_membro 0 %}>Nenhuma Restrição
+                        </option>
+                        <option value="1" {% get_selected_limitacao_membro limitacao_membro 1 %}>Com Restrições</option>
+                    </select>
+                    {% elif conf.nome_variavel == "limitacao_heroi" %}
+                    <select name="valor_conf" class="form-control" required="">
+                        <option value="0" {% get_selected_limitacao_heroi limitacao_heroi 0 %}>Nenhuma Restrição
+                        </option>
+                        <option value="1" {% get_selected_limitacao_heroi limitacao_heroi 1 %}>Com Restrições</option>
+                    </select>
+                    {% else %}
+                    <input name="valor_conf" type="number" class="form-control" value="{{ conf.valor_inteiro }}"
+                        required>
+                    {% endif %}
+                    {% elif conf.tipo_variavel == conf.BOOL_ID %}
+                    <input name="valor_conf" type="checkbox" value="{{ conf.valor_bool }}">
+                    {% endif %}
+                    <div class="input-group-append">
+                        <button class="btn btn-dark waves-effect waves-light" type="submit"><i
+                                class="fa fa-save"></i></button>
                     </div>
                 </div>
-            </form>
-        </div>
+            </div>
+        </form>
     </div>
+</div>
 {% endfor %}
