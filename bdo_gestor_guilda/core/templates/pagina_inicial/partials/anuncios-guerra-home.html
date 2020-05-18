@@ -3,54 +3,54 @@
     <h5 class="card-title"><i class="ti-target"></i>
         Anúncios de Guerras
         {% if not is_heroi %}
-            {% if guerra_de_hoje %}
-                <a href="{% url url_frequencia_guerra_listar guerra_de_hoje.pk %}">
-                <span class="badge badge-dark"><i class="fa fa-check text-white m-r-5">
+        {% if guerra_de_hoje %}
+        <a href="{% url url_frequencia_guerra_listar guerra_de_hoje.pk %}">
+            <span class="badge badge-dark"><i class="fa fa-check text-white m-r-5">
                 </i><strong>Frequência</strong></span></a>
-            {% endif %}
+        {% endif %}
         {% endif %}
     </h5>
     {% if guerra_de_hoje %}
-        <h6 class="card-subtitle m-t-10">
-            Guerra de Hoje: {{ guerra_de_hoje.get_slug_tipo }} ({{ guerra_de_hoje.data_inicio|date:'d/m/Y' }})</h6>
-        <p class="card-text m-t-5">
-            <small>
-                Guerra <strong>{{ guerra_de_hoje.get_slug_modelo }}</strong>
-                {% if guerra_de_hoje.servidor %}
-                    no Servidor <strong>{{ guerra_de_hoje.servidor }}</strong>
-                {% endif %}
-                {% if guerra_de_hoje.quantidade_players %}
-                    para <strong>{{ guerra_de_hoje.quantidade_players }}</strong> Participantes
-                {% endif %}
-                {% if guerra_de_hoje.node %}
-                    --- Node: <strong>{{ guerra_de_hoje.node }}</strong>
-                {% endif %}
-                {% if guerra_de_hoje.call %}
-                    --- Call de: <strong>{{ guerra_de_hoje.call }}</strong>
-                {% endif %}
-                ---- Usaremos Pt's Fixas? <strong>{{ guerra_de_hoje.pt_fixa|yesno:'Sim,Não' }}</strong>
-            </small>
-        </p>
-        <p class="m-0">
-            <strong>Participantes até o Momento ({{ total_guerra_hoje }}):</strong>
-            <span class="badge badge-success">SIM: {{ total_sim_guerra_hoje }}</span>
-            <span class="badge badge-danger">NÃO: {{ total_nao_guerra_hoje }} </span>
-            <span class="badge badge-warning">TALVEZ: {{ total_talvez_guerra_hoje }}</span>
-        </p>
-        {% if not passou_da_hora_para_participar_guerra %}
-            <a href="javascript:void(0)" class="btn btn-outline-dark btn-sm w-sm waves-effect waves-light m-t-10"
-               data-toggle="modal" data-target="#participar-guerra-modal" data-id-user-avancado="{{ user.pk }}">
-                <i class="fa fa-child m-r-5"></i> <span>Participar</span></a>
-            {% if logado_participa_guerra %}
-                <span class="small p-2 text-danger">
-                Você marcou a participação nesta guerra como: <strong class="text-uppercase">
-                    {{ logado_participa_guerra.participa }}</strong>.
-                    Para alterar click em <strong>Participar</strong> novamente até às 21:00.
-            </span>
+    <h6 class="card-subtitle m-t-10">
+        Guerra de Hoje: {{ guerra_de_hoje.get_slug_tipo }} ({{ guerra_de_hoje.data_inicio|date:'d/m/Y' }})</h6>
+    <p class="card-text m-t-5">
+        <small>
+            Guerra <strong>{{ guerra_de_hoje.get_slug_modelo }}</strong>
+            {% if guerra_de_hoje.servidor %}
+            no Servidor <strong>{{ guerra_de_hoje.servidor }}</strong>
             {% endif %}
-        {% endif %}
+            {% if guerra_de_hoje.quantidade_players %}
+            para <strong>{{ guerra_de_hoje.quantidade_players }}</strong> Participantes
+            {% endif %}
+            {% if guerra_de_hoje.node %}
+            --- Node: <strong>{{ guerra_de_hoje.node }}</strong>
+            {% endif %}
+            {% if guerra_de_hoje.call %}
+            --- Call de: <strong>{{ guerra_de_hoje.call }}</strong>
+            {% endif %}
+            ---- Usaremos Pt's Fixas? <strong>{{ guerra_de_hoje.pt_fixa|yesno:'Sim,Não' }}</strong>
+        </small>
+    </p>
+    <p class="m-0">
+        <strong>Participantes até o Momento ({{ total_guerra_hoje }}):</strong>
+        <span class="badge badge-success">SIM: {{ total_sim_guerra_hoje }}</span>
+        <span class="badge badge-danger">NÃO: {{ total_nao_guerra_hoje }} </span>
+        <span class="badge badge-warning">TALVEZ: {{ total_talvez_guerra_hoje }}</span>
+    </p>
+    {% if not passou_da_hora_para_participar_guerra %}
+    <a href="javascript:void(0)" class="btn btn-outline-dark btn-sm w-sm waves-effect waves-light m-t-10"
+        data-toggle="modal" data-target="#participar-guerra-modal" data-id-user-avancado="{{ user.pk }}">
+        <i class="fa fa-child m-r-5"></i> <span>Participar</span></a>
+    {% if logado_participa_guerra %}
+    <span class="small p-2 text-danger">
+        Você marcou a participação nesta guerra como: <strong class="text-uppercase">
+            {{ logado_participa_guerra.participa }}</strong>.
+        Para alterar click em <strong>Participar</strong> novamente até às <strong>{{fechamento_war}}hr</strong>.
+    </span>
+    {% endif %}
+    {% endif %}
     {% else %}
-        <h6 class="card-subtitle text-muted">Nenhuma guerra.</h6>
+    <h6 class="card-subtitle text-muted">Nenhuma guerra.</h6>
     {% endif %}
     {% include 'pagina_inicial/partials/guerra-siege.html' %}
 </div>
