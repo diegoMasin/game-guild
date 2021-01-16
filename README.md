@@ -1,28 +1,21 @@
-﻿![Alt text](https://github.com/diegoMasin/maximumtech/blob/master/assets/img/logo-colorida.png)<br>
+![Alt text](https://github.com/diegoMasin/maximumtech/blob/master/assets/img/logo-colorida.png)<br>
 
-Empresa de Desenvolvimento de Software.
+# Projeto Game Guild
+###### Tecnologias envolvidas: Python / Django / Bootstrap / Javascript - Versão: Beta (em produção)
+```
+Game guild é um projeto piloto que tinha 2 simples objetivos.
+```
+1. Criar um meio gratuito que pudesse oferecer um suporte em gestão de guilda dentro de jogos RPG online.
+2. Criar um projeto do zero passando por todas as etapas do seu ciclo de vida (análise de requisitos, desenvolvimento, divulgação, treinamento e suporte contínuo).
 
-# Padrão de projeto Django GestorGuildBDO
-GestorGuildBDO começou como um projeto de gestão comercial. Contudo o nome foi trocado pois este nome já pertencia a outra empresa.
-No início do processo de desenvolvimento, esse projeto já estava no ponto chave de começar os cruds do projeto. 
-Mesmo assim, já estava implementado layout, login e logout com cadastro de usuário, logo a partir daí foi denominado que GestorGuildBDO seria o marco para se construir projetos futuros em Django servindo como padrão e base para o início de qualquer novo projeto.
+### Histórico de Ações
+```
+Desenvolvido na arquitetura de monolito, o início deste projeto se destacou pela coleta de requisito junto a um grupo de jogadores de um jogo chamado Back Desert.
+```
 
-## Seguirá aqui abaixo os passos que serão necessários toda vez que for criado um novo projeto do zero usando este padrão.
-
-1 - Criar o repositório do seu novo projeto. Copiar para dentro dele a branch master da bdo_gestor_guilda sem a pasta idea, se houver.<br>
-2 - Commitar e já realizar o primeiro push do seu novo projeto para não sobrecarregar ou misturar as alterações a seguir.<br>
-3 - Alterar a pasta interna com nome de bdo_gestor_guilda para o nome do seu projeto.<br>
-4 - *Abri o arquivo settings e alterar em todo lugar que houver bdo_gestor_guilda para o nome do seu projeto(atenção especial ao schema configurado que nao tem o 85).<br>
-5 - Fazer um find path em todo o sistema em busca do nome bdo_gestor_guilda e substituir pelo nome do seu projeto.<br>
-6 - É interessante sempre gerar uma secret key nova para cada projeto. Até onde não se sabe não interfere no projeto. Vide: https://www.miniwebtool.com/django-secret-key-generator/<br>
-7 - Criar a virtualenv pelo pycharm: Acesse o interpreter; add local; new environment; coloque o nome da virtual, escolhendo o local onde será crida(geralmente como irmão da pasta do projeto) e não mexer no campo base; click OK.<br>
-8 - Após clicar em ok em tudo, surgirá ao topo da IDE uma opção para instalar os requirements detectados no arquivo txt dentro do projeto. Se não aparecer, entre no arquivo settings que aparecerá.<br>
-9 - Configure o Start Server<br>
-10 - Instale o Dict InteliJ português(spelling)<br>
-11 - Vá no Banco postgress, crie uma database com o nome do seu projeto, e um schema também com o mesmo nome.<br>
-12 - Rode o migrate<br>
-13 - No terminar crie um primeiro usuário admin padrão root com: python manage.py createsuperuser<br>
-14 - Teste a aplicação funcionando local<br>
-15 - Até aqui projeto funcionando com Sucesso. Só alterar depois detalhes de layout que ainda tenha o nome GestorGuildBDO<br>
-16 - Commit e Pushed seu segundo commit e ultimo, agora só começar a desenvolver.<br>
-SUCESS!
+1. Coleta de requisitos de todas as necessidade que os jogares sentiam falta para gerenciar sua guilda.
+2. Desenvolvimento do projeto em 1-2 meses. Contem: ACL, cadastro de dados completo de usuário, diversas telas de crud e outras funcionalidades interativas, relatórios e estatísticas. 
+3. Para manter o sistema finalizado em produção, cada guilda que desejar ter acesso ao sistema, terá de criar uma conta no Heroku e lá será dado o devido suporte para se criar uma instância utilizando este repositório do github.
+4. Foi desenvolvido um servidor no discord para servir de Suporte (coleta de sugestões, report de erros, políticas e termos de uso e compromisso do desenvolvedor com o cliente). Link para acesso: [Clique aqui](https://discord.gg/c2RtW7U)
+5. Foi desenvolvido também um site de domínio gameguild.com.br (domínio atualmente expirado) para deixar um possível marketing no gatilho. Alguns youtubers conhecidos deste game fizeram divulgações em seus vídeos.
+6. Foram feitos vídeos tutoriais para o treinamento e uso do sistema: [Clique para visualizar a Playlist](https://www.youtube.com/playlist?list=PLMT_DTQjvp3fyAOsZhdsddRWh_zsULITH)
