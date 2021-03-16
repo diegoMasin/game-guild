@@ -10,6 +10,6 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RunSQL("INSERT INTO tb_tipo_classe_char (nome_classe, slug) VALUES ('nova', 'Nova');")
+        migrations.RunSQL("INSERT INTO tb_tipo_classe_char (nome_classe, slug) VALUES ('nova', 'Nova');"),
         migrations.RunSQL("INSERT INTO tb_tipo_classe_char (nome_classe, slug) VALUES ('sage', 'Sage');")
     ]
